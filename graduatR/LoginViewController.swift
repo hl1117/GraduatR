@@ -9,9 +9,14 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FBSDKLoginKit
+import FBSDKShareKit
+import FBSDKCoreKit
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate
+class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate
 {
+ 
+    
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -25,6 +30,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate
         //GIDSignIn.sharedInstance().signIn()
         
         configureGoogleSignInButton()
+        configureFacebookSignInButton()
 
         // Do any additional setup after loading the view.
     }
@@ -43,6 +49,33 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate
         GIDSignIn.sharedInstance().uiDelegate = self
     }
    
+    fileprivate func configureFacebookSignInButton()
+    {
+        let facebookSignInButton = FBSDKLoginButton()
+        facebookSignInButton.frame = CGRect(x: 50, y: 200 + 100, width: view.frame.width - 240, height: 40)
+        view.addSubview(facebookSignInButton)
+        facebookSignInButton.delegate = self
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error == nil {
+            print("User just logged in via Facebook")
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                if (error != nil) {
+                    print("Facebook authentication failed")
+                } else {
+                    print("Facebook authentication succeed")
+                }
+            })
+        } else {
+            print("An error occured the user couldn't log in")
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User just logged out from his Facebook account")
+    }
     
 
 }

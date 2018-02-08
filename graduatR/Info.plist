@@ -16,6 +16,10 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth2</string>
+	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -23,10 +27,15 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb212791609279419</string>
 				<string>com.googleusercontent.apps.881399710823-27vp3i24mnnh4u2jp70cs5m1npe60btm</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>212791609279419</string>
+	<key>FacebookDisplayName</key>
+	<string>graduatR</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
