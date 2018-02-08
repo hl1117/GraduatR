@@ -42,7 +42,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="googleSignInButton" destination="qHm-k9-QGY" id="WRl-AM-Uq8"/>
                         <outlet property="passwordTextField" destination="GbJ-7q-ky9" id="5dU-G9-mF6"/>
                         <outlet property="usernameTextField" destination="Ezh-YR-dg4" id="Aq4-f7-43j"/>
                     </connections>

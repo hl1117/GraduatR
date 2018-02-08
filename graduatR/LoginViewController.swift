@@ -21,8 +21,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate
     {
         super.viewDidLoad()
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+        //GIDSignIn.sharedInstance().uiDelegate = self
+        //GIDSignIn.sharedInstance().signIn()
+        
+        configureGoogleSignInButton()
 
         // Do any additional setup after loading the view.
     }
@@ -33,7 +35,13 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate
         // Dispose of any resources that can be recreated.
     }
     
-
+    fileprivate func configureGoogleSignInButton()
+    {
+        let googleSignInButton = GIDSignInButton()
+        googleSignInButton.frame = CGRect(x: 120, y: 200, width: view.frame.width - 240, height: 50)
+        view.addSubview(googleSignInButton)
+        GIDSignIn.sharedInstance().uiDelegate = self
+    }
    
     
 

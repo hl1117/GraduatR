@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645C202BE85000A9C921 /* LoginViewController.swift */; };
+		202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */; };
 		2074E282202BDED10020C63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E281202BDED10020C63A /* AppDelegate.swift */; };
 		2074E284202BDED10020C63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E283202BDED10020C63A /* ViewController.swift */; };
 		2074E287202BDED10020C63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2074E285202BDED10020C63A /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		202A645C202BE85000A9C921 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedPageViewController.swift; sourceTree = "<group>"; };
 		2074E27E202BDED10020C63A /* graduatR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = graduatR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2074E281202BDED10020C63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2074E283202BDED10020C63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2074E281202BDED10020C63A /* AppDelegate.swift */,
+				202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
 				202A645C202BE85000A9C921 /* LoginViewController.swift */,
@@ -362,6 +365,7 @@
 			files = (
 				202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
+				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
 				2074E282202BDED10020C63A /* AppDelegate.swift in Sources */,
 			);
