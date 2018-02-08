@@ -7,6 +7,9 @@ target 'graduatR' do
 
   # Pods for graduatR
     pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'GoogleSignIn'
 
   target 'graduatRTests' do
     inherit! :search_paths

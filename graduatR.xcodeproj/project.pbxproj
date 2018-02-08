@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645C202BE85000A9C921 /* LoginViewController.swift */; };
 		2074E282202BDED10020C63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E281202BDED10020C63A /* AppDelegate.swift */; };
 		2074E284202BDED10020C63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E283202BDED10020C63A /* ViewController.swift */; };
 		2074E287202BDED10020C63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2074E285202BDED10020C63A /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		202A645C202BE85000A9C921 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2074E27E202BDED10020C63A /* graduatR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = graduatR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2074E281202BDED10020C63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2074E283202BDED10020C63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				2074E281202BDED10020C63A /* AppDelegate.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
+				202A645C202BE85000A9C921 /* LoginViewController.swift */,
 				2074E28B202BDED10020C63A /* Assets.xcassets */,
 				2074E28D202BDED10020C63A /* LaunchScreen.storyboard */,
 				2074E290202BDED10020C63A /* Info.plist */,
@@ -295,12 +298,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-graduatR/Pods-graduatR-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,9 +323,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-graduatR/Pods-graduatR-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -348,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
 				2074E282202BDED10020C63A /* AppDelegate.swift in Sources */,
