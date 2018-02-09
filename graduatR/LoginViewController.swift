@@ -12,7 +12,6 @@ import GoogleSignIn
 import FBSDKLoginKit
 import FBSDKShareKit
 import FBSDKCoreKit
-import FirebaseCoreDiagnostics
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate
 {
