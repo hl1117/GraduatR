@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var roleController: UIPickerView!
     var pickerData:  [String] = [String] ()
