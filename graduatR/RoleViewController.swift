@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var roleController: UIPickerView!
     var pickerData:  [String] = [String] ()
@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var ref: DatabaseReference!
     
     
+    @IBOutlet weak var username: UITextField!
     @IBOutlet weak var fname: UITextField!
     @IBOutlet weak var lname: UITextField!
     
@@ -58,14 +59,60 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     //Communication with Firebase Database
     @IBAction func clickNextButton(_ sender: Any) {
         //Update realtime database based on role
-        self.ref.child("Users").child(pickerData[value]).setValue(["Fname": fname.text, "Lname": lname.text])
-        
-        
+        if (username.text?.isEmpty == false) {
+            let databaseRef = Database.database().reference();
+            databaseRef.child("Users").child("Student").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                if snapshot.hasChild(self.username.text!) {
+                    print("Username exists-S")
+                    let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                    }
+                     alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                            print("ERROR")
+                    }
+                }
+                else {
+                    databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                        if snapshot.hasChild(self.username.text!) {
+                            print("Username exists-P")
+                            let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                                print ("ok tappped")
+                            }
+                            alert.addAction(OKAction)
+                            self.present(alert, animated: true) {
+                                print("ERROR")
+                            }
+                        }
+                        else {
+                            databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                                if snapshot.hasChild(self.username.text!) {
+                                    print("Username exists-C")
+                                    let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
+                                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                                        print ("ok tappped")
+                                    }
+                                     alert.addAction(OKAction)
+                                    self.present(alert, animated: true) {
+                                        print("ERROR")
+                                    }
+                                }
+                                else {
+                                    self.ref.child("Users").child(self.pickerData[self.value]).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text])
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+    
         
     }
     
     
-    
+    }
     
     
 }
