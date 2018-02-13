@@ -18,6 +18,7 @@
 		2074E29A202BDED10020C63A /* graduatRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E299202BDED10020C63A /* graduatRTests.swift */; };
 		2074E2A5202BDF7F0020C63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */; };
 		62518F0042AC05FC806382CE /* Pods_graduatR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */; };
+		D413DC5A203385C200F73E6B /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D413DC59203385C200F73E6B /* StudentDetailViewController.swift */; };
 		D443A94B202D26E000B92459 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443A94A202D26E000B92459 /* RoleViewController.swift */; };
 		F44815C391577ECAC4E04D3E /* Pods_graduatRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		46D770E2428F0FC172867B68 /* Pods-graduatRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatRTests/Pods-graduatRTests.release.xcconfig"; sourceTree = "<group>"; };
 		709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduatRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE7208289F50597540A631B /* Pods-graduatR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.release.xcconfig"; sourceTree = "<group>"; };
+		D413DC59203385C200F73E6B /* StudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
 		D443A94A202D26E000B92459 /* RoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
 		F0C90A91A1B34D845C5EE7BA /* Pods-graduatR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +112,7 @@
 				2074E290202BDED10020C63A /* Info.plist */,
 				2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */,
 				2074E288202BDED10020C63A /* graduatR.xcdatamodeld */,
+				D413DC59203385C200F73E6B /* StudentDetailViewController.swift */,
 			);
 			path = graduatR;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			files = (
 				202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
+				D413DC5A203385C200F73E6B /* StudentDetailViewController.swift in Sources */,
 				D443A94B202D26E000B92459 /* RoleViewController.swift in Sources */,
 				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
