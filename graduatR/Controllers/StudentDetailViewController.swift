@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
@@ -14,6 +15,8 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     var name = ""
     var lastName = ""
     var user = ""
+    
+    var ref: DatabaseReference!
         
     @IBOutlet weak var tutorStatus: UISwitch!
     @IBOutlet weak var GPA: UITextField!
@@ -57,11 +60,13 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         
     @IBAction func clickedProceed(_ sender: Any) {
         
-        self.ref.child("Users").child("Student").child(user).setValue(["GPA": self.gpa.text, "Class": (self.pickerData[self.value])])
+        let myclass = (self.pickerData[self.value])
+        
+        self.ref.child("Users").child("Student").child(user).setValue(["GPA": self.GPA.text, "Class": myclass])
         
         if (tutorStatus.isOn){
             
-            self.ref.child("Users").child("Tutor").child(self.username.text!).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
+            self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
         }
 
     }

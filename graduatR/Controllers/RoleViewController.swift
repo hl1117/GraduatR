@@ -111,7 +111,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
     }
         
-        let myVC = storyboard?.instantiateViewControllerWithIdentifier("detailPage") as! StudentDetailViewController
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "detailPage") as! StudentDetailViewController
         myVC.name = fname.text!
         myVC.user = username.text!
         myVC.lastName = lname.text!
