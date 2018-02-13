@@ -9,8 +9,16 @@
 import UIKit
 
 class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+    
+    @IBOutlet weak var welcomeText: UILabel!
+    var name = ""
+    var lastName = ""
+    var user = ""
         
-        @IBOutlet weak var classController: UIPickerView!
+    @IBOutlet weak var tutorStatus: UISwitch!
+    @IBOutlet weak var GPA: UITextField!
+    @IBOutlet weak var classController: UIPickerView!
+    
         var pickerData:  [String] = [String] ()
         var value: Int = 0
         
@@ -20,6 +28,7 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
             self.classController.delegate = self
             self.classController.dataSource = self
             pickerData = ["Freshman","Sophomore","Junior","Senior","Super senior", " "]
+            welcomeText.text = "Hi," + name 
         }
         
         // The number of columns of data
@@ -46,6 +55,16 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
             // Dispose of any resources that can be recreated.
         }
         
+    @IBAction func clickedProceed(_ sender: Any) {
+        
+        self.ref.child("Users").child("Student").child(user).setValue(["GPA": self.gpa.text, "Class": (self.pickerData[self.value])])
+        
+        if (tutorStatus.isOn){
+            
+            self.ref.child("Users").child("Tutor").child(self.username.text!).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
+        }
 
+    }
+    
 
 }

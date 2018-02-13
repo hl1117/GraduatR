@@ -110,6 +110,12 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
         
     }
+        
+        let myVC = storyboard?.instantiateViewControllerWithIdentifier("detailPage") as! StudentDetailViewController
+        myVC.name = fname.text!
+        myVC.user = username.text!
+        myVC.lastName = lname.text!
+        navigationController?.pushViewController(myVC, animated: true)
     
     
     }
