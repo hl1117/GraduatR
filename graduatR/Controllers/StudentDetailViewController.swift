@@ -64,10 +64,10 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         self.ref.child("Users").child("Student").child(user).setValue(["GPA": self.GPA.text, "Class": myclass])
         
-        if (tutorStatus.isOn){
-            
-            self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
-        }
+//        if (tutorStatus.isOn){
+//            
+//            self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
+//        }
 
     }
     
