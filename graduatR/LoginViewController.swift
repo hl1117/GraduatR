@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
 import FBSDKShareKit
@@ -20,7 +21,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var googleSignInButton: GIDSignInButton!
+    
+  
     
     override func viewDidLoad()
     {
@@ -81,5 +83,50 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
         print("User just logged out from his Facebook account")
     }
     
-
+    @IBAction func signInButton(_ sender: Any)
+    {
+        
+        if let email = usernameTextField.text, let password = passwordTextField.text
+        {
+            //Auth.auth().signIn(with: <#T##AuthCredential#>, completion: <#T##AuthResultCallback?##AuthResultCallback?##(User?, Error?) -> Void#>)
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                
+                if let u = user
+                {
+                    self.performSegue(withIdentifier: "GoToHome" , sender: self)
+                }
+                else
+                {
+                    
+                }
+                
+            }
+        }
+        
+       
+    }
+    
+    
+    @IBAction func signUpButton(_ sender: Any)
+    {
+        //Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>, completion: <#T##AuthResultCallback?##AuthResultCallback?##(User?, Error?) -> Void#>)
+        
+        if let email = usernameTextField.text, let password = passwordTextField.text
+        {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            
+                if let u = user
+                {
+                    
+                }
+                else
+                {
+                    
+                }
+            
+            }
+        }
+        
+    }
+    
 }

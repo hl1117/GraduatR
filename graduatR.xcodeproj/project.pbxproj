@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645C202BE85000A9C921 /* LoginViewController.swift */; };
 		202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */; };
+		203FDE5120339E5A00888A23 /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */; };
+		203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE5020339E5A00888A23 /* RoleViewController.swift */; };
+		203FDE542033A2F300888A23 /* CustomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE532033A2F300888A23 /* CustomLoginViewController.swift */; };
 		2074E282202BDED10020C63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E281202BDED10020C63A /* AppDelegate.swift */; };
 		2074E284202BDED10020C63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E283202BDED10020C63A /* ViewController.swift */; };
 		2074E287202BDED10020C63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2074E285202BDED10020C63A /* Main.storyboard */; };
@@ -18,8 +21,6 @@
 		2074E29A202BDED10020C63A /* graduatRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E299202BDED10020C63A /* graduatRTests.swift */; };
 		2074E2A5202BDF7F0020C63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */; };
 		62518F0042AC05FC806382CE /* Pods_graduatR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */; };
-		D413DC5A203385C200F73E6B /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D413DC59203385C200F73E6B /* StudentDetailViewController.swift */; };
-		D443A94B202D26E000B92459 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D443A94A202D26E000B92459 /* RoleViewController.swift */; };
 		F44815C391577ECAC4E04D3E /* Pods_graduatRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,9 @@
 /* Begin PBXFileReference section */
 		202A645C202BE85000A9C921 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedPageViewController.swift; sourceTree = "<group>"; };
+		203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
+		203FDE5020339E5A00888A23 /* RoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
+		203FDE532033A2F300888A23 /* CustomLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViewController.swift; sourceTree = "<group>"; };
 		2074E27E202BDED10020C63A /* graduatR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = graduatR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2074E281202BDED10020C63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2074E283202BDED10020C63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,8 +57,6 @@
 		46D770E2428F0FC172867B68 /* Pods-graduatRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatRTests/Pods-graduatRTests.release.xcconfig"; sourceTree = "<group>"; };
 		709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduatRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE7208289F50597540A631B /* Pods-graduatR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.release.xcconfig"; sourceTree = "<group>"; };
-		D413DC59203385C200F73E6B /* StudentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
-		D443A94A202D26E000B92459 /* RoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
 		F0C90A91A1B34D845C5EE7BA /* Pods-graduatR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		203FDE4E20339E5A00888A23 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */,
+				203FDE5020339E5A00888A23 /* RoleViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		2074E275202BDED10020C63A = {
 			isa = PBXGroup;
 			children = (
@@ -101,18 +112,18 @@
 		2074E280202BDED10020C63A /* graduatR */ = {
 			isa = PBXGroup;
 			children = (
+				203FDE4E20339E5A00888A23 /* Controllers */,
 				2074E281202BDED10020C63A /* AppDelegate.swift */,
 				202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
-				D443A94A202D26E000B92459 /* RoleViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
+				203FDE532033A2F300888A23 /* CustomLoginViewController.swift */,
 				202A645C202BE85000A9C921 /* LoginViewController.swift */,
 				2074E28B202BDED10020C63A /* Assets.xcassets */,
 				2074E28D202BDED10020C63A /* LaunchScreen.storyboard */,
 				2074E290202BDED10020C63A /* Info.plist */,
 				2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */,
 				2074E288202BDED10020C63A /* graduatR.xcdatamodeld */,
-				D413DC59203385C200F73E6B /* StudentDetailViewController.swift */,
 			);
 			path = graduatR;
 			sourceTree = "<group>";
@@ -379,11 +390,12 @@
 			files = (
 				202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
-				D413DC5A203385C200F73E6B /* StudentDetailViewController.swift in Sources */,
-				D443A94B202D26E000B92459 /* RoleViewController.swift in Sources */,
 				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
 				2074E282202BDED10020C63A /* AppDelegate.swift in Sources */,
+				203FDE542033A2F300888A23 /* CustomLoginViewController.swift in Sources */,
+				203FDE5120339E5A00888A23 /* StudentDetailViewController.swift in Sources */,
+				203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
