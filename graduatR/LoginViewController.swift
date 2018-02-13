@@ -9,9 +9,9 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-//import FBSDKLoginKit
-//import FBSDKShareKit
-//import FBSDKCoreKit
+import FBSDKLoginKit
+import FBSDKShareKit
+import FBSDKCoreKit
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate
 {
