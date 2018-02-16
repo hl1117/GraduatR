@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lqo-4W-iHN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -315,6 +315,7 @@
                                 </state>
                                 <connections>
                                     <action selector="clickNextButton:" destination="Lqo-4W-iHN" eventType="touchUpInside" id="8zD-vw-b4L"/>
+                                    <segue destination="9aN-2P-Q9e" kind="presentation" identifier="studentDetail" id="y3M-jY-vql"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WHO  A    E  YOU?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s8k-vy-Olu">
@@ -342,7 +343,7 @@
         <!--Student Detail View Controller-->
         <scene sceneID="GHL-ky-waw">
             <objects>
-                <viewController id="9aN-2P-Q9e" customClass="StudentDetailViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9aN-2P-Q9e" customClass="StudentDetailViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISA-8R-Ion">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,8 +385,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi &lt;student name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSq-9R-KJy">
-                                <rect key="frame" x="53" y="85" width="237" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;student name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSq-9R-KJy">
+                                <rect key="frame" x="96" y="85" width="194" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -443,14 +444,25 @@
                                 </state>
                                 <connections>
                                     <action selector="clickNextButton:" destination="Lqo-4W-iHN" eventType="touchUpInside" id="pwQ-em-L2u"/>
+                                    <action selector="clickedProceed:" destination="9aN-2P-Q9e" eventType="touchUpInside" id="ILc-OZ-EjK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqj-jW-Mwb">
+                                <rect key="frame" x="53" y="93" width="21" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nEc-4e-rxr"/>
                     </view>
                     <connections>
+                        <outlet property="GPA" destination="oql-fH-AEQ" id="eEd-LA-9Wn"/>
                         <outlet property="classController" destination="WIi-8n-vo2" id="qkR-gY-leF"/>
+                        <outlet property="tutorStatus" destination="4Iz-JT-wn7" id="hKW-iu-XEz"/>
+                        <outlet property="welcomeText" destination="WSq-9R-KJy" id="tD2-NF-odg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UX-Cy-sy8" userLabel="First Responder" sceneMemberID="firstResponder"/>

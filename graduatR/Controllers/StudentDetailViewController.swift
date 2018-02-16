@@ -12,10 +12,9 @@ import Firebase
 class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     @IBOutlet weak var welcomeText: UILabel!
-    var name = ""
-    var lastName = ""
-    var user = ""
-    
+    var name = String()
+    var lastName = String()
+    var user = String()
     var ref: DatabaseReference!
         
     @IBOutlet weak var tutorStatus: UISwitch!
@@ -31,7 +30,9 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
             self.classController.delegate = self
             self.classController.dataSource = self
             pickerData = ["Freshman","Sophomore","Junior","Senior","Super senior", " "]
-            welcomeText.text = "Hi," + name 
+            welcomeText.text = name
+            
+            ref = Database.database().reference()
         }
         
         // The number of columns of data
@@ -61,13 +62,15 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func clickedProceed(_ sender: Any) {
         
         let myclass = (self.pickerData[self.value])
+        ref.child("Users").child("Student").child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
         
-        self.ref.child("Users").child("Student").child(user).setValue(["GPA": self.GPA.text, "Class": myclass])
         
-//        if (tutorStatus.isOn){
-//            
-//            self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
-//        }
+        if (tutorStatus.isOn){
+            
+            //ref.child("Users").child("Tutor").child(user).setValue(["Fname": name.text!])
+            print("Person is also a tutor")
+           // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
+        }
 
     }
     

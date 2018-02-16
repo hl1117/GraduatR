@@ -15,6 +15,9 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var pickerData:  [String] = [String] ()
     var value: Int = 0
     var ref: DatabaseReference!
+    var userN = String()
+    var LN = String()
+    var FN = String()
     
     
     @IBOutlet weak var username: UITextField!
@@ -100,7 +103,13 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                     }
                                 }
                                 else {
-                                    self.ref.child("Users").child(self.pickerData[self.value]).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text])
+                                    self.ref.child("Users").child(self.pickerData[self.value]).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text, "GPA": -1, "Class": "NA"])
+                                    
+                                    self.userN = self.username.text!
+                                    self.FN = self.fname.text!
+                                    self.LN = self.lname.text!
+                                    
+                                    self.performSegue(withIdentifier: "studentDetail", sender: self)
                                 }
                             })
                         }
@@ -111,13 +120,22 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
     }
         
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "detailPage") as! StudentDetailViewController
-        myVC.name = fname.text!
-        myVC.user = username.text!
-        myVC.lastName = lname.text!
-        navigationController?.pushViewController(myVC, animated: true)
+//        if (username.text?.isEmpty != true) {
+//        let myVC = storyboard?.instantiateViewController(withIdentifier: "detailPage") as! StudentDetailViewController
+//        myVC.name = fname.text!
+//        myVC.user = username.text!
+//        myVC.lastName = lname.text!
+//        navigationController?.pushViewController(myVC, animated: true)
+     //   }
     
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var VC = segue.destination as! StudentDetailViewController
+        VC.name = fname.text!
+        VC.user = username.text!
+        VC.lastName = lname.text!
+      
     }
     
     
