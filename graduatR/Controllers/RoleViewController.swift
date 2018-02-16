@@ -108,8 +108,16 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                     self.userN = self.username.text!
                                     self.FN = self.fname.text!
                                     self.LN = self.lname.text!
-                                    
-                                    self.performSegue(withIdentifier: "studentDetail", sender: self)
+                                   
+                                    if (self.pickerData[self.value] == "Student") {
+                                        self.performSegue(withIdentifier: "studentDetail", sender: self)
+                                    }
+                                    else if (self.pickerData[self.value] == "Tutor") {
+                                        self.performSegue(withIdentifier: "tutorDetail", sender: self)
+                                    }
+                                    else if (self.pickerData[self.value] == "Parent") {
+                                        self.performSegue(withIdentifier: "parentDetail", sender: self)
+                                    }
                                 }
                             })
                         }
@@ -131,10 +139,23 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var VC = segue.destination as! StudentDetailViewController
-        VC.name = fname.text!
-        VC.user = username.text!
-        VC.lastName = lname.text!
+    
+        if (self.pickerData[self.value] == "Student"){
+                var VC = segue.destination as! StudentDetailViewController
+                VC.name = fname.text!
+                VC.user = username.text!
+                VC.lastName = lname.text!
+        } else if (self.pickerData[self.value] == "Tutor") {
+            var VC = segue.destination as! TutorDetailViewController
+            VC.name = fname.text!
+            VC.user = username.text!
+            VC.lastName = lname.text!
+        } else if (self.pickerData[self.value] == "Parent") {
+            var VC = segue.destination as! ParentDetailViewController
+            VC.name = fname.text!
+            VC.user = username.text!
+            VC.lastName = lname.text!
+        }
       
     }
     
