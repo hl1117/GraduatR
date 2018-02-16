@@ -103,7 +103,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                     }
                                 }
                                 else {
-                                    self.ref.child("Users").child(self.pickerData[self.value]).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text, "GPA": -1, "Class": "NA"])
+                                    self.ref.child("Users").child(self.pickerData[self.value]).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text])
                                     
                                     self.userN = self.username.text!
                                     self.FN = self.fname.text!

@@ -64,10 +64,10 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         let myclass = (self.pickerData[self.value])
         ref.child("Users").child("Student").child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
         
-        
         if (tutorStatus.isOn){
             
-            //ref.child("Users").child("Tutor").child(user).setValue(["Fname": name.text!])
+            
+            ref.child("Users").child("Tutor").child(user).setValue(["Fname": name, "Lname": lastName])
             print("Person is also a tutor")
            // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
         }
