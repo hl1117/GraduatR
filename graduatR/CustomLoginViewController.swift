@@ -12,18 +12,20 @@ import FirebaseAuth
 
 class CustomLoginViewController: UIViewController
 {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var userUid: String!
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -34,43 +36,62 @@ class CustomLoginViewController: UIViewController
     {
         if let email = emailTextField.text, let password = passwordTextField.text
         {
-            //Auth.auth().signIn(with: <#T##AuthCredential#>, completion: <#T##AuthResultCallback?##AuthResultCallback?##(User?, Error?) -> Void#>)
-            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (user,error) in
                 
-                if let u = user
+                if error == nil
                 {
-                    self.performSegue(withIdentifier: "SignIn" , sender: self)
+                    
+                    if let user = user
+                    {
+                        self.userUid = user.uid
+                        print("you signed in!")
+                        self.performSegue(withIdentifier: "SignIn", sender: self)
+                    }
                 }
                 else
                 {
-                    
+                    print("error signing in")
                 }
-                
-            }
+            });
         }
     }
     
     
     @IBAction func registerButton(_ sender: Any)
     {
-        //Auth.auth().createUser(withEmail: <#T##String#>, password: <#T##String#>, completion: <#T##AuthResultCallback?##AuthResultCallback?##(User?, Error?) -> Void#>)
-        
-        if let email = emailTextField.text, let password = passwordTextField.text
-        {
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-                
-                if let u = user
-                {
-                    self.performSegue(withIdentifier: "register" , sender: self)
-                }
-                else
-                {
-                    
-                }
-                
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user,error) in
+            if error != nil
+            {
+                print("cant create user \(error)")
             }
-        }
+            else
+            {
+                if let user = user
+                {
+                    self.userUid = user.uid
+                    
+                    let changeRequest = user.createProfileChangeRequest()
+                    
+                    changeRequest.displayName = self.emailTextField.text
+                    
+                    changeRequest.commitChanges { error in
+                        if let error = error
+                        {
+                            print("error registering user")
+                            print(error)
+                            
+                        }
+                        else
+                        {
+                            print("Success registering user!")
+                            self.performSegue(withIdentifier: "register", sender: self)
+                        }
+                    }
+                }
+            }
+            //self.uploadImage()
+        })
     }
     
-
+    
 }
