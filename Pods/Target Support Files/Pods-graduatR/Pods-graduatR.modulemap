@@ -1,6 +1,0 @@
-framework module Pods_graduatR {
-  umbrella header "Pods-graduatR-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module Pods_graduatRTests {
-  umbrella header "Pods-graduatRTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
