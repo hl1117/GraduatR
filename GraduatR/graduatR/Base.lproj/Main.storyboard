@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GDR-EQ-xMA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -805,27 +805,20 @@
         <scene sceneID="3fm-PT-u6t">
             <objects>
                 <viewController id="TcL-IU-bqL" customClass="CourseTableViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="tH1-tC-oD8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="tH1-tC-oD8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseCell" rowHeight="165" id="frL-kN-ITv" customClass="CourseCell" customModule="graduatR" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="165"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="courseCell" rowHeight="140" id="frL-kN-ITv" customClass="CourseCell" customModule="graduatR" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="frL-kN-ITv" id="VgM-lh-bzF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="164.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS 18000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7P-AK-jiM">
-                                            <rect key="frame" x="21" y="48" width="121" height="66"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Intro to Object Oriented Prog." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK5-x6-Dnf">
-                                            <rect key="frame" x="157" y="43" width="196" height="78"/>
+                                            <rect key="frame" x="16" y="43" width="337" height="78"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -835,13 +828,13 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="fK5-x6-Dnf" id="GdU-KP-30d"/>
-                                    <outlet property="numberLabel" destination="F7P-AK-jiM" id="NvF-cQ-WuH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="dRj-Nr-NOU"/>
                     <connections>
+                        <outlet property="navBar" destination="dRj-Nr-NOU" id="6hp-bD-1VV"/>
                         <outlet property="tableView" destination="tH1-tC-oD8" id="551-eB-vG5"/>
                     </connections>
                 </viewController>
@@ -868,11 +861,11 @@
             </objects>
             <point key="canvasLocation" x="3911" y="530"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="l6w-e5-kXw">
             <objects>
                 <navigationController storyboardIdentifier="ProfilePage" automaticallyAdjustsScrollViewInsets="NO" id="S7b-fP-Bv5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="9Xu-sy-n7k"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-user-male-50" id="9Xu-sy-n7k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0a7-mh-seR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -937,11 +930,11 @@
             </objects>
             <point key="canvasLocation" x="758" y="122"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="uzh-Q5-bum">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yig-oY-VwV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="SsM-zr-4Uu"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-literature-50" id="SsM-zr-4Uu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FUW-QN-zte">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -957,6 +950,10 @@
             <point key="canvasLocation" x="5113" y="887"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-literature-50" width="50" height="50"/>
+        <image name="icons8-user-male-50" width="50" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GFS-OM-fFj"/>
     </inferredMetricsTieBreakers>

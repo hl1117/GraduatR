@@ -8,14 +8,22 @@
 
 import UIKit
 
-class CourseTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CourseTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var tableView: UITableView!
     
+    
+    let searchBar = UISearchBar()
     var courseData = [[String: AnyObject]]()
     var names = [String]()
-    var numbers = [String]()
-    let list = ["Fruits", "vegetables"]
+    
+    // var numbers = [String]()
+    
+    var filteredArrayName = [String]()
+    //   var filteredArrayNumber = [String]()
+    var showSearchResults = false
+    
     var refresh: UIRefreshControl!
     
     var CsSubjectId = "940bae64-4147-446e-91f1-d9626640201f"
@@ -42,22 +50,14 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
                                 for val in value {
                                     var currSubId = val["SubjectId"] as! String
                                     
-                                    //                                    print ("and it is ... \(currSubId)")
-                                    //                                    print ("and this is ..\(self.CsSubjectId)")
                                     if ( currSubId == self.CsSubjectId) {
                                         
                                         if let name = val["Title"] as? String {
-                                            self.names.append(name)
-                                          //  print (self.names)
-                                            
+                                            if let num = val["Number"] as? String {
+                                                self.names.append("CS \(num) \t \(name)")
+                                                //  print (self.names)
+                                            }
                                         }
-                                        
-                                        if let num = val["Number"] as? String {
-                                            self.numbers.append(num)
-                                          //  print (self.numbers)
-                                            
-                                        }
-                                        
                                         self.tableView.reloadData()
                                     }
                                 }
@@ -80,6 +80,7 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createSearchBar()
         
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
@@ -91,6 +92,46 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.dataSource = self
         
         
+        
+    }
+    
+    func createSearchBar() {
+        
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search a course...."
+        searchBar.delegate = self
+        
+        self.navigationItem.titleView = searchBar
+        
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let mySearch = searchBar.text!
+        filteredArrayName = names.filter({( name: String) -> Bool in
+            return name.lowercased().range(of:searchText.lowercased()) != nil
+        })
+        
+        
+        if searchBar.text == "" {
+            showSearchResults = false
+            self.tableView.reloadData()
+        } else {
+            showSearchResults = true
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        showSearchResults = true
+        searchBar.endEditing(true)
+        
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,44 +143,33 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
         fetchData()
     }
     
-    
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        if (showSearchResults) {
+            return filteredArrayName.count
+        }
+        else {
+            return names.count
+            
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "courseCell", for: indexPath) as! CourseCell
         
-        let nam = names[indexPath.row]
-        let num = numbers[indexPath.row]
-        cell.numberLabel.text = num
-        cell.nameLabel.text = nam
-        
+        if (showSearchResults){
+            
+            let nam = filteredArrayName[indexPath.row]
+            cell.nameLabel!.text = nam
+            
+        }
+        else {
+            let nam = names[indexPath.row]
+            cell.nameLabel!.text = nam
+        }
         return cell
-        
     }
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
+
 
