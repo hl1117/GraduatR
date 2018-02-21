@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 } else {
                     print("Facebook authentication succeed")
                     let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "ProtectedPageViewController") as! ProtectedPageViewController
+                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "ProfilePage") as! UINavigationController
                     let appDelegate = UIApplication.shared.delegate
                     appDelegate?.window??.rootViewController = protectedPage
                 }

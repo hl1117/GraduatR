@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class ViewProfileViewController: UIViewController {
 
@@ -23,14 +25,19 @@ class ViewProfileViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func logoutButton(_ sender: Any)
+    {
+        do {
+            try Auth.auth().signOut()
+            
+            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let appDelegate = UIApplication.shared.delegate
+            appDelegate?.window??.rootViewController = signInPage
+            
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
-    */
+    
 
 }
