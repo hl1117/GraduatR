@@ -25,7 +25,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
         
-        self.databaseRef.child("Users").child(self.loggedInUser!.uid).observeSingleEvent(of: .value) {
+        self.databaseRef.child("Users").child("Student").child(AllVariables.Username).observeSingleEvent(of: .value) {
             (snapshot: DataSnapshot) in
         
             let value = snapshot.value as? [String : AnyObject] ?? [:]
@@ -105,7 +105,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         imageView.image = imageToSet
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         setProfilePicture(imageView: self.ProfilePictureImage, imageToSet: image)
         
         if let imageData: NSData = UIImagePNGRepresentation(self.ProfilePictureImage.image!)! as NSData
@@ -116,7 +116,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             {metadata, error in
                 if (error == nil) {
                     let downloadURL = metadata?.downloadURL()
-                    self.databaseRef.child("Users").child(self.loggedInUser!.uid).child("profile_pic").setValue(downloadURL!.absoluteString)
+                    self.databaseRef.child("Users").child("Student").child(AllVariables.Username).child("profile_pic").setValue(downloadURL!.absoluteString)
+                    print("successful upload")
                 }
                 else {
                     print(error?.localizedDescription)
@@ -124,7 +125,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 //self.imageLoader.stopAnimating()
             }
         }
-        //self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
 }
