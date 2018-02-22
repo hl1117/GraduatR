@@ -62,7 +62,10 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func clickedProceed(_ sender: Any) {
         
         let myclass = (self.pickerData[self.value])
-        if ((GPA.text!.isNumber == true) && (Int(GPA.text!)! > 0) && (Int(GPA.text!)! < 4)) {
+        let number1 = (GPA.text! as NSString).doubleValue
+        print (number1)
+        //if ((GPA.text!.isNumeric == true)) {
+            //&& ((number1) >= 0.0) && ((number1) <= 4.0)){
         ref.child("Users").child("Student").child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
     
             if (tutorStatus.isOn){
@@ -71,23 +74,26 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
             print("Person is also a tutor")
            // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
             }
-        }
-            else {
-                let alert = UIAlertController(title: "Error", message: "GPA must be a valid number between 0.0 and 4.0!", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    print ("ok tappped")
-                }
-                alert.addAction(OKAction)
-                self.present(alert, animated: true) {
-                    print("ERROR")
-                }
-        }
+        //}
+//            else {
+//                let alert = UIAlertController(title: "Error", message: "GPA must be a valid number between 0.0 and 4.0!", preferredStyle: .alert)
+//                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                    print ("ok tappped")
+//                }
+//                alert.addAction(OKAction)
+//                self.present(alert, animated: true) {
+//                    print("ERROR")
+//                }
+//        }
+//    }
+//
     }
-    
-    }
+}
     extension String  {
-        var isNumber: Bool {
-            return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
-    }
+        var isNumeric: Bool {
+            guard self.characters.count > 0 else { return false }
+            let nums: Set<Character> = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+            return Set(self.characters).isSubset(of: nums)
+        }
     
 }
