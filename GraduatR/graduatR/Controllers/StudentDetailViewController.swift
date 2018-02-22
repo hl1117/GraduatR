@@ -62,17 +62,32 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func clickedProceed(_ sender: Any) {
         
         let myclass = (self.pickerData[self.value])
+        if ((GPA.text!.isNumber == true) && (Int(GPA.text!)! > 0) && (Int(GPA.text!)! < 4)) {
         ref.child("Users").child("Student").child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
-        
-        if (tutorStatus.isOn){
-            
+    
+            if (tutorStatus.isOn){
             
             ref.child("Users").child("Tutor").child(user).setValue(["Fname": name, "Lname": lastName])
             print("Person is also a tutor")
            // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
+            }
         }
-
+            else {
+                let alert = UIAlertController(title: "Error", message: "GPA must be a valid number between 0.0 and 4.0!", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print ("ok tappped")
+                }
+                alert.addAction(OKAction)
+                self.present(alert, animated: true) {
+                    print("ERROR")
+                }
+        }
     }
     
-
+    }
+    extension String  {
+        var isNumber: Bool {
+            return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+    
 }

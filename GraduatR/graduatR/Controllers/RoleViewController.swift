@@ -62,7 +62,8 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //Communication with Firebase Database
     @IBAction func clickNextButton(_ sender: Any) {
         //Update realtime database based on role
-        if (username.text?.isEmpty == false) {
+        if (username.text?.isEmpty == false && fname.text?.isEmpty == false && lname.text?.isEmpty == false) {
+            if (username.text?.isAlphanumeric != false) {
             let databaseRef = Database.database().reference();
             databaseRef.child("Users").child("Student").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 if snapshot.hasChild(self.username.text!) {
@@ -117,15 +118,36 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                     }
                                     else if (self.pickerData[self.value] == "Parent") {
                                         self.performSegue(withIdentifier: "parentDetail", sender: self)
+                                        }
                                     }
-                                }
-                            })
-                        }
-                    })
+                                })
+                            }
+                        })
+                    }
+                })
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: "Username should be alphanumeric!", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print ("ok tappped")
                 }
-            })
-    
-        
+                alert.addAction(OKAction)
+                self.present(alert, animated: true) {
+                    print("ERROR")
+                    
+                }
+            }
+        }
+        else {
+            let alert = UIAlertController(title: "Error", message: "Fields cannot be left empty!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
+        }
     }
         
 //        if (username.text?.isEmpty != true) {
@@ -136,7 +158,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 //        navigationController?.pushViewController(myVC, animated: true)
      //   }
     
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
@@ -159,6 +181,12 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
       
     }
     
-    
 }
+extension String {
+    var isAlphanumeric: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
+}
+
+
 
