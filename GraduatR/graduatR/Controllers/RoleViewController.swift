@@ -167,6 +167,8 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 VC.name = fname.text!
                 VC.user = username.text!
                 VC.lastName = lname.text!
+    
+            
         } else if (self.pickerData[self.value] == "Tutor") {
             var VC = segue.destination as! TutorDetailViewController
             VC.name = fname.text!
@@ -178,6 +180,9 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             VC.user = username.text!
             VC.lastName = lname.text!
         }
+        
+        
+        
       
     }
     

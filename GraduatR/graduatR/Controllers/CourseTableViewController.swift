@@ -170,6 +170,18 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
         }
         return cell
     }
+
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    let vc = segue.destination as! AddCourseViewController
+    let cell = sender as! UITableViewCell
+    let indexPath = tableView.indexPath(for: cell)!
+    
+    
+    let name = names[indexPath.row]
+    print (name)
+    vc.n = name
+
+    }
 }
-
-

@@ -71,6 +71,8 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
             if (tutorStatus.isOn){
             
             ref.child("Users").child("Tutor").child(user).setValue(["Fname": name, "Lname": lastName])
+            self.performSegue(withIdentifier: "tutDetail", sender: self)
+                
             print("Person is also a tutor")
            // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
             }
@@ -87,6 +89,18 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
 //        }
 //    }
 //
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (!tutorStatus.isOn) {
+            var CC = segue.destination as! AddCourseViewController
+        CC.name = name
+        CC.user = user
+        CC.lastName = lastName
+        CC.GPA = GPA.text!
+        CC.Class = pickerData[value]
+        }
+
     }
 }
     extension String  {
