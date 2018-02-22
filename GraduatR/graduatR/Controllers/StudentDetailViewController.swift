@@ -12,9 +12,9 @@ import Firebase
 class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
     
     @IBOutlet weak var welcomeText: UILabel!
-    var name = String()
-    var lastName = String()
-    var user = String()
+    var name = AllVariables.Fname
+    var lastName = AllVariables.Lname
+    var user = AllVariables.Username
     var ref: DatabaseReference!
         
     @IBOutlet weak var tutorStatus: UISwitch!
@@ -70,12 +70,16 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     
             if (tutorStatus.isOn){
             
-            ref.child("Users").child("Tutor").child(user).setValue(["Fname": name, "Lname": lastName])
-            self.performSegue(withIdentifier: "tutDetail", sender: self)
+            ref.child("Users").child("Tutor").child(user).setValue(["Fname": AllVariables.Fname, "Lname": AllVariables.Lname])
+//            self.performSegue(withIdentifier: "tutDetail", sender: self)
                 
             print("Person is also a tutor")
            // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
             }
+        
+        AllVariables.GPA = GPA.text!
+        AllVariables.standing = myclass
+    
         //}
 //            else {
 //                let alert = UIAlertController(title: "Error", message: "GPA must be a valid number between 0.0 and 4.0!", preferredStyle: .alert)
@@ -90,18 +94,18 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
 //    }
 //
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (!tutorStatus.isOn) {
-            var CC = segue.destination as! AddCourseViewController
-        CC.name = name
-        CC.user = user
-        CC.lastName = lastName
-        CC.GPA = GPA.text!
-        CC.Class = pickerData[value]
-        }
-
-    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (!tutorStatus.isOn) {
+////            var CC = segue.destination as! AddCourseViewController
+//        CC.name = name
+//        CC.user = user
+//        CC.lastName = lastName
+//        CC.GPA = GPA.text!
+//        CC.Class = pickerData[value]
+//        }
+//
+//    }
 }
     extension String  {
         var isNumeric: Bool {

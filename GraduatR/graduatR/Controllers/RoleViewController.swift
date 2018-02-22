@@ -148,6 +148,10 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 print("ERROR")
             }
         }
+        AllVariables.Fname = fname.text!
+        AllVariables.Username = username.text!
+        AllVariables.Lname = lname.text!
+
     }
         
 //        if (username.text?.isEmpty != true) {
@@ -160,33 +164,41 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if (self.pickerData[self.value] == "Student"){
+////                var VC = segue.destination as! StudentDetailViewController
+////                VC.name = fname.text!
+////                VC.user = username.text!
+////                VC.lastName = lname.text!
+////
+//                AllVariables.Fname = fname.text!
+//                AllVariables.Username = username.text!
+//                AllVariables.Lname = lname.text!
+//
+//        } else if (self.pickerData[self.value] == "Tutor") {
+////            var VC = segue.destination as! TutorDetailViewController
+////            VC.name = fname.text!
+////            VC.user = username.text!
+////            VC.lastName = lname.text!
+//
+//            AllVariables.Fname = fname.text!
+//            AllVariables.Username = username.text!
+//            AllVariables.Lname = lname.text!
+//
+//
+//        } else if (self.pickerData[self.value] == "Parent") {
+////            var VC = segue.destination as! ParentDetailViewController
+////            VC.name = fname.text!
+////            VC.user = username.text!
+////            VC.lastName = lname.text!
+
     
-        if (self.pickerData[self.value] == "Student"){
-                var VC = segue.destination as! StudentDetailViewController
-                VC.name = fname.text!
-                VC.user = username.text!
-                VC.lastName = lname.text!
-    
-            
-        } else if (self.pickerData[self.value] == "Tutor") {
-            var VC = segue.destination as! TutorDetailViewController
-            VC.name = fname.text!
-            VC.user = username.text!
-            VC.lastName = lname.text!
-        } else if (self.pickerData[self.value] == "Parent") {
-            var VC = segue.destination as! ParentDetailViewController
-            VC.name = fname.text!
-            VC.user = username.text!
-            VC.lastName = lname.text!
-        }
-        
-        
-        
-      
-    }
-    
+//        }
+    //    }
+
 }
+
 extension String {
     var isAlphanumeric: Bool {
         return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil

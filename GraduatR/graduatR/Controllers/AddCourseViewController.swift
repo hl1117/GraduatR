@@ -13,11 +13,11 @@ class AddCourseViewController: UIViewController {
 
     @IBOutlet weak var courseName: UILabel!
     var n = String()
-    var name = String()
-    var lastName = String()
-    var GPA = String()
-    var user = String()
-    var Class = String()
+    var name = AllVariables.Fname
+    var lastName = AllVariables.Lname
+    var GPA = AllVariables.GPA
+    var user = AllVariables.Username
+    var Class = AllVariables.standing
     var ref: DatabaseReference!
     
     
@@ -36,7 +36,9 @@ class AddCourseViewController: UIViewController {
     
     @IBAction func pressedAddButton(_ sender: Any) {
         
-        ref.child("Users").child("Student").child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA, "Class": Class, "Course": n])
+        print(AllVariables.Username)
+        print(n)
+       // ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").setValue([<#T##value: Any?##Any?#>])
         
         let alert = UIAlertController(title: "YAY!", message: "Course added to your profile!", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in

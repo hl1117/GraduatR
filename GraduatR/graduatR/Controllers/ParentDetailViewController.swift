@@ -11,9 +11,9 @@ import Firebase
 
 class ParentDetailViewController: UIViewController {
     
-    var name = String()
-    var lastName = String()
-    var user = String()
+    var name = AllVariables.Fname
+    var lastName = AllVariables.Lname
+    var user = AllVariables.Username
     var ref: DatabaseReference!
     
     @IBOutlet weak var welcomeText: UILabel!
