@@ -65,7 +65,9 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         if (username.text?.isEmpty == false && fname.text?.isEmpty == false && lname.text?.isEmpty == false) {
             if (username.text?.isAlphanumeric != false) {
             let databaseRef = Database.database().reference();
-            databaseRef.child("Users").child("Student").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            let userID = Auth.auth().currentUser!.uid
+            AllVariables.uid = userID
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                 if snapshot.hasChild(self.username.text!) {
                     print("Username exists-S")
                     let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
@@ -78,7 +80,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     }
                 }
                 else {
-                    databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                    databaseRef.child("Users").child("Parent").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                         if snapshot.hasChild(self.username.text!) {
                             print("Username exists-P")
                             let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
@@ -91,7 +93,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                             }
                         }
                         else {
-                            databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                            databaseRef.child("Users").child("Tutor").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                                 if snapshot.hasChild(self.username.text!) {
                                     print("Username exists-C")
                                     let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
@@ -104,7 +106,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                     }
                                 }
                                 else {
-                                    self.ref.child("Users").child(self.pickerData[self.value]).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text])
+                                    self.ref.child("Users").child(self.pickerData[self.value]).child(AllVariables.uid).child(self.username.text!).setValue(["Fname": self.fname.text, "Lname": self.lname.text])
                                     
                                     self.userN = self.username.text!
                                     self.FN = self.fname.text!

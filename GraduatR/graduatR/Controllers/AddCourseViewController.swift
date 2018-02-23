@@ -48,7 +48,7 @@ class AddCourseViewController: UIViewController {
             let c = "Course\(AllVariables.courses.endIndex)"
             
             AllVariables.courses.append(n)
-            ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").child(c).setValue(n)
+            ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").child(c).setValue(n)
             button.setTitle("Remove course", for: UIControlState.normal)
             
             print (AllVariables.courses)

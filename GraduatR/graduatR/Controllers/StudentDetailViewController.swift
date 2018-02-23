@@ -66,11 +66,11 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         print (number1)
         //if ((GPA.text!.isNumeric == true)) {
             //&& ((number1) >= 0.0) && ((number1) <= 4.0)){
-        ref.child("Users").child("Student").child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
+        ref.child("Users").child("Student").child(AllVariables.uid).child(user).setValue(["Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
     
             if (tutorStatus.isOn){
             
-            ref.child("Users").child("Tutor").child(user).setValue(["Fname": AllVariables.Fname, "Lname": AllVariables.Lname])
+            ref.child("Users").child("Tutor").child(AllVariables.uid).child(user).setValue(["Fname": AllVariables.Fname, "Lname": AllVariables.Lname])
 //            self.performSegue(withIdentifier: "tutDetail", sender: self)
                 
             print("Person is also a tutor")
