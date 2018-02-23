@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     fileprivate func configureFacebookSignInButton()
     {
         let facebookSignInButton = FBSDKLoginButton()
-        facebookSignInButton.frame = CGRect(x: 50, y: 200 + 100, width: view.frame.width - 240, height: 40)
+        facebookSignInButton.frame = CGRect(x: 120, y: 200 + 100, width: view.frame.width - 240, height: 40)
         view.addSubview(facebookSignInButton)
         facebookSignInButton.delegate = self
     }

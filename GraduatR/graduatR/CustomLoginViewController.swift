@@ -45,7 +45,7 @@ class CustomLoginViewController: UIViewController
                     {
                         self.userUid = user.uid
                         print("you signed in!")
-                        self.performSegue(withIdentifier: "SignIn", sender: self)
+                        self.performSegue(withIdentifier: "signingIn", sender: self)
                     }
                 }
                 else
