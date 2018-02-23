@@ -9,35 +9,32 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
-class ViewProfileViewController: UIViewController {
+class ViewProfileViewController: UIViewController
+{
 
-    override func viewDidLoad() {
+    var loggedInUser: AnyObject?
+    var databaseRef = Database.database().reference()
+    var storageRef = Storage.storage().reference()
+    var image: UIImageView!
+    
+    @IBOutlet weak var pictureonprofilepage: UIImageView!
+   
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
+       pictureonprofilepage = image
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    @IBAction func logoutButton(_ sender: Any)
-    {
-        do {
-            try Auth.auth().signOut()
-            
-            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-            let appDelegate = UIApplication.shared.delegate
-            appDelegate?.window??.rootViewController = signInPage
-            
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
 
 }

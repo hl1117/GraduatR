@@ -751,12 +751,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHv-hO-BRV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7122" y="-675"/>
+            <point key="canvasLocation" x="6900" y="-128"/>
         </scene>
         <!--<username>-->
         <scene sceneID="J9D-mr-HKS">
             <objects>
-                <viewController id="RiP-bE-Avf" customClass="ViewProfileViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewProfile" id="RiP-bE-Avf" customClass="ViewProfileViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mil-5W-fQC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -818,16 +818,15 @@
                                 <segue destination="xtP-zc-fZq" kind="show" id="9Va-k0-Vpo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="t7G-m0-auF">
-                            <connections>
-                                <action selector="logoutButton:" destination="RiP-bE-Avf" id="uen-ao-3XO"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="t7G-m0-auF"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pictureonprofilepage" destination="6YD-8D-Pkv" id="doN-fr-d6c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlh-Yi-TfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5912.8000000000002" y="-128.18590704647679"/>
+            <point key="canvasLocation" x="6028" y="-128"/>
         </scene>
         <!--Course Table View Controller-->
         <scene sceneID="3fm-PT-u6t">
@@ -1021,7 +1020,7 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uRX-Yo-Jvm"/>
+        <segue reference="rah-oT-LWk"/>
         <segue reference="fMw-xb-fG7"/>
         <segue reference="GFS-OM-fFj"/>
     </inferredMetricsTieBreakers>

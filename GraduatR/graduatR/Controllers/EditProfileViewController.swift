@@ -117,6 +117,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 if (error == nil) {
                     let downloadURL = metadata?.downloadURL()
                     self.databaseRef.child("Users").child("Student").child(AllVariables.Username).child("profile_pic").setValue(downloadURL!.absoluteString)
+                    AllVariables.profpic = downloadURL
                     print("successful upload")
                 }
                 else {
@@ -126,6 +127,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        var VC = segue.destination as! ViewProfileViewController
+        VC.image = ProfilePictureImage
+        //VC.pictureonprofilepage = ProfilePictureImage
     }
 
 }
