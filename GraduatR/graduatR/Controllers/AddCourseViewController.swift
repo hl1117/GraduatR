@@ -55,10 +55,10 @@ class AddCourseViewController: UIViewController {
             }
             alert.addAction(OKAction)
             self.present(alert, animated: true) {
-                print("ERROR")
+                print("added course")
             }
         }
-        //        else {
+                else {
         //            let i = AllVariables.courses.
         //            print (n)
         //            print ("------------")
@@ -73,16 +73,16 @@ class AddCourseViewController: UIViewController {
         //                ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").setValue([c: AllVariables.courses[index]])
         //                index = index + 1
         //            }
-        //
-        //            button.setTitle("Add course", for: UIControlState.normal)
-        //            let alert = UIAlertController(title: "YAY!", message: "Course removed from your profile!", preferredStyle: .alert)
-        //            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-        //                print ("ok tappped")
-        //            }
-        //            alert.addAction(OKAction)
-        //            self.present(alert, animated: true) {
-        //                print("ERROR")
-        //            }
+        
+                    button.setTitle("Add course", for: UIControlState.normal)
+                    let alert = UIAlertController(title: "YAY!", message: "Course removed from your profile!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print ("ok tappped")
+                    }
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                        print("removed course")
+                    }
         //
     }
     
@@ -100,4 +100,4 @@ class AddCourseViewController: UIViewController {
 }
 
 
-
+}
