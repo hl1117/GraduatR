@@ -13,6 +13,6 @@ struct AllVariables {
     static var Lname: String  = ""
     static var GPA: String = ""
     static var standing: String = ""
-    static var courses: String = ""
+    static var courses = [String]()
     static var profpic: URL?
 }
