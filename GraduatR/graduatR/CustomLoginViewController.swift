@@ -50,6 +50,14 @@ class CustomLoginViewController: UIViewController
                 }
                 else
                 {
+                    let alert = UIAlertController(title: "Sign in error", message: "error signing in", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print ("ok tappped")
+                    }
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                        print("ERROR")
+                    }
                     print("error signing in")
                 }
             });
@@ -62,6 +70,15 @@ class CustomLoginViewController: UIViewController
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user,error) in
             if error != nil
             {
+                let alert = UIAlertController(title: "Error", message: "cant create user", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print ("ok tappped")
+                }
+                
+                alert.addAction(OKAction)
+                self.present(alert, animated: true) {
+                    print("ERROR")
+                }
                 print("cant create user \(error)")
             }
             else
@@ -77,6 +94,14 @@ class CustomLoginViewController: UIViewController
                     changeRequest.commitChanges { error in
                         if let error = error
                         {
+                            let alert = UIAlertController(title: "Error", message: "error registering user", preferredStyle: .alert)
+                            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                                print ("ok tappped")
+                            }
+                            alert.addAction(OKAction)
+                            self.present(alert, animated: true) {
+                                print("ERROR")
+                            }
                             print("error registering user")
                             print(error)
                             
