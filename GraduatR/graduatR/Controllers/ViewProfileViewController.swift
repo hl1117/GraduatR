@@ -46,6 +46,7 @@ class ViewProfileViewController: UIViewController
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        myCourses.text = ""
         updateBioText.text = AllVariables.bio
         var databaseProfilePic = AllVariables.profpic
         let data = NSData(contentsOf: NSURL(string: databaseProfilePic)! as URL)
@@ -53,8 +54,10 @@ class ViewProfileViewController: UIViewController
             setProfilePicture(imageView: self.pictureonprofilepage,imageToSet:UIImage(data: data! as Data)!)
         }
         let size = AllVariables.courses.endIndex
+        list.removeAll()
         if (size != 0) {
             var  i = 0;
+        
             while (i < size){
                 list += "\n \(AllVariables.courses[i])"
                 i += 1

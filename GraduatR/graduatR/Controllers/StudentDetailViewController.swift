@@ -77,6 +77,24 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
            // self.ref.child("Users").child("Tutor").child(user).setValue(["Fname": self.name.text, "Lname": self.lastName.text])
             }
         
+        
+        let gpaNumber = NSString(string: GPA.text!).doubleValue
+        if (gpaNumber <= 4.0 && gpaNumber >= 0.0)
+        {
+            AllVariables.GPA = GPA.text!
+        }
+        else
+        {
+            let alert = UIAlertController(title: "GPA Error", message: "Not a valid GPA", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
+        }
+        
         AllVariables.GPA = GPA.text!
         AllVariables.standing = myclass
     

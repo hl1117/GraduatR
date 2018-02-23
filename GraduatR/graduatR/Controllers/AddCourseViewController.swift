@@ -51,6 +51,8 @@ class AddCourseViewController: UIViewController {
             ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").child(c).setValue(n)
             button.setTitle("Remove course", for: UIControlState.normal)
             
+            print (AllVariables.courses)
+            
             let alert = UIAlertController(title: "YAY!", message: "Course added to your profile!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 print ("ok tappped")
