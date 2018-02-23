@@ -17,4 +17,6 @@ struct AllVariables {
     static var profpic: String = ""
     static var bio: String = ""
     static var uid: String = ""
+    
+    //dont forget to associate cources with UID
 }

@@ -24,7 +24,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func bioButtonPressed(_ sender: Any) {
         AllVariables.bio = bioText.text!
-        self.databaseRef.child("Users").child("Student").child(AllVariables.Username).child("bio").setValue(bioText.text)
+        self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("bio").setValue(bioText.text)
 
     }
     
@@ -32,7 +32,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
         
-        self.databaseRef.child("Users").child("Student").child(AllVariables.Username).observeSingleEvent(of: .value) {
+        self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).observeSingleEvent(of: .value) {
             (snapshot: DataSnapshot) in
         
             let value = snapshot.value as? [String : AnyObject] ?? [:]
@@ -123,7 +123,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             {metadata, error in
                 if (error == nil) {
                     let downloadURL = metadata?.downloadURL()
-                    self.databaseRef.child("Users").child("Student").child(AllVariables.Username).child("profile_pic").setValue(downloadURL!.absoluteString)
+                    self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("profile_pic").setValue(downloadURL!.absoluteString)
                     AllVariables.profpic = downloadURL!.absoluteString
                     print("successful upload")
                 }

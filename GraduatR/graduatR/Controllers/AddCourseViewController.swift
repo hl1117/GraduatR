@@ -27,6 +27,14 @@ class AddCourseViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        if (!AllVariables.courses.contains(n)){
+            button.setTitle("Add course", for: UIControlState.normal)
+        }
+        else {
+            button.setTitle("Remove course", for: UIControlState.normal)
+        }
+        
         courseName.text = n
         ref = Database.database().reference()
     }
@@ -43,12 +51,15 @@ class AddCourseViewController: UIViewController {
         print(n)
         print(button.currentTitle)
         
-        if (button.currentTitle! == "Add course") {
-            
+        
+        //if (button.currentTitle! == "Add course") {
+        
+        if (!AllVariables.courses.contains(n)){
             let c = "Course\(AllVariables.courses.endIndex)"
             
             AllVariables.courses.append(n)
-            ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").child(c).setValue(n)
+            
+        ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").child(c).setValue(n)
             button.setTitle("Remove course", for: UIControlState.normal)
             
             print (AllVariables.courses)
@@ -63,8 +74,23 @@ class AddCourseViewController: UIViewController {
             }
         }
                 else {
+            
+                    let i = AllVariables.courses.index(of: n)
+                    AllVariables.courses.remove(at: i!)
+            
+                    var index = 0
+            ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").setValue([])
+            
+            while (index < AllVariables.courses.endIndex) {
+                let c = "Course\(index)"
+            ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").child(c).setValue(AllVariables.courses[index])
+                index += 1
+                
+            }
+            
+                    print (n)
                     button.setTitle("Add course", for: UIControlState.normal)
-                    let alert = UIAlertController(title: "YAY!", message: "Course removed from your profile!", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "OOPS!", message: "Course removed from your profile!", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                         print ("ok tappped")
                     }

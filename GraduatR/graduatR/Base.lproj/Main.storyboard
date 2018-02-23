@@ -998,7 +998,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YD-8D-Pkv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="6YD-8D-Pkv">
                                 <rect key="frame" x="111" y="95" width="152" height="152"/>
                                 <color key="backgroundColor" red="0.67608484459999996" green="0.58677543939999999" blue="0.087483606879999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -1036,8 +1036,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xmj-aO-hFr">
                                 <rect key="frame" x="35" y="448" width="140" height="21"/>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOX-4q-XmV">
-                                <rect key="frame" x="101" y="255" width="175" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOX-4q-XmV">
+                                <rect key="frame" x="92" y="255" width="192" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1091,6 +1091,7 @@
                             <constraint firstItem="6YD-8D-Pkv" firstAttribute="centerX" secondItem="mil-5W-fQC" secondAttribute="centerX" id="pYv-YE-VTo"/>
                             <constraint firstItem="za1-cP-JCd" firstAttribute="trailing" secondItem="jpH-ZI-CH2" secondAttribute="trailing" id="tQp-Zr-njL"/>
                             <constraint firstItem="FEm-XR-8Va" firstAttribute="trailing" secondItem="za1-cP-JCd" secondAttribute="trailing" constant="52" id="vWT-UD-OhH"/>
+                            <constraint firstItem="za1-cP-JCd" firstAttribute="centerY" secondItem="dfR-zj-nad" secondAttribute="centerY" id="x3n-Sx-yp4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FEm-XR-8Va"/>
                     </view>
@@ -1326,6 +1327,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="720" height="720"/>
         <image name="icons8-literature-50" width="50" height="50"/>
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
