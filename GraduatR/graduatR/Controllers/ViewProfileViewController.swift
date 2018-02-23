@@ -16,6 +16,8 @@ import FirebaseStorage
 class ViewProfileViewController: UIViewController
 {
     
+    @IBOutlet weak var myCourses: UILabel!
+    var list = String()
     var loggedInUser: AnyObject?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
@@ -32,11 +34,27 @@ class ViewProfileViewController: UIViewController
         nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
         self.navigationItem.title = AllVariables.Username
         //updateBioText.text = AllVariables.bio
+        
+        myCourses.text = "No courses added!"
     }
     
     override func viewDidAppear(_ animated: Bool) {
         updateBioText.text = AllVariables.bio
         pictureonprofilepage = image
+        
+        let size = AllVariables.courses.endIndex
+        if (size != 0) {
+            var  i = 0;
+            while (i < size){
+                list += "\n \(AllVariables.courses[i])"
+                i += 1
+            }
+            myCourses.text = list
+        }
+        
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning()

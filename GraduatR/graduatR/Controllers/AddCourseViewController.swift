@@ -44,9 +44,11 @@ class AddCourseViewController: UIViewController {
         print(button.currentTitle)
         
         if (button.currentTitle! == "Add course") {
+            
             let c = "Course\(AllVariables.courses.endIndex)"
             
-            ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").setValue([c : n])
+            AllVariables.courses.append(n)
+            ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").child(c).setValue(n)
             button.setTitle("Remove course", for: UIControlState.normal)
             
             let alert = UIAlertController(title: "YAY!", message: "Course added to your profile!", preferredStyle: .alert)

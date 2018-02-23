@@ -179,9 +179,18 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let indexPath = tableView.indexPath(for: cell)!
     
     
-    let name = names[indexPath.row]
-    print (name)
-    vc.n = name
+    if (showSearchResults){
+        
+        let name = filteredArrayName[indexPath.row]
+        vc.n = name
+        
+    }
+    else {
+        let name = names[indexPath.row]
+        vc.n = name
+    }
+    
+    
 
     }
 }
