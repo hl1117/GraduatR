@@ -15,26 +15,36 @@ import FirebaseStorage
 
 class ViewProfileViewController: UIViewController
 {
-
+    
     var loggedInUser: AnyObject?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
     var image: UIImageView!
     
     @IBOutlet weak var pictureonprofilepage: UIImageView!
-   
+    @IBOutlet weak var updateBioText: UILabel!
+    
+    @IBOutlet weak var nameLabel: UILabel!
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-       pictureonprofilepage = image
-
+        //pictureonprofilepage = image
+        nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
+        self.navigationItem.title = AllVariables.Username
+        //updateBioText.text = AllVariables.bio
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateBioText.text = AllVariables.bio
+        pictureonprofilepage = image
+    }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
+
+

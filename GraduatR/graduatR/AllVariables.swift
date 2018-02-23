@@ -15,4 +15,5 @@ struct AllVariables {
     static var standing: String = ""
     static var courses = [String]()
     static var profpic: URL?
+    static var bio: String = ""
 }

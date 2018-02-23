@@ -20,6 +20,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     var storageRef = Storage.storage().reference()
     var imagePicker = UIImagePickerController()
     
+    @IBOutlet weak var bioText: UITextView!
+    
+    @IBAction func bioButtonPressed(_ sender: Any) {
+        AllVariables.bio = bioText.text!
+        self.databaseRef.child("Users").child("Student").child(AllVariables.Username).child("bio").setValue(bioText.text)
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,8 +142,14 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         VC.image = ProfilePictureImage
         //VC.pictureonprofilepage = ProfilePictureImage
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //AllVariables.bio = bioText.text
+        bioText.text = AllVariables.bio
+    }
 
 }
+
 
 
 
