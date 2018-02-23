@@ -1001,6 +1001,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6YD-8D-Pkv">
                                 <rect key="frame" x="111" y="95" width="152" height="152"/>
                                 <color key="backgroundColor" red="0.67608484459999996" green="0.58677543939999999" blue="0.087483606879999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="hoe-dT-eKd"/>
+                                    <constraint firstAttribute="height" constant="152" id="yig-6o-yOj"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfR-zj-nad">
                                 <rect key="frame" x="35" y="349" width="52" height="21"/>

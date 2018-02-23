@@ -37,11 +37,21 @@ class ViewProfileViewController: UIViewController
         
         myCourses.text = "No courses added!"
     }
+    func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
+    {
+        imageView.layer.cornerRadius = 10.0
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.masksToBounds = true
+        imageView.image = imageToSet
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         updateBioText.text = AllVariables.bio
-        pictureonprofilepage = image
-        
+        var databaseProfilePic = AllVariables.profpic
+        let data = NSData(contentsOf: NSURL(string: databaseProfilePic)! as URL)
+        if (AllVariables.profpic != "") {
+            setProfilePicture(imageView: self.pictureonprofilepage,imageToSet:UIImage(data: data! as Data)!)
+        }
         let size = AllVariables.courses.endIndex
         if (size != 0) {
             var  i = 0;

@@ -61,21 +61,6 @@ class AddCourseViewController: UIViewController {
             }
         }
                 else {
-        //            let i = AllVariables.courses.
-        //            print (n)
-        //            print ("------------")
-        //            print (i)
-        
-        //            AllVariables.courses.remove(at: i!)
-        //            var index = 0
-        //            let size = AllVariables.courses.endIndex
-        //            let c = "Course\(index)"
-        //
-        //            while index < size {
-        //                ref.child("Users").child("Student").child(AllVariables.Username).child("Courses").setValue([c: AllVariables.courses[index]])
-        //                index = index + 1
-        //            }
-        
                     button.setTitle("Add course", for: UIControlState.normal)
                     let alert = UIAlertController(title: "YAY!", message: "Course removed from your profile!", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in

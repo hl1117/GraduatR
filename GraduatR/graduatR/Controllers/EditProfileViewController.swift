@@ -124,7 +124,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 if (error == nil) {
                     let downloadURL = metadata?.downloadURL()
                     self.databaseRef.child("Users").child("Student").child(AllVariables.Username).child("profile_pic").setValue(downloadURL!.absoluteString)
-                    AllVariables.profpic = downloadURL
+                    AllVariables.profpic = downloadURL!.absoluteString
                     print("successful upload")
                 }
                 else {
