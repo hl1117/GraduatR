@@ -23,6 +23,7 @@
 		5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */; };
 		5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */; };
 		62518F0042AC05FC806382CE /* Pods_graduatR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */; };
+		660065102051E2A9008886F9 /* AddEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6600650F2051E2A9008886F9 /* AddEventsViewController.swift */; };
 		6614FA78203BD3F1006172EC /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */; };
 		66197F16203CE34300EF089C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66197F15203CE34300EF089C /* EditProfileViewController.swift */; };
 		66197F18203CE35300EF089C /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66197F17203CE35300EF089C /* ViewProfileViewController.swift */; };
@@ -71,6 +72,7 @@
 		46D770E2428F0FC172867B68 /* Pods-graduatRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatRTests/Pods-graduatRTests.release.xcconfig"; sourceTree = "<group>"; };
 		5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllVariables.swift; sourceTree = "<group>"; };
+		6600650F2051E2A9008886F9 /* AddEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsViewController.swift; sourceTree = "<group>"; };
 		6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		66197F15203CE34300EF089C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		66197F17203CE35300EF089C /* ViewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				203FDE4E20339E5A00888A23 /* Controllers */,
 				2074E281202BDED10020C63A /* AppDelegate.swift */,
 				202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */,
+				6600650F2051E2A9008886F9 /* AddEventsViewController.swift */,
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
@@ -439,6 +442,7 @@
 				2074E282202BDED10020C63A /* AppDelegate.swift in Sources */,
 				203FDE542033A2F300888A23 /* CustomLoginViewController.swift in Sources */,
 				66197F16203CE34300EF089C /* EditProfileViewController.swift in Sources */,
+				660065102051E2A9008886F9 /* AddEventsViewController.swift in Sources */,
 				D433A6A52051C4B70008E559 /* BookInfoViewController.swift in Sources */,
 				D419AFE4203675C400BFA321 /* ParentDetailViewController.swift in Sources */,
 				203FDE5120339E5A00888A23 /* StudentDetailViewController.swift in Sources */,
