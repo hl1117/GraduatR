@@ -12,5 +12,4 @@ class SubjectCell: UICollectionViewCell {
     
     @IBOutlet weak var sub: UILabel!
     
-    
 }
