@@ -46,33 +46,35 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        databaseRef.child("Users").child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
-//            let enumer = snapshotA.children
-//            while let rest = enumer.nextObject() as? DataSnapshot {
-//                print(rest.value)
-//                self.databaseRef.child("Users").child("Sellers").child( as! String).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
-//               //Check inside username enumer2 = number of books for username
-//                    let enumer2 = snapshotB.children
-//                    let nums = snapshotB.childrenCount
-//                    var i = 0;
-//                    while i < nums {
-//                        self.sellername.append(rest.value as! String)
-//                        i += 1
-//                    }
-//                //Loop inside every book
-//                    while let rest2 = enumer2.nextObject() as? DataSnapshot {
-//                        self.databaseRef.child("Users").child("Sellers").child(rest.value as! String).child(rest2.value as! String).observeSingleEvent(of: DataEventType.value, with: { snapshotC in
-//                            let value = snapshotC.value as? NSDictionary
-//                            //Book Details
-//                            self.booktitle.append(value?["Title"] as? String ?? "")
-//                            self.bookauthor.append(value?["Author"] as? String ?? "")
-//                            self.bookprice.append(value?["Price"] as? String ?? "")
-//                            self.bookcourse.append(value?["Course"] as? String ?? "")
-//                        })
-//                    }
-//                    })
-//                }
-//            })
+        self.booktitle.removeAll()
+        self.bookauthor.removeAll()
+        self.bookprice.removeAll()
+        self.bookcourse.removeAll()
+        self.sellername.removeAll()
+        
+        var counter = 0;
+        databaseRef.child("Users").child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
+            let enumer = snapshotA.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                let a = "Book\(counter)"
+                self.databaseRef.child("Users").child("Sellers").child(a).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
+                    //Book Details
+                    let value = snapshotB.value as? NSDictionary
+                    self.booktitle.append(value?["Title"] as? String ?? "")
+                    self.bookauthor.append(value?["Author"] as? String ?? "")
+                    self.bookprice.append(value?["Price"] as? String ?? "")
+                    self.bookcourse.append(value?["Course"] as? String ?? "")
+                    self.sellername.append(value?["User"] as? String ?? "")
+                    })
+                
+                counter += 1
+            
+                }
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+             self.refresh.endRefreshing()
+            })
     }
     
     func createSearchBar() {
@@ -145,8 +147,21 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
 //
 //        }
 //        else {
-            let nam = booktitle[indexPath.row]
-            cell.title!.text = nam
+        
+            print (booktitle)
+        
+            let ti = booktitle[indexPath.row]
+            cell.title!.text = ti
+        
+            let au = bookauthor[indexPath.row]
+            cell.title!.text = au
+        
+            let pr = bookprice[indexPath.row]
+            cell.title!.text = pr
+        
+            let co = bookcourse[indexPath.row]
+            cell.title!.text = co
+        
 //        }
         return cell
     }
