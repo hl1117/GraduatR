@@ -46,33 +46,33 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        databaseRef.child("Users").child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
-            let enumer = snapshotA.children
-            while let rest = enumer.nextObject() as? DataSnapshot {
-                let a = rest.value
-                self.databaseRef.child("Users").child("Sellers").child(a as! String).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
-               //Check inside username enumer2 = number of books for username
-                    let enumer2 = snapshotB.children
-                    let nums = snapshotB.childrenCount
-                    var i = 0;
-                    while i < nums {
-                        self.sellername.append(rest.value as! String)
-                        i += 1
-                    }
-                //Loop inside every book
-                    while let rest2 = enumer2.nextObject() as? DataSnapshot {
-                        self.databaseRef.child("Users").child("Sellers").child(rest.value as! String).child(rest2.value as! String).observeSingleEvent(of: DataEventType.value, with: { snapshotC in
-                            let value = snapshotC.value as? NSDictionary
-                            //Book Details
-                            self.booktitle.append(value?["Title"] as? String ?? "")
-                            self.bookauthor.append(value?["Author"] as? String ?? "")
-                            self.bookprice.append(value?["Price"] as? String ?? "")
-                            self.bookcourse.append(value?["Course"] as? String ?? "")
-                        })
-                    }
-                    })
-                }
-            })
+//        databaseRef.child("Users").child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
+//            let enumer = snapshotA.children
+//            while let rest = enumer.nextObject() as? DataSnapshot {
+//                print(rest.value)
+//                self.databaseRef.child("Users").child("Sellers").child( as! String).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
+//               //Check inside username enumer2 = number of books for username
+//                    let enumer2 = snapshotB.children
+//                    let nums = snapshotB.childrenCount
+//                    var i = 0;
+//                    while i < nums {
+//                        self.sellername.append(rest.value as! String)
+//                        i += 1
+//                    }
+//                //Loop inside every book
+//                    while let rest2 = enumer2.nextObject() as? DataSnapshot {
+//                        self.databaseRef.child("Users").child("Sellers").child(rest.value as! String).child(rest2.value as! String).observeSingleEvent(of: DataEventType.value, with: { snapshotC in
+//                            let value = snapshotC.value as? NSDictionary
+//                            //Book Details
+//                            self.booktitle.append(value?["Title"] as? String ?? "")
+//                            self.bookauthor.append(value?["Author"] as? String ?? "")
+//                            self.bookprice.append(value?["Price"] as? String ?? "")
+//                            self.bookcourse.append(value?["Course"] as? String ?? "")
+//                        })
+//                    }
+//                    })
+//                }
+//            })
     }
     
     func createSearchBar() {
