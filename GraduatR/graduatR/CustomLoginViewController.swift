@@ -36,33 +36,94 @@ class CustomLoginViewController: UIViewController
     {
         if let email = emailTextField.text, let password = passwordTextField.text
         {
-            Auth.auth().signIn(withEmail: email, password: password, completion: { (user,error) in
-                
-                if error == nil
-                {
-                    
-                    if let user = user
-                    {
-                        self.userUid = user.uid
-                        print("you signed in!")
-                        self.performSegue(withIdentifier: "signingIn", sender: self)
+            Auth.auth().signIn(withEmail: email, password: password, completion: {(user,error) in
+                if (error == nil) {
+                    if let user = user {
+                        let databaseRef = Database.database().reference();
+                        let userID = Auth.auth().currentUser!.uid
+                        AllVariables.uid = userID
+                        
+                        databaseRef.child("Users").child("Student").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
+                            if snapshotA.hasChild(AllVariables.uid) {
+                                databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                                    print("HERE")
+                                    let value = snapshotB.value as? NSDictionary
+                                        AllVariables.Username = value?["Username"] as? String ?? ""
+                                        AllVariables.Fname = value?["Fname"] as? String ?? ""
+                                        AllVariables.Lname = value?["Lname"] as? String ?? ""
+                                        AllVariables.bio = value?["bio"] as? String ?? ""
+                                        AllVariables.GPA = value?["GPA"] as? String ?? ""
+                                        AllVariables.profpic = value?["profile_pic"] as? String ?? ""
+                                        AllVariables.standing = value?["Class"] as? String ?? ""
+                                    })
+                                self.userUid = user.uid
+                                self.performSegue(withIdentifier: "signingIn", sender: self)
+                            }
+                            else {
+                                databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { snapshotC in
+                                    if snapshotC.hasChild(AllVariables.uid) {
+                                        databaseRef.child("Users").child("Parent").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotD) in
+                                            print("HERE")
+                                            let value = snapshotD.value as? NSDictionary
+                                            AllVariables.Username = value?["Username"] as? String ?? ""
+                                            AllVariables.Fname = value?["Fname"] as? String ?? ""
+                                            AllVariables.Lname = value?["Lname"] as? String ?? ""
+                                            AllVariables.bio = value?["bio"] as? String ?? ""
+                                            AllVariables.GPA = value?["GPA"] as? String ?? ""
+                                            AllVariables.profpic = value?["profile_pic"] as? String ?? ""
+                                            AllVariables.standing = value?["Class"] as? String ?? ""
+                                        })
+                                        self.userUid = user.uid
+                                        self.performSegue(withIdentifier: "signingIn", sender: self)
+                                    }
+                                    else {
+                                        databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in
+                                            if snapshotE.hasChild(AllVariables.uid) {
+                                                databaseRef.child("Users").child("Tutor").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotF) in
+                                                    print("HERE")
+                                                    let value = snapshotF.value as? NSDictionary
+                                                    AllVariables.Username = value?["Username"] as? String ?? ""
+                                                    AllVariables.Fname = value?["Fname"] as? String ?? ""
+                                                    AllVariables.Lname = value?["Lname"] as? String ?? ""
+                                                    AllVariables.bio = value?["bio"] as? String ?? ""
+                                                    AllVariables.GPA = value?["GPA"] as? String ?? ""
+                                                    AllVariables.profpic = value?["profile_pic"] as? String ?? ""
+                                                    AllVariables.standing = value?["Class"] as? String ?? ""
+                                                })
+                                                self.userUid = user.uid
+                                                self.performSegue(withIdentifier: "signingIn", sender: self)
+                                            }
+                                            else {
+                                                let alert = UIAlertController(title: "Sign in error", message: "error signing in", preferredStyle: .alert)
+                                                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                                                    print ("ok tappped")
+                                                }
+                                                alert.addAction(OKAction)
+                                                self.present(alert, animated: true) {
+                                                    print("ERROR")
+                                                }
+                                                print("error signing in")
+                                            }
+                                        })
+                                }
+                            })
+                            }
+                        })
                     }
                 }
-                else
-                {
-                    let alert = UIAlertController(title: "Sign in error", message: "error signing in", preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                        print ("ok tappped")
-                    }
-                    alert.addAction(OKAction)
-                    self.present(alert, animated: true) {
-                        print("ERROR")
-                    }
-                    print("error signing in")
-                }
-            });
+        })
         }
     }
+
+                            //                            let value = snapshotA.value as? NSDictionary
+                            //                            AllVariables.Fname = value?["Fname"] as? String ?? ""
+                            //                            AllVariables.Lname = value?["Lname"] as? String ?? ""
+                            //                            AllVariables.bio = value?["bio"] as? String ?? ""
+                            //                            AllVariables.GPA = value?["GPA"] as? String ?? ""
+                            //                            AllVariables.profpic = value?["profile_pic"] as? String ?? ""
+                            //                            AllVariables.standing = value?["Class"] as? String ?? ""
+                            
+     
     
     
     @IBAction func registerButton(_ sender: Any)
@@ -120,3 +181,4 @@ class CustomLoginViewController: UIViewController
     
     
 }
+
