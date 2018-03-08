@@ -32,6 +32,7 @@
 		D433A6A32051C0130008E559 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433A6A22051C0130008E559 /* MarketViewController.swift */; };
 		D433A6A52051C4B70008E559 /* BookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433A6A42051C4B70008E559 /* BookInfoViewController.swift */; };
 		D45D5A722051CC4B008B9469 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45D5A712051CC4B008B9469 /* SubjectViewController.swift */; };
+		D4651ADD2051D62F00AA4B6D /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4651ADC2051D62F00AA4B6D /* SubjectCell.swift */; };
 		D47C3E6B203F7393000EC7CC /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47C3E6A203F7393000EC7CC /* AddCourseViewController.swift */; };
 		F44815C391577ECAC4E04D3E /* Pods_graduatRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		D433A6A22051C0130008E559 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		D433A6A42051C4B70008E559 /* BookInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoViewController.swift; sourceTree = "<group>"; };
 		D45D5A712051CC4B008B9469 /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
+		D4651ADC2051D62F00AA4B6D /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
 		D47C3E6A203F7393000EC7CC /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		F0C90A91A1B34D845C5EE7BA /* Pods-graduatR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 				2074E290202BDED10020C63A /* Info.plist */,
 				2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */,
 				2074E288202BDED10020C63A /* graduatR.xcdatamodeld */,
+				D4651ADC2051D62F00AA4B6D /* SubjectCell.swift */,
 				5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */,
 				5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */,
 			);
@@ -427,6 +430,7 @@
 				202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */,
 				D47C3E6B203F7393000EC7CC /* AddCourseViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
+				D4651ADD2051D62F00AA4B6D /* SubjectCell.swift in Sources */,
 				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
 				2074E282202BDED10020C63A /* AppDelegate.swift in Sources */,
