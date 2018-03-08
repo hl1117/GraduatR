@@ -1640,6 +1640,9 @@
                                 <rect key="frame" x="285" y="20" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Event"/>
+                                <connections>
+                                    <action selector="addEventButton:" destination="bqp-hY-FzD" eventType="touchUpInside" id="bPA-8B-KFt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OS7-9S-u0H">
                                 <rect key="frame" x="16" y="20" width="48" height="30"/>
@@ -1710,6 +1713,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QLJ-iO-ZdQ"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="U8m-Q2-MTY" id="HZA-5B-xFd"/>
+                        <outlet property="endTime" destination="1w3-om-G5P" id="OJK-Xe-xL3"/>
+                        <outlet property="eventNameTextField" destination="E8N-dg-j2V" id="kdg-Zx-gRD"/>
+                        <outlet property="startTime" destination="Xz4-BI-xa5" id="gzr-w0-5LR"/>
+                        <segue destination="GDR-EQ-xMA" kind="show" identifier="eventSegue" id="Bki-94-xMg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60i-Xl-01S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1718,7 +1728,7 @@
         <!--Navigation Controller-->
         <scene sceneID="mcM-MF-evz">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="obe-WB-567" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Events" automaticallyAdjustsScrollViewInsets="NO" id="obe-WB-567" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="icons8-calendar-50" id="Up4-Pm-lOR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qsn-Jv-USC">
@@ -1763,7 +1773,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="euu-Wo-wxs"/>
-        <segue reference="65G-g7-bVm"/>
+        <segue reference="Bki-94-xMg"/>
         <segue reference="fMw-xb-fG7"/>
         <segue reference="qoT-W4-HMK"/>
     </inferredMetricsTieBreakers>
