@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class BookInfoViewController: UIViewController {
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var authorField: UITextField!
     @IBOutlet weak var courseTitle: UITextField!
     @IBOutlet weak var priceField: UITextField!
-    
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+            ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
 
@@ -28,8 +29,73 @@ class BookInfoViewController: UIViewController {
     
 
     @IBAction func goBack(_ sender: Any) {
+        if (!AllVariables.books.contains(titleField.text!)) {
+            let c = "Book\(AllVariables.books.endIndex)"
+            
+        if (titleField.text != "") {
+            if (authorField.text != "") {
+                if (courseTitle.text != "") {
+                    if (priceField.text != "") {
+                        AllVariables.books.append(titleField.text!)
+                        ref.child("Users").child("Sellers").child(AllVariables.Username).child("Books").child(c).setValue(["Title": titleField.text!, "Author": authorField.text!, "Course": courseTitle.text!, "Price": priceField.text!])
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Error", message: "Please provide a title!", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                    }
+                }
+                else {
+                    let alert = UIAlertController(title: "Error", message: "Please provide author name!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print ("ok tappped")
+                    }
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                        print("ERROR")
+                    }
+                }
+            }
+            else {
+                let alert = UIAlertController(title: "Error", message: "Please provide course name!", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print ("ok tappped")
+                }
+                alert.addAction(OKAction)
+                self.present(alert, animated: true) {
+                    print("ERROR")
+                }
+            }
+        }
+        else {
+            let alert = UIAlertController(title: "Error", message: "Please provide price!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
+        }
+    }
+        else {
+            
+            let alert = UIAlertController(title: "Error", message: "You are already selling this book!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+        }
+    }
         self.dismiss(animated: true, completion: nil)
         
-    }
     
+}
 }

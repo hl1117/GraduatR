@@ -17,6 +17,7 @@ struct AllVariables {
     static var profpic: String = ""
     static var bio: String = ""
     static var uid: String = ""
+    static var books = [String]()
     
     //dont forget to associate cources with UID
 }
