@@ -59,7 +59,7 @@ class AddCourseViewController: UIViewController {
             
             AllVariables.courses.append(n)
             
-        ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").child(c).setValue(n)
+        ref.child("Users").child("Student").child(AllVariables.uid).child("Courses").child(c).setValue(n)
             button.setTitle("Remove course", for: UIControlState.normal)
             
             print (AllVariables.courses)
@@ -79,11 +79,11 @@ class AddCourseViewController: UIViewController {
                     AllVariables.courses.remove(at: i!)
             
                     var index = 0
-            ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").setValue([])
+            ref.child("Users").child("Student").child(AllVariables.uid).child("Courses").setValue([])
             
             while (index < AllVariables.courses.endIndex) {
                 let c = "Course\(index)"
-            ref.child("Users").child("Student").child(AllVariables.uid).child(AllVariables.Username).child("Courses").child(c).setValue(AllVariables.courses[index])
+            ref.child("Users").child("Student").child(AllVariables.uid).child("Courses").child(c).setValue(AllVariables.courses[index])
                 index += 1
                 
             }

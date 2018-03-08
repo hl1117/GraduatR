@@ -31,6 +31,7 @@
 		D4310705203BB7AF00750372 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4310704203BB7AF00750372 /* CourseTableViewController.swift */; };
 		D433A6A32051C0130008E559 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433A6A22051C0130008E559 /* MarketViewController.swift */; };
 		D433A6A52051C4B70008E559 /* BookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433A6A42051C4B70008E559 /* BookInfoViewController.swift */; };
+		D45D5A722051CC4B008B9469 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45D5A712051CC4B008B9469 /* SubjectViewController.swift */; };
 		D47C3E6B203F7393000EC7CC /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47C3E6A203F7393000EC7CC /* AddCourseViewController.swift */; };
 		F44815C391577ECAC4E04D3E /* Pods_graduatRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		D4310704203BB7AF00750372 /* CourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
 		D433A6A22051C0130008E559 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		D433A6A42051C4B70008E559 /* BookInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoViewController.swift; sourceTree = "<group>"; };
+		D45D5A712051CC4B008B9469 /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 		D47C3E6A203F7393000EC7CC /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		F0C90A91A1B34D845C5EE7BA /* Pods-graduatR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,10 +111,11 @@
 				203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */,
 				D419AFE12036759100BFA321 /* TutorDetailViewController.swift */,
 				D419AFE3203675C400BFA321 /* ParentDetailViewController.swift */,
+				D45D5A712051CC4B008B9469 /* SubjectViewController.swift */,
 				D4310704203BB7AF00750372 /* CourseTableViewController.swift */,
+				D47C3E6A203F7393000EC7CC /* AddCourseViewController.swift */,
 				66197F15203CE34300EF089C /* EditProfileViewController.swift */,
 				66197F17203CE35300EF089C /* ViewProfileViewController.swift */,
-				D47C3E6A203F7393000EC7CC /* AddCourseViewController.swift */,
 				D433A6A22051C0130008E559 /* MarketViewController.swift */,
 				D433A6A42051C4B70008E559 /* BookInfoViewController.swift */,
 			);
@@ -438,6 +441,7 @@
 				5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */,
 				D4310705203BB7AF00750372 /* CourseTableViewController.swift in Sources */,
 				66197F18203CE35300EF089C /* ViewProfileViewController.swift in Sources */,
+				D45D5A722051CC4B008B9469 /* SubjectViewController.swift in Sources */,
 				D433A6A32051C0130008E559 /* MarketViewController.swift in Sources */,
 				203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */,
 			);
