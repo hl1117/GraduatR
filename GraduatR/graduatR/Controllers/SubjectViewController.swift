@@ -74,6 +74,7 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
 
         // Do any additional setup after loading the view.
         createSearchBar()
+        fetchData()
         
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(SubjectViewController.didPullToRefresh(_:)), for: .valueChanged)
@@ -98,7 +99,6 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
         searchBar.delegate = self
         
         self.navigationItem.titleView = searchBar
-        
         
     }
     
@@ -140,20 +140,19 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
             return filteredArrayName.count
         }
         else {
-          print(subjects.count)
+        //  print(subjects.count)
         return subjects.count
         }
         
     }
     
     
-    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-    
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubjectCell", for: indexPath) as! SubjectCell
         
-        print(subjects)
+       // self.collectionView.reloadData()
+       // print(subjects)
         
         if (showSearchResults){
             
@@ -162,9 +161,11 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
             
         }
         else {
+            
             let nam = subjects[indexPath.row]
-            cell.sub!.text = nam
-        }
+           
+            cell.sub.text = nam
+            }
         return cell
     }
     
