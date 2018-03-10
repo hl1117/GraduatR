@@ -1154,7 +1154,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="sub" destination="Q8L-df-VQ2" id="jZw-Xu-20L"/>
-                                    <segue destination="TcL-IU-bqL" kind="presentation" id="3uP-EI-Fze"/>
+                                    <segue destination="TcL-IU-bqL" kind="push" id="gBW-6u-Zlc"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -1224,7 +1224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZgK-DA-Wq0">
-                                <rect key="frame" x="131" y="429" width="117" height="51"/>
+                                <rect key="frame" x="131" y="380" width="117" height="51"/>
                                 <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="QRU-IE-upK"/>
@@ -1235,7 +1235,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS 18000  OBJECT" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyl-Du-74l">
-                                <rect key="frame" x="71" y="72" width="237" height="264"/>
+                                <rect key="frame" x="71" y="116" width="237" height="171"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1751,11 +1751,11 @@
             </objects>
             <point key="canvasLocation" x="5395.1999999999998" y="2037.481259370315"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="x9t-6F-Efh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gd8-yF-Yug" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="e1E-Ut-0n0"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-literature-50" id="e1E-Ut-0n0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vp4-OF-iHX">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1774,6 +1774,7 @@
     <resources>
         <image name="Image" width="720" height="720"/>
         <image name="icons8-calendar-50" width="50" height="50"/>
+        <image name="icons8-literature-50" width="50" height="50"/>
         <image name="icons8-shopping-cart-50" width="50" height="50"/>
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>

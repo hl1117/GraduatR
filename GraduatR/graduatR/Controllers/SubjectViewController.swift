@@ -18,6 +18,7 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
     var subID = [String]()
     
     var filteredArrayName = [String]()
+    var filteredArrayId = [String]()
     //   var filteredArrayNumber = [String]()
     var showSearchResults = false
     
@@ -36,7 +37,7 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
                 } else {
                     if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
     
-                        //print (stringData)
+                        print ("DAAATAAAA....")
                         do {
                             if let data = data,
                                 let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
@@ -169,6 +170,30 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
         return cell
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! CourseTableViewController
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)!
+        
+        
+        if (showSearchResults){
+            
+            let name = filteredArrayName[indexPath.row]
+            let sub = filteredArrayName[indexPath.row]
+            vc.SubjectId = name
+            vc.SubjectAbbr = sub
+            
+        }
+        else {
+            let name = subID[indexPath.row]
+            vc.SubjectId = name
+            let sub = subjects[indexPath.row]
+            vc.SubjectAbbr = sub
+        }
+        
+        
+        
+    }
 
 }

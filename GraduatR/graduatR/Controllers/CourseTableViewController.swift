@@ -21,12 +21,14 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     // var numbers = [String]()
     
     var filteredArrayName = [String]()
+    
     //   var filteredArrayNumber = [String]()
     var showSearchResults = false
     
     var refresh: UIRefreshControl!
     
-    var CsSubjectId = "940bae64-4147-446e-91f1-d9626640201f"
+    var SubjectId = ""
+    var SubjectAbbr = ""
     
     
     func fetchData () {
@@ -50,11 +52,11 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
                                 for val in value {
                                     var currSubId = val["SubjectId"] as! String
                                     
-                                    if ( currSubId == self.CsSubjectId) {
+                                    if ( currSubId == self.SubjectId) {
                                         
                                         if let name = val["Title"] as? String {
                                             if let num = val["Number"] as? String {
-                                                self.names.append("CS \(num) \t \(name)")
+                                                self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
                                                 //  print (self.names)
                                             }
                                         }
