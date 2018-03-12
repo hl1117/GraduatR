@@ -179,7 +179,7 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if (showSearchResults){
             
-            let name = filteredArrayName[indexPath.row]
+            let name = subID[indexPath.row]
             let sub = filteredArrayName[indexPath.row]
             vc.SubjectId = name
             vc.SubjectAbbr = sub
