@@ -18,6 +18,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var userN = String()
     var LN = String()
     var FN = String()
+    var count: Int = 0
     
     
     @IBOutlet weak var username: UITextField!
@@ -30,7 +31,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.roleController.delegate = self
         self.roleController.dataSource = self
         pickerData = ["Student","Tutor","Parent"," "]
-        
+        count = 0
         ref = Database.database().reference()
     }
     
@@ -64,79 +65,51 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //Update realtime database based on role
         if (username.text?.isEmpty == false && fname.text?.isEmpty == false && lname.text?.isEmpty == false) {
             if (username.text?.isAlphanumeric != false) {
-            let databaseRef = Database.database().reference();
-            let userID = Auth.auth().currentUser!.uid
-            AllVariables.uid = userID
-            databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                if snapshot.hasChild(self.username.text!) {
-                    print("Username exists-S")
-                    let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                            print ("ok tappped")
-                    }
-                     alert.addAction(OKAction)
-                    self.present(alert, animated: true) {
-                            print("ERROR")
-                    }
-                }
-                else {
-                    databaseRef.child("Users").child("Parent").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                        if snapshot.hasChild(self.username.text!) {
-                            print("Username exists-P")
-                            let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
-                            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                                print ("ok tappped")
-                            }
-                            alert.addAction(OKAction)
-                            self.present(alert, animated: true) {
-                                print("ERROR")
-                            }
-                        }
-                        else {
-                            databaseRef.child("Users").child("Tutor").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                                if snapshot.hasChild(self.username.text!) {
-                                    print("Username exists-C")
-                                    let alert = UIAlertController(title: "Error", message: "Username is already taken!", preferredStyle: .alert)
-                                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                                        print ("ok tappped")
-                                    }
-                                     alert.addAction(OKAction)
-                                    self.present(alert, animated: true) {
-                                        print("ERROR")
-                                    }
+                let databaseRef = Database.database().reference();
+                let userID = Auth.auth().currentUser!.uid
+                AllVariables.uid = userID
+                        databaseRef.child("Users").child("Usernames").observeSingleEvent(of: DataEventType.value, with: { (snapshotUsernames) in
+                            if snapshotUsernames.hasChild(self.username.text!) {
+                                let alert = UIAlertController(title: "Error", message: "Username taken!", preferredStyle: .alert)
+                                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                                    print ("ok tappped")
                                 }
-                                else {
-                                    self.ref.child("Users").child(self.pickerData[self.value]).child(AllVariables.uid).setValue(["Username": self.username.text!, "Fname": self.fname.text!, "Lname": self.lname.text!])
-                                    
-                                    self.userN = self.username.text!
-                                    self.FN = self.fname.text!
-                                    self.LN = self.lname.text!
-                                   
-                                    if (self.pickerData[self.value] == "Student") {
-                                        self.performSegue(withIdentifier: "studentDetail", sender: self)
-                                    }
-                                    else if (self.pickerData[self.value] == "Tutor") {
-                                        self.performSegue(withIdentifier: "tutorDetail", sender: self)
-                                    }
-                                    else if (self.pickerData[self.value] == "Parent") {
-                                        self.performSegue(withIdentifier: "parentDetail", sender: self)
-                                        }
-                                    }
-                                })
+                                alert.addAction(OKAction)
+                                self.present(alert, animated: true) {
+                                    print("ERROR")
+                                }
+                            }
+                            else {
+                            self.ref.child("Users").child("Usernames").child(self.username.text!).setValue("doesntmatterwhatthisis")
+                            
+                                self.ref.child("Users").child(self.pickerData[self.value]).child(AllVariables.uid).setValue(["Username": self.username.text!, "Fname": self.fname.text!, "Lname": self.lname.text!])
+                                self.FN = self.fname.text!
+                                self.LN = self.lname.text!
+                                
+                                if (self.pickerData[self.value] == "Student") {
+                                    self.performSegue(withIdentifier: "studentDetail", sender: self)
+                                }
+                                else if (self.pickerData[self.value] == "Tutor") {
+                                    self.performSegue(withIdentifier: "tutorDetail", sender: self)
+                                }
+                                else if (self.pickerData[self.value] == "Parent") {
+                                    self.performSegue(withIdentifier: "parentDetail", sender: self)
+                                }
+                                AllVariables.Fname = self.fname.text!
+                                AllVariables.Username = self.username.text!
+                                AllVariables.Lname = self.lname.text!
+
                             }
                         })
-                    }
-                })
             }
             else {
-                let alert = UIAlertController(title: "Error", message: "Username should be alphanumeric!", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Username must be alphanumeric!", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                     print ("ok tappped")
                 }
                 alert.addAction(OKAction)
                 self.present(alert, animated: true) {
                     print("ERROR")
-                    
                 }
             }
         }
@@ -150,55 +123,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 print("ERROR")
             }
         }
-        AllVariables.Fname = fname.text!
-        AllVariables.Username = username.text!
-        AllVariables.Lname = lname.text!
-
     }
-        
-//        if (username.text?.isEmpty != true) {
-//        let myVC = storyboard?.instantiateViewController(withIdentifier: "detailPage") as! StudentDetailViewController
-//        myVC.name = fname.text!
-//        myVC.user = username.text!
-//        myVC.lastName = lname.text!
-//        navigationController?.pushViewController(myVC, animated: true)
-     //   }
-    
-    
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if (self.pickerData[self.value] == "Student"){
-////                var VC = segue.destination as! StudentDetailViewController
-////                VC.name = fname.text!
-////                VC.user = username.text!
-////                VC.lastName = lname.text!
-////
-//                AllVariables.Fname = fname.text!
-//                AllVariables.Username = username.text!
-//                AllVariables.Lname = lname.text!
-//
-//        } else if (self.pickerData[self.value] == "Tutor") {
-////            var VC = segue.destination as! TutorDetailViewController
-////            VC.name = fname.text!
-////            VC.user = username.text!
-////            VC.lastName = lname.text!
-//
-//            AllVariables.Fname = fname.text!
-//            AllVariables.Username = username.text!
-//            AllVariables.Lname = lname.text!
-//
-//
-//        } else if (self.pickerData[self.value] == "Parent") {
-////            var VC = segue.destination as! ParentDetailViewController
-////            VC.name = fname.text!
-////            VC.user = username.text!
-////            VC.lastName = lname.text!
-
-    
-//        }
-    //    }
-
 }
 
 extension String {
