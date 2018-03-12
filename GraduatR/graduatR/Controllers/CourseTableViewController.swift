@@ -83,6 +83,7 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         createSearchBar()
+        fetchData()
         
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
