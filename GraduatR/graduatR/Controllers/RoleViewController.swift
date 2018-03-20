@@ -85,7 +85,10 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                 self.ref.child("Users").child(self.pickerData[self.value]).child(AllVariables.uid).setValue(["Username": self.username.text!, "Fname": self.fname.text!, "Lname": self.lname.text!])
                                 self.FN = self.fname.text!
                                 self.LN = self.lname.text!
-                                
+                                AllVariables.Fname = self.fname.text!
+                                AllVariables.Username = self.username.text!
+                                AllVariables.Lname = self.lname.text!
+
                                 if (self.pickerData[self.value] == "Student") {
                                     self.performSegue(withIdentifier: "studentDetail", sender: self)
                                 }
@@ -95,9 +98,6 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                 else if (self.pickerData[self.value] == "Parent") {
                                     self.performSegue(withIdentifier: "parentDetail", sender: self)
                                 }
-                                AllVariables.Fname = self.fname.text!
-                                AllVariables.Username = self.username.text!
-                                AllVariables.Lname = self.lname.text!
 
                             }
                         })

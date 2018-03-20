@@ -17,12 +17,12 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     let searchBar = UISearchBar()
     var courseData = [[String: AnyObject]]()
     var names = [String]()
+    var creds = [String]()
     
     // var numbers = [String]()
     
     var filteredArrayName = [String]()
-    
-    //   var filteredArrayNumber = [String]()
+    var filteredArrayName2 = [String]()
     var showSearchResults = false
     
     var refresh: UIRefreshControl!
@@ -56,8 +56,14 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
                                         
                                         if let name = val["Title"] as? String {
                                             if let num = val["Number"] as? String {
-                                                self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
-                                                //  print (self.names)
+                                                if let credits = val["CreditHours"] as? Int {
+                                                    if let des = val["Description"] as? String {
+                                                
+                                                        self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
+                                                        self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
+                                                        //  print (self.names)
+                                                    }
+                                                }
                                             }
                                         }
                                         self.tableView.reloadData()
@@ -112,6 +118,9 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mySearch = searchBar.text!
         filteredArrayName = names.filter({( name: String) -> Bool in
+            return name.lowercased().range(of:searchText.lowercased()) != nil
+        })
+        filteredArrayName2 = creds.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
         
@@ -186,11 +195,15 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let name = filteredArrayName[indexPath.row]
         vc.n = name
-        
+        let credos = filteredArrayName2[indexPath.row]
+        vc.c = credos
     }
     else {
         let name = names[indexPath.row]
         vc.n = name
+        
+        let credos = filteredArrayName2[indexPath.row]
+        vc.c = credos
     }
     
     

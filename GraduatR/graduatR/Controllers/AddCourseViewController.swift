@@ -15,6 +15,7 @@ class AddCourseViewController: UIViewController {
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var courseName: UILabel!
+    @IBOutlet weak var info: UILabel!
     var n = String()
     var name = AllVariables.Fname
     var lastName = AllVariables.Lname
@@ -22,6 +23,7 @@ class AddCourseViewController: UIViewController {
     var user = AllVariables.Username
     var Class = AllVariables.standing
     var ref: DatabaseReference!
+    var c = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,7 @@ class AddCourseViewController: UIViewController {
         }
         
         courseName.text = n
+        info.text = c
         ref = Database.database().reference()
     }
     

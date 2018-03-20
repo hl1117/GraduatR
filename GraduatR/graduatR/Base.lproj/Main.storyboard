@@ -1223,45 +1223,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZgK-DA-Wq0">
-                                <rect key="frame" x="131" y="380" width="117" height="51"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ZgK-DA-Wq0">
+                                <rect key="frame" x="129" y="488" width="117" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="QRU-IE-upK"/>
-                                </constraints>
                                 <state key="normal" title="Add course"/>
                                 <connections>
                                     <action selector="pressedAddButton:" destination="haR-9I-cfJ" eventType="touchUpInside" id="pLN-Sx-qbT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CS 18000  OBJECT" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyl-Du-74l">
-                                <rect key="frame" x="71" y="116" width="237" height="171"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS 18000  OBJECT" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyl-Du-74l">
+                                <rect key="frame" x="51" y="92" width="273" height="171"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Infooooo stuff" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26Z-mc-PhQ">
+                                <rect key="frame" x="55" y="292" width="269" height="149"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course Information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K86-Q2-kit">
+                                <rect key="frame" x="101" y="217" width="173" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="eyl-Du-74l" firstAttribute="leading" secondItem="4WX-qH-WkF" secondAttribute="leading" constant="71" id="Bb3-Nw-ILH"/>
-                            <constraint firstItem="ZgK-DA-Wq0" firstAttribute="top" secondItem="eyl-Du-74l" secondAttribute="bottom" constant="93" id="Ckx-Oj-PSx"/>
-                            <constraint firstItem="eyl-Du-74l" firstAttribute="top" secondItem="4WX-qH-WkF" secondAttribute="top" constant="52" id="IId-dA-qZd"/>
-                            <constraint firstItem="4WX-qH-WkF" firstAttribute="bottom" secondItem="ZgK-DA-Wq0" secondAttribute="bottom" constant="187" id="eRw-k3-yjj"/>
-                            <constraint firstItem="ZgK-DA-Wq0" firstAttribute="leading" secondItem="4WX-qH-WkF" secondAttribute="leading" constant="131" id="gje-1d-T3e"/>
-                            <constraint firstItem="eyl-Du-74l" firstAttribute="centerX" secondItem="ZgK-DA-Wq0" secondAttribute="centerX" id="pb8-6d-6Qi"/>
-                            <constraint firstItem="4WX-qH-WkF" firstAttribute="trailing" secondItem="eyl-Du-74l" secondAttribute="trailing" constant="67" id="qWU-Ee-Uuz"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4WX-qH-WkF"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uqv-N2-rpk"/>
                     <connections>
                         <outlet property="button" destination="ZgK-DA-Wq0" id="9Zp-Bz-qin"/>
                         <outlet property="courseName" destination="eyl-Du-74l" id="llW-Ea-gI6"/>
+                        <outlet property="info" destination="26Z-mc-PhQ" id="Fgq-Aw-kSI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGM-6r-V2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8953" y="-917"/>
+            <point key="canvasLocation" x="8952.7999999999993" y="-917.09145427286364"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6L6-UX-Iq6">
@@ -1911,7 +1916,6 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eQ4-fV-wJM"/>
         <segue reference="eN3-Ae-S7i"/>
         <segue reference="fMw-xb-fG7"/>
         <segue reference="qoT-W4-HMK"/>
