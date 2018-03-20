@@ -27,6 +27,7 @@
 		6614FA78203BD3F1006172EC /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */; };
 		66197F16203CE34300EF089C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66197F15203CE34300EF089C /* EditProfileViewController.swift */; };
 		66197F18203CE35300EF089C /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66197F17203CE35300EF089C /* ViewProfileViewController.swift */; };
+		666FD5C12061BDCB00A91737 /* EventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666FD5C02061BDCB00A91737 /* EventsCell.swift */; };
 		669311FF2051DCBF00E556C8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669311FE2051DCBF00E556C8 /* CalendarViewController.swift */; };
 		D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D419AFE12036759100BFA321 /* TutorDetailViewController.swift */; };
 		D419AFE4203675C400BFA321 /* ParentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D419AFE3203675C400BFA321 /* ParentDetailViewController.swift */; };
@@ -79,6 +80,7 @@
 		6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		66197F15203CE34300EF089C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		66197F17203CE35300EF089C /* ViewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
+		666FD5C02061BDCB00A91737 /* EventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCell.swift; sourceTree = "<group>"; };
 		669311FE2051DCBF00E556C8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduatRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE7208289F50597540A631B /* Pods-graduatR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */,
 				2074E288202BDED10020C63A /* graduatR.xcdatamodeld */,
 				5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */,
+				666FD5C02061BDCB00A91737 /* EventsCell.swift */,
 				D4651ADE2051EA1500AA4B6D /* BookCell.swift */,
 				D4651AE02051EA5100AA4B6D /* SubjectCell.swift */,
 				D49FA75A2057152700D87067 /* ProfCell.swift */,
@@ -460,6 +463,7 @@
 				6614FA78203BD3F1006172EC /* ResetPasswordViewController.swift in Sources */,
 				5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */,
 				669311FF2051DCBF00E556C8 /* CalendarViewController.swift in Sources */,
+				666FD5C12061BDCB00A91737 /* EventsCell.swift in Sources */,
 				D49FA7592057140500D87067 /* ProfessorViewController.swift in Sources */,
 				D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */,
 				5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */,
