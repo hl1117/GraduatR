@@ -1663,6 +1663,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.82012742120000004" green="1" blue="0.94464829179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="endDate" destination="kgf-m2-qvk" id="tXy-JT-Sy3"/>
                                             <outlet property="eventDescription" destination="NAJ-Qz-UuP" id="hce-HY-oHb"/>
@@ -1917,6 +1918,7 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="eQ4-fV-wJM"/>
         <segue reference="eN3-Ae-S7i"/>
         <segue reference="fMw-xb-fG7"/>
         <segue reference="qoT-W4-HMK"/>

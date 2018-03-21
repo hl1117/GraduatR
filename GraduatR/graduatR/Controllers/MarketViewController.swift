@@ -50,6 +50,7 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
         while let rest = enumer.nextObject() as? DataSnapshot {
             let vals = rest.value as? NSDictionary
             AllVariables.books.append((vals?["Title"] as? String)!)
+            print((vals?["Title"] as? String)!)
         }
         })
         

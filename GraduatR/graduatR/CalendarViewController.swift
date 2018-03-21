@@ -18,65 +18,102 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
     
-    var eventname = ""
-    var eventdescription = ""
-    var startdate = ""
-    var enddate = ""
+    var eventname = [String]()
+    var eventdescription = [String]()
+    var startdate = [String]()
+    var enddate = [String]()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.databaseRef.child("Events").observeSingleEvent(of: .value) {
-            (snapshot: DataSnapshot) in
-            
-            let value = snapshot.value as? [String : AnyObject] ?? [:]
-            
-            if (value["Event Name"] != nil) {
-                self.eventname = (value["Event Name"] as? String!)!
+        
+        self.tableView.reloadData()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        databaseRef.child("Events").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            let enumer = snapshotA.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                let vals = rest.value as? NSDictionary
+                
+                self.eventname.append((vals?["Event Name"] as? String)!)
+                self.eventdescription.append((vals?["Event Description"] as? String ?? ""))
+                self.startdate.append((vals?["Start Date"] as? String)!)
+                self.enddate.append((vals?["End Date"] as? String)!)
+                
+                print(self.eventname)
+                
             }
-            
-            if (value["Event Description"] != nil) {
-                self.eventdescription = (value["Event Description"] as? String!)!
-            }
-            
-            if (value["Start Date"] != nil) {
-                self.startdate = (value["Start Date"] as? String!)!
-            }
-            
-            if (value["End Date"] != nil) {
-                self.enddate = (value["End Date"] as? String!)!
-            }
-            
-            
-            
-        }
+        })
+        self.tableView.reloadData()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        
+        
         
         // Do any additional setup after loading the view.
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        
+        databaseRef.child("Events").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            let enumer = snapshotA.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                let vals = rest.value as? NSDictionary
+                
+                self.eventname.append((vals?["Event Name"] as? String)!)
+                self.eventdescription.append((vals?["Event Description"] as? String ?? ""))
+                self.startdate.append((vals?["Start Date"] as? String)!)
+                self.enddate.append((vals?["End Date"] as? String)!)
+                
+                print(self.eventname)
+                
+            }
+        })
+        
+        self.tableView.reloadData()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2;
+        return eventname.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventsCell", for: indexPath) as! EventsCell
-        cell.eventName.text = "hello"
+        
+        let ti = eventname[indexPath.row]
+        cell.eventName!.text = ti
+        
+        let au = eventdescription[indexPath.row]
+        cell.eventDescription!.text = au
+        
+        let pr = startdate[indexPath.row]
+        cell.startDate!.text = pr
+        
+        let co = enddate[indexPath.row]
+        cell.endDate!.text = co
+        
+        //        }
         return cell
+        
+
     }
     
-    
-    
-    
-
 }
