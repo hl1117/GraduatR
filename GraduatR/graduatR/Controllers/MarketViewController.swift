@@ -20,6 +20,7 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     var bookprice = [String]()
     var bookcourse = [String]()
     var sellername = [String]()
+    var filteredArrayName = [String]()
     
     var refresh: UIRefreshControl!
     
@@ -43,28 +44,37 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         tableView.dataSource = self
         
+        databaseRef.child("Sellers").observeSingleEvent(of: DataEventType.value, with: { (snapshotBooks) in
+        let counter = 0;
+        let enumer = snapshotBooks.children
+        while let rest = enumer.nextObject() as? DataSnapshot {
+            let vals = rest.value as? NSDictionary
+            AllVariables.books.append((vals?["Title"] as? String)!)
+        }
+        })
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.booktitle.removeAll()
-        self.bookauthor.removeAll()
-        self.bookprice.removeAll()
-        self.bookcourse.removeAll()
-        self.sellername.removeAll()
         
         var counter = 0;
-        databaseRef.child("Users").child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
+        databaseRef.child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
             let enumer = snapshotA.children
             while let rest = enumer.nextObject() as? DataSnapshot {
                 let a = "Book\(counter)"
-                self.databaseRef.child("Users").child("Sellers").child(a).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
+                self.databaseRef.child("Sellers").child(a).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
+                    
+                    
                     //Book Details
                     let value = snapshotB.value as? NSDictionary
-                    self.booktitle.append(value?["Title"] as? String ?? "")
-                    self.bookauthor.append(value?["Author"] as? String ?? "")
-                    self.bookprice.append(value?["Price"] as? String ?? "")
-                    self.bookcourse.append(value?["Course"] as? String ?? "")
-                    self.sellername.append(value?["User"] as? String ?? "")
+            
+                    if (!self.booktitle.contains(value?["Title"] as! String)){
+                        self.booktitle.append(value?["Title"] as? String ?? "")
+                        self.bookauthor.append(value?["Author"] as? String ?? "")
+                        self.bookprice.append(value?["Price"] as? String ?? "")
+                        self.bookcourse.append(value?["Course"] as? String ?? "")
+                        self.sellername.append(value?["User"] as? String ?? "")
+                        }
                     })
                 
                 counter += 1
@@ -73,7 +83,11 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
             self.tableView.reloadData()
             self.tableView.delegate = self
             self.tableView.dataSource = self
+            
+            
              self.refresh.endRefreshing()
+            
+            
             })
     }
     
@@ -89,15 +103,19 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        
         viewDidAppear(true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mySearch = searchBar.text!
-//        filteredArrayName = names.filter({( name: String) -> Bool in
-//            return name.lowercased().range(of:searchText.lowercased()) != nil
-//        })
+         filteredArrayName = booktitle.filter({( name: String) -> Bool in
+            return name.lowercased().range(of:searchText.lowercased()) != nil
+        })
         
+        print("-------..----...------")
+        print(filteredArrayName)
+        print("-------..----...------")
         
         if searchBar.text == "" {
             showSearchResults = false
@@ -132,6 +150,8 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
 //            return filteredArrayName.count
 //        }
 //        else {
+        print("BKT: \(booktitle)")
+        
             return booktitle.count
             
 //        }
@@ -143,31 +163,29 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
 //        if (showSearchResults){
 //
 //            let nam = filteredArrayName[indexPath.row]
-//            cell.nameLabel!.text = nam
+//            cell.title!.text = nam
 //
 //        }
 //        else {
         
-            print (booktitle)
+//            print (booktitle)
         
             let ti = booktitle[indexPath.row]
             cell.title!.text = ti
         
             let au = bookauthor[indexPath.row]
-            cell.title!.text = au
+            cell.author!.text = au
         
             let pr = bookprice[indexPath.row]
-            cell.title!.text = pr
+            cell.price!.text = pr
         
             let co = bookcourse[indexPath.row]
-            cell.title!.text = co
+            cell.course!.text = co
         
 //        }
         return cell
-    }
-
     
 
-   
+    }
 
 }

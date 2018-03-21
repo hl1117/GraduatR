@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/ViewProfileViewController.swift"
-            timestampString = "542228743.66064"
+            timestampString = "543282388.0817111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5"
@@ -119,11 +119,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/RoleViewController.swift"
-            timestampString = "543279517.1481971"
+            timestampString = "543283242.347611"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137">
+            startingLineNumber = "138"
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

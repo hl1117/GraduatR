@@ -11,10 +11,10 @@ import UIKit
 class BookCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
-    
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var course: UILabel!
     @IBOutlet weak var author: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

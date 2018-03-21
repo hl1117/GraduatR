@@ -1372,12 +1372,12 @@
         <scene sceneID="b6b-s0-QJp">
             <objects>
                 <viewController id="fJe-bN-SUO" customClass="MarketViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tmy-Q3-NqT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tmy-Q3-NqT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="136" id="VEI-GS-6Xy" customClass="BookCell" customModule="graduatR" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BookCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" rowHeight="136" id="VEI-GS-6Xy" customClass="BookCell" customModule="graduatR" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="136"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VEI-GS-6Xy" id="2yS-x1-Ya0">
@@ -1442,7 +1442,7 @@
                             <barButtonItem id="Hrv-kp-Lgd"/>
                             <barButtonItem systemItem="add" id="she-Ax-y3p">
                                 <connections>
-                                    <segue destination="Frc-n6-ols" kind="presentation" id="lVi-j9-UAv"/>
+                                    <segue destination="Frc-n6-ols" kind="push" id="lVi-j9-UAv"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -1582,6 +1582,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Lfc-Xf-oQx"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ikT-3l-HQF"/>
                     <connections>
                         <outlet property="authorField" destination="DIV-Kv-erC" id="arg-SN-Dx5"/>
                         <outlet property="courseTitle" destination="nCh-pr-utp" id="GI5-0o-PJn"/>
