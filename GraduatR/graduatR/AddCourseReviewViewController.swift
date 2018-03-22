@@ -16,6 +16,7 @@ class AddCourseReviewViewController: UIViewController {
     @IBOutlet weak var star3: UIButton!
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
+    @IBOutlet weak var courseReview: UITextView!
     
     var ref: DatabaseReference!
     
@@ -113,6 +114,11 @@ class AddCourseReviewViewController: UIViewController {
          sender.setImage( UIImage(named:"icons8-christmas-star-50"), for: .normal)
          }*/
     }
+    
+    
+    
+    
+    
     
 }
 
