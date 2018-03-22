@@ -1218,7 +1218,7 @@
         <!--Add Course View Controller-->
         <scene sceneID="TpM-4e-3Wy">
             <objects>
-                <viewController id="haR-9I-cfJ" customClass="AddCourseViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="haR-9I-cfJ" customClass="AddCourseViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t9u-ZK-Ibd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1246,8 +1246,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gE6-At-5aw">
+                                <rect key="frame" x="131" y="547" width="117" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Reviews"/>
+                                <connections>
+                                    <action selector="pressedAddButton:" destination="haR-9I-cfJ" eventType="touchUpInside" id="E3w-4C-Oin"/>
+                                    <segue destination="TxN-Ey-fhX" kind="push" id="3uL-0X-aR1"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Course Information:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K86-Q2-kit">
-                                <rect key="frame" x="101" y="217" width="173" height="21"/>
+                                <rect key="frame" x="101" y="213" width="173" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1267,6 +1277,84 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGM-6r-V2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8952.7999999999993" y="-917.09145427286364"/>
+        </scene>
+        <!--Course Reviews-->
+        <scene sceneID="Sdm-O2-kCf">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="TxN-Ey-fhX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IdH-0X-fZY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bbt-PO-OCq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Course Reviews" id="BRz-rW-W7W">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0Lc-CN-rD6">
+                            <connections>
+                                <segue destination="8dd-Im-Fr9" kind="push" id="zLs-lG-1xt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ty9-tX-3ln" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9719" y="-917"/>
+        </scene>
+        <!--Add Review-->
+        <scene sceneID="mbx-gd-JvN">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="8dd-Im-Fr9" customClass="AddCourseReviewViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ERH-tC-bEp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXl-pd-vRU">
+                                <rect key="frame" x="86" y="150" width="53" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-6z-qOS">
+                                <rect key="frame" x="154" y="150" width="51" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1so-xq-icS">
+                                <rect key="frame" x="289" y="151" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-fy-EOE">
+                                <rect key="frame" x="220" y="151" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nK0-XR-bBJ">
+                                <rect key="frame" x="23" y="150" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7mA-tr-aK9"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Review" id="Tqn-xa-nbW">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="9lo-Ab-vJM">
+                            <connections>
+                                <action selector="addReviewButton:" destination="8dd-Im-Fr9" id="JWY-mt-PG3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="star1" destination="nK0-XR-bBJ" id="BNo-xU-hqO"/>
+                        <outlet property="star2" destination="NXl-pd-vRU" id="35q-Mb-QET"/>
+                        <outlet property="star3" destination="VdU-6z-qOS" id="4ih-he-0EY"/>
+                        <outlet property="star4" destination="0gc-fy-EOE" id="OuL-dx-guZ"/>
+                        <outlet property="star5" destination="1so-xq-icS" id="6y8-iE-By0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWC-m4-QNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10436" y="-918.89055472263874"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6L6-UX-Iq6">
@@ -1915,13 +2003,13 @@
     <resources>
         <image name="Image" width="720" height="720"/>
         <image name="icons8-calendar-50" width="50" height="50"/>
+        <image name="icons8-christmas-star-50" width="50" height="50"/>
         <image name="icons8-literature-50" width="50" height="50"/>
         <image name="icons8-shopping-cart-50" width="50" height="50"/>
         <image name="icons8-training-50" width="50" height="50"/>
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eQ4-fV-wJM"/>
         <segue reference="eN3-Ae-S7i"/>
         <segue reference="fMw-xb-fG7"/>
         <segue reference="qoT-W4-HMK"/>

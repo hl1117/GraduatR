@@ -12,6 +12,7 @@
 		203FDE5120339E5A00888A23 /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */; };
 		203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE5020339E5A00888A23 /* RoleViewController.swift */; };
 		203FDE542033A2F300888A23 /* CustomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE532033A2F300888A23 /* CustomLoginViewController.swift */; };
+		2043667B20634B1800369812 /* AddCourseReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2043667A20634B1800369812 /* AddCourseReviewViewController.swift */; };
 		2074E282202BDED10020C63A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E281202BDED10020C63A /* AppDelegate.swift */; };
 		2074E284202BDED10020C63A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E283202BDED10020C63A /* ViewController.swift */; };
 		2074E287202BDED10020C63A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2074E285202BDED10020C63A /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
 		203FDE5020339E5A00888A23 /* RoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
 		203FDE532033A2F300888A23 /* CustomLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginViewController.swift; sourceTree = "<group>"; };
+		2043667A20634B1800369812 /* AddCourseReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseReviewViewController.swift; sourceTree = "<group>"; };
 		2074E27E202BDED10020C63A /* graduatR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = graduatR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2074E281202BDED10020C63A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2074E283202BDED10020C63A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
+				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
 				203FDE532033A2F300888A23 /* CustomLoginViewController.swift */,
 				202A645C202BE85000A9C921 /* LoginViewController.swift */,
@@ -454,6 +457,7 @@
 				2074E282202BDED10020C63A /* AppDelegate.swift in Sources */,
 				203FDE542033A2F300888A23 /* CustomLoginViewController.swift in Sources */,
 				66197F16203CE34300EF089C /* EditProfileViewController.swift in Sources */,
+				2043667B20634B1800369812 /* AddCourseReviewViewController.swift in Sources */,
 				660065102051E2A9008886F9 /* AddEventsViewController.swift in Sources */,
 				D433A6A52051C4B70008E559 /* BookInfoViewController.swift in Sources */,
 				D419AFE4203675C400BFA321 /* ParentDetailViewController.swift in Sources */,
