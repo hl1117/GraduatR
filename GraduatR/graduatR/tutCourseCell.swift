@@ -1,5 +1,5 @@
 //
-//  tutCourseCell.swift
+//  TutCourseCell.swift
 //  graduatR
 //
 //  Created by Dhriti Chawla on 3/21/18.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class tutCourseCell: UITableViewCell {
-
+class TutCourseCell: UITableViewCell {
     
+    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
