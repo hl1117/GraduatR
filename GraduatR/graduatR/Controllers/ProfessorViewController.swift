@@ -8,8 +8,17 @@
 
 import UIKit
 
-class ProfessorViewController: UIViewController {
+class ProfessorViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
     var profs = [String]()
+     let searchBar = UISearchBar()
+    @IBOutlet weak var tableView: UITableView!
+    var filteredArrayName = [String]()
+    
+    var showSearchResults = false
+    
+    var refresh: UIRefreshControl!
+    
     
     func fetchData () {
         
@@ -30,18 +39,21 @@ class ProfessorViewController: UIViewController {
                                 let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                                 let value = json["value"] as? [[String: Any]] {
                                 for val in value {
-                                    
-                                    
+                                        let clusterid = val["InstructorClusterId"] as? Int
+//                                    if (clusterid == 8000) {
+//                                        break
+//                                    }
+//
                                         if let name = val["Name"] as? String {
                                             
                                                 self.profs.append(name)
                                                 
                                         }
-                                    print (self.profs)
-//                                        self.tableView.reloadData()
+                                          self.tableView.reloadData()
                                     }
                                 }
-//                            self.refresh.endRefreshing()
+                            self.refresh.endRefreshing()
+                            print (self.profs)
 //                            
                         } catch {
                             print ("Error is : \(error)")
@@ -58,15 +70,107 @@ class ProfessorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+       
         // Do any additional setup after loading the view.
+        createSearchBar()
+        fetchData()
+        
+        refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
+        tableView.insertSubview(refresh, at: 0)
+        
+        tableView.reloadData()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
+    
+    func createSearchBar() {
+        
+        searchBar.showsCancelButton = false
+        searchBar.placeholder = "Search a professor...."
+        searchBar.delegate = self
+        
+        self.navigationItem.titleView = searchBar
+        
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let mySearch = searchBar.text!
+        filteredArrayName = profs.filter({( name: String) -> Bool in
+            return name.lowercased().range(of:searchText.lowercased()) != nil
+        })
+        
+        
+        
+        if mySearch == "" {
+            showSearchResults = false
+            self.tableView.reloadData()
+        } else {
+            showSearchResults = true
+            self.tableView.reloadData()
+        }
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        showSearchResults = true
+        searchBar.endEditing(true)
+        
+        self.tableView.reloadData()
+    }
+    
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchData()
+    }
+    
+    // MARK: - Table view data source
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (showSearchResults) {
+            return filteredArrayName.count
+        }
+        else {
+            return profs.count
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfCell", for: indexPath) as! ProfCell
+        
+        if (showSearchResults){
+            
+            let nam = filteredArrayName[indexPath.row]
+            cell.profName.text = nam
+            
+            
+            print(nam.first as? String!)
+            cell.initials.text = nam.first as? String!
+            
+        }
+        else {
+            let nam = profs[indexPath.row]
+            cell.profName.text = nam
+            
+            print("===================")
+            print(nam.first as? String!)
+            cell.initials.text = nam.first as? String!
+            
+        }
+        return cell
+    }
 
     /*
     // MARK: - Navigation
