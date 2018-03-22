@@ -1312,26 +1312,41 @@
                                 <rect key="frame" x="86" y="150" width="53" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star2Rate:" destination="8dd-Im-Fr9" eventType="touchUpInside" id="y6x-Gg-89H"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VdU-6z-qOS">
                                 <rect key="frame" x="154" y="150" width="51" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star3Rate:" destination="8dd-Im-Fr9" eventType="touchUpInside" id="e2p-eJ-sHg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1so-xq-icS">
                                 <rect key="frame" x="289" y="151" width="55" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star5Rate:" destination="8dd-Im-Fr9" eventType="touchUpInside" id="MrP-YY-V0M"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gc-fy-EOE">
                                 <rect key="frame" x="220" y="151" width="55" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star4Rate:" destination="8dd-Im-Fr9" eventType="touchUpInside" id="Jdj-sc-TJW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nK0-XR-bBJ">
                                 <rect key="frame" x="23" y="150" width="55" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star1Rate:" destination="8dd-Im-Fr9" eventType="touchUpInside" id="5fh-5J-ysy"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

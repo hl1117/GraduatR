@@ -35,4 +35,20 @@ class AddCourseReviewViewController: UIViewController {
         
     }
     
+    
+    @IBAction func star1Rate(_ sender: Any) {
+    }
+    
+    @IBAction func star2Rate(_ sender: Any) {
+    }
+    
+    @IBAction func star3Rate(_ sender: Any) {
+    }
+    
+    @IBAction func star4Rate(_ sender: Any) {
+    }
+    
+    @IBAction func star5Rate(_ sender: Any) {
+    }
+    
 }
