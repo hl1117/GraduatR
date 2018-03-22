@@ -1163,37 +1163,10 @@
         <!--Course Reviews-->
         <scene sceneID="Sdm-O2-kCf">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="TxN-Ey-fhX" customClass="ViewCourseReviewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="TxN-Ey-fhX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IdH-0X-fZY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WfT-Bn-3Ga">
-                                <rect key="frame" x="-11" y="64" width="386" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="184" id="gfJ-wp-iYY" customClass="CourseReviewCell" customModule="graduatR" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="386" height="184"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gfJ-wp-iYY" id="uVS-9d-fFb">
-                                            <rect key="frame" x="0.0" y="0.0" width="386" height="183.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wuk-dr-0t7">
-                                                    <rect key="frame" x="15" y="0.0" width="371" height="184"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bbt-PO-OCq"/>
                     </view>
@@ -1866,7 +1839,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zBs-PH-SAT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sGT-6E-ZAU"/>
+                    <navigationItem key="navigationItem" id="sGT-6E-ZAU">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="aUz-g9-n2a">
+                            <connections>
+                                <segue destination="6wN-yc-OKf" kind="push" id="ELh-gy-flp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="r8O-aq-Qhb" id="oHr-4M-7RW"/>
                     </connections>
@@ -1874,6 +1853,93 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xjg-Xg-FIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8106.3999999999996" y="1741.9790104947529"/>
+        </scene>
+        <!--Professor Reviews-->
+        <scene sceneID="FD0-Q1-b1I">
+            <objects>
+                <viewController id="6wN-yc-OKf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Nw-n8-IqB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nGg-dE-CRP"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Professor Reviews" id="LC2-s1-i6G">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="yht-YJ-EyT">
+                            <connections>
+                                <segue destination="cu2-Yh-0O2" kind="push" id="f84-Aa-P0n"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Wt-2W-o35" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8932" y="1740"/>
+        </scene>
+        <!--Add Review-->
+        <scene sceneID="Mmo-Q6-VVX">
+            <objects>
+                <viewController id="cu2-Yh-0O2" customClass="AddProfessorReviewViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lxx-Sg-I3t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EwX-Hk-ep1">
+                                <rect key="frame" x="23" y="150" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star1:" destination="cu2-Yh-0O2" eventType="touchUpInside" id="g8D-85-At9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1K-1u-dgh">
+                                <rect key="frame" x="86" y="150" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star2:" destination="cu2-Yh-0O2" eventType="touchUpInside" id="613-jc-VR3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgW-SU-5FH">
+                                <rect key="frame" x="149" y="150" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star3:" destination="cu2-Yh-0O2" eventType="touchUpInside" id="vIM-kY-eIK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7E-Tf-ok5">
+                                <rect key="frame" x="212" y="150" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star4:" destination="cu2-Yh-0O2" eventType="touchUpInside" id="Jrr-vk-HXT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Zb-Kl-7eJ">
+                                <rect key="frame" x="275" y="150" width="55" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="icons8-christmas-star-50"/>
+                                <connections>
+                                    <action selector="star5:" destination="cu2-Yh-0O2" eventType="touchUpInside" id="TYM-ur-Fhc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wqF-X1-IPi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Review" id="aIr-bg-vYe"/>
+                    <connections>
+                        <outlet property="star1" destination="EwX-Hk-ep1" id="HlC-9m-pXh"/>
+                        <outlet property="star2" destination="j1K-1u-dgh" id="iwh-96-Qnz"/>
+                        <outlet property="star3" destination="CgW-SU-5FH" id="JG3-6Y-jMj"/>
+                        <outlet property="star4" destination="p7E-Tf-ok5" id="fYu-gA-m3a"/>
+                        <outlet property="star5" destination="7Zb-Kl-7eJ" id="AW1-MR-Ogt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQM-Zm-pmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9768.7999999999993" y="1738.3808095952024"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mcM-MF-evz">
