@@ -23,14 +23,22 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     var startdate = [String]()
     var enddate = [String]()
     
+    var refresh: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(CalendarViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
+        tableView.insertSubview(refresh, at: 0)
+        
         
         
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
         
         databaseRef.child("Events").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             let enumer = snapshotA.children
@@ -73,21 +81,25 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             while let rest = enumer.nextObject() as? DataSnapshot {
                 let vals = rest.value as? NSDictionary
                 
+                 if (!self.eventname.contains(vals?["Event Name"] as! String)){
                 self.eventname.append((vals?["Event Name"] as? String)!)
                 self.eventdescription.append((vals?["Event Description"] as? String ?? ""))
                 self.startdate.append((vals?["Start Date"] as? String)!)
                 self.enddate.append((vals?["End Date"] as? String)!)
                 
                 print(self.eventname)
-                
+                }
             }
-        })
+            
+            })
+    
         
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        
+        self.refresh.endRefreshing()
+    
     }
     
     
@@ -112,8 +124,12 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         
         //        }
         return cell
-        
-
     }
+    
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        
+        viewDidAppear(true)
+    }
+    
     
 }
