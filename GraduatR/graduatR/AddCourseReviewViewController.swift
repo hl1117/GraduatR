@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddCourseReviewViewController: UIViewController {
     
@@ -16,6 +17,7 @@ class AddCourseReviewViewController: UIViewController {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +43,15 @@ class AddCourseReviewViewController: UIViewController {
         if let image = UIImage(named:"icons8-christmas-star-50") {
             sender.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: .normal)
         }
+        star2.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
+        star3.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
+        star4.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
+        star5.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
         /*if let image = UIImage(named:"icons8-christmas-star-filled-50") {
          sender.setImage( UIImage(named:"icons8-christmas-star-50"), for: .normal)
          }*/
+        
+       
         
     }
     
@@ -52,6 +60,9 @@ class AddCourseReviewViewController: UIViewController {
         if let image = UIImage(named:"icons8-christmas-star-50") {
             sender.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: .normal)
             star1.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: UIControlState.normal)
+            star3.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
+            star4.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
+            star5.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
         }
         
         
@@ -67,6 +78,8 @@ class AddCourseReviewViewController: UIViewController {
             sender.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: .normal)
             star1.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: UIControlState.normal)
             star2.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: UIControlState.normal)
+            star4.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
+            star5.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
         }
         /*if let image = UIImage(named:"icons8-christmas-star-filled-50") {
          sender.setImage( UIImage(named:"icons8-christmas-star-50"), for: .normal)
@@ -80,6 +93,7 @@ class AddCourseReviewViewController: UIViewController {
             star1.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: UIControlState.normal)
             star2.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: UIControlState.normal)
             star3.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: UIControlState.normal)
+            star5.setImage(UIImage(named:"icons8-christmas-star-50"), for: UIControlState.normal)
         }
         /* if let image = UIImage(named:"icons8-christmas-star-filled-50") {
          sender.setImage( UIImage(named:"icons8-christmas-star-50"), for: .normal)

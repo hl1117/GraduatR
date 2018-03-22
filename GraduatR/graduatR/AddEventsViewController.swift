@@ -24,6 +24,7 @@ class AddEventsViewController: UIViewController {
     
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
+    var ref: DatabaseReference!
     
     override func viewDidLoad()
     {

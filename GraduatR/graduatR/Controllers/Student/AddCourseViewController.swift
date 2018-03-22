@@ -115,7 +115,12 @@ class AddCourseViewController: UIViewController {
      }
      */
     
-}
+    }
 
-
+    
+    @IBAction func reviewbutton(_ sender: Any) {
+        AllVariables.courseselected = n
+        
+    }
+    
 }

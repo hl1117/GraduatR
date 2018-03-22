@@ -16,7 +16,7 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     var lastName = AllVariables.Lname
     var user = AllVariables.Username
     var ref: DatabaseReference!
-        
+    
     @IBOutlet weak var tutorStatus: UISwitch!
     @IBOutlet weak var GPA: UITextField!
     @IBOutlet weak var classController: UIPickerView!

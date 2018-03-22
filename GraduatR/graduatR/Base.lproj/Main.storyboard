@@ -1136,7 +1136,8 @@
                                 <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Reviews"/>
                                 <connections>
-                                    <action selector="pressedAddButton:" destination="haR-9I-cfJ" eventType="touchUpInside" id="E3w-4C-Oin"/>
+                                    <action selector="pressedAddButton:" destination="haR-9I-cfJ" eventType="touchUpInside" id="Ahc-7B-Otk"/>
+                                    <action selector="reviewbutton:" destination="haR-9I-cfJ" eventType="touchUpInside" id="Ktu-mh-RjC"/>
                                     <segue destination="TxN-Ey-fhX" kind="push" id="3uL-0X-aR1"/>
                                 </connections>
                             </button>
