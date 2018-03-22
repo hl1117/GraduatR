@@ -202,7 +202,7 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let name = names[indexPath.row]
         vc.n = name
         
-        let credos = filteredArrayName2[indexPath.row]
+        let credos = creds[indexPath.row]
         vc.c = credos
     }
     
