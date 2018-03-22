@@ -1921,6 +1921,7 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="eQ4-fV-wJM"/>
         <segue reference="eN3-Ae-S7i"/>
         <segue reference="fMw-xb-fG7"/>
         <segue reference="qoT-W4-HMK"/>

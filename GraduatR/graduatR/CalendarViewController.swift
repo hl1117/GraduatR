@@ -46,7 +46,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
                 let vals = rest.value as? NSDictionary
                 
                 self.eventname.append((vals?["Event Name"] as? String)!)
-                self.eventdescription.append((vals?["Event Description"] as? String ?? ""))
+                self.eventdescription.append((vals?["Description"] as? String)!)
                 self.startdate.append((vals?["Start Date"] as? String)!)
                 self.enddate.append((vals?["End Date"] as? String)!)
                 
@@ -83,11 +83,12 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                  if (!self.eventname.contains(vals?["Event Name"] as! String)){
                 self.eventname.append((vals?["Event Name"] as? String)!)
-                self.eventdescription.append((vals?["Event Description"] as? String ?? ""))
+                self.eventdescription.append((vals?["Description"] as? String)!)
                 self.startdate.append((vals?["Start Date"] as? String)!)
                 self.enddate.append((vals?["End Date"] as? String)!)
                 
                 print(self.eventname)
+                    print(self.eventdescription)
                 }
             }
             
@@ -114,6 +115,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.eventName!.text = ti
         
         let au = eventdescription[indexPath.row]
+        //print(ti)
         cell.eventDescription!.text = au
         
         let pr = startdate[indexPath.row]
