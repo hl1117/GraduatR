@@ -67,7 +67,7 @@ class CustomLoginViewController: UIViewController
                                         
                                     })
                                 self.userUid = user.uid
-                                self.performSegue(withIdentifier: "signingIn", sender: self)
+                                self.performSegue(withIdentifier: "signingInStudent", sender: self)
                             }
                             else {
                                 databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { snapshotC in
@@ -84,7 +84,7 @@ class CustomLoginViewController: UIViewController
                                             AllVariables.standing = value?["Class"] as? String ?? ""
                                         })
                                         self.userUid = user.uid
-                                        self.performSegue(withIdentifier: "signingIn", sender: self)
+                                        self.performSegue(withIdentifier: "signingInTutor", sender: self)
                                     }
                                     else {
                                         databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in
@@ -103,7 +103,7 @@ class CustomLoginViewController: UIViewController
                                                     
                                                 })
                                                 self.userUid = user.uid
-                                                self.performSegue(withIdentifier: "signingIn", sender: self)
+                                                self.performSegue(withIdentifier: "signingInTutor", sender: self)
                                             }
                                             else {
                                                 let alert = UIAlertController(title: "Sign in error", message: "error signing in", preferredStyle: .alert)

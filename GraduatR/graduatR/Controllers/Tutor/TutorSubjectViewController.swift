@@ -170,30 +170,30 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
         return cell
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        let vc = segue.destination as! TutorTableViewController
-//        let cell = sender as! UICollectionViewCell
-//        let indexPath = collectionView.indexPath(for: cell)!
-//
-//
-//        if (showSearchResults){
-//
-//            let name = subID[indexPath.row]
-//            let sub = filteredArrayName[indexPath.row]
-//            vc.SubjectId = name
-//            vc.SubjectAbbr = sub
-//
-//        }
-//        else {
-//            let name = subID[indexPath.row]
-//            vc.SubjectId = name
-//            let sub = subjects[indexPath.row]
-//            vc.SubjectAbbr = sub
-//        }
-//
-//
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let vc = segue.destination as! TutorTableViewController
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)!
+
+
+        if (showSearchResults){
+
+            let name = subID[indexPath.row]
+            let sub = filteredArrayName[indexPath.row]
+            vc.SubjectId = name
+            vc.SubjectAbbr = sub
+
+        }
+        else {
+            let name = subID[indexPath.row]
+            vc.SubjectId = name
+            let sub = subjects[indexPath.row]
+            vc.SubjectAbbr = sub
+        }
+
+
+
+    }
 
 }

@@ -199,8 +199,9 @@
                     <connections>
                         <outlet property="emailTextField" destination="vdp-Vy-1SO" id="tLE-o4-GrN"/>
                         <outlet property="passwordTextField" destination="Epd-eP-NGU" id="KMU-MT-nv2"/>
-                        <segue destination="GDR-EQ-xMA" kind="show" identifier="signingIn" id="65G-g7-bVm"/>
+                        <segue destination="GDR-EQ-xMA" kind="presentation" identifier="signingInStudent" id="65G-g7-bVm"/>
                         <segue destination="Lqo-4W-iHN" kind="show" identifier="register" id="O1h-II-DlQ"/>
+                        <segue destination="0Ss-5f-qTO" kind="presentation" identifier="signingInTutor" id="9rz-QK-esh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cd-Cx-q6e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -789,19 +790,19 @@
         <scene sceneID="2kV-2A-TNc">
             <objects>
                 <viewController id="sQh-5u-2TV" customClass="TutorTableViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D7i-ul-ASg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D7i-ul-ASg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cCell" rowHeight="111" id="3pq-22-3zN" customClass="TutCourseCell" customModule="graduatR" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="111"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tutCourseCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tutCourseCell" rowHeight="100" id="3pq-22-3zN" customClass="TutCourseCell" customModule="graduatR" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3pq-22-3zN" id="95n-iU-gi3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="110.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS 180" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfp-tg-Sg7">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS 180" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfp-tg-Sg7">
                                             <rect key="frame" x="62" y="45" width="244" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -810,10 +811,17 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="kfp-tg-Sg7" id="0Az-oX-Ptj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="yum-JY-TSR"/>
+                    <connections>
+                        <outlet property="navBar" destination="yum-JY-TSR" id="Z3Q-fb-fAI"/>
+                        <outlet property="tableView" destination="D7i-ul-ASg" id="TfI-bc-mFp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8s-f2-Xjq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2046,7 +2054,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOw-Aq-MKz">
                                                     <rect key="frame" x="13" y="14" width="87" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2143,7 +2151,8 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rah-oT-LWk"/>
+        <segue reference="9rz-QK-esh"/>
+        <segue reference="65G-g7-bVm"/>
         <segue reference="qoT-W4-HMK"/>
     </inferredMetricsTieBreakers>
 </document>
