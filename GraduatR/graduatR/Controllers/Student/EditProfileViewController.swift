@@ -22,6 +22,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var bioText: UITextView!
     
+    @IBOutlet weak var wantparent: UILabel!
+    
+    @IBOutlet weak var clickAddParent: UIButton!
     @IBAction func bioButtonPressed(_ sender: Any) {
         AllVariables.bio = bioText.text!
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
@@ -31,7 +34,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
-        
+            wantparent.text = "Want to connect to your Parent?"
+            clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: .value) {
             (snapshot: DataSnapshot) in
         
