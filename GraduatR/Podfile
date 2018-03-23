@@ -14,6 +14,7 @@ target 'graduatR' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
+    pod 'Charts'
 
   target 'graduatRTests' do
     inherit! :search_paths
