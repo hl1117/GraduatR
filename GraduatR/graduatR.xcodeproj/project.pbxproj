@@ -21,6 +21,8 @@
 		2074E28F202BDED10020C63A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2074E28D202BDED10020C63A /* LaunchScreen.storyboard */; };
 		2074E29A202BDED10020C63A /* graduatRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2074E299202BDED10020C63A /* graduatRTests.swift */; };
 		2074E2A5202BDF7F0020C63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */; };
+		20A3CDE42064940A00E7B920 /* ProfessorReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3CDE32064940A00E7B920 /* ProfessorReviewCell.swift */; };
+		20A3CDE62064947A00E7B920 /* ViewProfessorReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */; };
 		5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */; };
 		5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */; };
 		62518F0042AC05FC806382CE /* Pods_graduatR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */; };
@@ -83,6 +85,8 @@
 		2074E299202BDED10020C63A /* graduatRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graduatRTests.swift; sourceTree = "<group>"; };
 		2074E29B202BDED10020C63A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		20A3CDE32064940A00E7B920 /* ProfessorReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorReviewCell.swift; sourceTree = "<group>"; };
+		20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProfessorReviewsViewController.swift; sourceTree = "<group>"; };
 		3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduatR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BB8FEDE0522ADC38A3B4A2 /* Pods-graduatRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatRTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-graduatRTests/Pods-graduatRTests.debug.xcconfig"; sourceTree = "<group>"; };
 		46D770E2428F0FC172867B68 /* Pods-graduatRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatRTests/Pods-graduatRTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
+				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
 				6680817720645800006DA586 /* AddProfessorReviewViewController.swift */,
 				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
@@ -198,6 +203,7 @@
 				6680817520645553006DA586 /* ViewCourseReviewController.swift */,
 				66808173206454EB006DA586 /* CourseReviewCell.swift */,
 				D4651ADE2051EA1500AA4B6D /* BookCell.swift */,
+				20A3CDE32064940A00E7B920 /* ProfessorReviewCell.swift */,
 				D4B2D3A920635471000B8836 /* SubCell.swift */,
 				D4651AE02051EA5100AA4B6D /* SubjectCell.swift */,
 				D49FA75A2057152700D87067 /* ProfCell.swift */,
@@ -529,6 +535,7 @@
 				669311FF2051DCBF00E556C8 /* CalendarViewController.swift in Sources */,
 				D4B2D3AA20635471000B8836 /* SubCell.swift in Sources */,
 				D48AE2E6206480DA00E4B7F8 /* TutorAddCourseViewController.swift in Sources */,
+				20A3CDE42064940A00E7B920 /* ProfessorReviewCell.swift in Sources */,
 				666FD5C12061BDCB00A91737 /* EventsCell.swift in Sources */,
 				D49FA7592057140500D87067 /* ProfessorViewController.swift in Sources */,
 				D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */,
@@ -538,6 +545,7 @@
 				66197F18203CE35300EF089C /* ViewProfileViewController.swift in Sources */,
 				D4B2D3AC20635A70000B8836 /* tutCourseCell.swift in Sources */,
 				D45D5A722051CC4B008B9469 /* SubjectViewController.swift in Sources */,
+				20A3CDE62064947A00E7B920 /* ViewProfessorReviewsViewController.swift in Sources */,
 				D433A6A32051C0130008E559 /* MarketViewController.swift in Sources */,
 				203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */,
 			);

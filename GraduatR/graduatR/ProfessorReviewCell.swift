@@ -1,16 +1,16 @@
 //
-//  CourseReviewCell.swift
+//  ProfessorReviewCell.swift
 //  graduatR
 //
-//  Created by Harika Lingareddy on 3/22/18.
+//  Created by Simona Virga on 3/22/18.
 //  Copyright © 2018 Simona Virga. All rights reserved.
 //
 
 import UIKit
 
-class CourseReviewCell: UITableViewCell {
+class ProfessorReviewCell: UITableViewCell {
 
-   
+    @IBOutlet weak var reviewText: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

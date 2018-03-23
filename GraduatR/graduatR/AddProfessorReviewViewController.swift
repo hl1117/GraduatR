@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class AddProfessorReviewViewController: UIViewController {
 
@@ -15,6 +18,12 @@ class AddProfessorReviewViewController: UIViewController {
     @IBOutlet weak var star3: UIButton!
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
+    @IBOutlet weak var reviewText: UITextView!
+    
+    var databaseRef = Database.database().reference()
+    var storageRef = Storage.storage().reference()
+    var ref: DatabaseReference!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +35,12 @@ class AddProfessorReviewViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func updateReview(_ sender: Any) {
+        
+        
+    }
+    
     
     @IBAction func star1(_ sender: Any) {
         if let image = UIImage(named:"icons8-christmas-star-50") {

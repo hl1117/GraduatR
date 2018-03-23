@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewCourseReviewController: UITableViewController {
+class ViewCourseReviewController: UITableViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
