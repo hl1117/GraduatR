@@ -16,10 +16,12 @@ class ViewCourseReviewViewController: UIViewController {
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
+    @IBOutlet weak var average: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getdata()
+        average.text = "Average rating: \(avgrating)"
     }
     override func viewDidAppear(_ animated: Bool) {
         getdata()
@@ -61,6 +63,7 @@ class ViewCourseReviewViewController: UIViewController {
                             print("SUM \(sum)")
                             self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
                             print("AVG RATING = \(self.avgrating)")
+                            self.average.text = "Average rating: \(self.avgrating)"
                             AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
                             print("THIS: \(AllVariables.courseratings)")
                             self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
