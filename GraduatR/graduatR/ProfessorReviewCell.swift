@@ -12,7 +12,9 @@ import Firebase
 
 class ProfessorReviewCell: UITableViewCell {
 
-    @IBOutlet weak var reviewText: UITextView!
+    
+    @IBOutlet weak var reviewText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
