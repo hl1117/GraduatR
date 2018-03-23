@@ -132,7 +132,6 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
             showSearchResults = true
             self.tableView.reloadData()
         }
-        
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
