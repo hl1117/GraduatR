@@ -31,7 +31,7 @@ class TutorViewProfileViewController: UIViewController {
         super.viewDidLoad()
         //pictureonprofilepage = image
         nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
-        print (".....\(AllVariables.Fname)")
+        print (".#..#..\(AllVariables.Fname)")
         self.navigationItem.title = AllVariables.Username
         //updateBioText.text = AllVariables.bio
         

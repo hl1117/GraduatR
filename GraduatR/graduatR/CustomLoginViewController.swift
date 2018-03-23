@@ -46,7 +46,7 @@ class CustomLoginViewController: UIViewController
                         databaseRef.child("Users").child("Student").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
                             if snapshotA.hasChild(AllVariables.uid) {
                                 databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
-                                    print("HERE")
+                                    print("HERE - student")
                                     let value = snapshotB.value as? NSDictionary
                                         AllVariables.Username = value?["Username"] as? String ?? ""
                                         AllVariables.Fname = value?["Fname"] as? String ?? ""
@@ -73,7 +73,7 @@ class CustomLoginViewController: UIViewController
                                 databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { snapshotC in
                                     if snapshotC.hasChild(AllVariables.uid) {
                                         databaseRef.child("Users").child("Parent").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotD) in
-                                            print("HERE")
+                                            print("HERE - parent")
                                             let value = snapshotD.value as? NSDictionary
                                             AllVariables.Username = value?["Username"] as? String ?? ""
                                             AllVariables.Fname = value?["Fname"] as? String ?? ""
@@ -89,12 +89,14 @@ class CustomLoginViewController: UIViewController
                                     else {
                                         databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in
                                             if snapshotE.hasChild(AllVariables.uid) {
+                                                
+                                                print ("\(AllVariables.uid)....././/..")
                                                 databaseRef.child("Users").child("Tutor").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotF) in
-                                                    print("HERE")
+                                                    print("HERE - tutor")
                                                     let value = snapshotF.value as? NSDictionary
                                                     AllVariables.Username = value?["Username"] as? String ?? ""
-                                                    AllVariables.Fname = value?["Fname"] as? String ?? ""
-                                                    AllVariables.Lname = value?["Lname"] as? String ?? ""
+                                                    AllVariables.Fname = (value?["Fname"] as? String)!
+                                                    AllVariables.Lname = (value?["Lname"] as? String)!
                                                     AllVariables.bio = value?["bio"] as? String ?? ""
                                                     AllVariables.GPA = value?["GPA"] as? String ?? ""
                                                     AllVariables.profpic = value?["profile_pic"] as? String ?? ""
