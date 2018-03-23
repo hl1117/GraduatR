@@ -881,7 +881,11 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YQ-No-mut">
                                 <rect key="frame" x="111" y="575" width="149" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="jQy-9J-UVE" kind="push" id="8jS-Eq-5ax"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -897,6 +901,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHv-hO-BRV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7924" y="-1799.5502248875564"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LMR-Pj-mSI">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="jQy-9J-UVE" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vWt-LX-rNI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="G1w-IC-KbR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y31-i8-R0B"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="May-1C-8Sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8782" y="-1799"/>
         </scene>
         <!--<username>-->
         <scene sceneID="J9D-mr-HKS">

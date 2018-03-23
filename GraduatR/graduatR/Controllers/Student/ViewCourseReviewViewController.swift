@@ -63,6 +63,7 @@ class ViewCourseReviewViewController: UIViewController {
                             print("SUM \(sum)")
                             self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
                             print("AVG RATING = \(self.avgrating)")
+                            
                             self.average.text = "Average rating: \(self.avgrating)"
                             AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
                             print("THIS: \(AllVariables.courseratings)")
@@ -87,7 +88,6 @@ class ViewCourseReviewViewController: UIViewController {
                 dataEntries.append(dataEntry1)
             }
         }
-        print(dataEntries[0].data)
         let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Number of Stars")
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
