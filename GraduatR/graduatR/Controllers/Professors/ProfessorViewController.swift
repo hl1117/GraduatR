@@ -200,6 +200,9 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
             let name = profs[indexPath.row]
             vc.n = name
             
+            AllVariables.profselected = name
+            AllVariables.profselected = AllVariables.profselected.replacingOccurrences(of: ".", with: " ")
+            
             
         }
         
