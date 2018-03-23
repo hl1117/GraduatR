@@ -16,6 +16,7 @@ class TutorAddCourseViewController: UIViewController {
     @IBOutlet weak var courseName: UILabel!
     @IBOutlet weak var info: UILabel!
     var n = String()
+    var list = String()
     var sa = String()
     var name = AllVariables.Fname
     var lastName = AllVariables.Lname
@@ -63,6 +64,25 @@ class TutorAddCourseViewController: UIViewController {
             AllVariables.courses.append(n)
             
             ref.child("Users").child("Tutor").child(AllVariables.uid).child("Courses").child(c).setValue(n)
+            
+            //adding tutor to tutor list
+            print(sa)
+            
+            let size = AllVariables.courses.endIndex
+            list.removeAll()
+            if (size != 0) {
+                print (AllVariables.courses)
+                var  i = 0;
+                
+                while (i < size){
+                    list += "\n \(AllVariables.courses[i])"
+                    i += 1
+                }
+                
+            }
+            ref.child("TutorList").child(self.sa).child(AllVariables.Username).setValue(["Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "Bio": AllVariables.bio, "Courses": list ])
+            
+            
             button.setTitle("Remove course", for: UIControlState.normal)
             
             print (AllVariables.courses)
@@ -83,9 +103,7 @@ class TutorAddCourseViewController: UIViewController {
             
             var index = 0
             ref.child("Users").child("Tutor").child(AllVariables.uid).child("Courses").setValue([])
-            
-           //adding tutor to tutor list
-        ref.child("TutorList").child(self.sa).child(AllVariables.Username).setValue([])
+        
             
             while (index < AllVariables.courses.endIndex) {
                 let c = "Course\(index)"

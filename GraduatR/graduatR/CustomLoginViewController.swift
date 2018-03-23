@@ -102,6 +102,14 @@ class CustomLoginViewController: UIViewController
                                                     AllVariables.profpic = value?["profile_pic"] as? String ?? ""
                                                     AllVariables.standing = value?["Class"] as? String ?? ""
                                                     
+                                                    databaseRef.child("Users").child("Tutor").child(AllVariables.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
+                                                        let counter = 0;
+                                                        let enumer = snapshotCourse.children
+                                                        while let rest = enumer.nextObject() as? DataSnapshot {
+                                                            AllVariables.courses.append(rest.value as! String)
+                                                        }
+                                                    })
+
                                                     
                                                 })
                                                 self.userUid = user.uid

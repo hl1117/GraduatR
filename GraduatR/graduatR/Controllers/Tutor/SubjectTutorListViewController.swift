@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SubjectTutorListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,UISearchBarDelegate {
     
@@ -15,7 +16,6 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
     let searchBar = UISearchBar()
     var courseData = [[String: AnyObject]]()
     var subjects = [String]()
-    var subID = [String]()
     
     var filteredArrayName = [String]()
     var filteredArrayId = [String]()
@@ -23,51 +23,19 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
     var showSearchResults = false
     
     var refresh: UIRefreshControl!
+    let ref = Database.database().reference()
     
     func fetchData () {
-        
-        let url:String = "https://api.purdue.io/odata/Subjects"
-        let urlRequest = URL(string: url)
-        
-        if let URL = urlRequest {
-            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
-                if (error != nil) {
-                    print ("============")
-                    print (error?.localizedDescription)
-                } else {
-                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
-                        
-                        print ("DAAATAAAA....")
-                        do {
-                            if let data = data,
-                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                                let value = json["value"] as? [[String: Any]] {
-                                for val in value {
-                                    var currSubId = val["SubjectId"] as! String
-                                    self.subID.append(currSubId)
-                                    
-                                    if let name = val["Abbreviation"] as? String {
-                                        
-                                        self.subjects.append(name)
-                                        
-                                        
-                                    }
-                                    self.collectionView.reloadData()
-                                    
-                                }
-                            }
-                            
-                            
-                            self.refresh.endRefreshing()
-                        } catch {
-                            print ("Error is : \(error)")
-                        }
-                    }
-                }
-                
-            }; task.resume()
+        self.ref.child("TutorList").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            let enumer = snapshot.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                let vals = rest.key as? String!
+                self.subjects.append(vals!)
+            }
             
-        }
+        })
+        print(self.subjects)
+       
     }
     
     override func viewDidLoad() {
@@ -179,14 +147,14 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
 
         if (showSearchResults){
 
-            let name = subID[indexPath.row]
+            let name = subjects[indexPath.row]
             let sub = filteredArrayName[indexPath.row]
             vc.SubjectId = name
             vc.SubjectAbbr = sub
 
         }
         else {
-            let name = subID[indexPath.row]
+            let name = subjects[indexPath.row]
             vc.SubjectId = name
             let sub = subjects[indexPath.row]
             vc.SubjectAbbr = sub

@@ -56,6 +56,7 @@ class TutorViewProfileViewController: UIViewController {
         let size = AllVariables.courses.endIndex
         list.removeAll()
         if (size != 0) {
+            print (AllVariables.courses)
             var  i = 0;
             
             while (i < size){

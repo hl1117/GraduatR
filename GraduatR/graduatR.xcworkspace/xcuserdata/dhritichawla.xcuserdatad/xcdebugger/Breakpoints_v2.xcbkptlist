@@ -181,11 +181,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/Tutor/SubjectTutorListViewController.swift"
-            timestampString = "543469138.99275"
+            timestampString = "543538451.809315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
             landmarkName = "SubjectTutorListViewController"
             landmarkType = "3">
          </BreakpointContent>
