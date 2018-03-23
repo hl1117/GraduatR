@@ -12,20 +12,14 @@ import Firebase
 
 class ViewCourseReviewViewController: UIViewController {
     var refresh: UIRefreshControl!
-    
+    var avgrating = Double()
     let ref = Database.database().reference()
     @IBOutlet weak var pieChartView: PieChartView!
-    let stars = ["1 stars", "2 stars", "3 stars", "4 stars", "5 stars"]
+    let stars = ["One", "Two", "Three", "Four", "Five"]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        refresh = UIRefreshControl()
-//        refresh.addTarget(self, action: #selector(ViewCourseReviewViewController.didPullToRefresh(_:)), for: .valueChanged)
-//
-//        AllVariables.courseratings = [100,0,0,0,0]
-//        setChart(dataPoints: stars, values: AllVariables.courseratings)
-//
         getdata()
     }
     
@@ -62,7 +56,10 @@ class ViewCourseReviewViewController: UIViewController {
                             let n4 = valu?["4stars"] as? Double
                             let n5 = valu?["5stars"] as? Double
                             
-                            
+                            let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
+                            print("SUM \(sum)")
+                            self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
+                            print("AVG RATING = \(self.avgrating)")
                             AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
                             print("THIS: \(AllVariables.courseratings)")
                             self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
@@ -74,27 +71,20 @@ class ViewCourseReviewViewController: UIViewController {
             
         })
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        getdata()
-//        self.refresh.endRefreshing()
-//    }
-//    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-//
-//        viewDidAppear(true)
-//    }
-//
+
     func setChart(dataPoints: [String], values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
             print("THIS: \(AllVariables.courseratings)")
-            let dataEntry1 = ChartDataEntry(x: Double(i), y: values[i], data: dataPoints[i] as AnyObject)
-            
-            dataEntries.append(dataEntry1)
+            let dataEntry1 = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
+            if (values[i] != 0.0) {
+                dataEntries.append(dataEntry1)
+            }
         }
         print(dataEntries[0].data)
-        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Units Sold")
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "Number of Stars")
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         pieChartView.data = pieChartData
         

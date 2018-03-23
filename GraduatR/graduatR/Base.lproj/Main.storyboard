@@ -1211,7 +1211,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cxc-Fe-8Bo" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="102" width="330" height="179"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="251"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
