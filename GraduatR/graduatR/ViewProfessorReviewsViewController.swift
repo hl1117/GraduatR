@@ -10,12 +10,16 @@ import UIKit
 
 class ViewProfessorReviewsViewController: UIViewController {
 
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    var n = String()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        nameLabel.text = n
     }
 
     override func didReceiveMemoryWarning() {

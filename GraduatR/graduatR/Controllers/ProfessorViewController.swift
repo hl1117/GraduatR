@@ -178,6 +178,34 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! ViewProfessorReviewsViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        
+        
+        if (showSearchResults){
+            
+            let name = filteredArrayName[indexPath.row]
+            vc.n = name
+            
+            AllVariables.profselected = name
+            AllVariables.profselected = AllVariables.profselected.replacingOccurrences(of: ".", with: " ")
+            
+            
+        }
+        else {
+            let name = profs[indexPath.row]
+            vc.n = name
+            
+            
+        }
+        
+        
+        
+    }
 
 }
 extension String {
