@@ -12,6 +12,8 @@ import Charts
 class ViewCourseReviewViewController: UIViewController {
 
     
+    @IBOutlet weak var pieChartView: PieChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
