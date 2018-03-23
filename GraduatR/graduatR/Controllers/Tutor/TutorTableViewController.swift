@@ -184,29 +184,29 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
     }
     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        let vc = segue.destination as! AddCourseViewController
-//        let cell = sender as! UITableViewCell
-//        let indexPath = tableView.indexPath(for: cell)!
-//
-//
-//        if (showSearchResults){
-//
-//            let name = filteredArrayName[indexPath.row]
-//            vc.n = name
-//            let credos = filteredArrayName2[indexPath.row]
-//            vc.c = credos
-//        }
-//        else {
-//            let name = names[indexPath.row]
-//            vc.n = name
-//
-//            let credos = creds[indexPath.row]
-//            vc.c = credos
-//        }
-//
-//
-//
-//}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let vc = segue.destination as! TutorAddCourseViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+
+
+        if (showSearchResults){
+
+            let name = filteredArrayName[indexPath.row]
+            vc.n = name
+            let credos = filteredArrayName2[indexPath.row]
+            vc.c = credos
+        }
+        else {
+            let name = names[indexPath.row]
+            vc.n = name
+
+            let credos = creds[indexPath.row]
+            vc.c = credos
+        }
+
+
+
+}
 }
