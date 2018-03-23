@@ -85,7 +85,7 @@ class TutorAddCourseViewController: UIViewController {
             
             while (index < AllVariables.courses.endIndex) {
                 let c = "Course\(index)"
-                ref.child("Users").child("Student").child(AllVariables.uid).child("Courses").child(c).setValue(AllVariables.courses[index])
+                ref.child("Users").child("Tutor").child(AllVariables.uid).child("Courses").child(c).setValue(AllVariables.courses[index])
                 index += 1
                 
             }
