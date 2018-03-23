@@ -8,26 +8,87 @@
 
 import UIKit
 import Charts
+import Firebase
 
 class ViewCourseReviewViewController: UIViewController {
-
+    var refresh: UIRefreshControl!
     
+    let ref = Database.database().reference()
     @IBOutlet weak var pieChartView: PieChartView!
+    let stars = ["1 stars", "2 stars", "3 stars", "4 stars", "5 stars"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-        let unitsSold = [10.0, 4.0, 6.0, 3.0, 12.0, 16.0]
-        setChart(dataPoints: months, values: unitsSold)
-        
+//        refresh = UIRefreshControl()
+//        refresh.addTarget(self, action: #selector(ViewCourseReviewViewController.didPullToRefresh(_:)), for: .valueChanged)
+//
+//        AllVariables.courseratings = [100,0,0,0,0]
+//        setChart(dataPoints: stars, values: AllVariables.courseratings)
+//
+        getdata()
     }
     
-    
+    func getdata() {
+        
+        ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT3")
+            if (!(snapshotA.hasChild("CourseReviews"))) {
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).setValue(["1stars": 0, "2stars": 0, "3stars": 0, "4stars": 0, "5stars": 0 ])
+                
+                AllVariables.courseratings = [0, 0, 0, 0, 0]
+                self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
+                
+            }
+            else {
+                self.ref.child("CourseReviews").observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    print("WHAT4")
+                    if (!(snapshotB.hasChild(AllVariables.courseselected))) {
+                        self.ref.child("CourseReviews").child(AllVariables.courseselected).setValue(["1stars": 0, "2stars": 0, "3stars": 0, "4stars": 0, "5stars": 0 ])
+                        
+                        
+                        AllVariables.courseratings = [0, 0, 0, 0, 0]
+                        self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
+                        
+                        
+                    }
+                    else {
+                        self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+                            let valu = snapshot.value as? NSDictionary
+                            print("IMHERE")
+                            let n1 = valu?["1stars"] as? Double
+                            let n2 = valu?["2stars"] as? Double
+                            let n3 = valu?["3stars"] as? Double
+                            let n4 = valu?["4stars"] as? Double
+                            let n5 = valu?["5stars"] as? Double
+                            
+                            
+                            AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
+                            print("THIS: \(AllVariables.courseratings)")
+                            self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
+                        })
+                    }
+                })
+                
+            }
+            
+        })
+    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        getdata()
+//        self.refresh.endRefreshing()
+//    }
+//    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+//
+//        viewDidAppear(true)
+//    }
+//
     func setChart(dataPoints: [String], values: [Double]) {
         
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
+            print("THIS: \(AllVariables.courseratings)")
             let dataEntry1 = ChartDataEntry(x: Double(i), y: values[i], data: dataPoints[i] as AnyObject)
             
             dataEntries.append(dataEntry1)

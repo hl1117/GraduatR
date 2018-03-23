@@ -196,6 +196,7 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         vc.n = name
         let credos = filteredArrayName2[indexPath.row]
         vc.c = credos
+        
     }
     else {
         let name = names[indexPath.row]

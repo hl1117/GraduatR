@@ -119,9 +119,10 @@ class AddCourseViewController: UIViewController {
 
     
     @IBAction func reviewbutton(_ sender: Any) {
+        
         AllVariables.courseselected = n
         AllVariables.courseselected = AllVariables.courseselected.replacingOccurrences(of: "\t", with: " ")
-        
+    
     }
     
 }

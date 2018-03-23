@@ -64,10 +64,6 @@ class ViewProfileViewController: UIViewController
             }
             myCourses.text = list
         }
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning()

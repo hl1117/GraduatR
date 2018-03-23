@@ -23,7 +23,7 @@
 		2074E2A5202BDF7F0020C63A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2074E2A4202BDF7F0020C63A /* GoogleService-Info.plist */; };
 		20A3CDE42064940A00E7B920 /* ProfessorReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3CDE32064940A00E7B920 /* ProfessorReviewCell.swift */; };
 		20A3CDE62064947A00E7B920 /* ViewProfessorReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */; };
-		5A68D7972064CD8800CEF001 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A68D7982064CD8800CEF001 /* Charts.framework */; };
+		5A99870420656DA500A8FAA1 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A99870520656DA500A8FAA1 /* Charts.framework */; };
 		5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */; };
 		5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */; };
 		660065102051E2A9008886F9 /* AddEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6600650F2051E2A9008886F9 /* AddEventsViewController.swift */; };
@@ -98,6 +98,7 @@
 		46D770E2428F0FC172867B68 /* Pods-graduatRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatRTests/Pods-graduatRTests.release.xcconfig"; sourceTree = "<group>"; };
 		5A68D7932064CD1C00CEF001 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A68D7982064CD8800CEF001 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A99870520656DA500A8FAA1 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllVariables.swift; sourceTree = "<group>"; };
 		6600650F2051E2A9008886F9 /* AddEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A68D7972064CD8800CEF001 /* Charts.framework in Frameworks */,
+				5A99870420656DA500A8FAA1 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +300,7 @@
 		E7B4DCEF9B875BFDA443E0BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A99870520656DA500A8FAA1 /* Charts.framework */,
 				5A68D7982064CD8800CEF001 /* Charts.framework */,
 				5A68D7932064CD1C00CEF001 /* Charts.framework */,
 				3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */,
