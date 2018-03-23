@@ -150,7 +150,7 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubjectCell", for: indexPath) as! SubjectCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TutSubCell", for: indexPath) as! TutSubCell
         
         // self.collectionView.reloadData()
         // print(subjects)
@@ -158,42 +158,42 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
         if (showSearchResults){
             
             let nam = filteredArrayName[indexPath.row]
-            cell.sub!.text = nam
+            cell.nameLabel!.text = nam
             
         }
         else {
             
             let nam = subjects[indexPath.row]
             
-            cell.sub.text = nam
+            cell.nameLabel.text = nam
         }
         return cell
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        let vc = segue.destination as! CourseTableViewController
-//        let cell = sender as! UICollectionViewCell
-//        let indexPath = collectionView.indexPath(for: cell)!
-//
-//
-//        if (showSearchResults){
-//
-//            let name = subID[indexPath.row]
-//            let sub = filteredArrayName[indexPath.row]
-//            vc.SubjectId = name
-//            vc.SubjectAbbr = sub
-//
-//        }
-//        else {
-//            let name = subID[indexPath.row]
-//            vc.SubjectId = name
-//            let sub = subjects[indexPath.row]
-//            vc.SubjectAbbr = sub
-//        }
-//
-//
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let vc = segue.destination as! TutorListViewController
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPath(for: cell)!
+
+
+        if (showSearchResults){
+
+            let name = subID[indexPath.row]
+            let sub = filteredArrayName[indexPath.row]
+            vc.SubjectId = name
+            vc.SubjectAbbr = sub
+
+        }
+        else {
+            let name = subID[indexPath.row]
+            vc.SubjectId = name
+            let sub = subjects[indexPath.row]
+            vc.SubjectAbbr = sub
+        }
+
+
+
+    }
 
 }
