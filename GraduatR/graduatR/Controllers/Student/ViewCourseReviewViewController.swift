@@ -11,7 +11,6 @@ import Charts
 import Firebase
 
 class ViewCourseReviewViewController: UIViewController {
-    var refresh: UIRefreshControl!
     var avgrating = Double()
     let ref = Database.database().reference()
     @IBOutlet weak var pieChartView: PieChartView!
@@ -22,7 +21,9 @@ class ViewCourseReviewViewController: UIViewController {
         super.viewDidLoad()
         getdata()
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        getdata()
+    }
     func getdata() {
         
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in

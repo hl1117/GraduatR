@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Charts
+import Firebase
 
 class ProfessorReviewCell: UITableViewCell {
 
