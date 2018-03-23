@@ -47,6 +47,11 @@
 		D48AE2E6206480DA00E4B7F8 /* TutorAddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2E5206480DA00E4B7F8 /* TutorAddCourseViewController.swift */; };
 		D48AE2E82064863E00E4B7F8 /* TutorViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2E72064863E00E4B7F8 /* TutorViewProfileViewController.swift */; };
 		D48AE2EA2064864C00E4B7F8 /* TutorEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2E92064864C00E4B7F8 /* TutorEditProfileViewController.swift */; };
+		D48AE2ED2064A56600E4B7F8 /* SubjectTutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2EC2064A56600E4B7F8 /* SubjectTutorListViewController.swift */; };
+		D48AE2EF2064A57A00E4B7F8 /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2EE2064A57A00E4B7F8 /* TutorListViewController.swift */; };
+		D48AE2F12064A58900E4B7F8 /* TutorListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2F02064A58900E4B7F8 /* TutorListDetailViewController.swift */; };
+		D48AE2F32064A5AA00E4B7F8 /* TutListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2F22064A5AA00E4B7F8 /* TutListCell.swift */; };
+		D48AE2F52064A92C00E4B7F8 /* TutSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2F42064A92C00E4B7F8 /* TutSubCell.swift */; };
 		D49FA7592057140500D87067 /* ProfessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49FA7582057140500D87067 /* ProfessorViewController.swift */; };
 		D49FA75B2057152700D87067 /* ProfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49FA75A2057152700D87067 /* ProfCell.swift */; };
 		D4B2D39F20634EF8000B8836 /* TutorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2D39E20634EF8000B8836 /* TutorTableViewController.swift */; };
@@ -115,6 +120,11 @@
 		D48AE2E5206480DA00E4B7F8 /* TutorAddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAddCourseViewController.swift; sourceTree = "<group>"; };
 		D48AE2E72064863E00E4B7F8 /* TutorViewProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorViewProfileViewController.swift; sourceTree = "<group>"; };
 		D48AE2E92064864C00E4B7F8 /* TutorEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorEditProfileViewController.swift; sourceTree = "<group>"; };
+		D48AE2EC2064A56600E4B7F8 /* SubjectTutorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTutorListViewController.swift; sourceTree = "<group>"; };
+		D48AE2EE2064A57A00E4B7F8 /* TutorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
+		D48AE2F02064A58900E4B7F8 /* TutorListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorListDetailViewController.swift; sourceTree = "<group>"; };
+		D48AE2F22064A5AA00E4B7F8 /* TutListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutListCell.swift; sourceTree = "<group>"; };
+		D48AE2F42064A92C00E4B7F8 /* TutSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutSubCell.swift; sourceTree = "<group>"; };
 		D49FA7582057140500D87067 /* ProfessorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorViewController.swift; sourceTree = "<group>"; };
 		D49FA75A2057152700D87067 /* ProfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfCell.swift; sourceTree = "<group>"; };
 		D4B2D39E20634EF8000B8836 /* TutorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorTableViewController.swift; sourceTree = "<group>"; };
@@ -147,13 +157,13 @@
 		203FDE4E20339E5A00888A23 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D48AE2EB2064A4EF00E4B7F8 /* Professors */,
 				D4B2D3A220634F25000B8836 /* Parent */,
 				D4B2D3A120634F04000B8836 /* Tutor */,
 				D4B2D3A020634EFF000B8836 /* Student */,
 				203FDE5020339E5A00888A23 /* RoleViewController.swift */,
 				D433A6A22051C0130008E559 /* MarketViewController.swift */,
 				D433A6A42051C4B70008E559 /* BookInfoViewController.swift */,
-				D49FA7582057140500D87067 /* ProfessorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -188,8 +198,6 @@
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
-				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
-				6680817720645800006DA586 /* AddProfessorReviewViewController.swift */,
 				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
 				203FDE532033A2F300888A23 /* CustomLoginViewController.swift */,
@@ -210,6 +218,8 @@
 				5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */,
 				5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */,
 				D4B2D3AB20635A70000B8836 /* tutCourseCell.swift */,
+				D48AE2F22064A5AA00E4B7F8 /* TutListCell.swift */,
+				D48AE2F42064A92C00E4B7F8 /* TutSubCell.swift */,
 			);
 			path = graduatR;
 			sourceTree = "<group>";
@@ -234,6 +244,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D48AE2EB2064A4EF00E4B7F8 /* Professors */ = {
+			isa = PBXGroup;
+			children = (
+				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
+				6680817720645800006DA586 /* AddProfessorReviewViewController.swift */,
+				D49FA7582057140500D87067 /* ProfessorViewController.swift */,
+			);
+			path = Professors;
+			sourceTree = "<group>";
+		};
 		D4B2D3A020634EFF000B8836 /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +276,9 @@
 				D48AE2E5206480DA00E4B7F8 /* TutorAddCourseViewController.swift */,
 				D48AE2E72064863E00E4B7F8 /* TutorViewProfileViewController.swift */,
 				D48AE2E92064864C00E4B7F8 /* TutorEditProfileViewController.swift */,
+				D48AE2EC2064A56600E4B7F8 /* SubjectTutorListViewController.swift */,
+				D48AE2EE2064A57A00E4B7F8 /* TutorListViewController.swift */,
+				D48AE2F02064A58900E4B7F8 /* TutorListDetailViewController.swift */,
 			);
 			path = Tutor;
 			sourceTree = "<group>";
@@ -531,15 +554,20 @@
 				D4651AE12051EA5100AA4B6D /* SubjectCell.swift in Sources */,
 				203FDE5120339E5A00888A23 /* StudentDetailViewController.swift in Sources */,
 				6614FA78203BD3F1006172EC /* ResetPasswordViewController.swift in Sources */,
+				D48AE2F12064A58900E4B7F8 /* TutorListDetailViewController.swift in Sources */,
 				5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */,
 				669311FF2051DCBF00E556C8 /* CalendarViewController.swift in Sources */,
+				D48AE2EF2064A57A00E4B7F8 /* TutorListViewController.swift in Sources */,
 				D4B2D3AA20635471000B8836 /* SubCell.swift in Sources */,
 				D48AE2E6206480DA00E4B7F8 /* TutorAddCourseViewController.swift in Sources */,
 				20A3CDE42064940A00E7B920 /* ProfessorReviewCell.swift in Sources */,
 				666FD5C12061BDCB00A91737 /* EventsCell.swift in Sources */,
 				D49FA7592057140500D87067 /* ProfessorViewController.swift in Sources */,
 				D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */,
+				D48AE2F32064A5AA00E4B7F8 /* TutListCell.swift in Sources */,
+				D48AE2ED2064A56600E4B7F8 /* SubjectTutorListViewController.swift in Sources */,
 				6680817620645553006DA586 /* ViewCourseReviewController.swift in Sources */,
+				D48AE2F52064A92C00E4B7F8 /* TutSubCell.swift in Sources */,
 				5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */,
 				D4310705203BB7AF00750372 /* CourseTableViewController.swift in Sources */,
 				66197F18203CE35300EF089C /* ViewProfileViewController.swift in Sources */,

@@ -165,12 +165,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/tutCourseCell.swift"
-            timestampString = "543465321.473251"
+            timestampString = "543468751.938149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "13"
             endingLineNumber = "13"
             landmarkName = "TutCourseCell"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "graduatR/Controllers/Tutor/SubjectTutorListViewController.swift"
+            timestampString = "543468751.9383039"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "SubjectTutorListViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>

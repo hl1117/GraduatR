@@ -16,6 +16,7 @@ class TutorAddCourseViewController: UIViewController {
     @IBOutlet weak var courseName: UILabel!
     @IBOutlet weak var info: UILabel!
     var n = String()
+    var sa = String()
     var name = AllVariables.Fname
     var lastName = AllVariables.Lname
     var GPA = AllVariables.GPA
@@ -82,6 +83,9 @@ class TutorAddCourseViewController: UIViewController {
             
             var index = 0
             ref.child("Users").child("Tutor").child(AllVariables.uid).child("Courses").setValue([])
+            
+           //adding tutor to tutor list
+        ref.child("TutorList").child(self.sa).child(AllVariables.Username).setValue([])
             
             while (index < AllVariables.courses.endIndex) {
                 let c = "Course\(index)"

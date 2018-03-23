@@ -1,14 +1,14 @@
 //
-//  TutorTableViewController.swift
+//  TutorListViewController.swift
 //  graduatR
 //
-//  Created by Dhriti Chawla on 3/21/18.
+//  Created by Dhriti Chawla on 3/22/18.
 //  Copyright © 2018 Simona Virga. All rights reserved.
 //
 
 import UIKit
 
-class TutorTableViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+class TutorListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var tableView: UITableView!
@@ -132,7 +132,6 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
             showSearchResults = true
             self.tableView.reloadData()
         }
-        
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -168,7 +167,7 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tutCourseCell", for: indexPath) as! TutCourseCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "courseCell", for: indexPath) as! CourseCell
         
         if (showSearchResults){
             
@@ -185,34 +184,29 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        let vc = segue.destination as! TutorAddCourseViewController
+        
+        let vc = segue.destination as! AddCourseViewController
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)!
-
-
+        
+        
         if (showSearchResults){
-
+            
             let name = filteredArrayName[indexPath.row]
             vc.n = name
             let credos = filteredArrayName2[indexPath.row]
             vc.c = credos
-            
-            let subabbr = self.SubjectAbbr
-            vc.sa = subabbr
         }
         else {
             let name = names[indexPath.row]
             vc.n = name
-
+            
             let credos = creds[indexPath.row]
             vc.c = credos
-            
-            let subabbr = self.SubjectAbbr
-            vc.sa = subabbr
         }
+        
+        
+        
+    }
 
-
-
-}
 }
