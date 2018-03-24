@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class StudentParentAddViewController: UIViewController {
     
@@ -14,9 +16,10 @@ class StudentParentAddViewController: UIViewController {
     @IBOutlet weak var stepsLabel: UILabel!
     @IBOutlet weak var myUIDlabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        myUIDlabel.text = AllVariables.uid
         // Do any additional setup after loading the view.
     }
 

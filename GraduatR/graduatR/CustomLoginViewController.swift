@@ -84,7 +84,7 @@ class CustomLoginViewController: UIViewController
                                             AllVariables.standing = value?["Class"] as? String ?? ""
                                         })
                                         self.userUid = user.uid
-                                        self.performSegue(withIdentifier: "signingInTutor", sender: self)
+                                        self.performSegue(withIdentifier: "proceedParent", sender: self)
                                     }
                                     else {
                                         databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in

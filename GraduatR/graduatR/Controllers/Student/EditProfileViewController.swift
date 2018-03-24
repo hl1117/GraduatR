@@ -31,6 +31,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
