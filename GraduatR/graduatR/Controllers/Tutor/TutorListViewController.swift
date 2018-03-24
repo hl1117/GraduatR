@@ -19,6 +19,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     let searchBar = UISearchBar()
     var names = [String]()
+    var uName = [String]()
     
     // var numbers = [String]()
     
@@ -35,20 +36,21 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         self.ref.child("TutorList").child(SubjectAbbr).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             let enumer = snapshot.children
             while let rest = enumer.nextObject() as? DataSnapshot {
-                self.names.removeAll()
+                //self.names.removeAll()
                 let vals = rest.value as? NSDictionary
-                    let fn = (vals?["Fname"] as? String)!
-                    let ln = (vals?["Lname"] as? String)!
-
-                    self.names.append("\(fn) \(ln)")
+                let fn = (vals?["Fname"] as? String)!
+                let ln = (vals?["Lname"] as? String)!
+                
+                self.names.append("\(fn) \(ln)")
+                let u = rest.key
+                self.uName.append(u)
             }
         })
         self.tableView.reloadData()
-       
-        print(names)
         
+        print(names)
     }
-    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,31 +150,34 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        let vc = segue.destination as! AddCourseViewController
-//        let cell = sender as! UITableViewCell
-//        let indexPath = tableView.indexPath(for: cell)!
-//
-//
-//        if (showSearchResults){
-//
-//            let name = filteredArrayName[indexPath.row]
-//            vc.n = name
-//            let credos = filteredArrayName2[indexPath.row]
-//            vc.c = credos
-//        }
-//        else {
-//            let name = names[indexPath.row]
-//            vc.n = name
-//
-//            let credos = creds[indexPath.row]
-//            vc.c = credos
-//        }
-//
-//
-//
-//    }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! TutorListDetailViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        
+        
+        if (showSearchResults){
+            
+            let name = filteredArrayName[indexPath.row]
+            vc.n = name
+            let un = uName[indexPath.row]
+            vc.u = un
+            
+        }
+        else {
+            let name = names[indexPath.row]
+            vc.n = name
+            let un = uName[indexPath.row]
+            vc.u = un
+            
+            let s = SubjectAbbr
+            vc.subs = s
+            
+            
+        }
+        
+        
+        
+    }
 }
