@@ -1,7 +1,7 @@
 # CS 30700 - *GraduatR*
 
-- [] As a user, I would like to be able to create a GraduatR account using Google and/or Facebook credentials.
-As a user, I would like to login and manage my GraduatR account.
+- [X] As a user, I would like to be able to create a GraduatR account using Google and/or Facebook credentials.
+- [X] As a user, I would like to login and manage my GraduatR account.
 As a user, I would like to customize my GraduatR profile.
 As a user, I would like to provide a profile picture for my profile.
 As a user, I would like to be able to set my current status as an undergraduate student, graduate student or tutor.
