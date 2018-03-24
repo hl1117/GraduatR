@@ -7,82 +7,46 @@
 //
 
 import UIKit
+import Firebase
 
 class TutorListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
+    
+    let ref = Database.database().reference()
     
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var tableView: UITableView!
     
     
     let searchBar = UISearchBar()
-    var courseData = [[String: AnyObject]]()
     var names = [String]()
-    var creds = [String]()
     
     // var numbers = [String]()
     
     var filteredArrayName = [String]()
-    var filteredArrayName2 = [String]()
     var showSearchResults = false
     
     var refresh: UIRefreshControl!
     
-    var SubjectId = ""
     var SubjectAbbr = ""
     
     
     func fetchData () {
         
-        let url:String = "https://api.purdue.io/odata/Courses"
-        let urlRequest = URL(string: url)
+        self.ref.child("TutorList").child(SubjectAbbr).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            let enumer = snapshot.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                self.names.removeAll()
+                let vals = rest.value as? NSDictionary
+                    let fn = (vals?["Fname"] as? String)!
+                    let ln = (vals?["Lname"] as? String)!
+
+                    self.names.append("\(fn) \(ln)")
+            }
+        })
+        self.tableView.reloadData()
+       
+        print(names)
         
-        if let URL = urlRequest {
-            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
-                if (error != nil) {
-                    print ("============")
-                    print (error?.localizedDescription)
-                } else {
-                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
-                        //print ("what is DATA????????? ....")
-                        //print (stringData)
-                        do {
-                            if let data = data,
-                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                                let value = json["value"] as? [[String: Any]] {
-                                for val in value {
-                                    var currSubId = val["SubjectId"] as! String
-                                    
-                                    if ( currSubId == self.SubjectId) {
-                                        
-                                        if let name = val["Title"] as? String {
-                                            if let num = val["Number"] as? String {
-                                                if let credits = val["CreditHours"] as? Int {
-                                                    if let des = val["Description"] as? String {
-                                                        
-                                                        self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
-                                                        self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
-                                                        //  print (self.names)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        self.tableView.reloadData()
-                                    }
-                                }
-                            }
-                            
-                            
-                            self.refresh.endRefreshing()
-                        } catch {
-                            print ("Error is : \(error)")
-                        }
-                    }
-                    
-                }
-                
-            }; task.resume()
-            
-        }
     }
     
     
@@ -92,7 +56,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         fetchData()
         
         refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(TutorListViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
         
@@ -107,7 +71,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     func createSearchBar() {
         
         searchBar.showsCancelButton = false
-        searchBar.placeholder = "Search a course...."
+        searchBar.placeholder = "Search a tutor...."
         searchBar.delegate = self
         
         self.navigationItem.titleView = searchBar
@@ -120,9 +84,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         filteredArrayName = names.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
-        filteredArrayName2 = creds.filter({( name: String) -> Bool in
-            return name.lowercased().range(of:searchText.lowercased()) != nil
-        })
+      
         
         
         if searchBar.text == "" {
@@ -152,6 +114,7 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchData()
+         self.refresh.endRefreshing()
     }
     
     // MARK: - Table view data source
@@ -167,17 +130,20 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "courseCell", for: indexPath) as! CourseCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TutListCell", for: indexPath) as! TutListCell
         
         if (showSearchResults){
             
             let nam = filteredArrayName[indexPath.row]
             cell.nameLabel!.text = nam
             
+            cell.initials.text = nam[0]
         }
         else {
             let nam = names[indexPath.row]
             cell.nameLabel!.text = nam
+    
+            cell.initials.text = nam[0]
         }
         return cell
     }

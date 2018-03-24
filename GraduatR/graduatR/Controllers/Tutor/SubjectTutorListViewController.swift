@@ -147,15 +147,12 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
 
         if (showSearchResults){
 
-            let name = subjects[indexPath.row]
             let sub = filteredArrayName[indexPath.row]
-            vc.SubjectId = name
             vc.SubjectAbbr = sub
 
         }
         else {
-            let name = subjects[indexPath.row]
-            vc.SubjectId = name
+            
             let sub = subjects[indexPath.row]
             vc.SubjectAbbr = sub
         }

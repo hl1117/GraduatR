@@ -76,7 +76,7 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
         fetchData()
         
         refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(ProfessorViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
         
