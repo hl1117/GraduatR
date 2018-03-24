@@ -682,7 +682,7 @@
                                 <connections>
                                     <action selector="clickNextButton:" destination="Lqo-4W-iHN" eventType="touchUpInside" id="QaV-iy-Wpm"/>
                                     <action selector="clickedProceed:" destination="9aN-2P-Q9e" eventType="touchUpInside" id="Fcn-z7-88h"/>
-                                    <segue destination="3aL-un-kt4" kind="presentation" id="OAS-ve-XXJ"/>
+                                    <action selector="pressedProceed:" destination="YpI-Av-gjt" eventType="touchUpInside" id="Pme-1J-d6k"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-Da-ejp">
@@ -745,8 +745,9 @@
                         <viewLayoutGuide key="safeArea" id="Q4P-0N-TGf"/>
                     </view>
                     <connections>
+                        <outlet property="keyField" destination="Tki-Da-ejp" id="0bn-eX-zC7"/>
                         <outlet property="welcomeText" destination="c3C-e8-opg" id="2op-pf-sIV"/>
-                        <segue destination="3aL-un-kt4" kind="presentation" id="Kiv-0W-rLg"/>
+                        <segue destination="3aL-un-kt4" kind="presentation" identifier="proceedParent" id="Kiv-0W-rLg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqE-fh-TeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -851,7 +852,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="jQy-9J-UVE" kind="push" id="8jS-Eq-5ax"/>
+                                    <segue destination="jQy-9J-UVE" kind="push" identifier="ParentKey" id="8jS-Eq-5ax"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -869,21 +870,42 @@
             </objects>
             <point key="canvasLocation" x="7924" y="-1799.5502248875564"/>
         </scene>
-        <!--View Controller-->
+        <!--Student Parent Add View Controller-->
         <scene sceneID="LMR-Pj-mSI">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="jQy-9J-UVE" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="jQy-9J-UVE" customClass="StudentParentAddViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vWt-LX-rNI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to add a parent:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy3-z9-TyF">
+                                <rect key="frame" x="65" y="126" width="245" height="326"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="my UID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyz-es-P9G">
+                                <rect key="frame" x="65" y="539" width="245" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="G1w-IC-KbR"/>
                     </view>
                     <navigationItem key="navigationItem" id="y31-i8-R0B"/>
+                    <connections>
+                        <outlet property="myUIDlabel" destination="pyz-es-P9G" id="5Cu-eg-dYJ"/>
+                        <outlet property="stepsLabel" destination="yy3-z9-TyF" id="OMZ-X9-CrA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="May-1C-8Sa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8782" y="-1799"/>
+            <point key="canvasLocation" x="9010" y="-1800"/>
         </scene>
         <!--<username>-->
         <scene sceneID="J9D-mr-HKS">
@@ -2895,7 +2917,6 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kiv-0W-rLg"/>
         <segue reference="9rz-QK-esh"/>
         <segue reference="eN3-Ae-S7i"/>
         <segue reference="qoT-W4-HMK"/>

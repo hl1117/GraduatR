@@ -34,7 +34,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
-            wantparent.text = "Want to connect to your Parent?"
+          //  wantparent.text = "Want to connect to your Parent?"
             clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: .value) {
             (snapshot: DataSnapshot) in
@@ -140,12 +140,12 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        var VC = segue.destination as! ViewProfileViewController
-        VC.image = ProfilePictureImage
-        //VC.pictureonprofilepage = ProfilePictureImage
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+//    {
+//        var VC = segue.destination as! ViewProfileViewController
+//        VC.image = ProfilePictureImage
+//        //VC.pictureonprofilepage = ProfilePictureImage
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         //AllVariables.bio = bioText.text
