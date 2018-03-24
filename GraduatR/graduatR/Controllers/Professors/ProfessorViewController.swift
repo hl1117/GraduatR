@@ -73,12 +73,14 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
        
         // Do any additional setup after loading the view.
         createSearchBar()
-        fetchData()
+       
         
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(ProfessorViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
+        
+        fetchData()
         
         tableView.reloadData()
         tableView.delegate = self
