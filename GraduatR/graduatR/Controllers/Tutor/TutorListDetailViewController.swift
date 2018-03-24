@@ -24,6 +24,8 @@ class TutorListDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bio.text = "something here"
+        classes.text = "text here"
         
         // Do any additional setup after loading the view.
         self.ref.child("TutorList").child(subs).child(u).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
@@ -33,20 +35,23 @@ class TutorListDetailViewController: UIViewController {
             let ln = (vals?["Lname"] as? String)!
             
             self.n = "\(fn) \(ln)"
+            
             let bio = (vals?["Bio"] as? String)!
             let cou = (vals?["Courses"] as? String)!
             
             self.b = "\(bio)"
+            print (self.b)
             self.c = "\(cou)"
             
+            self.nameLabel.text = self.n
+            print (self.b)
+            
+            self.bio.text = self.b
+            print (self.c)
+            self.classes.text = self.c
         })
         
-        nameLabel.text = n
-        print (b)
-        
-        bio.text = b
-        print (c)
-        classes.text = c
+      
         
     }
     
