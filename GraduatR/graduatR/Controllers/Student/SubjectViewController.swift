@@ -16,6 +16,8 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
     var courseData = [[String: AnyObject]]()
     var subjects = [String]()
     var subID = [String]()
+    var hashmap = [String : String]()
+    
     
     var filteredArrayName = [String]()
     var filteredArrayId = [String]()
@@ -49,6 +51,7 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
                                         if let name = val["Abbreviation"] as? String {
                                             
                                             self.subjects.append(name)
+                                            self.hashmap[name] = currSubId
                                             
                                           
                                         }
@@ -56,9 +59,6 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
                                     
                                 }
                             }
-                            
-                            
-                            self.refresh.endRefreshing()
                         } catch {
                             print ("Error is : \(error)")
                         }
@@ -117,6 +117,8 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchData()
+        
+        self.refresh.endRefreshing()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -179,14 +181,14 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if (showSearchResults){
             
-            let name = subID[indexPath.row]
             let sub = filteredArrayName[indexPath.row]
-            vc.SubjectId = name
+            vc.SubjectId = hashmap[sub]!
             vc.SubjectAbbr = sub
             
         }
         else {
             let name = subID[indexPath.row]
+    
             vc.SubjectId = name
             let sub = subjects[indexPath.row]
             vc.SubjectAbbr = sub
