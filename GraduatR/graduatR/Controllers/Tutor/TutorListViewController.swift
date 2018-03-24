@@ -32,7 +32,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func fetchData () {
-        
         self.ref.child("TutorList").child(SubjectAbbr).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             let enumer = snapshot.children
             while let rest = enumer.nextObject() as? DataSnapshot {
@@ -41,9 +40,11 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                 let fn = (vals?["Fname"] as? String)!
                 let ln = (vals?["Lname"] as? String)!
                 
-                self.names.append("\(fn) \(ln)")
-                let u = rest.key
-                self.uName.append(u)
+                if (!(self.uName.contains(rest.key))) {
+                    self.names.append("\(fn) \(ln)")
+                    let u = rest.key
+                    self.uName.append(u)
+                }
             }
         })
         self.tableView.reloadData()

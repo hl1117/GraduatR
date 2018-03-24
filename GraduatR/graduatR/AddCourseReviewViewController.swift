@@ -72,22 +72,6 @@ class AddCourseReviewViewController: UIViewController {
                 let a = value?["1stars"] as? Int
                 let final = a! + 1
                 print("FINAL = \(final)")
-                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("CourseReviews").child(AllVariables.courseselected).child("1stars").setValue(final)
-                        
-                        self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
-                    }
-                    else {
-                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
-                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                            print ("ok tappped")
-                        }
-                        alert.addAction(OKAction)
-                        self.present(alert, animated: true) {
-                            print("ERROR")
-                        }
-                        print("error rating in")
-                        
-                    }
                     
                 })
             }

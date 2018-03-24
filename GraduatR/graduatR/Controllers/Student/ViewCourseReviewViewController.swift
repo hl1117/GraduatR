@@ -76,7 +76,9 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 let key = snap.key
                 let value = snap.value
                 print("VALUE IS: \(value)")
-                self.reviews.append(value! as! String)
+                if (!(self.reviews.contains(value! as! String))) {
+                    self.reviews.append(value! as! String)
+                }
                 print("REVIEWS: \(self.reviews)")
                 //print("key = \(key)    value = \(value!)")
             }

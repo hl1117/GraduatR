@@ -89,7 +89,24 @@ class AddProfessorReviewViewController: UIViewController {
                     let a = value?["1stars"] as? Int
                     let final = a! + 1
                     print("FINAL = \(final)")
-                    self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("1stars").setValue(final)
+                   
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("1stars").setValue(final)
+                        
+                        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this professor", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
                 })
             }
             
@@ -123,7 +140,23 @@ class AddProfessorReviewViewController: UIViewController {
                     let a = value?["2stars"] as? Int
                     let final = a! + 1
                     print("FINAL = \(final)")
-                    self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("2stars").setValue(final)
+                   
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("2stars").setValue(final)
+                        
+                        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this professor", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
                 })
             }
         })
@@ -158,7 +191,22 @@ class AddProfessorReviewViewController: UIViewController {
                     let a = value?["3stars"] as? Int
                     let final = a! + 1
                     print("FINAL = \(final)")
-                    self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("3stars").setValue(final)
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("3stars").setValue(final)
+                        
+                        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this professor", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                    }
+                        
                 })
             }
         })
@@ -192,7 +240,22 @@ class AddProfessorReviewViewController: UIViewController {
                     let a = value?["4stars"] as? Int
                     let final = a! + 1
                     print("FINAL = \(final)")
-                    self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("4stars").setValue(final)
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("4stars").setValue(final)
+                        
+                        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this professor", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
                 })
             }
         })
@@ -226,7 +289,22 @@ class AddProfessorReviewViewController: UIViewController {
                     let a = value?["5stars"] as? Int
                     let final = a! + 1
                     print("FINAL = \(final)")
-                    self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("5stars").setValue(final)
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("5stars").setValue(final)
+                        
+                        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this professor", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
                 })
             }
         })
