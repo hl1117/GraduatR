@@ -12,11 +12,12 @@ import Firebase
 
 class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var avgrating = Double()
-    let ref = Database.database().reference()
+    var ref = Database.database().reference()
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
     @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var average: UILabel!
     
    var reviews = [String]()
@@ -43,10 +44,9 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 print("VALUE IS: \(value)")
                 self.reviews.append(value! as! String)
                 print("REVIEWS: \(self.reviews)")
-                //print("key = \(key)    value = \(value!)")
+                print("key = \(key)    value = \(value!)")
             }
             print("After")
-            
         })
         
         self.tableView.reloadData()
@@ -54,9 +54,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         self.tableView.dataSource = self
         
       //  self.refresh.endRefreshing()
-        
-        
-        
+
     }
     
     
@@ -94,7 +92,6 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     
     
     func getdata() {
-        
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             print("WHAT3")
             if (!(snapshotA.hasChild("CourseReviews"))) {
