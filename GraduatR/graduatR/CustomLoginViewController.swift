@@ -73,6 +73,8 @@ class CustomLoginViewController: UIViewController
                                 databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { snapshotC in
                                     if snapshotC.hasChild(AllVariables.uid) {
                                         databaseRef.child("Users").child("Parent").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotD) in
+                                            
+                                                
                                             print("HERE - parent")
                                             let value = snapshotD.value as? NSDictionary
                                             AllVariables.Username = value?["Username"] as? String ?? ""
@@ -82,9 +84,17 @@ class CustomLoginViewController: UIViewController
                                             AllVariables.GPA = value?["GPA"] as? String ?? ""
                                             AllVariables.profpic = value?["profile_pic"] as? String ?? ""
                                             AllVariables.standing = value?["Class"] as? String ?? ""
+                                                
+                                            self.userUid = user.uid
+                                            
+                                            if (snapshotD.hasChild("Studentid")) {
+                                            self.performSegue(withIdentifier: "ParentSigningIn", sender: self)
+                                                
+                                            }
+                                            else {
+                                               self.performSegue(withIdentifier: "presentKeyPls", sender: self)
+                                            }
                                         })
-                                        self.userUid = user.uid
-                                        self.performSegue(withIdentifier: "proceedParent", sender: self)
                                     }
                                     else {
                                         databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in
