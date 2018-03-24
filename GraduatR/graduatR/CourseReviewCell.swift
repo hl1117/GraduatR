@@ -10,7 +10,8 @@ import UIKit
 
 class CourseReviewCell: UITableViewCell {
 
-   
+    @IBOutlet weak var reviewText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

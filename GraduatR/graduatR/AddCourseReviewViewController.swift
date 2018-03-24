@@ -35,7 +35,7 @@ class AddCourseReviewViewController: UIViewController {
     
     @IBAction func addReviewButton(_ sender: Any)
     {
-        
+        self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(courseReview.text)
     }
     
     @IBAction func star1Rate(_ sender: UIButton) {
