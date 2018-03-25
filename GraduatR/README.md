@@ -48,16 +48,14 @@
 - [ ] If time allows, I would like to scale this app to other platforms (iOS, web, etc).
 
 ## MANUAL TESTING SPRINT 2 - Video Walkthrough
-
-1. USER STORY 1 https://i.imgur.com/hcxK7mJ.gif
+- USER STORY 1 https://i.imgur.com/hcxK7mJ.gif
 <img src='http://i.imgur.com/hcxK7mJ.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-2. USER STORY 2 
+- USER STORY 2 
 https://imgur.com/9y9WXkX
 <img src='http://i.imgur.com/9y9WXkX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-3. USER STORY 3
-4. USER STORY 4
-5. USER STORY 5
-6. USER STORY 6
-7. USER STORY 7
-8. USER STORY 8
-9. USER STORY 9
+- USER STORY 3
+- USER STORY 4 and 6 https://i.imgur.com/Bym8TRX.gif
+<img src='http://i.imgur.com/Bym8TRX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+- USER STORY 5 and 7
+- USER STORY 8
+- USER STORY 9
