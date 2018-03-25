@@ -65,9 +65,11 @@ https://imgur.com/9y9WXkX
 - USER STORY 5 and 7
 
 - USER STORY 8
--![alt tag](./UserStory8Sprint2.gif)
--![alt tag](./UserStory8.2Sprint2.gif)
+
+![alt tag](./UserStory8Sprint2.gif)
+![alt tag](./UserStory8.2Sprint2.gif)
 
 - USER STORY 9
--![alt tag](./UserStory9.1Sprint2.gif)
--![alt tag](./UserStory9.2Sprint2.gif)
+
+![alt tag](./UserStory9.1Sprint2.gif)
+![alt tag](./UserStory9.2Sprint2.gif)
