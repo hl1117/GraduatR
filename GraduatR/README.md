@@ -49,8 +49,9 @@
 
 ## MANUAL TESTING SPRINT 2 - Video Walkthrough
 
-1. USER STORY 1
-2. USER STORY 2
+1. USER STORY 1 https://imgur.com/a/ECUdA
+<img src='https://imgur.com/a/ECUdA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+2. USER STORY 2 
 https://imgur.com/9y9WXkX
 <img src='http://i.imgur.com/9y9WXkX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 3. USER STORY 3
