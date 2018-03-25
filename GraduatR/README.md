@@ -51,6 +51,8 @@
 
 1. USER STORY 1
 2. USER STORY 2
+https://imgur.com/9y9WXkX
+<img src='http://i.imgur.com/9y9WXkX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 3. USER STORY 3
 4. USER STORY 4
 5. USER STORY 5
