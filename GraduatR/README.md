@@ -55,7 +55,8 @@
 https://imgur.com/9y9WXkX
 <img src='http://i.imgur.com/9y9WXkX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-- USER STORY 3
+- USER STORY 3 
+
 ![alt tag](./UserStory3Sprint2.gif)
 
 - USER STORY 4 and 6 https://i.imgur.com/Bym8TRX.gif
@@ -64,10 +65,9 @@ https://imgur.com/9y9WXkX
 - USER STORY 5 and 7
 
 - USER STORY 8
-
-![alt tag](./UserStory8Sprint2.gif)
-![alt tag](./UserStory8.2Sprint2.gif)
+-![alt tag](./UserStory8Sprint2.gif)
+-![alt tag](./UserStory8.2Sprint2.gif)
 
 - USER STORY 9
-![alt tag](./UserStory9.1Sprint2.gif)
-![alt tag](./UserStory9.2Sprint2.gif)
+-![alt tag](./UserStory9.1Sprint2.gif)
+-![alt tag](./UserStory9.2Sprint2.gif)
