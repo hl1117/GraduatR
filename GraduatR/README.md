@@ -47,4 +47,13 @@
 - [ ] As a user, I would like to access information through the cloud instead of updating the application periodically.
 - [ ] If time allows, I would like to scale this app to other platforms (iOS, web, etc).
 
-## Video Walkthrough MANUAL TESTING SPRINT 2
+## MANUAL TESTING SPRINT 2 - Video Walkthrough
+#USER STORY 1
+#USER STORY 2
+#USER STORY 3
+#USER STORY 4
+#USER STORY 5
+#USER STORY 6
+#USER STORY 7
+#USER STORY 8
+#USER STORY 9
