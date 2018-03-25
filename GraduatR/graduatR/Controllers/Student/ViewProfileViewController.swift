@@ -59,7 +59,7 @@ class ViewProfileViewController: UIViewController
             var  i = 0;
         
             while (i < size){
-                list += "\n \(AllVariables.courses[i])"
+                list += "\(AllVariables.courses[i])\n "
                 i += 1
             }
             myCourses.text = list

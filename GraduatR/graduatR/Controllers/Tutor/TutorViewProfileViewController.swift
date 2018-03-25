@@ -35,6 +35,7 @@ class TutorViewProfileViewController: UIViewController {
         self.navigationItem.title = AllVariables.Username
         //updateBioText.text = AllVariables.bio
         
+        
         myCourses.text = "No courses added!"
     }
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
