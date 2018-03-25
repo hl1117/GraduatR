@@ -62,7 +62,8 @@ https://imgur.com/9y9WXkX
 - USER STORY 4 and 6 https://i.imgur.com/Bym8TRX.gif
 <img src='http://i.imgur.com/Bym8TRX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-- USER STORY 5 and 7
+- USER STORY 5 and 7 https://i.imgur.com/IOTYdVL.gif
+<img src='http://i.imgur.com/IOTYdVL.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 - USER STORY 8
 
