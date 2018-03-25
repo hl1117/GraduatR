@@ -46,3 +46,5 @@
 - [x] As a developer, I would like to protect the information that my users provide.
 - [ ] As a user, I would like to access information through the cloud instead of updating the application periodically.
 - [ ] If time allows, I would like to scale this app to other platforms (iOS, web, etc).
+
+## Video Walkthrough MANUAL TESTING SPRINT 2
