@@ -41,6 +41,8 @@
 - [ ] If time allows, I would like to expand and implement this app for other universities.
 - [ ] If time allows, I would like to receive notifications.
 
+
+
 - [x] As a developer, I would like this application to run on Android devices.
 - [ ] As a developer, I would like to improve the user interface and make it easy to understand.
 - [ ] As a developer, I would initially like to handle 100 users using the app simultaneously.
