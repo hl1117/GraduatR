@@ -92,7 +92,7 @@ class ParentCoursesViewController: UIViewController, UITableViewDataSource, UITa
         fetchData()
         
         refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(ParentCoursesViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
         

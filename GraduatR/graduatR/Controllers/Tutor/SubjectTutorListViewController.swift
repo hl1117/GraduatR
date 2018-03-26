@@ -46,7 +46,7 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
         fetchData()
         
         refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(SubjectViewController.didPullToRefresh(_:)), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(SubjectTutorListViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         collectionView.insertSubview(refresh, at: 0)
         

@@ -92,7 +92,7 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
         fetchData()
         
         refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
+        refresh.addTarget(self, action: #selector(TutorTableViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
         
