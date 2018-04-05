@@ -38,12 +38,22 @@ class AddCourseReviewViewController: UIViewController {
     {
         self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(courseReview.text)
         
+        if (anonStatus.isOn){
+            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).child("Anonymity").setValue("yes")
+        }
+        else {
+            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).child("Anonymity").setValue("no")
+            
+        }
+        
+        
+        
         
     }
     
     @IBAction func star1Rate(_ sender: UIButton) {
         print("HERE")
-
+        
         print("HERE2")
         if let image = UIImage(named:"icons8-christmas-star-50") {
             sender.setImage(UIImage(named:"icons8-christmas-star-filled-50"), for: .normal)
@@ -67,20 +77,20 @@ class AddCourseReviewViewController: UIViewController {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("4stars").setValue(0)
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("5stars").setValue(0)
                 
-                    self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
             }
             else {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
-                let value = snapshotB.value as? NSDictionary
-                let a = value?["1stars"] as? Int
-                let final = a! + 1
-                print("FINAL = \(final)")
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["1stars"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
                     
                 })
             }
-                
+            
         })
-       
+        
         
     }
     
@@ -110,10 +120,10 @@ class AddCourseReviewViewController: UIViewController {
             else {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
                     
-                let value = snapshotB.value as? NSDictionary
-                let a = value?["2stars"] as? Int
-                let final = a! + 1
-                print("FINAL = \(final)")
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["2stars"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
                     if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("CourseReviews").child(AllVariables.courseselected).child("2stars").setValue(final)
                         
                         self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
@@ -163,15 +173,15 @@ class AddCourseReviewViewController: UIViewController {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("4stars").setValue(0)
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("5stars").setValue(0)
                 
-                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
             }
             else {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
                     
-                let value = snapshotB.value as? NSDictionary
-                let a = value?["3stars"] as? Int
-                let final = a! + 1
-                print("FINAL = \(final)")
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["3stars"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
                     if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("CourseReviews").child(AllVariables.courseselected).child("3stars").setValue(final)
                         
                         self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
@@ -221,34 +231,34 @@ class AddCourseReviewViewController: UIViewController {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("4stars").setValue(1)
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("5stars").setValue(0)
                 
-                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
-            }
-            else {
-            self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
-                
-                
-                    
-                let value = snapshotB.value as? NSDictionary
-                let a = value?["4stars"] as? Int
-                let final = a! + 1
-                print("FINAL = \(final)")
-                if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("CourseReviews").child(AllVariables.courseselected).child("4stars").setValue(final)
-                
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
             }
-                else {
-                let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                print ("ok tappped")
-                }
-                alert.addAction(OKAction)
-                self.present(alert, animated: true) {
-                print("ERROR")
-                }
-                print("error rating in")
-                
-                }
-                
+            else {
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["4stars"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("CourseReviews").child(AllVariables.courseselected).child("4stars").setValue(final)
+                        
+                        self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
                 })
             }
         })
@@ -280,22 +290,22 @@ class AddCourseReviewViewController: UIViewController {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("4stars").setValue(0)
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("5stars").setValue(1)
                 
-                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
             }
             else {
-            self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
-                  
-            if (!(snapshotB.hasChild(AllVariables.Username))) {
-                let value = snapshotB.value as? NSDictionary
-                let a = value?["5stars"] as? Int
-                let final = a! + 1
-                print("FINAL = \(final)")
-                self.ref.child("CourseReviews").child(AllVariables.courseselected).child("5stars").setValue(final)
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
                     
-                self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) {
+                        let value = snapshotB.value as? NSDictionary
+                        let a = value?["5stars"] as? Int
+                        let final = a! + 1
+                        print("FINAL = \(final)")
+                        self.ref.child("CourseReviews").child(AllVariables.courseselected).child("5stars").setValue(final)
+                        
+                        self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
                     }
                     else {
-                let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
                         let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                             print ("ok tappped")
                         }
@@ -304,7 +314,7 @@ class AddCourseReviewViewController: UIViewController {
                             print("ERROR")
                         }
                         print("error rating in")
-                
+                        
                     }
                 })
             }
@@ -313,9 +323,9 @@ class AddCourseReviewViewController: UIViewController {
     }
     
     
-//    @IBAction func anonSlider(_ sender: Any) {
-//
-//    }
+    //    @IBAction func anonSlider(_ sender: Any) {
+    //
+    //    }
     
     
     
