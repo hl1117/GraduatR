@@ -11,6 +11,7 @@ import UIKit
 class CourseReviewCell: UITableViewCell {
 
     @IBOutlet weak var reviewText: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -17,6 +17,7 @@ class AddCourseReviewViewController: UIViewController {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     @IBOutlet weak var courseReview: UITextView!
+   
     
     let ref = Database.database().reference();
     
@@ -310,6 +311,9 @@ class AddCourseReviewViewController: UIViewController {
     }
     
     
+    @IBAction func anonSlider(_ sender: Any) {
+            
+    }
     
     
     
