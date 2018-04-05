@@ -1455,6 +1455,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="anonStatus" destination="VeK-f7-jMG" id="TAS-zN-627"/>
                         <outlet property="courseReview" destination="9cT-R5-nmF" id="soo-J4-tDE"/>
                         <outlet property="star1" destination="nK0-XR-bBJ" id="BNo-xU-hqO"/>
                         <outlet property="star2" destination="NXl-pd-vRU" id="35q-Mb-QET"/>

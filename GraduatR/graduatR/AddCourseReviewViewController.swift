@@ -17,7 +17,7 @@ class AddCourseReviewViewController: UIViewController {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     @IBOutlet weak var courseReview: UITextView!
-   
+    @IBOutlet weak var anonStatus: UISwitch!
     
     let ref = Database.database().reference();
     
@@ -37,6 +37,8 @@ class AddCourseReviewViewController: UIViewController {
     @IBAction func addReviewButton(_ sender: Any)
     {
         self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(courseReview.text)
+        
+        
     }
     
     @IBAction func star1Rate(_ sender: UIButton) {
@@ -311,9 +313,9 @@ class AddCourseReviewViewController: UIViewController {
     }
     
     
-    @IBAction func anonSlider(_ sender: Any) {
-            
-    }
+//    @IBAction func anonSlider(_ sender: Any) {
+//
+//    }
     
     
     
