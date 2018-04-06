@@ -131,4 +131,10 @@ class AddCourseViewController: UIViewController {
     
     }
     
+    
+    @IBAction func usersTakingCourse(_ sender: Any) {
+        AllVariables.courseselected = n
+        AllVariables.courseselected = AllVariables.courseselected.replacingOccurrences(of: "\t", with: "")
+    }
+    
 }

@@ -1127,16 +1127,16 @@
             </objects>
             <point key="canvasLocation" x="7924" y="-917.09145427286364"/>
         </scene>
-        <!--View Controller-->
+        <!--Users Taking Course Controller-->
         <scene sceneID="wdg-vz-U57">
             <objects>
-                <viewController id="EP3-80-Q7F" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MRn-Ui-SIv">
+                <viewController id="EP3-80-Q7F" customClass="UsersTakingCourseController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MRn-Ui-SIv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="117" id="TJk-9I-pBC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="UserTakingClassCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserTakingClassCell" rowHeight="117" id="TJk-9I-pBC" customClass="UserTakingClassCell" customModule="graduatR" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TJk-9I-pBC" id="WbH-AI-E9c">
@@ -1183,10 +1183,19 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.80300206220000003" green="0.72412015819999997" blue="0.23498338769999999" alpha="0.45912191899999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="name" destination="csa-YJ-qkE" id="ERM-dh-UcV"/>
+                                    <outlet property="propic" destination="Kri-Gh-Dqc" id="2nl-fQ-h3D"/>
+                                    <outlet property="username" destination="ZSK-lv-uKt" id="g0n-FE-ize"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="0Hn-eO-p4T"/>
+                    <connections>
+                        <outlet property="navBar" destination="0Hn-eO-p4T" id="sjq-ik-024"/>
+                        <outlet property="tableView" destination="MRn-Ui-SIv" id="brk-nq-Axc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybc-UO-9L0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1236,7 +1245,7 @@
                                 <state key="normal" title="Reviews"/>
                                 <connections>
                                     <action selector="reviewbutton:" destination="haR-9I-cfJ" eventType="touchUpInside" id="pKM-IN-wLR"/>
-                                    <segue destination="TxN-Ey-fhX" kind="push" id="vlz-MD-yz7"/>
+                                    <segue destination="TxN-Ey-fhX" kind="push" identifier="reeeeviews" id="vlz-MD-yz7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you currently taking this course?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOq-wo-KF8">
@@ -1253,7 +1262,8 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                 <state key="normal" title="USERS TAKING THIS COURSE"/>
                                 <connections>
-                                    <segue destination="EP3-80-Q7F" kind="push" id="siT-Mt-Vu4"/>
+                                    <action selector="usersTakingCourse:" destination="haR-9I-cfJ" eventType="touchUpInside" id="OMw-sC-ABT"/>
+                                    <segue destination="EP3-80-Q7F" kind="push" identifier="UserTakingClass" id="siT-Mt-Vu4"/>
                                 </connections>
                             </button>
                         </subviews>

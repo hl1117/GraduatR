@@ -40,6 +40,7 @@
 		D433A6A32051C0130008E559 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433A6A22051C0130008E559 /* MarketViewController.swift */; };
 		D433A6A52051C4B70008E559 /* BookInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433A6A42051C4B70008E559 /* BookInfoViewController.swift */; };
 		D439E2972076EF6A0033CF69 /* UserTakingClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439E2962076EF6A0033CF69 /* UserTakingClassCell.swift */; };
+		D439E29B2076F1790033CF69 /* UsersTakingCourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D439E29A2076F1790033CF69 /* UsersTakingCourseController.swift */; };
 		D45D5A722051CC4B008B9469 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45D5A712051CC4B008B9469 /* SubjectViewController.swift */; };
 		D4651ADF2051EA1500AA4B6D /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4651ADE2051EA1500AA4B6D /* BookCell.swift */; };
 		D4651AE12051EA5100AA4B6D /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4651AE02051EA5100AA4B6D /* SubjectCell.swift */; };
@@ -126,7 +127,8 @@
 		D4310704203BB7AF00750372 /* CourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
 		D433A6A22051C0130008E559 /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		D433A6A42051C4B70008E559 /* BookInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoViewController.swift; sourceTree = "<group>"; };
-		D439E2962076EF6A0033CF69 /* UserTakingClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTakingClassCell.swift; path = graduatR/Controllers/UserTakingClassCell.swift; sourceTree = SOURCE_ROOT; };
+		D439E2962076EF6A0033CF69 /* UserTakingClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserTakingClassCell.swift; path = graduatR/UserTakingClassCell.swift; sourceTree = SOURCE_ROOT; };
+		D439E29A2076F1790033CF69 /* UsersTakingCourseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTakingCourseController.swift; sourceTree = "<group>"; };
 		D45D5A712051CC4B008B9469 /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
 		D4651ADE2051EA1500AA4B6D /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		D4651AE02051EA5100AA4B6D /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				2074E288202BDED10020C63A /* graduatR.xcdatamodeld */,
 				666FD5C02061BDCB00A91737 /* EventsCell.swift */,
 				66808173206454EB006DA586 /* CourseReviewCell.swift */,
+				D439E2962076EF6A0033CF69 /* UserTakingClassCell.swift */,
 				D4651ADE2051EA1500AA4B6D /* BookCell.swift */,
 				20A3CDE32064940A00E7B920 /* ProfessorReviewCell.swift */,
 				D4B2D3A920635471000B8836 /* SubCell.swift */,
@@ -290,7 +293,7 @@
 				D4310704203BB7AF00750372 /* CourseTableViewController.swift */,
 				203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */,
 				D4D094F32066F94F0087F99F /* StudentParentAddViewController.swift */,
-				D439E2962076EF6A0033CF69 /* UserTakingClassCell.swift */,
+				D439E29A2076F1790033CF69 /* UsersTakingCourseController.swift */,
 			);
 			path = Student;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */,
 				D48AE2F32064A5AA00E4B7F8 /* TutListCell.swift in Sources */,
 				D48AE2ED2064A56600E4B7F8 /* SubjectTutorListViewController.swift in Sources */,
+				D439E29B2076F1790033CF69 /* UsersTakingCourseController.swift in Sources */,
 				D48AE2F52064A92C00E4B7F8 /* TutSubCell.swift in Sources */,
 				5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */,
 				D4310705203BB7AF00750372 /* CourseTableViewController.swift in Sources */,
