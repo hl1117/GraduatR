@@ -141,11 +141,15 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
             
             let nam = filteredArrayName[indexPath.row]
             cell.name!.text = nam
+//            let unam = filteredArrayName[indexPath.row]
+//            cell.name!.text = nam
         
         }
         else {
             let nam = names[indexPath.row]
             cell.name!.text = nam
+            let unam = uName[indexPath.row]
+            cell.username!.text = unam
             
         }
         return cell

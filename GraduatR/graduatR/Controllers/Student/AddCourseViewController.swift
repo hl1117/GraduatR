@@ -69,7 +69,7 @@ class AddCourseViewController: UIViewController {
             
             print ("........")
             let newCourse = n.replacingOccurrences(of: "\t", with: "")
-            ref.child("Courses").child(newCourse).child(user).setValue(["UID": AllVariables.uid, "Fname": name, "Lname": lastName])
+            ref.child("Courses").child(newCourse).child(user).setValue(["UID": AllVariables.uid, "Fname": name, "Lname": lastName, "ProfPic": AllVariables.profpic])
             
             //ref.child("Courses").setValue("okay")
             
