@@ -45,8 +45,9 @@ class AddCourseReviewViewController: UIViewController {
 
             print("REVIEW : \(courseReview.text)")
         }
-//        else if (!anonStatus.isOn) {
-//            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": courseReview.text!])
+      else if (!anonStatus.isOn) {
+            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": courseReview.text!])
+        }
 //
 //            
 //        }
