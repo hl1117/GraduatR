@@ -44,13 +44,13 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 let snap = rest.value as! NSDictionary
                 if (snap["Anonymity"] as! String! == "yes") {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.reviews.append("Anonymous: \(review)")
                     }
                 }
                 else {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
                         self.reviews.append("\(rest.key as! NSString): \(review)")
                     }
                 }
@@ -86,13 +86,13 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 let snap = rest.value as! NSDictionary
                 if (snap["Anonymity"] as! String! == "yes") {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.reviews.append("Anonymous: \(review)")
                     }
                 }
                 else {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
                         self.reviews.append("\(rest.key as! NSString): \(review)")
                     }
                 }
@@ -103,6 +103,8 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        
     }
     
     

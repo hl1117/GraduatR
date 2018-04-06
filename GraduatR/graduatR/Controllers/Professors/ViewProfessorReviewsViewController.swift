@@ -37,31 +37,9 @@ class ViewProfessorReviewsViewController: UIViewController, UITableViewDataSourc
 //        refresh.addTarget(self, action: #selector(ViewProfessorReviewsViewController.didPullToRefresh(_:)), for: .valueChanged)
 //
         tableView.insertSubview(refresh, at: 0)
-        
-        
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        //fetch from database
-//        print("hgjkhgjkhgjkhghhj")
-//        databaseRef.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
-//
-//            print("before")
-//            for child in snapshotA.children {
-//                print("child")
-//                let snap = child as! DataSnapshot
-//                let key = snap.key
-//                let value = snap.value
-//                print("VALUE IS: \(value)")
-//                self.reviews.append(value! as! String)
-//                print("REVIEWS: \(self.reviews)")
-//                //print("key = \(key)    value = \(value!)")
-//            }
-//            print("After")
-//
-//        })
-        
         //fetch from database
         print("hgjkhgjkhgjkhghhj")
         databaseRef.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
@@ -72,30 +50,27 @@ class ViewProfessorReviewsViewController: UIViewController, UITableViewDataSourc
             while let rest = enumer.nextObject() as? DataSnapshot {
                 
                 let snap = rest.value as! NSDictionary
+                print(self.reviews)
                 if (snap["Anonymity"] as! String! == "yes") {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.reviews.append("Anonymous: \(review)")
                     }
                 }
                 else {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
+                        
                         self.reviews.append("\(rest.key as! NSString): \(review)")
                     }
                 }
             }
             print("After")
         })
-
-        
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
         self.refresh.endRefreshing()
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -108,28 +83,6 @@ class ViewProfessorReviewsViewController: UIViewController, UITableViewDataSourc
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        //fetch from database
-//        print("hgjkhgjkhgjkhghhj")
-//        databaseRef.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
-//
-//            print("before")
-//            for child in snapshotA.children {
-//                print("child")
-//                let snap = child as! DataSnapshot
-//                let key = snap.key
-//                let value = snap.value
-//                print("VALUE IS: \(value)")
-//                if (!(self.reviews.contains(value! as! String))) {
-//                    self.reviews.append(value! as! String)
-//                }
-//                print("REVIEWS: \(self.reviews)")
-//                //print("key = \(key)    value = \(value!)")
-//            }
-//            print("After")
-//
-//        })
-        
         print("hgjkhgjkhgjkhghhj")
         databaseRef.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             
@@ -141,17 +94,20 @@ class ViewProfessorReviewsViewController: UIViewController, UITableViewDataSourc
                 let snap = rest.value as! NSDictionary
                 if (snap["Anonymity"] as! String! == "yes") {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    
+                    if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.reviews.append("Anonymous: \(review)")
                     }
                 }
                 else {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains(review))) {
+                    
+                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
                         self.reviews.append("\(rest.key as! NSString): \(review)")
                     }
                 }
             }
+            print(self.reviews)
             print("After")
         })
         
