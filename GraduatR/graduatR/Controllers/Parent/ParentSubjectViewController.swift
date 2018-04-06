@@ -80,7 +80,7 @@ class ParentSubjectViewController: UIViewController, UICollectionViewDataSource,
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(ParentSubjectViewController.didPullToRefresh(_:)), for: .valueChanged)
         
-        collectionView.insertSubview(refresh, at: 0)
+        collectionView.refreshControl = refresh
         
         collectionView.reloadData()
         collectionView.delegate = self

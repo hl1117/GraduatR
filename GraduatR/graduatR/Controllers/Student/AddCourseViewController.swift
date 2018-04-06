@@ -67,6 +67,12 @@ class AddCourseViewController: UIViewController {
             
             print (AllVariables.courses)
             
+            print ("........")
+            let newCourse = n.replacingOccurrences(of: "\t", with: "")
+            ref.child("Courses").child(newCourse).child(user).setValue(["UID": AllVariables.uid, "Fname": name, "Lname": lastName])
+            
+            //ref.child("Courses").setValue("okay")
+            
             let alert = UIAlertController(title: "YAY!", message: "Course added to your profile!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 print ("ok tappped")

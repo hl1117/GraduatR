@@ -32,6 +32,7 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
                 let vals = rest.key as? String!
                 self.subjects.append(vals!)
             }
+            self.refresh.endRefreshing()
             
         })
         print(self.subjects)
@@ -48,7 +49,7 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(SubjectTutorListViewController.didPullToRefresh(_:)), for: .valueChanged)
         
-        collectionView.insertSubview(refresh, at: 0)
+        collectionView.refreshControl = refresh
         
         collectionView.reloadData()
         collectionView.delegate = self
