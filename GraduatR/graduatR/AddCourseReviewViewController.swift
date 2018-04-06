@@ -36,15 +36,20 @@ class AddCourseReviewViewController: UIViewController {
     
     @IBAction func addReviewButton(_ sender: Any)
     {
-        self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(courseReview.text)
         
         if (anonStatus.isOn){
-            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).child("Anonymity").setValue("yes")
-        }
-        else {
-            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).child("Anonymity").setValue("no")
             
+            print("REVIEW : \(courseReview.text)")
+            print("JHEREE")
+            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "yes", "reviews": courseReview.text!])
+
+            print("REVIEW : \(courseReview.text)")
         }
+//        else if (!anonStatus.isOn) {
+//            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": courseReview.text!])
+//
+//            
+//        }
         
         
         

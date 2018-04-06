@@ -37,15 +37,23 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             
             print("before")
-            for child in snapshotA.children {
-                print("child")
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                let value = snap.value
-                print("VALUE IS: \(value)")
-                self.reviews.append(value! as! String)
-                print("REVIEWS: \(self.reviews)")
-                print("key = \(key)    value = \(value!)")
+                //CourseReview-Course-Comments-snap
+                let enumer = snapshotA.children
+                while let rest = enumer.nextObject() as? DataSnapshot {
+                    
+                let snap = rest.value as! NSDictionary
+                if (snap["Anonymity"] as! String! == "yes") {
+                    let review = snap["reviews"] as! String
+                    if (!(self.reviews.contains(review))) {
+                        self.reviews.append("Anonymous: \(review)")
+                    }
+                }
+                else {
+                    let review = snap["reviews"] as! String
+                    if (!(self.reviews.contains(review))) {
+                        self.reviews.append("\(rest.key as! NSString): \(review)")
+                    }
+                }
             }
             print("After")
         })
@@ -71,20 +79,25 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             
             print("before")
-            for child in snapshotA.children {
-                print("child")
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                let value = snap.value
-                print("VALUE IS: \(value)")
-                if (!(self.reviews.contains(value! as! String))) {
-                    self.reviews.append(value! as! String)
+            //CourseReview-Course-Comments-snap
+            let enumer = snapshotA.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                
+                let snap = rest.value as! NSDictionary
+                if (snap["Anonymity"] as! String! == "yes") {
+                    let review = snap["reviews"] as! String
+                    if (!(self.reviews.contains(review))) {
+                        self.reviews.append("Anonymous: \(review)")
+                    }
                 }
-                print("REVIEWS: \(self.reviews)")
-                //print("key = \(key)    value = \(value!)")
+                else {
+                    let review = snap["reviews"] as! String
+                    if (!(self.reviews.contains(review))) {
+                        self.reviews.append("\(rest.key as! NSString): \(review)")
+                    }
+                }
             }
-            print("After")
-            
+        print("After")
         })
         
         self.tableView.reloadData()
