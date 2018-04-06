@@ -20,6 +20,7 @@ class AddProfessorReviewViewController: UIViewController {
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     @IBOutlet weak var reviewText: UITextView!
+    @IBOutlet weak var anonStatus: UISwitch!
     
     var ref = Database.database().reference()
     var storageRef = Storage.storage().reference()
@@ -57,7 +58,20 @@ class AddProfessorReviewViewController: UIViewController {
 //                    if (courseTitle.text != "") {
 //                        if (priceField.text != "") {
 //                            AllVariables.books.append(titleField.text!)
-        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").child(AllVariables.Username).setValue(reviewText.text)
+//        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").child(AllVariables.Username).setValue(reviewText.text)
+        
+        if (anonStatus.isOn){
+            
+          //  print("REVIEW : \(reviewText.text)")
+          //  print("JHEREE")
+            self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "yes", "reviews": reviewText.text!])
+            
+           // print("REVIEW : \(courseReview.text)")
+        }
+        else if (!anonStatus.isOn) {
+            self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": reviewText.text!])
+        }
+
         
     }
     

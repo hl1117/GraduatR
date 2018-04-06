@@ -2511,12 +2511,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="remain anonymous" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZJ-rB-3qE">
+                                <rect key="frame" x="93" y="549" width="145" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chF-4A-oq0">
+                                <rect key="frame" x="258" y="544" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wqF-X1-IPi"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Review" id="aIr-bg-vYe"/>
                     <connections>
+                        <outlet property="anonStatus" destination="chF-4A-oq0" id="Zif-bZ-gLi"/>
                         <outlet property="reviewText" destination="0QJ-RE-EsV" id="cdl-Vh-1PM"/>
                         <outlet property="star1" destination="EwX-Hk-ep1" id="HlC-9m-pXh"/>
                         <outlet property="star2" destination="j1K-1u-dgh" id="iwh-96-Qnz"/>
