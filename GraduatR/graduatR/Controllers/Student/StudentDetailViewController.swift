@@ -17,6 +17,7 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
     var user = AllVariables.Username
     var ref: DatabaseReference!
     
+    @IBOutlet weak var gpaAnonInfo: UISwitch!
     @IBOutlet weak var tutorStatus: UISwitch!
     @IBOutlet weak var GPA: UITextField!
     @IBOutlet weak var classController: UIPickerView!
@@ -66,11 +67,16 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         print (number1)
         //if ((GPA.text!.isNumeric == true)) {
             //&& ((number1) >= 0.0) && ((number1) <= 4.0)){
-        ref.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": user, "Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass])
+        
     
             if (tutorStatus.isOn){
             
-                ref.child("Users").child("Tutor").child(AllVariables.uid).setValue(["Username":user, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname])
+               if (gpaAnonInfo.isOn)
+               {
+                ref.child("Users").child("Tutor").child(AllVariables.uid).setValue(["Username":user, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA Anonymity": "yes"])
+               } else {
+                ref.child("Users").child("Tutor").child(AllVariables.uid).setValue(["Username":user, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA Anonymity": "no"])
+                }
 //            self.performSegue(withIdentifier: "tutDetail", sender: self)
                 
             print("Person is also a tutor")
@@ -97,6 +103,13 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         AllVariables.GPA = GPA.text!
         AllVariables.standing = myclass
+        
+        if (gpaAnonInfo.isOn)
+        {
+            ref.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": user, "Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass, "GPA Anonymity": "yes"])
+        } else {
+            ref.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": user, "Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass, "GPA Anonymity": "no"])
+        }
     
         //}
 //            else {
