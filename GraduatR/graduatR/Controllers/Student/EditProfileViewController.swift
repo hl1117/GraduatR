@@ -21,6 +21,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var bioText: UITextView!
+    @IBOutlet weak var gpaTextField: UITextField!
+    @IBOutlet weak var gpaAnon: UISwitch!
     
     @IBOutlet weak var wantparent: UILabel!
     
