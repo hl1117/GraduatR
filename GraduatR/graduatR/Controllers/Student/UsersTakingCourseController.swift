@@ -15,7 +15,8 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
     
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var tableView: UITableView!
-    
+    var profpicmap = [String : String]()
+    var unamemap = [String : String]()
     
     let searchBar = UISearchBar()
     var names = [String]()
@@ -41,11 +42,13 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
                 let vals = rest.value as? NSDictionary
                 let fn = (vals?["Fname"] as? String)!
                 let ln = (vals?["Lname"] as? String)!
-                
+                let prof = (vals?["ProfPic"] as? String ?? "")!
                 if (!(self.uName.contains(rest.key))) {
                     self.names.append("\(fn) \(ln)")
                     let u = rest.key
                     self.uName.append(u)
+                    self.unamemap["\(fn) \(ln)"] = u
+                    self.profpicmap["\(fn) \(ln)"] = prof
                 }
             }
         })
@@ -80,9 +83,15 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
         searchBar.delegate = self
         
         self.navigationItem.titleView = searchBar
-        
-        
     }
+    func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
+    {
+        imageView.layer.cornerRadius = 10.0
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.masksToBounds = true
+        imageView.image = imageToSet
+    }
+
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mySearch = searchBar.text!
@@ -141,16 +150,21 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
             
             let nam = filteredArrayName[indexPath.row]
             cell.name!.text = nam
-//            let unam = filteredArrayName[indexPath.row]
-//            cell.name!.text = nam
-        
+            let unam = unamemap[nam]
+            cell.username!.text = unam
+            let data = NSData(contentsOf: NSURL(string: profpicmap[nam]!)! as URL)
+            
+            setProfilePicture(imageView: cell.propic, imageToSet: UIImage(data: data! as Data)!)
         }
         else {
             let nam = names[indexPath.row]
             cell.name!.text = nam
-            let unam = uName[indexPath.row]
+            let unam = unamemap[nam]
             cell.username!.text = unam
-            
+            if (profpicmap[nam] != "") {
+                let data = NSData(contentsOf: NSURL(string: profpicmap[nam]!)! as URL)
+                setProfilePicture(imageView: cell.propic, imageToSet: UIImage(data: data! as Data)!)
+            }
         }
         return cell
     }
