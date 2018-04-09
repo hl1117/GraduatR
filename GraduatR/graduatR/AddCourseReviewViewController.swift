@@ -19,6 +19,8 @@ class AddCourseReviewViewController: UIViewController {
     @IBOutlet weak var courseReview: UITextView!
     @IBOutlet weak var anonStatus: UISwitch!
     
+    @IBOutlet weak var examControl: UISegmentedControl!
+    
     let ref = Database.database().reference();
     
     override func viewDidLoad() {
@@ -48,11 +50,51 @@ class AddCourseReviewViewController: UIViewController {
       else if (!anonStatus.isOn) {
             self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": courseReview.text!])
         }
-//
-//            
-//        }
+
         
-        
+        let examDifficulty = [1, 2, 3, 4, 5]
+        let difficultyReview = examDifficulty[examControl.selectedSegmentIndex]
+       
+       if(difficultyReview == 1)
+       {
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(1)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+       }
+        if(difficultyReview == 2)
+        {
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(1)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+        }
+        if(difficultyReview == 3)
+        {
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(1)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+        }
+        if(difficultyReview == 4)
+        {
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(1)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+        }
+        if(difficultyReview == 5)
+        {
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(1)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+        }
         
         
     }

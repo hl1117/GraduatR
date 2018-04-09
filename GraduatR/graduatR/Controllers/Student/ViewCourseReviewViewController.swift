@@ -16,7 +16,8 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
-   // @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var examDiffLabel: UILabel!
+    // @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var average: UILabel!
@@ -62,6 +63,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        getExamDifficulty()
       //  self.refresh.endRefreshing()
 
     }
@@ -99,6 +101,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             }
         print("After")
         })
+        getExamDifficulty()
         
         self.tableView.reloadData()
         self.tableView.delegate = self
@@ -142,13 +145,13 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                             let n5 = valu?["5stars"] as? Double
                             
                             let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
-                            print("SUM \(sum)")
+                            //print("SUM \(sum)")
                             self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
-                            print("AVG RATING = \(self.avgrating)")
+                            //print("AVG RATING = \(self.avgrating)")
                             
                             self.average.text = "Average rating: \(self.avgrating)"
                             AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
-                            print("THIS: \(AllVariables.courseratings)")
+                            //print("THIS: \(AllVariables.courseratings)")
                             self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
                         })
                     }
@@ -201,6 +204,31 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         cell.reviewText.text = review
         
         return cell
+    }
+    
+    
+    func getExamDifficulty()
+    {
+        self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let valu = snapshot.value as? NSDictionary
+            print("IMHERE")
+            let n1 = valu?["Diff1"] as? Double
+            let n2 = valu?["Diff2"] as? Double
+            let n3 = valu?["Diff3"] as? Double
+            let n4 = valu?["Diff4"] as? Double
+            let n5 = valu?["Diff5"] as? Double
+            
+            let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
+            print("SUM \(sum)")
+            self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
+            print("AVG RATING = \(self.avgrating)")
+            
+            //self.average.text = "Average rating: \(self.avgrating)"
+            AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
+            print("THIS: \(AllVariables.courseratings)")
+            self.examDiffLabel.text = "\(self.avgrating)"
+           // self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
+        })
     }
     
     
