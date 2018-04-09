@@ -152,9 +152,10 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
             cell.name!.text = nam
             let unam = unamemap[nam]
             cell.username!.text = unam
-            let data = NSData(contentsOf: NSURL(string: profpicmap[nam]!)! as URL)
-            
-            setProfilePicture(imageView: cell.propic, imageToSet: UIImage(data: data! as Data)!)
+            if (profpicmap[nam] != "") {
+                let data = NSData(contentsOf: NSURL(string: profpicmap[nam]!)! as URL)
+                setProfilePicture(imageView: cell.propic, imageToSet: UIImage(data: data! as Data)!)
+            }
         }
         else {
             let nam = names[indexPath.row]
