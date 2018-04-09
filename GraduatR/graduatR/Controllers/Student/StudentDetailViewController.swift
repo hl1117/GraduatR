@@ -74,8 +74,10 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
                if (gpaAnonInfo.isOn)
                {
                 ref.child("Users").child("Tutor").child(AllVariables.uid).setValue(["Username":user, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA Anonymity": "yes"])
+                AllVariables.gpaAnon = "yes"
                } else {
                 ref.child("Users").child("Tutor").child(AllVariables.uid).setValue(["Username":user, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA Anonymity": "no"])
+                AllVariables.gpaAnon = "no"
                 }
 //            self.performSegue(withIdentifier: "tutDetail", sender: self)
                 
@@ -107,8 +109,10 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
         if (gpaAnonInfo.isOn)
         {
             ref.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": user, "Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass, "GPA Anonymity": "yes"])
+            AllVariables.gpaAnon = "yes"
         } else {
             ref.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": user, "Fname": name, "Lname": lastName, "GPA" : GPA.text!, "Class": myclass, "GPA Anonymity": "no"])
+            AllVariables.gpaAnon = "no"
         }
     
         //}

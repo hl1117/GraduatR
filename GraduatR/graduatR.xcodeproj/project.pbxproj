@@ -223,6 +223,7 @@
 				6600650F2051E2A9008886F9 /* AddEventsViewController.swift */,
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
+				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
 				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
@@ -275,7 +276,6 @@
 		D48AE2EB2064A4EF00E4B7F8 /* Professors */ = {
 			isa = PBXGroup;
 			children = (
-				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
 				6680817720645800006DA586 /* AddProfessorReviewViewController.swift */,
 				D49FA7582057140500D87067 /* ProfessorViewController.swift */,
 			);

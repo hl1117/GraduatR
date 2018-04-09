@@ -35,6 +35,13 @@ class ViewProfileViewController: UIViewController
         nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
         self.navigationItem.title = AllVariables.Username
         //updateBioText.text = AllVariables.bio
+        if (AllVariables.gpaAnon == "yes")
+        {
+            gpaLabel.text = " "
+        }
+        else if (AllVariables.gpaAnon == "no"){
+            gpaLabel.text = AllVariables.GPA
+        }
         
         myCourses.text = "No courses added!"
     }
@@ -50,6 +57,14 @@ class ViewProfileViewController: UIViewController
         myCourses.text = ""
         updateBioText.text = AllVariables.bio
         var databaseProfilePic = AllVariables.profpic
+        if (AllVariables.gpaAnon == "yes")
+        {
+            gpaLabel.text = " "
+        }
+        else if (AllVariables.gpaAnon == "no"){
+            gpaLabel.text = AllVariables.GPA
+        }
+        
         let data = NSData(contentsOf: NSURL(string: databaseProfilePic)! as URL)
         if (AllVariables.profpic != "") {
             setProfilePicture(imageView: self.pictureonprofilepage,imageToSet:UIImage(data: data! as Data)!)
