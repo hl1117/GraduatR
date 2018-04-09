@@ -22,6 +22,7 @@ struct AllVariables {
     static var profselected: String = ""
     static var courseratings = [Double]()
     static var profratings = [Double]()
+    static var gpaAnon: String = ""
     
     //dont forget to associate cources with UID
 }
