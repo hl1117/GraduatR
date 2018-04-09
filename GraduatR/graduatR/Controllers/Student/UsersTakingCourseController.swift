@@ -177,7 +177,6 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)!
 
-        print ("...goes here.... .")
         if (showSearchResults){
 
             let name = filteredArrayName[indexPath.row]
