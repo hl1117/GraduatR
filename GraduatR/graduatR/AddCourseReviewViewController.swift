@@ -55,50 +55,172 @@ class AddCourseReviewViewController: UIViewController {
         let examDifficulty = [1, 2, 3, 4, 5]
         let difficultyReview = examDifficulty[examControl.selectedSegmentIndex]
        
-       if(difficultyReview == 1)
-       {
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(1)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
-       }
-        if(difficultyReview == 2)
+        if(difficultyReview == 1)
         {
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(1)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+            reviewOne()
         }
-        if(difficultyReview == 3)
-        {
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(1)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+//        else {
+//            self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+//                let value = snapshotB.value as? NSDictionary
+//                let a = value?["Diff1"] as? Int
+//                let final = a! + 1
+//                print("FINAL = \(final)")
+//                
+//            })
         }
-        if(difficultyReview == 4)
-        {
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(1)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
-        }
-        if(difficultyReview == 5)
-        {
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(1)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
-            ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
-        }
-        
-        
-    }
     
+//        if(difficultyReview == 2)
+//        {
+//            reviewTwo()
+//        }
+//        else {
+//            self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+//                let value = snapshotB.value as? NSDictionary
+//                let a = value?["Diff2"] as? Int
+//                let final = a! + 1
+//                print("FINAL = \(final)")
+//
+//            })
+//        }
+//
+//        if(difficultyReview == 3)
+//        {
+//            reviewThree()
+//
+//        }
+//        else {
+//            self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+//                let value = snapshotB.value as? NSDictionary
+//                let a = value?["Diff3"] as? Int
+//                let final = a! + 1
+//                print("FINAL = \(final)")
+//
+//            })
+//        }
+//
+//        if(difficultyReview == 4)
+//        {
+//            reviewFour()
+//        }
+//        else {
+//            self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+//                let value = snapshotB.value as? NSDictionary
+//                let a = value?["Diff4"] as? Int
+//                let final = a! + 1
+//                print("FINAL = \(final)")
+//
+//            })
+//        }
+//
+//        if(difficultyReview == 5)
+//        {
+//            reviewFive()
+//        }
+//        else {
+//            self.ref.child("Diff5").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+//                let value = snapshotB.value as? NSDictionary
+//                let a = value?["1stars"] as? Int
+//                let final = a! + 1
+//                print("FINAL = \(final)")
+//
+//            })
+//        }
+//
+//
+//    }
+    
+    func reviewOne()
+    {
+        
+        self.ref.child("CourseReviews").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if ((snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(1)
+                
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+                
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+                
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+                
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("CourseReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["Diff1"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    //if (!(snapshotB.hasChild(AllVariables.Username)))
+                    self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(final)
+                        
+                        self.ref.child("CourseReviews").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    //}
+//                    else {
+//                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+//                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                            print ("ok tappped")
+//                        }
+//                        alert.addAction(OKAction)
+//                        self.present(alert, animated: true) {
+//                            print("ERROR")
+//                        }
+//                        print("error rating in")
+//                        
+//                    }
+                    
+                })
+            }
+           
+        })
+    }
+        
+//
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(1)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+    
+    
+//    func reviewTwo()
+//    {
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(1)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+//    }
+//
+//    func reviewThree()
+//    {
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(1)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+//    }
+//
+//    func reviewFour()
+//    {
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(1)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(0)
+//    }
+//
+//    func reviewFive()
+//    {
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff5").setValue(1)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff2").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff3").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff4").setValue(0)
+//        ref.child("CourseReviews").child(AllVariables.courseselected).child("Diff1").setValue(0)
+//    }
+//
     @IBAction func star1Rate(_ sender: UIButton) {
         print("HERE")
         
