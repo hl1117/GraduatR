@@ -31,13 +31,15 @@ class BookInfoViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         if (!AllVariables.books.contains(titleField.text!)) {
             let c = "Book\(AllVariables.books.endIndex)"
+            print(AllVariables.books.endIndex)
+            print(",,,,,,,")
             
         if (titleField.text != "") {
             if (authorField.text != "") {
                 if (courseTitle.text != "") {
                     if (priceField.text != "") {
                         AllVariables.books.append(titleField.text!)
-                        ref.child("Users").child("Sellers").child(c).setValue(["Username": AllVariables.Username, "Title": titleField.text!, "Author": authorField.text!, "Course": courseTitle.text!, "Price": priceField.text!])
+                        ref.child("Sellers").child(c).setValue(["Username": AllVariables.Username, "Title": titleField.text!, "Author": authorField.text!, "Course": courseTitle.text!, "Price": priceField.text!])
                     }
                     else {
                         let alert = UIAlertController(title: "Error", message: "Please provide a title!", preferredStyle: .alert)
@@ -94,7 +96,7 @@ class BookInfoViewController: UIViewController {
                 print("ERROR")
         }
     }
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         
     
 }

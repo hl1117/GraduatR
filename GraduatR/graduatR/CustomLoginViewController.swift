@@ -46,7 +46,7 @@ class CustomLoginViewController: UIViewController
                         databaseRef.child("Users").child("Student").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
                             if snapshotA.hasChild(AllVariables.uid) {
                                 databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
-                                    print("HERE")
+                                    print("HERE - student")
                                     let value = snapshotB.value as? NSDictionary
                                         AllVariables.Username = value?["Username"] as? String ?? ""
                                         AllVariables.Fname = value?["Fname"] as? String ?? ""
@@ -55,24 +55,27 @@ class CustomLoginViewController: UIViewController
                                         AllVariables.GPA = value?["GPA"] as? String ?? ""
                                         AllVariables.profpic = value?["profile_pic"] as? String ?? ""
                                         AllVariables.standing = value?["Class"] as? String ?? ""
-                                    
                                     databaseRef.child("Users").child("Student").child(AllVariables.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
                                         let counter = 0;
                                         let enumer = snapshotCourse.children
                                         while let rest = enumer.nextObject() as? DataSnapshot {
                                             AllVariables.courses.append(rest.value as! String)
                                         }
-                                    })
+                                        })
+                                    
+                                    
                                         
                                     })
                                 self.userUid = user.uid
-                                self.performSegue(withIdentifier: "signingIn", sender: self)
+                                self.performSegue(withIdentifier: "signingInStudent", sender: self)
                             }
                             else {
                                 databaseRef.child("Users").child("Parent").observeSingleEvent(of: DataEventType.value, with: { snapshotC in
                                     if snapshotC.hasChild(AllVariables.uid) {
                                         databaseRef.child("Users").child("Parent").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotD) in
-                                            print("HERE")
+                                            
+                                                
+                                            print("HERE - parent")
                                             let value = snapshotD.value as? NSDictionary
                                             AllVariables.Username = value?["Username"] as? String ?? ""
                                             AllVariables.Fname = value?["Fname"] as? String ?? ""
@@ -81,28 +84,46 @@ class CustomLoginViewController: UIViewController
                                             AllVariables.GPA = value?["GPA"] as? String ?? ""
                                             AllVariables.profpic = value?["profile_pic"] as? String ?? ""
                                             AllVariables.standing = value?["Class"] as? String ?? ""
+                                                
+                                            self.userUid = user.uid
+                                            
+                                            if (snapshotD.hasChild("Studentid")) {
+                                            self.performSegue(withIdentifier: "ParentSigningIn", sender: self)
+                                                
+                                            }
+                                            else {
+                                               self.performSegue(withIdentifier: "presentKeyPls", sender: self)
+                                            }
                                         })
-                                        self.userUid = user.uid
-                                        self.performSegue(withIdentifier: "signingIn", sender: self)
                                     }
                                     else {
                                         databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in
                                             if snapshotE.hasChild(AllVariables.uid) {
+                                                
+                                                print ("\(AllVariables.uid)....././/..")
                                                 databaseRef.child("Users").child("Tutor").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotF) in
-                                                    print("HERE")
+                                                    print("HERE - tutor")
                                                     let value = snapshotF.value as? NSDictionary
                                                     AllVariables.Username = value?["Username"] as? String ?? ""
-                                                    AllVariables.Fname = value?["Fname"] as? String ?? ""
-                                                    AllVariables.Lname = value?["Lname"] as? String ?? ""
+                                                    AllVariables.Fname = (value?["Fname"] as? String)!
+                                                    AllVariables.Lname = (value?["Lname"] as? String)!
                                                     AllVariables.bio = value?["bio"] as? String ?? ""
                                                     AllVariables.GPA = value?["GPA"] as? String ?? ""
                                                     AllVariables.profpic = value?["profile_pic"] as? String ?? ""
                                                     AllVariables.standing = value?["Class"] as? String ?? ""
                                                     
+                                                    databaseRef.child("Users").child("Tutor").child(AllVariables.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
+                                                        let counter = 0;
+                                                        let enumer = snapshotCourse.children
+                                                        while let rest = enumer.nextObject() as? DataSnapshot {
+                                                            AllVariables.courses.append(rest.value as! String)
+                                                        }
+                                                    })
+
                                                     
                                                 })
                                                 self.userUid = user.uid
-                                                self.performSegue(withIdentifier: "signingIn", sender: self)
+                                                self.performSegue(withIdentifier: "signingInTutor", sender: self)
                                             }
                                             else {
                                                 let alert = UIAlertController(title: "Sign in error", message: "error signing in", preferredStyle: .alert)

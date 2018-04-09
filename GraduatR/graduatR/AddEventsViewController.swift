@@ -24,6 +24,7 @@ class AddEventsViewController: UIViewController {
     
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
+    var ref: DatabaseReference!
     
     override func viewDidLoad()
     {
@@ -40,8 +41,8 @@ class AddEventsViewController: UIViewController {
     @IBAction func addEventButton(_ sender: Any)
     {
         
-        self.databaseRef.child("Users").child("Events").child(eventNameTextField.text!).child("Event Name").setValue(eventNameTextField.text)
-        self.databaseRef.child("Users").child("Events").child(eventNameTextField.text!).child("Description").setValue(descriptionTextView.text)
+        self.databaseRef.child("Events").child(eventNameTextField.text!).child("Event Name").setValue(eventNameTextField.text)
+        self.databaseRef.child("Events").child(eventNameTextField.text!).child("Description").setValue(descriptionTextView.text)
         getDatesInfo()
         
         self.performSegue(withIdentifier: "eventSegue", sender: nil)
@@ -53,11 +54,11 @@ class AddEventsViewController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/YYYY  HH:mm"
         
         let strDate = dateFormatter.string(from: startTime.date)
-        self.databaseRef.child("Users").child("Events").child(eventNameTextField.text!).child("Start Date").setValue(strDate)
+        self.databaseRef.child("Events").child(eventNameTextField.text!).child("Start Date").setValue(strDate)
         //print(strDate)
         
         let endDate = dateFormatter.string(from: endTime.date)
-        self.databaseRef.child("Users").child("Events").child(eventNameTextField.text!).child("End Date").setValue(endDate)
+        self.databaseRef.child("Events").child(eventNameTextField.text!).child("End Date").setValue(endDate)
         
     }
     

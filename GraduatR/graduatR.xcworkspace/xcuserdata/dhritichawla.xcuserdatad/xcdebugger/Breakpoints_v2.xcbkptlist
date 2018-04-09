@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/LoginViewController.swift"
-            timestampString = "542243528.430369"
+            timestampString = "543626554.165261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/ViewProfileViewController.swift"
-            timestampString = "542228743.66064"
+            timestampString = "543282388.0817111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "5"
@@ -119,13 +119,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/RoleViewController.swift"
-            timestampString = "542232732.7141941"
+            timestampString = "543463706.354062"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "RoleViewController"
-            landmarkType = "3">
+            startingLineNumber = "138"
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -135,11 +133,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/SubjectViewController.swift"
-            timestampString = "542235630.711338"
+            timestampString = "543279517.148252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -151,13 +149,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "graduatR/Controllers/SubjectViewController.swift"
-            timestampString = "542235630.7118061"
+            timestampString = "543279517.148295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "fetchData()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "graduatR/tutCourseCell.swift"
+            timestampString = "543469138.992678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "TutCourseCell"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "graduatR/Controllers/Tutor/SubjectTutorListViewController.swift"
+            timestampString = "544667323.37275"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "SubjectTutorListViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "graduatR/Controllers/Tutor/TutorListDetailViewController.swift"
+            timestampString = "543615481.110001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in graduatR.TutorListDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "graduatR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dhritichawla/Desktop/CS%20307/GraduatR/GraduatR/graduatR/Controllers/Tutor/TutorListDetailViewController.swift"
+                  timestampString = "543615482.02108"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "2931">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in graduatR.TutorListDetailViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "graduatR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dhritichawla/Desktop/CS%20307/GraduatR/GraduatR/graduatR/Controllers/Tutor/TutorListDetailViewController.swift"
+                  timestampString = "543615482.023623"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "7528">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
