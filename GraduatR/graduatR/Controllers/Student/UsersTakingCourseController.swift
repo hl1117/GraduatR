@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JSQMessagesViewController
 
 class UsersTakingCourseController: UIViewController , UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
@@ -170,35 +171,31 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
         return cell
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        let vc = segue.destination as! TutorListDetailViewController
-//        let cell = sender as! UITableViewCell
-//        let indexPath = tableView.indexPath(for: cell)!
-//
-//
-//        if (showSearchResults){
-//
-//            let name = filteredArrayName[indexPath.row]
-//            vc.n = name
-//            let un = uName[indexPath.row]
-//            vc.u = un
-//
-//        }
-//        else {
-//            let name = names[indexPath.row]
-//            vc.n = name
-//            let un = uName[indexPath.row]
-//            vc.u = un
-//
-//            let s = SubjectAbbr
-//            vc.subs = s
-//
-//
-//        }
-//
-//
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let vc = segue.destination as! SameCourseStudentChatViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+
+        print ("...goes here.... .")
+        if (showSearchResults){
+
+            let name = filteredArrayName[indexPath.row]
+            vc.name = name
+            let un = unamemap[name]
+            vc.username = un!
+
+        }
+        else {
+        
+            let name = names[indexPath.row]
+            vc.name = name
+            let un = unamemap[name]
+            vc.username = un!
+
+        }
+
+
+    }
     
 }
