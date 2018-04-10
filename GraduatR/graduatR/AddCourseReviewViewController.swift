@@ -19,6 +19,8 @@ class AddCourseReviewViewController: UIViewController {
     @IBOutlet weak var courseReview: UITextView!
     @IBOutlet weak var anonStatus: UISwitch!
     
+    @IBOutlet weak var gradeReceivedTextField: UITextField!
+    
     @IBOutlet weak var examControl: UISegmentedControl!
     
     let ref = Database.database().reference();
@@ -52,6 +54,12 @@ class AddCourseReviewViewController: UIViewController {
             if ((courseReview.text! != "")) {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": courseReview.text!])
             }
+        }
+
+        if (gradeReceivedTextField.text! != nil)
+        {
+            let grade = gradeReceivedTextField.text!
+            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("AvgGrade").child(AllVariables.Username).setValue(grade)
         }
 
         
@@ -608,10 +616,7 @@ class AddCourseReviewViewController: UIViewController {
         
     }
     
-    
-    //    @IBAction func anonSlider(_ sender: Any) {
-    //
-    //    }
+
     
     
     

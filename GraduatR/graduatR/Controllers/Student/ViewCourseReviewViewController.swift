@@ -16,6 +16,8 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
+    @IBOutlet weak var avgGradeRecLabel: UILabel!
+    
     @IBOutlet weak var examDiffLabel: UILabel!
     // @IBOutlet weak var userLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
