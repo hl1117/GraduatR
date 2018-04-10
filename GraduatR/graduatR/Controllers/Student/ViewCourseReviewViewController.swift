@@ -217,6 +217,10 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             let n3 = valu?["Diff3"] as? Double
             let n4 = valu?["Diff4"] as? Double
             let n5 = valu?["Diff5"] as? Double
+          if (n1 == nil || n2 == nil || n3 == nil || n4 == nil || n5 == nil)
+          {
+                
+          } else {
 
             let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
             print("SUM \(sum)")
@@ -228,7 +232,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             print("THIS: \(AllVariables.examrating)")
             self.examDiffLabel.text = "\(self.avgrating)"
             self.ref.child("ExamAverageRating").child(AllVariables.courseselected).setValue(self.avgrating)
-           
+            }
         })
     }
     
