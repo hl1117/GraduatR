@@ -20,17 +20,20 @@ class SameCourseStudentChatViewController: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     
     
+    
     var messageRef = Database.database().reference().child("Chats")
     private var newMessageRefHandle: DatabaseHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         self.senderId = AllVariables.Username
         self.senderDisplayName = name
         self.title = name
         
+
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
@@ -131,12 +134,12 @@ class SameCourseStudentChatViewController: JSQMessagesViewController {
     
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor(red:0.89, green:0.87, blue:0.71, alpha:1.0))
     }
     
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
-        return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+        return bubbleImageFactory!.incomingMessagesBubbleImage(with:  UIColor.jsq_messageBubbleLightGray())
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
@@ -153,11 +156,11 @@ class SameCourseStudentChatViewController: JSQMessagesViewController {
         let message = messages[indexPath.item]
         //print("collectionView functioooooooon")
         
-        if message.senderId == senderId {
-            cell.textView?.textColor = UIColor.white
-        } else {
+//        if message.senderId == senderId {
             cell.textView?.textColor = UIColor.black
-        }
+//        } else {
+//            cell.textView?.textColor = UIColor.black
+//        }
         return cell
     }
 }
