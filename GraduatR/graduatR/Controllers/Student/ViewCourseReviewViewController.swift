@@ -223,11 +223,12 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
             print("AVG RATING = \(self.avgrating)")
 
-            //self.average.text = "Average rating: \(self.avgrating)"
-            AllVariables.courseratings = [n1!, n2!, n3!, n4!, n5!]
-            print("THIS: \(AllVariables.courseratings)")
+            
+            AllVariables.examrating = [n1!, n2!, n3!, n4!, n5!]
+            print("THIS: \(AllVariables.examrating)")
             self.examDiffLabel.text = "\(self.avgrating)"
-           // self.setChart(dataPoints: self.stars, values: AllVariables.courseratings)
+            self.ref.child("ExamAverageRating").child(AllVariables.courseselected).setValue(self.avgrating)
+           
         })
     }
     
