@@ -39,7 +39,7 @@ class BookInfoViewController: UIViewController {
                 if (courseTitle.text != "") {
                     if (priceField.text != "") {
                         AllVariables.books.append(titleField.text!)
-                        ref.child("Sellers").child(c).setValue(["Username": AllVariables.Username, "Title": titleField.text!, "Author": authorField.text!, "Course": courseTitle.text!, "Price": priceField.text!])
+                        ref.child("Sellers").child(c).setValue(["UID": AllVariables.uid, "Username": AllVariables.Username, "Title": titleField.text!, "Author": authorField.text!, "Course": courseTitle.text!, "Price": priceField.text!])
                     }
                     else {
                         let alert = UIAlertController(title: "Error", message: "Please provide a title!", preferredStyle: .alert)

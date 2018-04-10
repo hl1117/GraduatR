@@ -23,7 +23,12 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     var filteredArrayName = [String]()
     
     var refresh: UIRefreshControl!
-    
+   
+    var authormaps = [String: String]()
+    var pricemaps = [String: String]()
+    var coursemaps = [String: String]()
+    var usernamemaps = [String: String]()
+    var uidmaps = [String: String]()
     
     var showSearchResults = false
     let databaseRef = Database.database().reference();
@@ -68,13 +73,21 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
                     
                     //Book Details
                     let value = snapshotB.value as? NSDictionary
-            
-                    if (!self.booktitle.contains(value?["Title"] as! String)){
-                        self.booktitle.append(value?["Title"] as? String ?? "")
-                        self.bookauthor.append(value?["Author"] as? String ?? "")
-                        self.bookprice.append(value?["Price"] as? String ?? "")
-                        self.bookcourse.append(value?["Course"] as? String ?? "")
-                        self.sellername.append(value?["User"] as? String ?? "")
+                    var title = value?["Title"] as? String ?? ""
+                    
+                    if (self.booktitle.contains(value?["Title"] as! String)){
+                        var title = value?["Title"] as? String ?? ""
+                        self.booktitle.append(title)
+//                        self.bookprice.append(value?["Price"] as? String ?? "")
+//                        self.bookcourse.append(value?["Course"] as? String ?? "")
+//                        self.sellername.append(value?["Username"] as? String ?? "")
+                        
+                        self.authormaps[title] = value?["Author"] as? String ?? ""
+                        self.pricemaps[title] = value?["Price"] as? String ?? ""
+                        
+                        self.coursemaps[title] = value?["Course"] as? String ?? ""
+                        self.uidmaps[title] = value?["UID"] as? String ?? ""
+                        self.usernamemaps[title] = value?["Username"] as? String ?? ""
                         }
                     })
                 
@@ -147,29 +160,30 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (showSearchResults) {
-//            return filteredArrayName.count
-//        }
-//        else {
+        if (showSearchResults) {
+            return filteredArrayName.count
+        }
+        else {
         print("BKT: \(booktitle)")
         
             return booktitle.count
             
-//        }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookCell
         
-//        if (showSearchResults){
-//
-//            let nam = filteredArrayName[indexPath.row]
-//            cell.title!.text = nam
-//
-//        }
-//        else {
-        
-//            print (booktitle)
+        if (showSearchResults){
+            let nam = filteredArrayName[indexPath.row]
+            cell.title!.text = nam
+            cell.author!.text = authormaps[nam]
+            cell.price!.text = pricemaps[nam]
+            cell.course!.text = coursemaps[nam]
+            
+        }
+        else {
+            print (booktitle)
         
             let ti = booktitle[indexPath.row]
             cell.title!.text = ti
@@ -183,10 +197,46 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
             let co = bookcourse[indexPath.row]
             cell.course!.text = co
         
-//        }
+        }
         return cell
     
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! ClickBookCellViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        
+        if (showSearchResults){
+
+            let name = filteredArrayName[indexPath.row]
+            vc.bookname = name
+            vc.bookauthor = authormaps[name]!
+            vc.bookclass = coursemaps[name]!
+            vc.bookprice = pricemaps[name]!
+            vc.seller = usernamemaps[name]!
+            vc.selleruid = uidmaps[name]!
+            
+        }
+        else {
+        
+            let name = booktitle[indexPath.row]
+            vc.bookname = name
+            let auth = bookauthor[indexPath.row]
+            vc.bookauthor = auth
+            let pri = bookprice[indexPath.row]
+            vc.bookprice = pri
+            let cour = bookcourse[indexPath.row]
+            vc.bookclass = cour
+            let user = sellername[indexPath.row]
+            vc.seller = user
+            vc.selleruid = uidmaps[name]!
+            
+        }
+        
+        
     }
 
 }
