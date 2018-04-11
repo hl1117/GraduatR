@@ -31,31 +31,32 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func bioButtonPressed(_ sender: Any) {
         AllVariables.bio = bioText.text!
-        self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
+       
         
         
         AllVariables.GPA = gpaTextField.text!
-        
-        if (AllVariables.gpaAnon == "yes")
-        {
-            gpaAnon.setOn(true, animated: true)
-        }
-        else if (AllVariables.gpaAnon == "no")
-        {
-            gpaAnon.setOn(false, animated: false)
-
-        }
+//
+//        if (AllVariables.gpaAnon == "yes")
+//        {
+//            gpaAnon.setOn(true, animated: true)
+//        }
+//        else if (AllVariables.gpaAnon == "no")
+//        {
+//            gpaAnon.setOn(false, animated: false)
+//
+//        }
         
         if (gpaAnon.isOn)
         {
             databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "yes"])
             AllVariables.gpaAnon = "yes"
         }
-        else {
+        else if !(gpaAnon.isOn) {
             databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "no"])
             AllVariables.gpaAnon = "no"
         }
-        
+        AllVariables.GPA = gpaTextField.text!
+         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
          navigationController?.popViewController(animated: true)
 
     }
