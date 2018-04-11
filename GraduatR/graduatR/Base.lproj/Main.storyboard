@@ -1955,7 +1955,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CS 250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gj-ZU-Kyd">
-                                            <rect key="frame" x="254" y="70" width="57" height="21"/>
+                                            <rect key="frame" x="234" y="70" width="107" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -2541,7 +2541,6 @@
                                 <state key="normal" title="Add Event"/>
                                 <connections>
                                     <action selector="addEventButton:" destination="bqp-hY-FzD" eventType="touchUpInside" id="bPA-8B-KFt"/>
-                                    <segue destination="GDR-EQ-xMA" kind="presentation" identifier="eventSegue" id="eN3-Ae-S7i"/>
                                 </connections>
                             </button>
                         </subviews>
