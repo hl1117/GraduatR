@@ -63,6 +63,8 @@ class AddCourseReviewViewController: UIViewController {
             if (grade == "A+" || grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" || grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "D-" || grade == "F")
             {
                 self.ref.child("ExamAvgGrade").child(AllVariables.courseselected).child(AllVariables.Username).setValue(grade)
+                
+                navigationController?.popViewController(animated: true)
 
             } else {
                 let alert = UIAlertController(title: "Wrong Format", message: "Please enter a valid grade", preferredStyle: .alert)

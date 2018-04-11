@@ -47,18 +47,7 @@ class AddProfessorReviewViewController: UIViewController {
     }
     
     @IBAction func updateReview(_ sender: Any) {
-        
-//        if (!AllVariables.books.contains(titleField.text!)) {
-//            let c = "Book\(AllVariables.books.endIndex)"
-//            print(AllVariables.books.endIndex)
-//            print(",,,,,,,")
-//
-//            if (titleField.text != "") {
-//                if (authorField.text != "") {
-//                    if (courseTitle.text != "") {
-//                        if (priceField.text != "") {
-//                            AllVariables.books.append(titleField.text!)
-//        self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").child(AllVariables.Username).setValue(reviewText.text)
+   
         
         if (anonStatus.isOn){
             
@@ -71,6 +60,8 @@ class AddProfessorReviewViewController: UIViewController {
         else if (!anonStatus.isOn) {
             self.ref.child("ProfessorReviews").child(AllVariables.profselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": reviewText.text!])
         }
+        
+         navigationController?.popViewController(animated: true)
 
         
     }
