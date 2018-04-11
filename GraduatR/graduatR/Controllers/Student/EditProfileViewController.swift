@@ -97,6 +97,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         let myActionSheet = UIAlertController(title: "Profile Picture", message: "Select", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let viewPicture = UIAlertAction(title: "View Picture", style: UIAlertActionStyle.default) { (action) in
+            
             let imageView = sender as! UIImageView
             let newImageView = UIImageView(image: imageView.image)
             
