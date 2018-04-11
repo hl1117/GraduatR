@@ -1808,10 +1808,10 @@
             </objects>
             <point key="canvasLocation" x="8765.6000000000004" y="-2732.3838080959522"/>
         </scene>
-        <!--View Controller-->
+        <!--Tutor Chat View Controller-->
         <scene sceneID="RF5-b3-gUe">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="a5W-Jb-QoM" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="a5W-Jb-QoM" customClass="TutorChatViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kj3-kg-aHN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
