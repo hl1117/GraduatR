@@ -23,7 +23,6 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     var filteredArrayName = [String]()
     var uid = [String]()
     var refresh: UIRefreshControl!
-   
     var authormaps = [String: String]()
     var pricemaps = [String: String]()
     var coursemaps = [String: String]()
@@ -37,46 +36,24 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         createSearchBar()
         
+        getdata()
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(MarketViewController.didPullToRefresh(_:)), for: .valueChanged)
-        
-        tableView.insertSubview(refresh, at: 0)
-        
-        tableView.reloadData()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        databaseRef.child("Sellers").observeSingleEvent(of: DataEventType.value, with: { (snapshotBooks) in
-        let counter = 0;
-        let enumer = snapshotBooks.children
-        while let rest = enumer.nextObject() as? DataSnapshot {
-            let vals = rest.value as? NSDictionary
-            AllVariables.books.append((vals?["Title"] as? String)!)
-            print((vals?["Title"] as? String)!)
-        }
-        })
-        
+        self.tableView.insertSubview(self.refresh, at: 0)
+
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
+    func getdata() {
         var counter = 0;
         databaseRef.child("Sellers").observeSingleEvent(of: DataEventType.value, with: { snapshotA in
             let enumer = snapshotA.children
             while let rest = enumer.nextObject() as? DataSnapshot {
                 let a = "Book\(counter)"
-                
-                
                 self.databaseRef.child("Sellers").child(a).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
-                    
-                    
                     //Book Details
                     let value = snapshotB.value as? NSDictionary
                     var title = value?["Title"] as? String ?? ""
-                    
                     if (!(self.booktitle.contains(value?["Title"] as! String))){
                         var title = value!["Title"] as? String ?? ""
                         self.booktitle.append(title)
@@ -85,44 +62,30 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
                         self.bookcourse.append(value?["Course"] as? String ?? "")
                         self.sellername.append(value?["Username"] as? String ?? "")
                         self.uid.append(value?["UID"] as? String ?? "")
-                        
-//                        self.authormaps[title] = value?["Author"] as? String ?? ""
-//                        self.pricemaps[title] = value?["Price"] as? String ?? ""
-//
-//                        self.coursemaps[title] = value?["Course"] as? String ?? ""
-//                        self.uidmaps[title] = value?["UID"] as? String ?? ""
-//                        self.usernamemaps[title] = value?["Username"] as? String ?? ""
                     }
                 })
-               
-                
                 counter += 1
-            
-                }
+            }
             self.tableView.reloadData()
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            
-            
-             self.refresh.endRefreshing()
-            
-            
-            })
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        getdata()
+        self.refresh.endRefreshing()
+        
     }
     
     func createSearchBar() {
-        
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Search a book...."
         searchBar.delegate = self
-        
         self.navigationItem.titleView = searchBar
-        
-        
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        
         viewDidAppear(true)
     }
     
@@ -131,7 +94,6 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
          filteredArrayName = booktitle.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
-        
         print("-------..----...------")
         print(filteredArrayName)
         print("-------..----...------")
@@ -153,7 +115,6 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         showSearchResults = true
         searchBar.endEditing(true)
-        
         self.tableView.reloadData()
     }
     
