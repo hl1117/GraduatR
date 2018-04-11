@@ -97,6 +97,7 @@ class BookInfoViewController: UIViewController {
         }
     }
         //self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
         
     
 }
