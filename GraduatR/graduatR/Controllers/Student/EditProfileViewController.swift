@@ -21,9 +21,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var bioText: UITextView!
-    @IBOutlet weak var gpaTextField: UITextField!
+    //@IBOutlet weak var gpaTextField: UITextField!
     @IBOutlet weak var gpaAnon: UISwitch!
     
+    @IBOutlet weak var gpaTextField: UITextView!
     @IBOutlet weak var wantparent: UILabel!
     
     @IBOutlet weak var clickAddParent: UIButton!
@@ -65,6 +66,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
+        bioText.text = AllVariables.bio
+        gpaTextField.text = AllVariables.GPA
           //  wantparent.text = "Want to connect to your Parent?"
             clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: .value) {
@@ -181,6 +184,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidAppear(_ animated: Bool) {
         //AllVariables.bio = bioText.text
         bioText.text = AllVariables.bio
+        gpaTextField.text = AllVariables.GPA
     }
 
 }
