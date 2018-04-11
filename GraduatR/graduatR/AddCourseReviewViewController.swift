@@ -58,8 +58,8 @@ class AddCourseReviewViewController: UIViewController {
 
         if (gradeReceivedTextField.text! != nil)
         {
-            let grade = gradeReceivedTextField.text!
-            self.ref.child("CourseReviews").child(AllVariables.courseselected).child("AvgGrade").child(AllVariables.Username).setValue(grade)
+            let grade = gradeReceivedTextField.text! 
+            self.ref.child("ExamAvgGrade").child(AllVariables.courseselected).child(AllVariables.Username).setValue(grade)
         }
 
         

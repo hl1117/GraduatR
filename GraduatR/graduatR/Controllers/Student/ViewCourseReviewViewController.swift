@@ -16,6 +16,9 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
+    var gradesAvg = ["A+" : 0, "A" : 0, "A-": 0, "B+" : 0, "B" : 0, "B-": 0, "C+" : 0, "C" : 0, "C-": 0, "D+" : 0, "D" : 0, "D-": 0, "F": 0 ]
+    
+    
     @IBOutlet weak var avgGradeRecLabel: UILabel!
     
     @IBOutlet weak var examDiffLabel: UILabel!
@@ -50,6 +53,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                     if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.reviews.append("Anonymous: \(review)")
                     }
+                    
                 }
                 else {
                     let review = snap["reviews"] as! String
@@ -60,6 +64,10 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             }
             print("After")
         })
+        
+        
+        getGrades()
+        
         
         self.tableView.reloadData()
         self.tableView.delegate = self
@@ -104,15 +112,42 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         print("After")
         })
         getExamDifficulty()
+        getGrades()
         
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        
     }
     
     
+    func getGrades()
+    {
+        ref.child("ExamAvgGrade").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            
+            print("before")
+            //CourseReview-Course-Comments-snap
+            let enumer = snapshotA.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                let grade = rest.value as! NSString
+                    if (!(self.reviews.contains("grade: \(grade)"))) {
+                        print("PRINTING THE GRADES!!!!!!")
+                        print("grade: \(grade)")
+                        
+                        var g = self.gradesAvg["\(grade)"]
+                        print("G BEFORE")
+                        print(g)
+                        g = g! + 1
+                        print("G AFTER")
+                        print(g)
+                        
+                        self.gradesAvg["\(grade)"] = g
+                        
+                        //self.reviews.append("Anonymous: \(review)")
+                    }
+            }
+            print("After")
+        })
+    }
     
     func getdata() {
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
