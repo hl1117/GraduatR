@@ -1,8 +1,8 @@
 //
-//  SellerChatViewController.swift
+//  TutorChatViewController.swift
 //  graduatR
 //
-//  Created by Swaraj Bhaduri on 4/10/18.
+//  Created by Dhriti Chawla on 4/11/18.
 //  Copyright © 2018 Simona Virga. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import JSQMessagesViewController
 import Firebase
 
-class SellerChatViewController: JSQMessagesViewController {
+class TutorChatViewController: JSQMessagesViewController {
     
     var name = String()
     var username = String()
@@ -161,4 +161,5 @@ class SellerChatViewController: JSQMessagesViewController {
         //            cell.textView?.textColor = UIColor.black
         //        }
         return cell
-    }}
+    }
+}

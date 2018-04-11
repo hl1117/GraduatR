@@ -63,6 +63,7 @@
 		D48AE2F12064A58900E4B7F8 /* TutorListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2F02064A58900E4B7F8 /* TutorListDetailViewController.swift */; };
 		D48AE2F32064A5AA00E4B7F8 /* TutListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2F22064A5AA00E4B7F8 /* TutListCell.swift */; };
 		D48AE2F52064A92C00E4B7F8 /* TutSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48AE2F42064A92C00E4B7F8 /* TutSubCell.swift */; };
+		D4993A4C207EA9EE0027096A /* TutorChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4993A4B207EA9EE0027096A /* TutorChatViewController.swift */; };
 		D49FA7592057140500D87067 /* ProfessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49FA7582057140500D87067 /* ProfessorViewController.swift */; };
 		D49FA75B2057152700D87067 /* ProfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49FA75A2057152700D87067 /* ProfCell.swift */; };
 		D4AA78BD2064B4390010B345 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AA78BC2064B4390010B345 /* ChartsViewController.swift */; };
@@ -155,6 +156,7 @@
 		D48AE2F02064A58900E4B7F8 /* TutorListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorListDetailViewController.swift; sourceTree = "<group>"; };
 		D48AE2F22064A5AA00E4B7F8 /* TutListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutListCell.swift; sourceTree = "<group>"; };
 		D48AE2F42064A92C00E4B7F8 /* TutSubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutSubCell.swift; sourceTree = "<group>"; };
+		D4993A4B207EA9EE0027096A /* TutorChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorChatViewController.swift; sourceTree = "<group>"; };
 		D49FA7582057140500D87067 /* ProfessorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorViewController.swift; sourceTree = "<group>"; };
 		D49FA75A2057152700D87067 /* ProfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfCell.swift; sourceTree = "<group>"; };
 		D4AA78BC2064B4390010B345 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
@@ -279,7 +281,6 @@
 				D433A6A22051C0130008E559 /* MarketViewController.swift */,
 				5A189D08207D555F007B1C65 /* ClickBookCellViewController.swift */,
 				5A189D0A207D5588007B1C65 /* SelleProfileViewController.swift */,
-				5A189D0C207D5593007B1C65 /* SellerChatViewController.swift */,
 			);
 			path = "Seller stuff";
 			sourceTree = "<group>";
@@ -352,6 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				D4C44B9E207C02FF001B6E0B /* SameCourseStudentChatViewController.swift */,
+				5A189D0C207D5593007B1C65 /* SellerChatViewController.swift */,
+				D4993A4B207EA9EE0027096A /* TutorChatViewController.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -616,6 +619,7 @@
 				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,
 				D4837B342066F11B006817F0 /* ParSubCell.swift in Sources */,
 				D4B2D3A62063535B000B8836 /* TutorSubjectViewController.swift in Sources */,
+				D4993A4C207EA9EE0027096A /* TutorChatViewController.swift in Sources */,
 				D49FA75B2057152700D87067 /* ProfCell.swift in Sources */,
 				D48AE2EA2064864C00E4B7F8 /* TutorEditProfileViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
