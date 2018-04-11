@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1952,7 +1952,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVK-Bp-yXg">
-                                            <rect key="frame" x="71" y="99" width="31" height="21"/>
+                                            <rect key="frame" x="71" y="99" width="143" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1965,8 +1965,9 @@
                                     <outlet property="author" destination="Qwy-Up-B07" id="2ir-fH-WlF"/>
                                     <outlet property="course" destination="5Gj-ZU-Kyd" id="7xp-TE-qyb"/>
                                     <outlet property="price" destination="aVK-Bp-yXg" id="6Fp-JZ-Ad2"/>
+                                    <outlet property="selleruser" destination="pSC-ei-qeN" id="P1y-V6-WeZ"/>
                                     <outlet property="title" destination="xHY-mT-FfS" id="HeA-2Y-4kW"/>
-                                    <segue destination="BvC-3Q-6qv" kind="push" id="zXu-As-JXB"/>
+                                    <segue destination="BvC-3Q-6qv" kind="push" identifier="bookClick" id="zXu-As-JXB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1976,7 +1977,7 @@
                             <barButtonItem id="Hrv-kp-Lgd"/>
                             <barButtonItem systemItem="add" id="she-Ax-y3p">
                                 <connections>
-                                    <segue destination="Frc-n6-ols" kind="push" id="lVi-j9-UAv"/>
+                                    <segue destination="Frc-n6-ols" kind="push" identifier="addBook" id="lVi-j9-UAv"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -2121,7 +2122,7 @@
         <!--Seller Chat View Controller-->
         <scene sceneID="aDN-NX-6gj">
             <objects>
-                <viewController id="fwN-q4-ung" customClass="SellerChatViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="fwN-q4-ung" customClass="SellerChatViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NOy-J0-OEt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

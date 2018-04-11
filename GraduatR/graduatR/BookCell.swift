@@ -14,6 +14,8 @@ class BookCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var course: UILabel!
     @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var selleruser: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

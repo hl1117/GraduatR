@@ -33,8 +33,30 @@ class ClickBookCellViewController: UIViewController {
         self.pName.text = bookname
         self.sellerUser.text = seller
         
+        //according to UID we have to go into the database and get the
+        //name of the seller... (we only have the username not name)
+        self.sellerName.text = seller
+        
+        
     }
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "sellerChat") {
+            
+            let vc = segue.destination as! SellerChatViewController
+            let name = self.seller
+            vc.name = name
+            let user = self.seller
+            vc.username = user
+            
 
+        } else {
+            
+            let vc = segue.destination as! SelleProfileViewController
+//            let name = self.seller
+//            vc.name = name
+            
+        }
+    }
 }

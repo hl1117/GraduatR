@@ -21,7 +21,7 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     var bookcourse = [String]()
     var sellername = [String]()
     var filteredArrayName = [String]()
-    
+    var uid = [String]()
     var refresh: UIRefreshControl!
    
     var authormaps = [String: String]()
@@ -68,6 +68,8 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
             let enumer = snapshotA.children
             while let rest = enumer.nextObject() as? DataSnapshot {
                 let a = "Book\(counter)"
+                
+                
                 self.databaseRef.child("Sellers").child(a).observeSingleEvent(of: DataEventType.value, with: { snapshotB in
                     
                     
@@ -75,21 +77,24 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
                     let value = snapshotB.value as? NSDictionary
                     var title = value?["Title"] as? String ?? ""
                     
-                    if (self.booktitle.contains(value?["Title"] as! String)){
-                        var title = value?["Title"] as? String ?? ""
+                    if (!(self.booktitle.contains(value?["Title"] as! String))){
+                        var title = value!["Title"] as? String ?? ""
                         self.booktitle.append(title)
-//                        self.bookprice.append(value?["Price"] as? String ?? "")
-//                        self.bookcourse.append(value?["Course"] as? String ?? "")
-//                        self.sellername.append(value?["Username"] as? String ?? "")
+                        self.bookauthor.append(value?["Author"] as? String ?? "")
+                        self.bookprice.append(value?["Price"] as? String ?? "")
+                        self.bookcourse.append(value?["Course"] as? String ?? "")
+                        self.sellername.append(value?["Username"] as? String ?? "")
+                        self.uid.append(value?["UID"] as? String ?? "")
                         
-                        self.authormaps[title] = value?["Author"] as? String ?? ""
-                        self.pricemaps[title] = value?["Price"] as? String ?? ""
-                        
-                        self.coursemaps[title] = value?["Course"] as? String ?? ""
-                        self.uidmaps[title] = value?["UID"] as? String ?? ""
-                        self.usernamemaps[title] = value?["Username"] as? String ?? ""
-                        }
-                    })
+//                        self.authormaps[title] = value?["Author"] as? String ?? ""
+//                        self.pricemaps[title] = value?["Price"] as? String ?? ""
+//
+//                        self.coursemaps[title] = value?["Course"] as? String ?? ""
+//                        self.uidmaps[title] = value?["UID"] as? String ?? ""
+//                        self.usernamemaps[title] = value?["Username"] as? String ?? ""
+                    }
+                })
+               
                 
                 counter += 1
             
@@ -160,29 +165,29 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (showSearchResults) {
-            return filteredArrayName.count
-        }
-        else {
-        print("BKT: \(booktitle)")
-        
+//        if (showSearchResults) {
+//            return filteredArrayName.count
+//        }
+//        else {
+//        print("BKT: \(booktitle)")
+//
             return booktitle.count
             
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell", for: indexPath) as! BookCell
         
-        if (showSearchResults){
-            let nam = filteredArrayName[indexPath.row]
-            cell.title!.text = nam
-            cell.author!.text = authormaps[nam]
-            cell.price!.text = pricemaps[nam]
-            cell.course!.text = coursemaps[nam]
-            
-        }
-        else {
+//        if (showSearchResults){
+//            let nam = filteredArrayName[indexPath.row]
+//            cell.title!.text = nam
+//            cell.author!.text = authormaps[nam]
+//            cell.price!.text = pricemaps[nam]
+//            cell.course!.text = coursemaps[nam]
+//
+//        }
+//        else {
             print (booktitle)
         
             let ti = booktitle[indexPath.row]
@@ -197,7 +202,10 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
             let co = bookcourse[indexPath.row]
             cell.course!.text = co
         
-        }
+            let un = sellername[indexPath.row]
+            cell.selleruser!.text = un
+        
+//        }
         return cell
     
 
@@ -205,22 +213,11 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if (segue.identifier == "bookClick") {
+        
         let vc = segue.destination as! ClickBookCellViewController
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)!
-        
-        if (showSearchResults){
-
-            let name = filteredArrayName[indexPath.row]
-            vc.bookname = name
-            vc.bookauthor = authormaps[name]!
-            vc.bookclass = coursemaps[name]!
-            vc.bookprice = pricemaps[name]!
-            vc.seller = usernamemaps[name]!
-            vc.selleruid = uidmaps[name]!
-            
-        }
-        else {
         
             let name = booktitle[indexPath.row]
             vc.bookname = name
@@ -232,10 +229,9 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
             vc.bookclass = cour
             let user = sellername[indexPath.row]
             vc.seller = user
-            vc.selleruid = uidmaps[name]!
-            
-        }
+            vc.selleruid = uid[indexPath.row]
         
+        }
         
     }
 
