@@ -54,8 +54,8 @@ class ClickBookCellViewController: UIViewController {
         } else {
             
             let vc = segue.destination as! SelleProfileViewController
-//            let name = self.seller
-//            vc.name = name
+            let uid = self.selleruid
+            vc.uid = uid
             
         }
     }

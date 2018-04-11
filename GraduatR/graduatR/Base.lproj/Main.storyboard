@@ -2192,6 +2192,7 @@
                         <outlet property="classesTaken" destination="6em-lZ-2im" id="1HP-NM-jSx"/>
                         <outlet property="gpa" destination="wnE-9F-7R2" id="Qjc-Ao-9yw"/>
                         <outlet property="name" destination="Pac-m9-UoE" id="wTm-Yw-fkn"/>
+                        <outlet property="sellprofpic" destination="kLs-ty-C7X" id="2M8-uE-SZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j1e-gB-s2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
