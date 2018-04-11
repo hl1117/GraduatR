@@ -46,14 +46,13 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
             let enumer = snapshotA.children
             while let rest = enumer.nextObject() as? DataSnapshot {
                 let vals = rest.value as? NSDictionary
-                
-                self.eventname.append((vals?["Event Name"] as? String)!)
-                self.eventdescription.append((vals?["Description"] as? String)!)
-                self.startdate.append((vals?["Start Date"] as? String)!)
-                self.enddate.append((vals?["End Date"] as? String)!)
-                
-                print(self.eventname)
-                
+                if (!(self.eventname.contains((vals?["Event Name"] as? String)!))) {
+                    self.eventname.append((vals?["Event Name"] as? String)!)
+                    self.eventdescription.append((vals?["Description"] as? String)!)
+                    self.startdate.append((vals?["Start Date"] as? String)!)
+                    self.enddate.append((vals?["End Date"] as? String)!)
+                    print(self.eventname)
+                }
             }
             self.tableView.reloadData()
             self.tableView.delegate = self

@@ -47,26 +47,21 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
                                 for val in value {
                                     var currSubId = val["SubjectId"] as! String
                                     self.subID.append(currSubId)
-                                        
                                         if let name = val["Abbreviation"] as? String {
-                                            
                                             self.subjects.append(name)
                                             self.hashmap[name] = currSubId
-                                            
-                                          
                                         }
-                                        self.collectionView.reloadData()
-                                    
                                 }
                             }
+                            self.collectionView.reloadData()
+                            self.collectionView.delegate = self
+                            self.collectionView.dataSource = self
                         } catch {
                             print ("Error is : \(error)")
                         }
                     }
                 }
-                
             }; task.resume()
-            
         }
     }
 
@@ -81,11 +76,6 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
         refresh.addTarget(self, action: #selector(SubjectViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         collectionView.refreshControl = refresh
-        
-        collectionView.reloadData()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    
     }
 
     override func didReceiveMemoryWarning() {

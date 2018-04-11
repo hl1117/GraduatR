@@ -43,7 +43,8 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
                 let vals = rest.value as? NSDictionary
                 let fn = (vals?["Fname"] as? String)!
                 let ln = (vals?["Lname"] as? String)!
-                let prof = (vals?["ProfPic"] as? String ?? "")!
+                let prof = (vals?["ProfPic"] as? String)!
+                print("PROFPIC IS \(prof)")
                 if (!(self.uName.contains(rest.key))) {
                     self.names.append("\(fn) \(ln)")
                     let u = rest.key
@@ -52,8 +53,10 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
                     self.profpicmap["\(fn) \(ln)"] = prof
                 }
             }
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
         })
-        self.tableView.reloadData()
         
         print(names)
     }
@@ -63,18 +66,9 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
         super.viewDidLoad()
         createSearchBar()
         fetchData()
-        
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(UsersTakingCourseController.didPullToRefresh(_:)), for: .valueChanged)
-        
         tableView.insertSubview(refresh, at: 0)
-        
-        tableView.reloadData()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
-        
     }
     
     func createSearchBar() {
@@ -82,7 +76,6 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Search a friend...."
         searchBar.delegate = self
-        
         self.navigationItem.titleView = searchBar
     }
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
@@ -93,15 +86,11 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
         imageView.image = imageToSet
     }
 
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mySearch = searchBar.text!
         filteredArrayName = names.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
-        
-        
-        
         if searchBar.text == "" {
             showSearchResults = false
             self.tableView.reloadData()
@@ -154,6 +143,7 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
             let unam = unamemap[nam]
             cell.username!.text = unam
             if (profpicmap[nam] != "") {
+                
                 let data = NSData(contentsOf: NSURL(string: profpicmap[nam]!)! as URL)
                 setProfilePicture(imageView: cell.propic, imageToSet: UIImage(data: data! as Data)!)
             }
