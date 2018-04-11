@@ -55,6 +55,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "no"])
             AllVariables.gpaAnon = "no"
         }
+        
+         navigationController?.popViewController(animated: true)
 
     }
     
