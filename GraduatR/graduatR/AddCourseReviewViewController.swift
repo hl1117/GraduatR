@@ -58,8 +58,22 @@ class AddCourseReviewViewController: UIViewController {
 
         if (gradeReceivedTextField.text! != nil)
         {
-            let grade = gradeReceivedTextField.text! 
-            self.ref.child("ExamAvgGrade").child(AllVariables.courseselected).child(AllVariables.Username).setValue(grade)
+            let grade = gradeReceivedTextField.text!
+            
+            if (grade == "A+" || grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" || grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "D-" || grade == "F")
+            {
+                self.ref.child("ExamAvgGrade").child(AllVariables.courseselected).child(AllVariables.Username).setValue(grade)
+
+            } else {
+                let alert = UIAlertController(title: "Wrong Format", message: "Please enter a valid grade", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print ("ok tappped")
+                }
+                alert.addAction(OKAction)
+                self.present(alert, animated: true) {
+                    print("ERROR WITH GRADE THING")
+                }
+            }
         }
 
         

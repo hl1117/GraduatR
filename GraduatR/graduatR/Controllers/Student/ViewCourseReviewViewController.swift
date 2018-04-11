@@ -16,8 +16,9 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
-    var gradesAvg = ["A+" : 0, "A" : 0, "A-": 0, "B+" : 0, "B" : 0, "B-": 0, "C+" : 0, "C" : 0, "C-": 0, "D+" : 0, "D" : 0, "D-": 0, "F": 0 ]
+    var gradesAvg = ["A+" : 0.0, "A" : 0.0, "A-": 0.0, "B+" : 0.0, "B" : 0.0, "B-": 0.0, "C+" : 0.0, "C" : 0.0, "C-": 0.0, "D+" : 0.0, "D" : 0.0, "D-": 0.0, "F": 0.0 ]
     
+    var viewLoad = false;
     
     @IBOutlet weak var avgGradeRecLabel: UILabel!
     
@@ -31,6 +32,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewLoad = true
         getdata()
         average.text = "Average rating: \(avgrating)"
         
@@ -132,7 +134,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                     if (!(self.reviews.contains("grade: \(grade)"))) {
                         print("PRINTING THE GRADES!!!!!!")
                         print("grade: \(grade)")
-                        
+                        if (self.viewLoad == true) {
                         var g = self.gradesAvg["\(grade)"]
                         print("G BEFORE")
                         print(g)
@@ -140,13 +142,23 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                         print("G AFTER")
                         print(g)
                         
-                        self.gradesAvg["\(grade)"] = g
                         
+                        
+                        self.gradesAvg["\(grade)"] = g
+                        }
                         //self.reviews.append("Anonymous: \(review)")
                     }
             }
             print("After")
         })
+        
+        
+        
+        let gradesSum = (gradesAvg["A+"]! * 4.0) + (gradesAvg["A"]! * 4.0) 
+        avgGradeRecLabel.text = "\(gradesSum)"
+        
+        
+        
     }
     
     func getdata() {
