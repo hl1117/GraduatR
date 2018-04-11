@@ -154,8 +154,51 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         
         
         
-        let gradesSum = (gradesAvg["A+"]! * 4.0) + (gradesAvg["A"]! * 4.0) 
-        avgGradeRecLabel.text = "\(gradesSum)"
+        let gradesSum = (gradesAvg["A+"]! * 4.0) + (gradesAvg["A"]! * 4.0) + (gradesAvg["A-"]! * 3.7) + (gradesAvg["B+"]! * 3.3) + (gradesAvg["B"]! * 3.0) + (gradesAvg["B-"]! * 2.7) + (gradesAvg["C+"]! * 2.3) + (gradesAvg["C"]! * 2.0) + (gradesAvg["C-"]! * 1.7) + (gradesAvg["D+"]! * 1.3) + (gradesAvg["D"]! * 1.0) + (gradesAvg["D-"]! * 0.7) + (gradesAvg["F"]! * 0.0)
+        
+        let avgGrades = (gradesSum)/((gradesAvg["A+"]!) + (gradesAvg["A"]! ) + (gradesAvg["A-"]!) + (gradesAvg["B+"]!) + (gradesAvg["B"]!) + (gradesAvg["B-"]!) + (gradesAvg["C+"]!) + (gradesAvg["C"]!) + (gradesAvg["C-"]!) + (gradesAvg["D+"]!) + (gradesAvg["D"]!) + (gradesAvg["D-"]!) + (gradesAvg["F"]!))
+        
+        if (avgGrades >= 0.0 && avgGrades < 0.7)
+        {
+            avgGradeRecLabel.text = "F"
+        } else if (avgGrades >= 0.7 && avgGrades < 1.0)
+        {
+            avgGradeRecLabel.text = "D-"
+        } else if (avgGrades >= 1.0 && avgGrades < 1.3)
+        {
+            avgGradeRecLabel.text = "D"
+        } else if (avgGrades >= 1.3 && avgGrades < 1.7)
+        {
+            avgGradeRecLabel.text = "D+"
+        } else if (avgGrades >= 1.7 && avgGrades < 2.0)
+        {
+            avgGradeRecLabel.text = "C-"
+        } else if (avgGrades >= 2.0 && avgGrades < 2.3)
+        {
+            avgGradeRecLabel.text = "C"
+        } else if (avgGrades >= 2.3 && avgGrades < 2.7)
+        {
+            avgGradeRecLabel.text = "C+"
+        } else if (avgGrades >= 2.7 && avgGrades < 3.0)
+        {
+            avgGradeRecLabel.text = "B-"
+        } else if (avgGrades >= 3.0 && avgGrades < 3.3)
+        {
+            avgGradeRecLabel.text = "B"
+        } else if (avgGrades >= 3.3 && avgGrades < 3.7)
+        {
+            avgGradeRecLabel.text = "B+"
+        } else if (avgGrades >= 3.7 && avgGrades < 4.0)
+        {
+            avgGradeRecLabel.text = "A-"
+        } else if (avgGrades == 4.0)
+        {
+            avgGradeRecLabel.text = "A+/A"
+        }
+        
+        
+        
+        //avgGradeRecLabel.text = "\(avgGrades)"
         
         
         
