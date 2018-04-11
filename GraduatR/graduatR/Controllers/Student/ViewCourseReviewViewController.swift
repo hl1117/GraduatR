@@ -152,11 +152,18 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             print("After")
         })
         
-        
-        
+//        if (gradesAvg["A+"]! == nil || gradesAvg["A"]! == nil || gradesAvg["A-"]! == nil || gradesAvg["B+"]! == nil || gradesAvg["B"]! == nil || gradesAvg["B-"]! == nil || gradesAvg["C+"]! == nil || gradesAvg["C"]! == nil || gradesAvg["C-"]! == nil || gradesAvg["D+"]! == nil || gradesAvg["D"]! == nil || gradesAvg["D-"]! == nil || gradesAvg["F"] == nil) {
+//            
+//        }
+//        else {
         let gradesSum = (gradesAvg["A+"]! * 4.0) + (gradesAvg["A"]! * 4.0) + (gradesAvg["A-"]! * 3.7) + (gradesAvg["B+"]! * 3.3) + (gradesAvg["B"]! * 3.0) + (gradesAvg["B-"]! * 2.7) + (gradesAvg["C+"]! * 2.3) + (gradesAvg["C"]! * 2.0) + (gradesAvg["C-"]! * 1.7) + (gradesAvg["D+"]! * 1.3) + (gradesAvg["D"]! * 1.0) + (gradesAvg["D-"]! * 0.7) + (gradesAvg["F"]! * 0.0)
         
+        
+        
         let avgGrades = (gradesSum)/((gradesAvg["A+"]!) + (gradesAvg["A"]! ) + (gradesAvg["A-"]!) + (gradesAvg["B+"]!) + (gradesAvg["B"]!) + (gradesAvg["B-"]!) + (gradesAvg["C+"]!) + (gradesAvg["C"]!) + (gradesAvg["C-"]!) + (gradesAvg["D+"]!) + (gradesAvg["D"]!) + (gradesAvg["D-"]!) + (gradesAvg["F"]!))
+        
+        
+          
         
         if (avgGrades >= 0.0 && avgGrades < 0.7)
         {
@@ -195,12 +202,12 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         {
             avgGradeRecLabel.text = "A+/A"
         }
-        
-        
-        
+       
         //avgGradeRecLabel.text = "\(avgGrades)"
         
-        
+//            ref.child("CourseAvgGrade").child(AllVariables.courseselected).setValue(avgGrades)
+//        }
+//
         
     }
     
