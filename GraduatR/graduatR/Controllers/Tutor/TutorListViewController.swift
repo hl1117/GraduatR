@@ -46,8 +46,11 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
                     self.uName.append(u)
                 }
             }
+            
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
         })
-        self.tableView.reloadData()
         
         print(names)
     }
@@ -62,12 +65,6 @@ class TutorListViewController: UIViewController, UITableViewDataSource, UITableV
         refresh.addTarget(self, action: #selector(TutorListViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
-        
-        tableView.reloadData()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
         
     }
     

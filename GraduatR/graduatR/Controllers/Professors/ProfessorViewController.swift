@@ -21,52 +21,26 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     func fetchData () {
-        
-        let url:String = "https://api.purdue.io/odata/Instructors"
-        let urlRequest = URL(string: url)
-        
-        if let URL = urlRequest {
-            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
-                if (error != nil) {
-                    print ("============")
-                    print (error?.localizedDescription)
-                } else {
-                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
-                        //print ("what is DATA????????? ....")
-                        //print (stringData)
-                        do {
-                            if let data = data,
-                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                                let value = json["value"] as? [[String: Any]] {
-                                for val in value {
-                                        let clusterid = val["InstructorClusterId"] as? Int
-//                                    if (clusterid == 8000) {
-//                                        break
-//                                    }
-//
-                                        if let name = val["Name"] as? String {
-                                            
-                                                self.profs.append(name)
-                                                
-                                        }
-                                          self.tableView.reloadData()
-                                    }
-                                }
-                            self.refresh.endRefreshing()
-                            print (self.profs)
-//                            
-                        } catch {
-                            print ("Error is : \(error)")
-                        }
-                    }
-                    
+        do {
+            let file = Bundle.main.url(forResource: "Professors", withExtension: "json")
+            print("DATAAAAAAA")
+            let data = try Data(contentsOf: file!)
+            let json = try JSONSerialization.jsonObject(with: data) as? [String : Any]
+            let value = json!["value"] as? [[String: Any]]
+            for val in value! {
+                let clusterid = val["InstructorClusterId"] as? Int
+                if let name = val["Name"] as? String {
+                    self.profs.append(name)
                 }
-                
-            }; task.resume()
-            
+            }
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        }
+        catch {
+            print("ERROR IS \(error)")
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,10 +55,6 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.insertSubview(refresh, at: 0)
         
         fetchData()
-        
-        tableView.reloadData()
-        tableView.delegate = self
-        tableView.dataSource = self
     }
 
     
@@ -135,6 +105,7 @@ class ProfessorViewController: UIViewController, UITableViewDataSource, UITableV
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchData()
+        self.refresh.endRefreshing()
     }
     
     // MARK: - Table view data source
@@ -226,3 +197,52 @@ extension String {
         return String(self[Range(start ..< end)])
     }
 }
+
+
+
+
+//        let url:String = "https://api.purdue.io/odata/Instructors"
+//        let urlRequest = URL(string: url)
+//
+//        if let URL = urlRequest {
+//            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
+//                if (error != nil) {
+//                    print ("============")
+//                    print (error?.localizedDescription)
+//                } else {
+//                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
+//                        //print ("what is DATA????????? ....")
+//                        //print (stringData)
+//                        do {
+//                            if let data = data,
+//                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+//                                let value = json["value"] as? [[String: Any]] {
+//                                for val in value {
+//                                        let clusterid = val["InstructorClusterId"] as? Int
+////                                    if (clusterid == 8000) {
+////                                        break
+////                                    }
+////
+//                                        if let name = val["Name"] as? String {
+//
+//                                                self.profs.append(name)
+//
+//                                        }
+//                                          self.tableView.reloadData()
+//                                    }
+//                                }
+//                            self.refresh.endRefreshing()
+//                            print (self.profs)
+////
+//                        } catch {
+//                            print ("Error is : \(error)")
+//                        }
+//                    }
+//
+//                }
+//
+//            }; task.resume()
+//
+//        }
+//    }
+

@@ -26,6 +26,9 @@
 		5A189D09207D555F007B1C65 /* ClickBookCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A189D08207D555F007B1C65 /* ClickBookCellViewController.swift */; };
 		5A189D0B207D5588007B1C65 /* SelleProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A189D0A207D5588007B1C65 /* SelleProfileViewController.swift */; };
 		5A189D0D207D5593007B1C65 /* SellerChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A189D0C207D5593007B1C65 /* SellerChatViewController.swift */; };
+		5A46F43F207EE41300D29B87 /* Subjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A46F43C207EE41200D29B87 /* Subjects.json */; };
+		5A46F440207EE41300D29B87 /* Courses.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A46F43D207EE41300D29B87 /* Courses.json */; };
+		5A46F441207EE41300D29B87 /* Professors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A46F43E207EE41300D29B87 /* Professors.json */; };
 		5A5EA08A2066E45800875338 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5EA08B2066E45800875338 /* Charts.framework */; };
 		5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7158F203BDA8400DCF4F8 /* CourseCell.swift */; };
 		5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACED41F203F7B6B0031FEE8 /* AllVariables.swift */; };
@@ -114,6 +117,9 @@
 		5A189D08207D555F007B1C65 /* ClickBookCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickBookCellViewController.swift; sourceTree = "<group>"; };
 		5A189D0A207D5588007B1C65 /* SelleProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelleProfileViewController.swift; sourceTree = "<group>"; };
 		5A189D0C207D5593007B1C65 /* SellerChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerChatViewController.swift; sourceTree = "<group>"; };
+		5A46F43C207EE41200D29B87 /* Subjects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Subjects.json; sourceTree = "<group>"; };
+		5A46F43D207EE41300D29B87 /* Courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Courses.json; sourceTree = "<group>"; };
+		5A46F43E207EE41300D29B87 /* Professors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Professors.json; sourceTree = "<group>"; };
 		5A5EA0892066E40200875338 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A5EA08B2066E45800875338 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A68D7932064CD1C00CEF001 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +235,9 @@
 		2074E280202BDED10020C63A /* graduatR */ = {
 			isa = PBXGroup;
 			children = (
+				5A46F43D207EE41300D29B87 /* Courses.json */,
+				5A46F43E207EE41300D29B87 /* Professors.json */,
+				5A46F43C207EE41200D29B87 /* Subjects.json */,
 				203FDE4E20339E5A00888A23 /* Controllers */,
 				2074E281202BDED10020C63A /* AppDelegate.swift */,
 				202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */,
@@ -462,9 +471,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A46F441207EE41300D29B87 /* Professors.json in Resources */,
+				5A46F440207EE41300D29B87 /* Courses.json in Resources */,
 				2074E28F202BDED10020C63A /* LaunchScreen.storyboard in Resources */,
 				2074E2A5202BDF7F0020C63A /* GoogleService-Info.plist in Resources */,
 				2074E28C202BDED10020C63A /* Assets.xcassets in Resources */,
+				5A46F43F207EE41300D29B87 /* Subjects.json in Resources */,
 				2074E287202BDED10020C63A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

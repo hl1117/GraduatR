@@ -25,48 +25,26 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
     var refresh: UIRefreshControl!
     
     func fetchData () {
-        
-        let url:String = "https://api.purdue.io/odata/Subjects"
-        let urlRequest = URL(string: url)
-        
-        if let URL = urlRequest {
-            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
-                if (error != nil) {
-                    print ("============")
-                    print (error?.localizedDescription)
-                } else {
-                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
-                        
-                        print ("DAAATAAAA....")
-                        do {
-                            if let data = data,
-                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                                let value = json["value"] as? [[String: Any]] {
-                                for val in value {
-                                    var currSubId = val["SubjectId"] as! String
-                                    self.subID.append(currSubId)
-                                    
-                                    if let name = val["Abbreviation"] as? String {
-                                        
-                                        self.subjects.append(name)
-                                        
-                                        
-                                    }
-                                    self.collectionView.reloadData()
-                                    
-                                }
-                            }
-                            
-                            
-                            self.refresh.endRefreshing()
-                        } catch {
-                            print ("Error is : \(error)")
-                        }
-                    }
-                }
+        do {
+            let file = Bundle.main.url(forResource: "Subjects", withExtension: "json")
+            print("DATAAAAAAA")
+            let data = try Data(contentsOf: file!)
+            let json = try JSONSerialization.jsonObject(with: data) as? [String : Any]
+            let value = json!["value"] as? [[String: Any]]
+            for val in value! {
                 
-            }; task.resume()
-            
+                var currSubId = val["SubjectId"] as! String
+                self.subID.append(currSubId)
+                if let name = val["Abbreviation"] as? String {
+                    self.subjects.append(name)
+                }
+            }
+            self.collectionView.reloadData()
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
+        }
+        catch {
+            print("Error is: \(error)")
         }
     }
     
@@ -82,9 +60,6 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
         
         collectionView.refreshControl = refresh
         
-        collectionView.reloadData()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
     }
     
@@ -117,6 +92,7 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchData()
+        self.refresh.endRefreshing()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
