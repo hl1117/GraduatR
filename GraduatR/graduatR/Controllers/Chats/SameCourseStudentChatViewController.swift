@@ -29,9 +29,9 @@ class SameCourseStudentChatViewController: JSQMessagesViewController {
         
 
         // Do any additional setup after loading the view.
+        self.title = name
         self.senderId = AllVariables.Username
         self.senderDisplayName = name
-        self.title = name
         
 
         // No avatars
@@ -154,7 +154,6 @@ class SameCourseStudentChatViewController: JSQMessagesViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
-        //print("collectionView functioooooooon")
         
 //        if message.senderId == senderId {
             cell.textView?.textColor = UIColor.black
@@ -162,5 +161,14 @@ class SameCourseStudentChatViewController: JSQMessagesViewController {
 //            cell.textView?.textColor = UIColor.black
 //        }
         return cell
+    }
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString!
+    {
+        return messages[indexPath.item].senderId == senderId ? nil : NSAttributedString(string: messages[indexPath.item].senderDisplayName)
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
+    {
+        return messages[indexPath.item].senderId == senderId ? 0 : 15
     }
 }
