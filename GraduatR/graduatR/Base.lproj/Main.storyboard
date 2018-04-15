@@ -1665,11 +1665,67 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="RpP-af-JdY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JKj-5N-Eja"/>
+                    <navigationItem key="navigationItem" id="JKj-5N-Eja">
+                        <barButtonItem key="rightBarButtonItem" title="Details" id="AcU-KA-IJI">
+                            <connections>
+                                <segue destination="cEB-md-ozY" kind="popoverPresentation" popoverAnchorBarButtonItem="AcU-KA-IJI" id="blR-U8-jGG">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfk-fq-L7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7961" y="-3708"/>
+        </scene>
+        <!--Pop Over Details View Controller-->
+        <scene sceneID="Ajg-ga-NwK">
+            <objects>
+                <viewController id="cEB-md-ozY" customClass="PopOverDetailsViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rVN-mJ-cZ8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L2u-Qj-xYQ">
+                                <rect key="frame" x="16" y="49" width="342" height="549"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YNV-4H-atE">
+                                <rect key="frame" x="39" y="64" width="297" height="459"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GroupPeopleCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupPeopleCell" rowHeight="90" id="rEW-xz-8Tr" customClass="GroupPeopleCell" customModule="graduatR" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="297" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rEW-xz-8Tr" id="vGU-Bc-vNL">
+                                            <rect key="frame" x="0.0" y="0.0" width="297" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jts-8C-7UN">
+                                <rect key="frame" x="91" y="528" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhR-Rb-evl">
+                                <rect key="frame" x="201" y="527" width="87" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Leave Group"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="VM9-ol-Fc2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8f8-UA-hkA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vjq-8B-6cK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8792.7999999999993" y="-3708.3958020989508"/>
         </scene>
         <!--Subject Tutor List View Controller-->
         <scene sceneID="mMJ-Zr-kut">
