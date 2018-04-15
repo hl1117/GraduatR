@@ -168,39 +168,63 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         if (avgGrades >= 0.0 && avgGrades < 0.7)
         {
             avgGradeRecLabel.text = "F"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("F")
+
         } else if (avgGrades >= 0.7 && avgGrades < 1.0)
         {
             avgGradeRecLabel.text = "D-"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D-")
+
         } else if (avgGrades >= 1.0 && avgGrades < 1.3)
         {
             avgGradeRecLabel.text = "D"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D")
+
         } else if (avgGrades >= 1.3 && avgGrades < 1.7)
         {
             avgGradeRecLabel.text = "D+"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D+")
+
         } else if (avgGrades >= 1.7 && avgGrades < 2.0)
         {
             avgGradeRecLabel.text = "C-"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C-")
+
         } else if (avgGrades >= 2.0 && avgGrades < 2.3)
         {
             avgGradeRecLabel.text = "C"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C")
+
         } else if (avgGrades >= 2.3 && avgGrades < 2.7)
         {
             avgGradeRecLabel.text = "C+"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C+")
+
         } else if (avgGrades >= 2.7 && avgGrades < 3.0)
         {
             avgGradeRecLabel.text = "B-"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B-")
+
         } else if (avgGrades >= 3.0 && avgGrades < 3.3)
         {
             avgGradeRecLabel.text = "B"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B")
+
         } else if (avgGrades >= 3.3 && avgGrades < 3.7)
         {
             avgGradeRecLabel.text = "B+"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B+")
+
         } else if (avgGrades >= 3.7 && avgGrades < 4.0)
         {
             avgGradeRecLabel.text = "A-"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A-")
+
         } else if (avgGrades == 4.0)
         {
             avgGradeRecLabel.text = "A+/A"
+            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A+/A")
+
         }
        
         //avgGradeRecLabel.text = "\(avgGrades)"
