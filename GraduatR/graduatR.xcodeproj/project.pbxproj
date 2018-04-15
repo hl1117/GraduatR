@@ -41,6 +41,9 @@
 		6680817820645800006DA586 /* AddProfessorReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6680817720645800006DA586 /* AddProfessorReviewViewController.swift */; };
 		669311FF2051DCBF00E556C8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669311FE2051DCBF00E556C8 /* CalendarViewController.swift */; };
 		9E58EB9294A052C8133A4529 /* Pods_graduatR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E71389575C149BE431ECFA6 /* Pods_graduatR.framework */; };
+		D41792672083F4E300198498 /* AllChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41792662083F4E300198498 /* AllChatsTableViewController.swift */; };
+		D41792692083F4F900198498 /* MyChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41792682083F4F900198498 /* MyChatViewController.swift */; };
+		D417926B2083F53600198498 /* AllChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D417926A2083F53600198498 /* AllChatCell.swift */; };
 		D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D419AFE12036759100BFA321 /* TutorDetailViewController.swift */; };
 		D419AFE4203675C400BFA321 /* ParentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D419AFE3203675C400BFA321 /* ParentDetailViewController.swift */; };
 		D4310705203BB7AF00750372 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4310704203BB7AF00750372 /* CourseTableViewController.swift */; };
@@ -137,6 +140,9 @@
 		669311FE2051DCBF00E556C8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_graduatRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDE7208289F50597540A631B /* Pods-graduatR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.release.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.release.xcconfig"; sourceTree = "<group>"; };
+		D41792662083F4E300198498 /* AllChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatsTableViewController.swift; sourceTree = "<group>"; };
+		D41792682083F4F900198498 /* MyChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatViewController.swift; sourceTree = "<group>"; };
+		D417926A2083F53600198498 /* AllChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatCell.swift; sourceTree = "<group>"; };
 		D419AFE12036759100BFA321 /* TutorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorDetailViewController.swift; sourceTree = "<group>"; };
 		D419AFE3203675C400BFA321 /* ParentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentDetailViewController.swift; sourceTree = "<group>"; };
 		D4310704203BB7AF00750372 /* CourseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +276,7 @@
 				D48AE2F42064A92C00E4B7F8 /* TutSubCell.swift */,
 				D4837B332066F11B006817F0 /* ParSubCell.swift */,
 				D4837B352066F12F006817F0 /* ParCourseCell.swift */,
+				D417926A2083F53600198498 /* AllChatCell.swift */,
 			);
 			path = graduatR;
 			sourceTree = "<group>";
@@ -364,6 +371,8 @@
 				D4C44B9E207C02FF001B6E0B /* SameCourseStudentChatViewController.swift */,
 				5A189D0C207D5593007B1C65 /* SellerChatViewController.swift */,
 				D4993A4B207EA9EE0027096A /* TutorChatViewController.swift */,
+				D41792662083F4E300198498 /* AllChatsTableViewController.swift */,
+				D41792682083F4F900198498 /* MyChatViewController.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -654,6 +663,7 @@
 				6614FA78203BD3F1006172EC /* ResetPasswordViewController.swift in Sources */,
 				5A189D0D207D5593007B1C65 /* SellerChatViewController.swift in Sources */,
 				D48AE2F12064A58900E4B7F8 /* TutorListDetailViewController.swift in Sources */,
+				D41792672083F4E300198498 /* AllChatsTableViewController.swift in Sources */,
 				D4AA78BF2064B4F50010B345 /* ViewCourseReviewViewController.swift in Sources */,
 				5AB71590203BDA8400DCF4F8 /* CourseCell.swift in Sources */,
 				669311FF2051DCBF00E556C8 /* CalendarViewController.swift in Sources */,
@@ -670,6 +680,7 @@
 				D48AE2F52064A92C00E4B7F8 /* TutSubCell.swift in Sources */,
 				5ACED420203F7B6B0031FEE8 /* AllVariables.swift in Sources */,
 				D4310705203BB7AF00750372 /* CourseTableViewController.swift in Sources */,
+				D417926B2083F53600198498 /* AllChatCell.swift in Sources */,
 				5A189D0B207D5588007B1C65 /* SelleProfileViewController.swift in Sources */,
 				D4AA78BD2064B4390010B345 /* ChartsViewController.swift in Sources */,
 				66197F18203CE35300EF089C /* ViewProfileViewController.swift in Sources */,
@@ -679,6 +690,7 @@
 				D4837B2C2066F04D006817F0 /* ParentSubjectViewController.swift in Sources */,
 				20A3CDE62064947A00E7B920 /* ViewProfessorReviewsViewController.swift in Sources */,
 				5A189D09207D555F007B1C65 /* ClickBookCellViewController.swift in Sources */,
+				D41792692083F4F900198498 /* MyChatViewController.swift in Sources */,
 				D433A6A32051C0130008E559 /* MarketViewController.swift in Sources */,
 				D4837B362066F12F006817F0 /* ParCourseCell.swift in Sources */,
 				203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */,

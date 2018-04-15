@@ -71,6 +71,8 @@ class AddCourseViewController: UIViewController {
             let newCourse = n.replacingOccurrences(of: "\t", with: "")
             ref.child("Courses").child(newCourse).child(user).setValue(["UID": AllVariables.uid, "Fname": name, "Lname": lastName, "ProfPic": AllVariables.profpic])
             
+           
+            
             //ref.child("Courses").setValue("okay")
             
             let alert = UIAlertController(title: "YAY!", message: "Course added to your profile!", preferredStyle: .alert)
@@ -78,9 +80,33 @@ class AddCourseViewController: UIViewController {
                 print ("ok tappped")
             }
             alert.addAction(OKAction)
-            self.present(alert, animated: true) {
-                print("added course")
+//          self.present(alert, animated: true) {
+//                print("added course")
+//            }
+            
+            //WANNA GET ADDDED TO GROUP CHAT
+            let addChatAlert = UIAlertController(title: "WAIT!", message: "Would you like to be added to the group chat of \(newCourse)", preferredStyle: .alert)
+            let YESAction = UIAlertAction(title: "YES", style: .default) { (action) in
+               
+                self.ref.child("Chats").child(AllVariables.Username).child(newCourse).child("GC").setValue("value")
+                
+                self.ref.child("GroupChats").child(newCourse).child("chatUsers").child(AllVariables.Username).setValue(["Fname": self.name, "Lname": self.lastName])
+                self.ref.child("GroupChats").child(newCourse).child("chats").setValue([])
+                
             }
+            
+            let NOAction = UIAlertAction(title: "NO", style: .default) { (action) in
+                print("pressed NO")
+                
+            }
+
+            addChatAlert.addAction(YESAction)
+            addChatAlert.addAction(NOAction)
+            self.present(addChatAlert, animated: true) {
+                print("added to group chat")
+            }
+            
+            
         }
                 else {
             
