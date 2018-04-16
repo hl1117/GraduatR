@@ -1668,7 +1668,7 @@
                     <navigationItem key="navigationItem" id="JKj-5N-Eja">
                         <barButtonItem key="rightBarButtonItem" title="Details" id="AcU-KA-IJI">
                             <connections>
-                                <segue destination="cEB-md-ozY" kind="popoverPresentation" popoverAnchorBarButtonItem="AcU-KA-IJI" id="blR-U8-jGG">
+                                <segue destination="cEB-md-ozY" kind="popoverPresentation" popoverAnchorBarButtonItem="AcU-KA-IJI" id="oZc-Ci-ZdC">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -1711,17 +1711,27 @@
                                 <rect key="frame" x="91" y="528" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="Cancel:" destination="cEB-md-ozY" eventType="touchUpInside" id="Eaw-dT-peN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhR-Rb-evl">
                                 <rect key="frame" x="201" y="527" width="87" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Leave Group"/>
+                                <connections>
+                                    <action selector="Leave:" destination="cEB-md-ozY" eventType="touchUpInside" id="Qqn-rn-j2T"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VM9-ol-Fc2"/>
                     </view>
                     <navigationItem key="navigationItem" id="8f8-UA-hkA"/>
+                    <connections>
+                        <outlet property="Popupview" destination="L2u-Qj-xYQ" id="yGD-ar-58t"/>
+                        <outlet property="popuptable" destination="YNV-4H-atE" id="ewA-8g-nzK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vjq-8B-6cK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
