@@ -13,14 +13,14 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var ProfilePictureImage: UIImageView!
     var loggedInUser: AnyObject?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
     var imagePicker = UIImagePickerController()
     
-   
+    
     @IBOutlet weak var bioText: UITextView!
     //@IBOutlet weak var gpaTextField: UITextField!
     @IBOutlet weak var gpaAnon: UISwitch!
@@ -34,7 +34,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func bioButtonPressed(_ sender: Any) {
         AllVariables.bio = bioText.text!
         AllVariables.GPA = gpaTextField.text!
-
+        
         if (gpaAnon.isOn)
         {
             databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "yes"])
@@ -45,9 +45,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             AllVariables.gpaAnon = "no"
         }
         AllVariables.GPA = gpaTextField.text!
-         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
-         navigationController?.popViewController(animated: true)
-
+        self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
+        navigationController?.popViewController(animated: true)
+        
     }
     
     
@@ -56,11 +56,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.loggedInUser = Auth.auth().currentUser
         bioText.text = AllVariables.bio
         gpaTextField.text = AllVariables.GPA
-          //  wantparent.text = "Want to connect to your Parent?"
-            clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
+        //  wantparent.text = "Want to connect to your Parent?"
+        clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: .value) {
             (snapshot: DataSnapshot) in
-        
+            
             let value = snapshot.value as? [String : AnyObject] ?? [:]
             
             if (value["profile_pic"] != nil) {
@@ -70,11 +70,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
                 self.setProfilePicture(imageView: self.ProfilePictureImage,imageToSet:UIImage(data: data! as Data)!)
             }
-        
+            
         }
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -120,15 +120,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         myActionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         self.present(myActionSheet, animated: true, completion: nil)
     }
-        
-
-//        func dismissFullScreenImage(sender: AnyObject) {
-//            (sender ).removeFromSuperView()
-//   }
-//        imagePicker.allowsEditing = false
-//        imagePicker.sourceType = .photoLibrary
-//        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-//        imagePicker(picker, animated: true, completion: nil)
+    
+    
+    //        func dismissFullScreenImage(sender: AnyObject) {
+    //            (sender ).removeFromSuperView()
+    //   }
+    //        imagePicker.allowsEditing = false
+    //        imagePicker.sourceType = .photoLibrary
+    //        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+    //        imagePicker(picker, animated: true, completion: nil)
     
     
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
@@ -163,12 +163,12 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.dismiss(animated: true, completion: nil)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        var VC = segue.destination as! ViewProfileViewController
-//        VC.image = ProfilePictureImage
-//        //VC.pictureonprofilepage = ProfilePictureImage
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    //    {
+    //        var VC = segue.destination as! ViewProfileViewController
+    //        VC.image = ProfilePictureImage
+    //        //VC.pictureonprofilepage = ProfilePictureImage
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         //AllVariables.bio = bioText.text
@@ -187,14 +187,24 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let alertView = UIAlertView(title: "Delete Account", message: "You have successfully deleted your account.", delegate: self, cancelButtonTitle: "Goodbye")
                 alertView.show()
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
-            self.present(loginVC, animated: true, completion: nil)
+                self.present(loginVC, animated: true, completion: nil)
+                self.databaseRef.child("Users").child("Usernames").child(AllVariables.Username).removeValue()
+                self.databaseRef.child("Users").child("Student").child(AllVariables.uid).removeValue()
+                
+                
+                
+                
+                
+                
             }
-        })
-        
+            
+            
+                
+            })
+            
     }
-
+    
+    
 }
-
-
 
 

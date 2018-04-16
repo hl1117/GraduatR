@@ -62,8 +62,8 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 }
                 else {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
-                        self.reviews.append("\(rest.key as! NSString): \(review)")
+                    if (!(self.reviews.contains("\(rest.key as NSString): \(review)"))) {
+                        self.reviews.append("\(rest.key as NSString): \(review)")
                     }
                 }
             }
@@ -112,8 +112,8 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 }
                 else {
                     let review = snap["reviews"] as! String
-                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
-                        self.reviews.append("\(rest.key as! NSString): \(review)")
+                    if (!(self.reviews.contains("\(rest.key as NSString): \(review)"))) {
+                        self.reviews.append("\(rest.key as NSString): \(review)")
                     }
                 }
             }
@@ -174,6 +174,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                             
                            // self.average.text = "Average rating: \(self.avgrating)"
                             AllVariables.coursegrade = [n1!, n2!, n3!, n4!, n5!, n6!, n7!, n8!, n9!, n10!, n11!, n12!, n13!]
+                            print(AllVariables.coursegrade)
                             
                             self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
                         })
@@ -292,7 +293,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         pieChartDataSet.colors = colors
     }
     
-    func tableView(_ tableView:UITableView!, numberOfRowsInSection section:Int) -> Int
+    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
         return reviews.count
     }
