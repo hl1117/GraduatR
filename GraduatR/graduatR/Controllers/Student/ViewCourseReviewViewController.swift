@@ -410,8 +410,10 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             }
             
             //self.avgGradeRecLabel.text = "\(avgGrades)"
-            
-            self.ref.child("CourseAvgGrade").child(AllVariables.courseselected).setValue(avgGrades)
+            if (avgGrades.isNaN == false) {
+                print("THIS IS WHERE I CRASH")
+                self.ref.child("CourseAvgGrade").child(AllVariables.courseselected).setValue(avgGrades)
+            }
         }
             })
     
@@ -442,7 +444,10 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             AllVariables.examrating = [n1!, n2!, n3!, n4!, n5!]
             print("THIS: \(AllVariables.examrating)")
             self.examDiffLabel.text = "\(self.avgrating)"
-            self.ref.child("ExamAverageRating").child(AllVariables.courseselected).setValue(self.avgrating)
+            if (self.avgrating.isNaN == false) {
+                print("THIS IS WHERE I AM")
+                self.ref.child("ExamAverageRating").child(AllVariables.courseselected).setValue(self.avgrating)
+            }
             }
         })
     }

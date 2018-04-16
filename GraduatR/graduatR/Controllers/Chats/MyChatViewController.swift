@@ -59,6 +59,7 @@ class MyChatViewController: JSQMessagesViewController {
         
         // observeMessages()
         finishReceivingMessage()
+    
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {

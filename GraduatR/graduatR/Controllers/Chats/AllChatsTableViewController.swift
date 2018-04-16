@@ -15,54 +15,67 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var tableView: UITableView!
-    
-    
     let searchBar = UISearchBar()
     var names = [String]()
-    
-    // var numbers = [String]()
-    
     var filteredArrayName = [String]()
     var showSearchResults = false
-    var refresh: UIRefreshControl!
+//    var refresh: UIRefreshControl!
     
-
     func fetchData () {
+        if (self.names.count != 0) {
+            self.names.removeAll()
+        }
         self.ref.child("Chats").child(AllVariables.Username).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
         let enumer = snapshot.children
         while let rest = enumer.nextObject() as? DataSnapshot {
-        //self.names.removeAll(keepingCapacity: true)
         let u = rest.key as? NSString
-//            if (!self.names.contains(u as! String)){
-                self.names.append(u! as String)
-//            }
+            self.ref.child("Chats").child(AllVariables.Username).child(u! as String).observeSingleEvent(of: DataEventType.value, with: { (snap2) in
+                if (snap2.hasChild("GC")) {
+                    print("THIS IS WHERE I REACH")
+                    self.names.append(u! as String)
+                    print(self.names)
+                    
+                    self.tableView.reloadData()
+                    self.tableView.delegate = self
+                    self.tableView.dataSource = self
+                }
+                else {
+                    self.ref.child("Users").child("Usernames").observeSingleEvent(of: DataEventType.value, with: { snappy in
+                        let val = snappy.value as? NSDictionary
+                        let name = val?[u! as String] as? String
+                        self.names.append(name!)
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                        
+                        print(self.names)
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                    })
+                }
+            })
         }
-    
-    self.tableView.reloadData()
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
     })
-    
-    print(names)
     }
     
     
     override func viewDidLoad() {
     
-    self.names.removeAll()
     super.viewDidLoad()
     createSearchBar()
     fetchData()
+        
+    //refresh = UIRefreshControl()
+    //refresh.addTarget(self, action: #selector(AllChatsTableViewController.didPullToRefresh(_:)), for: .valueChanged)
     
-    refresh = UIRefreshControl()
-    refresh.addTarget(self, action: #selector(AllChatsTableViewController.didPullToRefresh(_:)), for: .valueChanged)
-    
-    tableView.insertSubview(refresh, at: 0)
+   // tableView.insertSubview(refresh, at: 0)
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
-         self.names.removeAll()
         fetchData()
     }
     
@@ -105,11 +118,11 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
         self.tableView.reloadData()
     }
     
-    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        self.names.removeAll()
-        fetchData()
-        self.refresh.endRefreshing()
-    }
+//    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+//        self.names.removeAll()
+//        fetchData()
+//
+//    }
     
     // MARK: - Table view data source
     
@@ -152,26 +165,10 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     if (showSearchResults){
         let username = filteredArrayName[indexPath.row]
         vc.username = username
-      
-        
-        
-        //        let user = u
-        //        vc.name = user
-    
     }
-        else {
+    else {
         let name = names[indexPath.row]
         vc.username = name
-      
-        
-        //        let user = u
-        //        vc.name = user
-    
-    
     }
-    
-    
-    
-    }
-
+  }
 }
