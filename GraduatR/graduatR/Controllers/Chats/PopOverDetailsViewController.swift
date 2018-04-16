@@ -25,6 +25,12 @@ class PopOverDetailsViewController: UIViewController, UITableViewDelegate, UITab
         let alert = UIAlertController(title: "WAIT", message: "If you choose to leave group you must re-add course to join group again!", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "Thanks, got it!", style: .default) { (action) in
             print ("ok tappped")
+          
+            //self.performSegue(withIdentifier: "Allchats", sender: self)
+            //self.dismiss(animated: false, completion: nil)
+            
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+            
         }
         alert.addAction(OKAction)
         self.present(alert, animated: true) {
@@ -33,7 +39,7 @@ class PopOverDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         
         // navigationController?.popToViewController(AllChatsTableViewController, animated: true)
-        self.present(AllChatsTableViewController(), animated: true, completion: nil)
+        //self.present(AllChatsTableViewController(), animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
