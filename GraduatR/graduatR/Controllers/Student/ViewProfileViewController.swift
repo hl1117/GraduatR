@@ -12,6 +12,8 @@ import GoogleSignIn
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewProfileViewController: UIViewController
 {
@@ -87,6 +89,24 @@ class ViewProfileViewController: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        
+        if (Auth.auth().currentUser != nil)
+        {
+            do {
+                try? Auth.auth().signOut()
+                
+                if (Auth.auth().currentUser == nil) {
+                    print("USER LOG OUT")
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+            }
+        }
+    
+    }
+   
     
 }
 
