@@ -1040,7 +1040,11 @@
                                 <segue destination="xtP-zc-fZq" kind="show" id="9Va-k0-Vpo"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="t7G-m0-auF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="t7G-m0-auF">
+                            <connections>
+                                <action selector="logoutButton:" destination="RiP-bE-Avf" id="jHL-Ch-AGF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="gpaLabel" destination="kzn-EC-or4" id="u7r-QP-vkj"/>
@@ -3653,9 +3657,9 @@
         <image name="icons8-user-male-50" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kiv-0W-rLg"/>
+        <segue reference="Pa8-da-pGO"/>
         <segue reference="9rz-QK-esh"/>
-        <segue reference="rah-oT-LWk"/>
+        <segue reference="65G-g7-bVm"/>
         <segue reference="mVl-BW-WeM"/>
         <segue reference="qoT-W4-HMK"/>
     </inferredMetricsTieBreakers>
