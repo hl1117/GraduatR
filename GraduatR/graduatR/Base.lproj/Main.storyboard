@@ -1674,6 +1674,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailsButton" destination="AcU-KA-IJI" id="SR2-e2-fy7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfk-fq-L7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

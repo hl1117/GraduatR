@@ -12,6 +12,7 @@ import JSQMessagesViewController
 
 class MyChatViewController: JSQMessagesViewController {
     
+    @IBOutlet weak var detailsButton: UIBarButtonItem!
     var name = String()
     var username = String()
     var messages = [JSQMessage]()
@@ -25,6 +26,7 @@ class MyChatViewController: JSQMessagesViewController {
         
         print(group)
         super.viewDidLoad()
+        
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         self.senderId = AllVariables.Username
@@ -38,10 +40,12 @@ class MyChatViewController: JSQMessagesViewController {
                 print(self.username)
                 self.messageRef = Database.database().reference().child("GroupChats")
                 
+                
             }
             else {
                 self.group = "false"
                 self.messageRef = Database.database().reference().child("Chats")
+                self.navigationItem.rightBarButtonItem = nil
             }
             self.observeMessages()
         })

@@ -255,6 +255,7 @@
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
+				5A17D2D720841ACB009BE94F /* PopOverDetailsViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
 				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
@@ -281,7 +282,6 @@
 				D4837B332066F11B006817F0 /* ParSubCell.swift */,
 				D4837B352066F12F006817F0 /* ParCourseCell.swift */,
 				D417926A2083F53600198498 /* AllChatCell.swift */,
-				5A17D2D720841ACB009BE94F /* PopOverDetailsViewController.swift */,
 				5A17D2D920841BD0009BE94F /* GroupPeopleCell.swift */,
 			);
 			path = graduatR;
