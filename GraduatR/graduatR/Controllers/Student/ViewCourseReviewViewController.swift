@@ -67,15 +67,15 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
             print("After")
         })
         
-        
-        getGrades()
+        getCourseAvg()
+        //getGrades()
         
         
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        getExamDifficulty()
+        //getExamDifficulty()
       //  self.refresh.endRefreshing()
 
     }
@@ -114,127 +114,17 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         print("After")
         })
         getExamDifficulty()
-        getGrades()
-        
+        //getGrades()
+        getCourseAvg()
         self.tableView.reloadData()
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
     
     
-    func getGrades()
-    {
-        ref.child("ExamAvgGrade").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
-            
-            print("before")
-            //CourseReview-Course-Comments-snap
-            let enumer = snapshotA.children
-            while let rest = enumer.nextObject() as? DataSnapshot {
-                let grade = rest.value as! NSString
-                    if (!(self.reviews.contains("grade: \(grade)"))) {
-                        print("PRINTING THE GRADES!!!!!!")
-                        print("grade: \(grade)")
-                        if (self.viewLoad == true) {
-                        var g = self.gradesAvg["\(grade)"]
-                        print("G BEFORE")
-                        print(g)
-                        g = g! + 1
-                        print("G AFTER")
-                        print(g)
-                        
-                        
-                        
-                        self.gradesAvg["\(grade)"] = g
-                        }
-                        //self.reviews.append("Anonymous: \(review)")
-                    }
-            }
-            print("After")
-        })
-        
-//        if (gradesAvg["A+"]! == nil || gradesAvg["A"]! == nil || gradesAvg["A-"]! == nil || gradesAvg["B+"]! == nil || gradesAvg["B"]! == nil || gradesAvg["B-"]! == nil || gradesAvg["C+"]! == nil || gradesAvg["C"]! == nil || gradesAvg["C-"]! == nil || gradesAvg["D+"]! == nil || gradesAvg["D"]! == nil || gradesAvg["D-"]! == nil || gradesAvg["F"] == nil) {
-//            
-//        }
-//        else {
-        let gradesSum = (gradesAvg["A+"]! * 4.0) + (gradesAvg["A"]! * 4.0) + (gradesAvg["A-"]! * 3.7) + (gradesAvg["B+"]! * 3.3) + (gradesAvg["B"]! * 3.0) + (gradesAvg["B-"]! * 2.7) + (gradesAvg["C+"]! * 2.3) + (gradesAvg["C"]! * 2.0) + (gradesAvg["C-"]! * 1.7) + (gradesAvg["D+"]! * 1.3) + (gradesAvg["D"]! * 1.0) + (gradesAvg["D-"]! * 0.7) + (gradesAvg["F"]! * 0.0)
-        
-        
-        
-        let avgGrades = (gradesSum)/((gradesAvg["A+"]!) + (gradesAvg["A"]! ) + (gradesAvg["A-"]!) + (gradesAvg["B+"]!) + (gradesAvg["B"]!) + (gradesAvg["B-"]!) + (gradesAvg["C+"]!) + (gradesAvg["C"]!) + (gradesAvg["C-"]!) + (gradesAvg["D+"]!) + (gradesAvg["D"]!) + (gradesAvg["D-"]!) + (gradesAvg["F"]!))
-        
-        
-          
-        
-        if (avgGrades >= 0.0 && avgGrades < 0.7)
-        {
-            avgGradeRecLabel.text = "F"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("F")
-
-        } else if (avgGrades >= 0.7 && avgGrades < 1.0)
-        {
-            avgGradeRecLabel.text = "D-"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D-")
-
-        } else if (avgGrades >= 1.0 && avgGrades < 1.3)
-        {
-            avgGradeRecLabel.text = "D"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D")
-
-        } else if (avgGrades >= 1.3 && avgGrades < 1.7)
-        {
-            avgGradeRecLabel.text = "D+"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D+")
-
-        } else if (avgGrades >= 1.7 && avgGrades < 2.0)
-        {
-            avgGradeRecLabel.text = "C-"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C-")
-
-        } else if (avgGrades >= 2.0 && avgGrades < 2.3)
-        {
-            avgGradeRecLabel.text = "C"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C")
-
-        } else if (avgGrades >= 2.3 && avgGrades < 2.7)
-        {
-            avgGradeRecLabel.text = "C+"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C+")
-
-        } else if (avgGrades >= 2.7 && avgGrades < 3.0)
-        {
-            avgGradeRecLabel.text = "B-"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B-")
-
-        } else if (avgGrades >= 3.0 && avgGrades < 3.3)
-        {
-            avgGradeRecLabel.text = "B"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B")
-
-        } else if (avgGrades >= 3.3 && avgGrades < 3.7)
-        {
-            avgGradeRecLabel.text = "B+"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B+")
-
-        } else if (avgGrades >= 3.7 && avgGrades < 4.0)
-        {
-            avgGradeRecLabel.text = "A-"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A-")
-
-        } else if (avgGrades == 4.0)
-        {
-            avgGradeRecLabel.text = "A+/A"
-            ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A+/A")
-
-        }
-       
-        //avgGradeRecLabel.text = "\(avgGrades)"
-        
-//            ref.child("CourseAvgGrade").child(AllVariables.courseselected).setValue(avgGrades)
-//        }
-//
-        
-    }
+   
     
+
     func getdata() {
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             print("WHAT3")
@@ -327,6 +217,116 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         cell.reviewText.text = review
         
         return cell
+    }
+    
+    func getCourseAvg()
+    {
+        
+        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let valu = snapshot.value as? NSDictionary
+            print("IMHERE")
+            let n1 = valu?["A+"] as? Double
+            let n2 = valu?["A"] as? Double
+            let n3 = valu?["A-"] as? Double
+            let n4 = valu?["B+"] as? Double
+            let n5 = valu?["B"] as? Double
+            let n6 = valu?["B-"] as? Double
+            let n7 = valu?["C+"] as? Double
+            let n8 = valu?["C"] as? Double
+            let n9 = valu?["C-"] as? Double
+            let n10 = valu?["D+"] as? Double
+            let n11 = valu?["D"] as? Double
+            let n12 = valu?["D-"] as? Double
+            let n13 = valu?["F"] as? Double
+        
+        
+        if (n1 == nil || n2 == nil || n3 == nil || n4 == nil || n5 == nil || n6 == nil || n7 == nil || n8 == nil || n9 == nil || n10 == nil || n11 == nil || n12 == nil || n13 == nil) {
+            
+        }
+        else {
+            
+            let partone = (n1! * 4.0) + (n2! * 4.0)
+            let parttwo = (n3! * 3.7) + (n4! * 3.3) + (n5! * 3.0)
+            let partthree = (n6! * 2.7) + (n7! * 2.3) + (n8! * 2.0)
+            let partfour = (n9! * 1.7) + (n10! * 1.3) + (n11! * 1.0)
+            let partfive = (n12! * 0.7) + (n13! * 0.0)
+            
+            let gradesSum = partone + parttwo + partthree + partfour + partfive
+            
+            let firsthalf = n1! + n2! + n3! + n4!
+            let secondhalf = n5! + n6! + n7! + n8!
+            let thirdhalf = n9! + n10! + n11! + n12! + n13!
+            
+            let avgGrades = (gradesSum)/(firsthalf + secondhalf + thirdhalf)
+            
+            if (avgGrades >= 0.0 && avgGrades < 0.7)
+            {
+                self.avgGradeRecLabel.text = "F"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("F")
+                
+            } else if (avgGrades >= 0.7 && avgGrades < 1.0)
+            {
+                self.avgGradeRecLabel.text = "D-"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D-")
+                
+            } else if (avgGrades >= 1.0 && avgGrades < 1.3)
+            {
+                self.avgGradeRecLabel.text = "D"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D")
+                
+            } else if (avgGrades >= 1.3 && avgGrades < 1.7)
+            {
+                self.avgGradeRecLabel.text = "D+"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D+")
+                
+            } else if (avgGrades >= 1.7 && avgGrades < 2.0)
+            {
+                self.avgGradeRecLabel.text = "C-"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C-")
+                
+            } else if (avgGrades >= 2.0 && avgGrades < 2.3)
+            {
+                self.avgGradeRecLabel.text = "C"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C")
+                
+            } else if (avgGrades >= 2.3 && avgGrades < 2.7)
+            {
+                self.avgGradeRecLabel.text = "C+"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C+")
+                
+            } else if (avgGrades >= 2.7 && avgGrades < 3.0)
+            {
+                self.avgGradeRecLabel.text = "B-"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B-")
+                
+            } else if (avgGrades >= 3.0 && avgGrades < 3.3)
+            {
+                self.avgGradeRecLabel.text = "B"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B")
+                
+            } else if (avgGrades >= 3.3 && avgGrades < 3.7)
+            {
+                self.avgGradeRecLabel.text = "B+"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B+")
+                
+            } else if (avgGrades >= 3.7 && avgGrades < 4.0)
+            {
+                self.avgGradeRecLabel.text = "A-"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A-")
+                
+            } else if (avgGrades == 4.0)
+            {
+                self.avgGradeRecLabel.text = "A+/A"
+                self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A+/A")
+                
+            }
+            
+            //self.avgGradeRecLabel.text = "\(avgGrades)"
+            
+            self.ref.child("CourseAvgGrade").child(AllVariables.courseselected).setValue(avgGrades)
+        }
+            })
+    
     }
     
     

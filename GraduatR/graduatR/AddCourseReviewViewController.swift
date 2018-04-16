@@ -56,27 +56,85 @@ class AddCourseReviewViewController: UIViewController {
             }
         }
 
-        if (gradeReceivedTextField.text! != nil)
-        {
-            let grade = gradeReceivedTextField.text!
-            
-            if (grade == "A+" || grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" || grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "D-" || grade == "F")
-            {
-                self.ref.child("ExamAvgGrade").child(AllVariables.courseselected).child(AllVariables.Username).setValue(grade)
-                
-                navigationController?.popViewController(animated: true)
-
-            } else {
-                let alert = UIAlertController(title: "Wrong Format", message: "Please enter a valid grade", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    print ("ok tappped")
-                }
-                alert.addAction(OKAction)
-                self.present(alert, animated: true) {
-                    print("ERROR WITH GRADE THING")
-                }
-            }
+//        if (gradeReceivedTextField.text! != nil)
+//        {
+//            let grade = gradeReceivedTextField.text!
+//
+//            if (grade == "A+" || grade == "A" || grade == "A-" || grade == "B+" || grade == "B" || grade == "B-" || grade == "C+" || grade == "C" || grade == "C-" || grade == "D+" || grade == "D" || grade == "D-" || grade == "F")
+//            {
+//                self.ref.child("ExamAvgGrade").child(AllVariables.courseselected).child(AllVariables.Username).setValue(grade)
+//
+//                navigationController?.popViewController(animated: true)
+//
+//            } else {
+//                let alert = UIAlertController(title: "Wrong Format", message: "Please enter a valid grade", preferredStyle: .alert)
+//                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+//                    print ("ok tappped")
+//                }
+//                alert.addAction(OKAction)
+//                self.present(alert, animated: true) {
+//                    print("ERROR WITH GRADE THING")
+//                }
+//            }
+//        }
+        
+        let coursegrades = ["A+", "A" , "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+        let coursegradeinputted = gradeReceivedTextField.text
+        
+        if (coursegradeinputted == "A+") {
+            selectAplus()
         }
+        
+        if (coursegradeinputted == "A") {
+            selectA()
+        }
+        
+        if (coursegradeinputted == "A-") {
+            selectAminus()
+        }
+        
+        if (coursegradeinputted == "B+") {
+            selectBplus()
+        }
+        
+        if (coursegradeinputted == "B") {
+            selectB()
+        }
+        
+        if (coursegradeinputted == "B-") {
+            selectBminus()
+        }
+        
+        if (coursegradeinputted == "C+") {
+            selectCplus()
+        }
+        
+        if (coursegradeinputted == "C") {
+            selectC()
+        }
+        
+        if (coursegradeinputted == "C-") {
+            selectCminus()
+        }
+        
+        if (coursegradeinputted == "D+") {
+            selectDplus()
+        }
+        
+        if (coursegradeinputted == "D") {
+            selectD()
+        }
+        
+        if (coursegradeinputted == "D-") {
+            selectDminus()
+        }
+        
+        if (coursegradeinputted == "F") {
+            selectF()
+        }
+        
+        
+        
 
         
         let examDifficulty = [1, 2, 3, 4, 5]
@@ -107,6 +165,685 @@ class AddCourseReviewViewController: UIViewController {
             reviewFive()
         }
     }
+    
+    func selectAplus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["A+"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectA()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["A"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectAminus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["A-"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectBplus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["B+"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectB()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["B"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectBminus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["B-"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectCplus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["C+"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectC()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["C"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectCminus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["C-"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectDplus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["D+"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectD()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["D"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectDminus()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(1)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(0)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["D-"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    func selectF()
+    {
+        
+        self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT4")
+            if (!(snapshotA.hasChild(AllVariables.courseselected))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("A-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("B-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("C-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D+").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("D-").setValue(0)
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(1)
+                
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+            }
+            else {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    
+                    let value = snapshotB.value as? NSDictionary
+                    let a = value?["F"] as? Int
+                    let final = a! + 1
+                    print("FINAL = \(final)")
+                    if (!(snapshotB.hasChild(AllVariables.Username))) { self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child("F").setValue(final)
+                        
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).child(AllVariables.Username).setValue("doesntmatterp2")
+                    }
+                    else {
+                        let alert = UIAlertController(title: "Rating Error", message: "You have already rated this course", preferredStyle: .alert)
+                        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                            print ("ok tappped")
+                        }
+                        alert.addAction(OKAction)
+                        self.present(alert, animated: true) {
+                            print("ERROR")
+                        }
+                        print("error rating in")
+                        
+                    }
+                    
+                })
+            }
+            
+        })
+    }
+    
+    
+    
 
     
     func reviewOne()
