@@ -255,7 +255,6 @@
 				669311FE2051DCBF00E556C8 /* CalendarViewController.swift */,
 				2074E283202BDED10020C63A /* ViewController.swift */,
 				20A3CDE52064947A00E7B920 /* ViewProfessorReviewsViewController.swift */,
-				5A17D2D720841ACB009BE94F /* PopOverDetailsViewController.swift */,
 				2074E285202BDED10020C63A /* Main.storyboard */,
 				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
@@ -379,6 +378,7 @@
 				D4993A4B207EA9EE0027096A /* TutorChatViewController.swift */,
 				D41792662083F4E300198498 /* AllChatsTableViewController.swift */,
 				D41792682083F4F900198498 /* MyChatViewController.swift */,
+				5A17D2D720841ACB009BE94F /* PopOverDetailsViewController.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";

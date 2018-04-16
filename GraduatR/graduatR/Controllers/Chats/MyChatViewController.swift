@@ -58,7 +58,6 @@ class MyChatViewController: JSQMessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // observeMessages()
-        
         finishReceivingMessage()
     }
     
@@ -218,6 +217,15 @@ class MyChatViewController: JSQMessagesViewController {
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat
     {
         return messages[indexPath.item].senderId == senderId ? 0 : 15
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! PopOverDetailsViewController
+            let gc = username
+            vc.groupname = gc
+    
     }
 
 }

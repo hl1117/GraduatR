@@ -31,12 +31,11 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
         self.ref.child("Chats").child(AllVariables.Username).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
         let enumer = snapshot.children
         while let rest = enumer.nextObject() as? DataSnapshot {
-        //self.names.removeAll()
+        //self.names.removeAll(keepingCapacity: true)
         let u = rest.key as? NSString
-            if (!self.names.contains(u as! String)){
+//            if (!self.names.contains(u as! String)){
                 self.names.append(u! as String)
-        
-            }
+//            }
         }
     
     self.tableView.reloadData()
@@ -49,6 +48,8 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     
     override func viewDidLoad() {
+    
+    self.names.removeAll()
     super.viewDidLoad()
     createSearchBar()
     fetchData()
@@ -58,6 +59,11 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     tableView.insertSubview(refresh, at: 0)
     
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         self.names.removeAll()
+        fetchData()
     }
     
     func createSearchBar() {
@@ -100,6 +106,7 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        self.names.removeAll()
         fetchData()
         self.refresh.endRefreshing()
     }
