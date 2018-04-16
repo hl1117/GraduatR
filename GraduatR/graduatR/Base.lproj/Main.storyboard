@@ -1675,12 +1675,19 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="chatName" destination="cSt-VI-mMe" id="FOK-vA-h8V"/>
-                                    <segue destination="6F6-H3-Djg" kind="push" id="Ajh-7k-a3o"/>
+                                    <segue destination="6F6-H3-Djg" kind="push" identifier="myChat" id="Ajh-7k-a3o"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="s8R-Nb-24M"/>
+                    <navigationItem key="navigationItem" id="s8R-Nb-24M">
+                        <barButtonItem key="rightBarButtonItem" title="Create Group" id="aJa-Ug-V6U">
+                            <connections>
+                                <action selector="create:" destination="gnl-HG-q7n" id="y3k-Vs-iC0"/>
+                                <segue destination="6ay-JC-EBZ" kind="push" id="ZLh-GH-HJz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="navBar" destination="s8R-Nb-24M" id="8SU-ge-xPk"/>
                         <outlet property="tableView" destination="eH6-8l-NNJ" id="TO8-Oc-VPT"/>
@@ -1689,6 +1696,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEv-pV-9AC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7028" y="-3708.3958020989508"/>
+        </scene>
+        <!--Create Group View Controller-->
+        <scene sceneID="FYu-Kr-bBX">
+            <objects>
+                <viewController id="6ay-JC-EBZ" customClass="CreateGroupViewController" customModule="graduatR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iAQ-N6-fh3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nDZ-Yz-h1E">
+                                <rect key="frame" x="-62" y="-72" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dMN-0w-BPi">
+                                <rect key="frame" x="0.0" y="64" width="375" height="486"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupChatUsersCell" rowHeight="82" id="DzM-K7-5s0" customClass="GroupChatUsersCell" customModule="graduatR" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="82"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DzM-K7-5s0" id="NBL-m0-wxt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3LA-qA-wUH">
+                                                    <rect key="frame" x="38" y="30" width="198" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="3LA-qA-wUH" id="lqr-3e-3Qa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be1-np-rnZ">
+                                <rect key="frame" x="0.0" y="558" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create group"/>
+                                <connections>
+                                    <action selector="create:" destination="6ay-JC-EBZ" eventType="touchUpInside" id="SHx-E6-hAD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qmj-ae-Y67"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gch-SJ-mkt"/>
+                    <connections>
+                        <outlet property="createbutton" destination="Be1-np-rnZ" id="AWO-Z5-M45"/>
+                        <outlet property="tableView" destination="dMN-0w-BPi" id="fEZ-iH-rBk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtu-nx-7f0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8104.8000000000002" y="-4186.0569715142428"/>
         </scene>
         <!--My Chat View Controller-->
         <scene sceneID="4hp-cQ-mi7">
@@ -1715,7 +1784,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfk-fq-L7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7961" y="-3708"/>
+            <point key="canvasLocation" x="8018" y="-3471"/>
         </scene>
         <!--Pop Over Details View Controller-->
         <scene sceneID="Ajg-ga-NwK">
@@ -1773,7 +1842,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vjq-8B-6cK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8792.7999999999993" y="-3708.3958020989508"/>
+            <point key="canvasLocation" x="8847" y="-3472"/>
         </scene>
         <!--Subject Tutor List View Controller-->
         <scene sceneID="mMJ-Zr-kut">

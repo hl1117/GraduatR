@@ -80,6 +80,11 @@
 		D4B2D3A62063535B000B8836 /* TutorSubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2D3A52063535B000B8836 /* TutorSubjectViewController.swift */; };
 		D4B2D3AA20635471000B8836 /* SubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2D3A920635471000B8836 /* SubCell.swift */; };
 		D4B2D3AC20635A70000B8836 /* tutCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B2D3AB20635A70000B8836 /* tutCourseCell.swift */; };
+		D4B6D333208552980060398C /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6D332208552980060398C /* CreateGroupViewController.swift */; };
+		D4B6D335208555180060398C /* GroupChatUsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6D334208555180060398C /* GroupChatUsersCell.swift */; };
+		D4B6D337208555AD0060398C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6D336208555AD0060398C /* File.swift */; };
+		D4B6D339208555F40060398C /* ViewModelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6D338208555F40060398C /* ViewModelItem.swift */; };
+		D4B6D33B208556450060398C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6D33A208556450060398C /* ViewModel.swift */; };
 		D4C44B9F207C02FF001B6E0B /* SameCourseStudentChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C44B9E207C02FF001B6E0B /* SameCourseStudentChatViewController.swift */; };
 		D4D094F42066F94F0087F99F /* StudentParentAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D094F32066F94F0087F99F /* StudentParentAddViewController.swift */; };
 		F44815C391577ECAC4E04D3E /* Pods_graduatRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709133C08A6114AFDEBA211A /* Pods_graduatRTests.framework */; };
@@ -181,6 +186,11 @@
 		D4B2D3A52063535B000B8836 /* TutorSubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorSubjectViewController.swift; sourceTree = "<group>"; };
 		D4B2D3A920635471000B8836 /* SubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCell.swift; sourceTree = "<group>"; };
 		D4B2D3AB20635A70000B8836 /* tutCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutCourseCell.swift; sourceTree = "<group>"; };
+		D4B6D332208552980060398C /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		D4B6D334208555180060398C /* GroupChatUsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatUsersCell.swift; sourceTree = "<group>"; };
+		D4B6D336208555AD0060398C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D4B6D338208555F40060398C /* ViewModelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelItem.swift; sourceTree = "<group>"; };
+		D4B6D33A208556450060398C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D4C44B9E207C02FF001B6E0B /* SameCourseStudentChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SameCourseStudentChatViewController.swift; sourceTree = "<group>"; };
 		D4D094F32066F94F0087F99F /* StudentParentAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentParentAddViewController.swift; sourceTree = "<group>"; };
 		F0C90A91A1B34D845C5EE7BA /* Pods-graduatR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-graduatR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-graduatR/Pods-graduatR.debug.xcconfig"; sourceTree = "<group>"; };
@@ -379,6 +389,11 @@
 				D41792662083F4E300198498 /* AllChatsTableViewController.swift */,
 				D41792682083F4F900198498 /* MyChatViewController.swift */,
 				5A17D2D720841ACB009BE94F /* PopOverDetailsViewController.swift */,
+				D4B6D332208552980060398C /* CreateGroupViewController.swift */,
+				D4B6D334208555180060398C /* GroupChatUsersCell.swift */,
+				D4B6D336208555AD0060398C /* File.swift */,
+				D4B6D338208555F40060398C /* ViewModelItem.swift */,
+				D4B6D33A208556450060398C /* ViewModel.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -645,9 +660,11 @@
 				D47C3E6B203F7393000EC7CC /* AddCourseViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
 				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,
+				D4B6D333208552980060398C /* CreateGroupViewController.swift in Sources */,
 				D4837B342066F11B006817F0 /* ParSubCell.swift in Sources */,
 				D4B2D3A62063535B000B8836 /* TutorSubjectViewController.swift in Sources */,
 				D4993A4C207EA9EE0027096A /* TutorChatViewController.swift in Sources */,
+				D4B6D335208555180060398C /* GroupChatUsersCell.swift in Sources */,
 				D49FA75B2057152700D87067 /* ProfCell.swift in Sources */,
 				D48AE2EA2064864C00E4B7F8 /* TutorEditProfileViewController.swift in Sources */,
 				2074E28A202BDED10020C63A /* graduatR.xcdatamodeld in Sources */,
@@ -655,11 +672,13 @@
 				203FDE542033A2F300888A23 /* CustomLoginViewController.swift in Sources */,
 				D4837B2E2066F059006817F0 /* ParentCoursesViewController.swift in Sources */,
 				5A17D2DA20841BD0009BE94F /* GroupPeopleCell.swift in Sources */,
+				D4B6D33B208556450060398C /* ViewModel.swift in Sources */,
 				66197F16203CE34300EF089C /* EditProfileViewController.swift in Sources */,
 				2043667B20634B1800369812 /* AddCourseReviewViewController.swift in Sources */,
 				D439E2972076EF6A0033CF69 /* UserTakingClassCell.swift in Sources */,
 				66808174206454EB006DA586 /* CourseReviewCell.swift in Sources */,
 				660065102051E2A9008886F9 /* AddEventsViewController.swift in Sources */,
+				D4B6D339208555F40060398C /* ViewModelItem.swift in Sources */,
 				D48AE2E82064863E00E4B7F8 /* TutorViewProfileViewController.swift in Sources */,
 				D433A6A52051C4B70008E559 /* BookInfoViewController.swift in Sources */,
 				D419AFE4203675C400BFA321 /* ParentDetailViewController.swift in Sources */,
@@ -680,6 +699,7 @@
 				D48AE2E6206480DA00E4B7F8 /* TutorAddCourseViewController.swift in Sources */,
 				20A3CDE42064940A00E7B920 /* ProfessorReviewCell.swift in Sources */,
 				666FD5C12061BDCB00A91737 /* EventsCell.swift in Sources */,
+				D4B6D337208555AD0060398C /* File.swift in Sources */,
 				D49FA7592057140500D87067 /* ProfessorViewController.swift in Sources */,
 				D419AFE22036759100BFA321 /* TutorDetailViewController.swift in Sources */,
 				D48AE2F32064A5AA00E4B7F8 /* TutListCell.swift in Sources */,

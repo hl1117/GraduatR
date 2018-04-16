@@ -21,6 +21,9 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     var showSearchResults = false
 //    var refresh: UIRefreshControl!
     
+    @IBAction func create(_ sender: UIBarButtonItem) {
+        
+    }
     func fetchData () {
         if (self.names.count != 0) {
             self.names.removeAll()
@@ -157,6 +160,7 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
+        if (segue.identifier == "myChat"){
         let vc = segue.destination as! MyChatViewController
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)!
@@ -171,4 +175,5 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
         vc.username = name
     }
   }
+    }
 }
