@@ -20,6 +20,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     var storageRef = Storage.storage().reference()
     var imagePicker = UIImagePickerController()
     
+   
     @IBOutlet weak var bioText: UITextView!
     //@IBOutlet weak var gpaTextField: UITextField!
     @IBOutlet weak var gpaAnon: UISwitch!
@@ -173,6 +174,23 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         //AllVariables.bio = bioText.text
         bioText.text = AllVariables.bio
         gpaTextField.text = AllVariables.GPA
+    }
+    
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        let user = Auth.auth().currentUser
+        user?.delete(completion: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else {
+                let alertView = UIAlertView(title: "Delete Account", message: "You have successfully deleted your account.", delegate: self, cancelButtonTitle: "Goodbye")
+                alertView.show()
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+            self.present(loginVC, animated: true, completion: nil)
+            }
+        })
+        
     }
 
 }
