@@ -46,6 +46,7 @@ class UsersTakingCourseController: UIViewController , UITableViewDataSource, UIT
                 let prof = (vals?["ProfPic"] as? String)!
                 print("PROFPIC IS \(prof)")
                 if (!(self.uName.contains(rest.key))) {
+                    
                     self.names.append("\(fn) \(ln)")
                     let u = rest.key
                     self.uName.append(u)

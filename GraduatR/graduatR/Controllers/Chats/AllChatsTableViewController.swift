@@ -20,6 +20,7 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     var filteredArrayName = [String]()
     var showSearchResults = false
     var refresh: UIRefreshControl!
+    var hashmap = [String : String]()
     
     @IBAction func create(_ sender: UIBarButtonItem) {
         
@@ -34,6 +35,7 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
                     print("THIS IS WHERE I REACH")
                     if (!self.names.contains(u as! String)) {
                         self.names.append(u! as String)
+                        self.hashmap[u! as String] = u! as String
                     }
                     print(self.names)
                 }
@@ -43,6 +45,7 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
                         let name = val?[u! as String] as? String
                         if (!self.names.contains(u as! String)) {
                             self.names.append(name!)
+                            self.hashmap[name!] = u! as String
                         }
                         
                         self.tableView.reloadData()
@@ -160,11 +163,11 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     if (showSearchResults){
         let username = filteredArrayName[indexPath.row]
-        vc.username = username
+        vc.username = hashmap[username]!
     }
     else {
         let name = names[indexPath.row]
-        vc.username = name
+        vc.username = hashmap[name]!
     }
   }
     }
