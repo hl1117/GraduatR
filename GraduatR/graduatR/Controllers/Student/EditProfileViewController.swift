@@ -176,7 +176,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         gpaTextField.text = AllVariables.GPA
     }
     
-    
     @IBAction func deleteButton(_ sender: Any) {
         let user = Auth.auth().currentUser
         user?.delete(completion: { (error) in
@@ -189,22 +188,86 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
                 self.present(loginVC, animated: true, completion: nil)
                 self.databaseRef.child("Users").child("Usernames").child(AllVariables.Username).removeValue()
-                self.databaseRef.child("Users").child("Student").child(AllVariables.uid).removeValue()
-                
-                
-                
-                
-                
-                
+                self.databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: { (s) in
+                    let enumer = s.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.uid)) {
+                            if (rest.key == "Student") {
+                                self.databaseRef.child("StudentUsers").child(AllVariables.Username).removeValue()
+                            }
+                            self.databaseRef.child("Users").child(rest.key).child(AllVariables.uid).removeValue()
+                        }
+                    }
+                })
+                //Remove from ProfessorReviews
+                self.databaseRef.child("ProfessorReviews").observeSingleEvent(of: DataEventType.value, with: { (ss) in
+                    let enumer = ss.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("ProfessorReviews").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from AllCourseGrades
+                self.databaseRef.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (sss) in
+                    let enumer = sss.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("AllCourseGrades").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from CourseReviews
+                self.databaseRef.child("CourseReviews").observeSingleEvent(of: DataEventType.value, with: { (a) in
+                    let enumer = a.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("CourseReviews").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from courses
+                self.databaseRef.child("Courses").observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                    let enumer = aa.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from exam reviews
+                self.databaseRef.child("ExamReviews").observeSingleEvent(of: DataEventType.value, with: { (aaa) in
+                    let enumer = aaa.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from chats
+                self.databaseRef.child("Chats").observeSingleEvent(of: DataEventType.value, with: { (b) in
+                    if (b.hasChild(AllVariables.Username)) {
+                        self.databaseRef.child("Chats").child(AllVariables.Username).removeValue()
+                    }
+                    let enumer = b.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Chats").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from GroupChats
+                self.databaseRef.child("GroupChats").child("chatUsers").observeSingleEvent(of: DataEventType.value, with: { (bb) in
+                    let enumer = bb.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("GroupChats").child("chatUsers").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
             }
-            
-            
-                
-            })
-            
+        })
     }
-    
-    
 }
 
 
