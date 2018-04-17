@@ -19,15 +19,12 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     var names = [String]()
     var filteredArrayName = [String]()
     var showSearchResults = false
-//    var refresh: UIRefreshControl!
+    var refresh: UIRefreshControl!
     
     @IBAction func create(_ sender: UIBarButtonItem) {
         
     }
     func fetchData () {
-        if (self.names.count != 0) {
-            self.names.removeAll()
-        }
         self.ref.child("Chats").child(AllVariables.Username).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
         let enumer = snapshot.children
         while let rest = enumer.nextObject() as? DataSnapshot {
@@ -35,30 +32,28 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
             self.ref.child("Chats").child(AllVariables.Username).child(u! as String).observeSingleEvent(of: DataEventType.value, with: { (snap2) in
                 if (snap2.hasChild("GC")) {
                     print("THIS IS WHERE I REACH")
-                    self.names.append(u! as String)
+                    if (!self.names.contains(u as! String)) {
+                        self.names.append(u! as String)
+                    }
                     print(self.names)
-                    
-                    self.tableView.reloadData()
-                    self.tableView.delegate = self
-                    self.tableView.dataSource = self
                 }
                 else {
                     self.ref.child("Users").child("Usernames").observeSingleEvent(of: DataEventType.value, with: { snappy in
                         let val = snappy.value as? NSDictionary
                         let name = val?[u! as String] as? String
-                        self.names.append(name!)
-                        
-                        self.tableView.reloadData()
-                        self.tableView.delegate = self
-                        self.tableView.dataSource = self
-                        
-                        print(self.names)
+                        if (!self.names.contains(u as! String)) {
+                            self.names.append(name!)
+                        }
                         
                         self.tableView.reloadData()
                         self.tableView.delegate = self
                         self.tableView.dataSource = self
                     })
                 }
+                
+                self.tableView.reloadData()
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
             })
         }
     })
@@ -71,17 +66,17 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     createSearchBar()
     fetchData()
         
-    //refresh = UIRefreshControl()
-    //refresh.addTarget(self, action: #selector(AllChatsTableViewController.didPullToRefresh(_:)), for: .valueChanged)
+    refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(AllChatsTableViewController.didPullToRefresh(_:)), for: .valueChanged)
     
-   // tableView.insertSubview(refresh, at: 0)
+    tableView.insertSubview(refresh, at: 0)
     
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        fetchData()
-    }
-    
+//
+//    override func viewDidDisappear(_ animated: Bool) {
+//        self.names.removeAll()
+//        fetchData()
+//    }
     func createSearchBar() {
     
     searchBar.showsCancelButton = false
@@ -117,15 +112,14 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         showSearchResults = true
         searchBar.endEditing(true)
-    
         self.tableView.reloadData()
     }
     
-//    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-//        self.names.removeAll()
-//        fetchData()
-//
-//    }
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        self.names.removeAll()
+        fetchData()
+        self.refresh.endRefreshing()
+    }
     
     // MARK: - Table view data source
     
@@ -140,7 +134,6 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "AllChatCell", for: indexPath) as! AllChatCell
-    
     if (showSearchResults){
     
         let nam = filteredArrayName[indexPath.row]

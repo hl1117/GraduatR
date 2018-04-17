@@ -17,13 +17,50 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     var selectednames = [String]()
     @IBOutlet weak var createbutton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    
+    var firstnames = [String]()
+    @IBOutlet weak var groupname: UITextField!
     @IBAction func create(_ sender: Any) {
         var a = 0
         print(selectednames)
+        if (groupname.text == "") {
+            let alert = UIAlertController(title: "Error", message: "Group name cannot be empty!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
+            print("error creating group")
+        }
+        else {
+            Database.database().reference().child("GroupChats").observeSingleEvent(of: DataEventType.value, with: { (snap) in
+                if (snap.hasChild(self.groupname.text!)) {
+                    let alert = UIAlertController(title: "Error", message: "Group name is taken!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print ("ok tappped")
+                    }
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                        print("ERROR")
+                    }
+                    print("error group create")
+                }
+                else {
+                    for nam in self.selectednames {
+                        Database.database().reference().child("GroupChats").child(self.groupname.text!).child("chatUsers").child(nam).setValue(self.firstnames[self.names.index(of: nam)!])
+                        
+                        Database.database().reference().child("Chats").child(nam).child(self.groupname.text!).child("GC").setValue("value")
+                        
+                    }
+                }
+                _ = self.navigationController?.popViewController(animated: true)
+            })
+        }
     }
     
     override func viewDidLoad() {
+        selectednames.removeAll()
         createSearchBar()
         super.viewDidLoad()
         tableView.allowsMultipleSelection = true
@@ -33,6 +70,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
         Database.database().reference().child("Users").child("StudentUsers").observeSingleEvent(of: DataEventType.value, with: { (s) in
             let val = s.value as? NSDictionary
             self.names = val?.allKeys as! [String]
+            self.firstnames = val?.allValues as! [String]
             print(self.names)
             self.tableView.reloadData()
             self.tableView.delegate = self
@@ -115,10 +153,24 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.cellForRow(at: indexPath)!
         cell.accessoryType = .checkmark
         if (showSearchResults) {
-            selectednames.append(filteredArrayName[indexPath.row])
+            if (!selectednames.contains(filteredArrayName[indexPath.row])) {
+                selectednames.append(filteredArrayName[indexPath.row])
+            }
+            else {
+                cell.accessoryType = .none
+                let a = selectednames.index(of: filteredArrayName[indexPath.row])
+                selectednames.remove(at: a!)
+            }
         }
         else {
-            selectednames.append(names[indexPath.row])
+            if (!selectednames.contains(names[indexPath.row])) {
+                selectednames.append(names[indexPath.row])
+            }
+            else {
+                cell.accessoryType = .none
+                let a = selectednames.index(of: names[indexPath.row])
+                selectednames.remove(at: a!)
+            }
         }
         // cell.accessoryView.hidden = false // if using a custom image
     }
@@ -131,7 +183,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
             selectednames.remove(at: a!)
         }
         else {
-            
             let a = selectednames.index(of: names[indexPath.row])
             selectednames.remove(at: a!)
         }

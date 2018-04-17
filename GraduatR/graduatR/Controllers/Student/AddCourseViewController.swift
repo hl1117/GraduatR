@@ -90,8 +90,7 @@ class AddCourseViewController: UIViewController {
                
                 self.ref.child("Chats").child(AllVariables.Username).child(newCourse).child("GC").setValue("value")
                 
-                self.ref.child("GroupChats").child(newCourse).child("chatUsers").child(AllVariables.Username).setValue(["Fname": self.name, "Lname": self.lastName])
-                self.ref.child("GroupChats").child(newCourse).child("chats").setValue([])
+                self.ref.child("GroupChats").child(newCourse).child("chatUsers").child(AllVariables.Username).child("name").setValue("\(self.name) \(self.lastName)")
                 
             }
             
