@@ -80,6 +80,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         
         //getExamDifficulty()
       //  self.refresh.endRefreshing()
+        self.barChartView.setScaleEnabled(false)
 
     }
     
