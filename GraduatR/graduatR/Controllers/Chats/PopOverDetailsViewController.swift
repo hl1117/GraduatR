@@ -53,7 +53,8 @@ class PopOverDetailsViewController: UIViewController, UITableViewDelegate, UITab
     Database.database().reference().child("GroupChats").child(self.groupname).child("chatUsers").observeSingleEvent(of: DataEventType.value, with: { snap in
             let enumer = snap.children
             while let rest = enumer.nextObject() as? DataSnapshot {
-                let name = rest.value as! String
+                let na = rest.value as! NSDictionary
+                let name = na["name"] as? String
                 self.hashmap[rest.key as String] = name
                 self.users.append(rest.key as String)
             }
