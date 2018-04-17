@@ -27,6 +27,8 @@ class TutorEditProfileViewController: UIViewController , UIImagePickerController
         AllVariables.bio = bioText.text!
         self.databaseRef.child("Users").child("Tutor").child(AllVariables.uid).child("bio").setValue(bioText.text)
         
+        navigationController?.popViewController(animated: true)
+        
     }
     
     override func viewDidLoad() {
