@@ -11,11 +11,8 @@ import UIKit
 class GroupChatUsersCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
-    var item: ViewModelItem? {
-        didSet {
-            name?.text = item?.title
-        }
-    }
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +23,9 @@ class GroupChatUsersCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         accessoryType = selected ? .checkmark : .none
     }
+    
+    
+  
+        
 
 }

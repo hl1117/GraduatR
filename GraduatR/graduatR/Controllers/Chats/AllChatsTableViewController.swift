@@ -135,7 +135,6 @@ class AllChatsTableViewController: UIViewController, UITableViewDataSource, UITa
         }
         else {
             return names.count
-    
         }
     }
     
