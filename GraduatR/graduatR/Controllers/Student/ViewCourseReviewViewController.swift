@@ -17,7 +17,7 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     let stars = ["One", "Two", "Three", "Four", "Five"]
     @IBOutlet weak var barChartView: BarChartView!
     var gradesAvg = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
-    let units = [5.0, 3.0, 2.0, 9.0, 25.0, 35.0, 45.0, 5.0, 65.0, 15.0, 15.0, 25.0, 75.0]
+    //let units = [5.0, 3.0, 2.0, 9.0, 25.0, 35.0, 45.0, 5.0, 65.0, 15.0, 15.0, 25.0, 75.0]
     
     var viewLoad = false;
     
@@ -127,27 +127,83 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         self.tableView.dataSource = self
     }
     
+//    let bChartView = BarChartView()
+//    var dataEntry: [BarChartDataEntry] = []
+//    var gradedivisions = [String]()
+//    var unitspergrade = [Double]()
+//
+//    func populateChartData() {
+//        gradedivisions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+//        unitspergrade = [5.0, 6.0, 7.0, 7.0, 8.0, 10.0, 11.0, 4.0, 2.0, 0.0, 6.0, 13.0, 12.0]
+//        self.getChartData(with: gradedivisions, values: unitspergrade)
+//    }
+//
+//    var delegate: GetChartData! {
+//        didSet {
+//            populateData()
+//            barChartSetup()
+//        }
+//    }
+//
+//    func populateData() {
+//        gradedivisions = delegate.gradedivisions
+//        unitspergrade = delegate.unitspergrade
+//    }
+//
+//    func barChartSetup() {
+//        self.backgroundColor = UIColor.white
+//        self.addSubview(bChartView)
+//        bChartView.translateAutoresizingMaskIntoConstraints = false;
+//        bChartView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+//        bChartView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        bChartView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+//        bChartView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+//
+//        bChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
+//        setBarChart(dataPoints: gradedivisions, values: unitspergrade)
+//    }
+//
+//    func setBarChart(dataPoints: [String], values: [Double]) {
+//        bChartView.noDataTextColor = UIColor.white
+//        bChartView.noDataText = "No data for the chart"
+//        bChartView.backgroundColor = UIColor.white
+//
+//        for i in 0..<dataPoints.count {
+//            let dataPoint = BarChartDataEntry(x: Double(i), y: Double(values[i])!)
+//            dataEntry.append(dataPoint)
+//        }
+//
+//        let chartDataSet = BarChartDataSet(values: dataEntry, label: "# of grades")
+//        let chartData = BarChartData()
+//        chartData.addDataSet(chartDataSet)
+//        chartData.setDrawValues(false)
+//        chartDataSet.colors = [UIColor.themePink]
+//
+//    }
+    
+    
+    
     func getData2() {
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             print("WHAT3")
             if (!(snapshotA.hasChild("AllCourseGrades"))) {
                 self.ref.child("AllCourseGrades").child(AllVariables.courseselected).setValue(["A+": 0, "A": 0, "A-": 0, "B+": 0, "B": 0, "B-": 0, "C+": 0, "C": 0, "C-": 0, "D+": 0, "D": 0, "D-": 0, "F": 0])
-                
+
                 AllVariables.coursegrade = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                 self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
-                
+
             }
             else {
                 self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
                     print("WHAT4")
                     if (!(snapshotB.hasChild(AllVariables.courseselected))) {
                         self.ref.child("AllCourseGrades").child(AllVariables.courseselected).setValue(["A+": 0, "A": 0, "A-": 0, "B+": 0, "B": 0, "B-": 0, "C+": 0, "C": 0, "C-": 0, "D+": 0, "D": 0, "D-": 0, "F": 0])
-                        
-                        
+
+
                         AllVariables.coursegrade = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                         self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
-                        
-                        
+
+
                     }
                     else {
                         self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
@@ -166,38 +222,38 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                             let n11 = valu?["D"] as? Double
                             let n12 = valu?["D-"] as? Double
                             let n13 = valu?["F"] as? Double
-                            
-                            
+
+
                             //let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
-                           
+
                             //self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
-                            
+
                            // self.average.text = "Average rating: \(self.avgrating)"
                             AllVariables.coursegrade = [n1!, n2!, n3!, n4!, n5!, n6!, n7!, n8!, n9!, n10!, n11!, n12!, n13!]
                             print(AllVariables.coursegrade)
-                            
+
                             self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
                         })
                     }
                 })
-                
+
             }
-            
+
         })
     }
-    
+
     func setChart2(dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
-        
+
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: values[i], y: Double(i))
+            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
                 dataEntries.append(dataEntry)
         }
-        
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "units")
-        let chartData = BarChartData(dataSet: chartDataSet)
-        barChartView.data = chartData
-        
+
+        let barDataSet = BarChartDataSet(values: dataEntries, label: "units")
+        let barData = BarChartData(dataSet: barDataSet)
+        barChartView.data = barData
+
 //        var colors: [UIColor] = []
 //
 //        for _ in 0..<dataPoints.count {
