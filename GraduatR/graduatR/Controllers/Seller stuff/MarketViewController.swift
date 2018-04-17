@@ -39,9 +39,9 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
         createSearchBar()
         
         getdata()
-        refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(MarketViewController.didPullToRefresh(_:)), for: .valueChanged)
-        self.tableView.insertSubview(self.refresh, at: 0)
+//        refresh = UIRefreshControl()
+//        refresh.addTarget(self, action: #selector(MarketViewController.didPullToRefresh(_:)), for: .valueChanged)
+//        self.tableView.insertSubview(self.refresh, at: 0)
 
     }
     func getdata() {
@@ -54,15 +54,12 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
                     //Book Details
                     let value = snapshotB.value as? NSDictionary
                     var title = value?["Title"] as? String ?? ""
-                    if (!(self.booktitle.contains(value?["Title"] as! String))){
-                        var title = value!["Title"] as? String ?? ""
                         self.booktitle.append(title)
                         self.bookauthor.append(value?["Author"] as? String ?? "")
                         self.bookprice.append(value?["Price"] as? String ?? "")
                         self.bookcourse.append(value?["Course"] as? String ?? "")
                         self.sellername.append(value?["Username"] as? String ?? "")
                         self.uid.append(value?["UID"] as? String ?? "")
-                    }
                 })
                 counter += 1
             }
@@ -74,21 +71,36 @@ class MarketViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         getdata()
-        self.refresh.endRefreshing()
+//        self.refresh.endRefreshing()
         
     }
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.booktitle.removeAll()
+        self.bookauthor.removeAll()
+        self.bookprice.removeAll()
+        self.bookcourse.removeAll()
+        self.sellername.removeAll()
+        self.uid.removeAll()
+        getdata()
+    }
     func createSearchBar() {
         searchBar.showsCancelButton = false
         searchBar.placeholder = "Search a book...."
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
-    
-    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        viewDidAppear(true)
-    }
-    
+//
+//    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+//        self.booktitle.removeAll()
+//        self.bookauthor.removeAll()
+//        self.bookprice.removeAll()
+//        self.bookcourse.removeAll()
+//        self.sellername.removeAll()
+//        self.uid.removeAll()
+//        getdata()
+//        self.refresh.endRefreshing()
+//    }
+//
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mySearch = searchBar.text!
          filteredArrayName = booktitle.filter({( name: String) -> Bool in

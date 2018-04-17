@@ -99,7 +99,6 @@ class CustomLoginViewController: UIViewController
                                     else {
                                         databaseRef.child("Users").child("Tutor").observeSingleEvent(of: DataEventType.value, with: { snapshotE in
                                             if snapshotE.hasChild(AllVariables.uid) {
-                                                
                                                 print ("\(AllVariables.uid)....././/..")
                                                 databaseRef.child("Users").child("Tutor").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (snapshotF) in
                                                     print("HERE - tutor")
