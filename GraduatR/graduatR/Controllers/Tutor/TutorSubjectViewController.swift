@@ -16,6 +16,7 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
     var courseData = [[String: AnyObject]]()
     var subjects = [String]()
     var subID = [String]()
+    var hashmap = [String : String]()
     
     var filteredArrayName = [String]()
     var filteredArrayId = [String]()
@@ -37,6 +38,7 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
                 self.subID.append(currSubId)
                 if let name = val["Abbreviation"] as? String {
                     self.subjects.append(name)
+                    self.hashmap[name] = currSubId
                 }
             }
             self.collectionView.reloadData()
@@ -155,9 +157,8 @@ class TutorSubjectViewController: UIViewController, UICollectionViewDataSource, 
 
         if (showSearchResults){
 
-            let name = subID[indexPath.row]
             let sub = filteredArrayName[indexPath.row]
-            vc.SubjectId = name
+            vc.SubjectId = hashmap[sub]!
             vc.SubjectAbbr = sub
 
         }
