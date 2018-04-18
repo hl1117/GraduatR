@@ -62,9 +62,6 @@ class CustomLoginViewController: UIViewController
                                             AllVariables.courses.append(rest.value as! String)
                                         }
                                         })
-                                    
-                                    
-                                        
                                     })
                                 self.userUid = user.uid
                                 self.performSegue(withIdentifier: "signingInStudent", sender: self)
@@ -125,7 +122,7 @@ class CustomLoginViewController: UIViewController
                                                 self.performSegue(withIdentifier: "signingInTutor", sender: self)
                                             }
                                             else {
-                                                let alert = UIAlertController(title: "Sign in error", message: "error signing in", preferredStyle: .alert)
+                                                let alert = UIAlertController(title: "Sign in error", message: "Error signing in", preferredStyle: .alert)
                                                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                                                     print ("ok tappped")
                                                 }
@@ -142,27 +139,26 @@ class CustomLoginViewController: UIViewController
                         })
                     }
                 }
+                else {
+                    let alert = UIAlertController(title: "Sign in error", message: "Error signing in", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print ("ok tappped")
+                    }
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                        print("ERROR")
+                    }
+                    print("error signing in")
+                }
         })
         }
     }
-
-                            //                            let value = snapshotA.value as? NSDictionary
-                            //                            AllVariables.Fname = value?["Fname"] as? String ?? ""
-                            //                            AllVariables.Lname = value?["Lname"] as? String ?? ""
-                            //                            AllVariables.bio = value?["bio"] as? String ?? ""
-                            //                            AllVariables.GPA = value?["GPA"] as? String ?? ""
-                            //                            AllVariables.profpic = value?["profile_pic"] as? String ?? ""
-                            //                            AllVariables.standing = value?["Class"] as? String ?? ""
-                            
-     
-    
-    
     @IBAction func registerButton(_ sender: Any)
     {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user,error) in
             if error != nil
             {
-                let alert = UIAlertController(title: "Error", message: "cant create user", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Cant create user!", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                     print ("ok tappped")
                 }
@@ -186,7 +182,7 @@ class CustomLoginViewController: UIViewController
                     changeRequest.commitChanges { error in
                         if let error = error
                         {
-                            let alert = UIAlertController(title: "Error", message: "error registering user", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Error", message: "Error registering user", preferredStyle: .alert)
                             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                                 print ("ok tappped")
                             }
