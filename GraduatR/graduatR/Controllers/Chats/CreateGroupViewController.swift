@@ -22,7 +22,17 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func create(_ sender: Any) {
         var a = 0
         print(selectednames)
-        if (groupname.text == "") {
+        
+        if (selectednames.count == 0){
+            let alert = UIAlertController(title: "Error", message: "Please select at least one user to be added to your group!", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
+        } else if (groupname.text == "") {
             let alert = UIAlertController(title: "Error", message: "Group name cannot be empty!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 print ("ok tappped")
@@ -56,6 +66,9 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                    
                     let myname = "\(AllVariables.Fname) \(AllVariables.Lname)"
                     Database.database().reference().child("GroupChats").child(self.groupname.text!).child("chatUsers").child(AllVariables.Username).setValue(myname)
+                    
+                    Database.database().reference().child("Chats").child(AllVariables.Username).child(self.groupname.text!).child("GC").setValue("value")
+                    
                 }
                 _ = self.navigationController?.popViewController(animated: true)
             })
