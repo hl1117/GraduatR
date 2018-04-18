@@ -30,6 +30,9 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var average: UILabel!
     
    var reviews = [String]()
+    var usernames = [String]()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +59,16 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 if (snap["Anonymity"] as! String! == "yes") {
                     let review = snap["reviews"] as! String
                     if (!(self.reviews.contains("Anonymous: \(review)"))) {
-                        self.reviews.append("Anonymous: \(review)")
+                        self.usernames.append("@anonymous")
+                        self.reviews.append("\(review)")
                     }
                     
                 }
                 else {
                     let review = snap["reviews"] as! String
                     if (!(self.reviews.contains("\(rest.key as NSString): \(review)"))) {
-                        self.reviews.append("\(rest.key as NSString): \(review)")
+                        self.usernames.append("@\(rest.key as NSString)")
+                        self.reviews.append("\(review)")
                     }
                 }
             }
@@ -108,13 +113,15 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                 if (snap["Anonymity"] as! String! == "yes") {
                     let review = snap["reviews"] as! String
                     if (!(self.reviews.contains("Anonymous: \(review)"))) {
-                        self.reviews.append("Anonymous: \(review)")
+                        self.usernames.append("@anonymous")
+                        self.reviews.append("\(review)")
                     }
                 }
                 else {
                     let review = snap["reviews"] as! String
                     if (!(self.reviews.contains("\(rest.key as NSString): \(review)"))) {
-                        self.reviews.append("\(rest.key as NSString): \(review)")
+                        self.usernames.append("@\(rest.key as NSString)")
+                        self.reviews.append("\(review)")
                     }
                 }
             }
@@ -294,6 +301,8 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "CourseReviewCell", for: indexPath) as! CourseReviewCell
         
         let review = reviews[indexPath.row]
+        let uname = usernames[indexPath.row]
+        cell.userLabel.text = uname
         cell.reviewText.text = review
         
         return cell
