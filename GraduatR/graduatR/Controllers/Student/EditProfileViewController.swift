@@ -64,7 +64,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA").setValue(gpaTextField.text!)
             databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA Anonymity").setValue("no")
             databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text!)
-            AllVariables.gpaAnon = "yes"
+            AllVariables.gpaAnon = "no"
             AllVariables.GPA = gpaTextField.text!
             AllVariables.bio = bioText.text!
         }
