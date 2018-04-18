@@ -65,52 +65,63 @@ class AddCourseReviewViewController: UIViewController {
             selectAplus()
         }
         
-        if (coursegradeinputted == "A") {
+        else if (coursegradeinputted == "A") {
             selectA()
         }
         
-        if (coursegradeinputted == "A-") {
+        else if (coursegradeinputted == "A-") {
             selectAminus()
         }
         
-        if (coursegradeinputted == "B+") {
+       else if (coursegradeinputted == "B+") {
             selectBplus()
         }
         
-        if (coursegradeinputted == "B") {
+        else if (coursegradeinputted == "B") {
             selectB()
         }
         
-        if (coursegradeinputted == "B-") {
+        else if (coursegradeinputted == "B-") {
             selectBminus()
         }
         
-        if (coursegradeinputted == "C+") {
+        else if (coursegradeinputted == "C+") {
             selectCplus()
         }
         
-        if (coursegradeinputted == "C") {
+        else if (coursegradeinputted == "C") {
             selectC()
         }
         
-        if (coursegradeinputted == "C-") {
+        else if (coursegradeinputted == "C-") {
             selectCminus()
         }
         
-        if (coursegradeinputted == "D+") {
+        else if (coursegradeinputted == "D+") {
             selectDplus()
         }
         
-        if (coursegradeinputted == "D") {
+        else if (coursegradeinputted == "D") {
             selectD()
         }
         
-        if (coursegradeinputted == "D-") {
+        else if (coursegradeinputted == "D-") {
             selectDminus()
         }
         
-        if (coursegradeinputted == "F") {
+        else if (coursegradeinputted == "F") {
             selectF()
+        }
+        
+        else {
+            let alert = UIAlertController(title: "Error", message: "Please enter A+/- to F+/- only", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
         }
         
         
