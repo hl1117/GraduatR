@@ -216,6 +216,23 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }
                 })
+                
+                //Remove parent if any?????
+                self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                   
+                        if (aa.hasChild("ParentUID")) {
+                            let rest = aa.value as! NSDictionary
+                            
+                            let parentUID = rest["ParentUID"] as! String
+                            //print("has a parent.....")
+                            self.databaseRef.child("Users").child("Parent").child(parentUID).removeValue()
+                            //print("parent deleeeeeteeed")
+                            
+                        }
+        
+                })
+                
+                
                 //Remove from ProfessorReviews
                 self.databaseRef.child("ProfessorReviews").observeSingleEvent(of: DataEventType.value, with: { (ss) in
                     let enumer = ss.children
