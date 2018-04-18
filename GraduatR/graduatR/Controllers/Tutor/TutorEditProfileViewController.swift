@@ -25,9 +25,17 @@ class TutorEditProfileViewController: UIViewController , UIImagePickerController
     
     @IBAction func bioButtonPressed(_ sender: Any) {
         AllVariables.bio = bioText.text!
-        self.databaseRef.child("Users").child("Tutor").child(AllVariables.uid).child("bio").setValue(bioText.text)
-        
-        navigationController?.popViewController(animated: true)
+        Database.database().reference().child("TutorList").observeSingleEvent(of: DataEventType.value, with: { (s) in
+            let enumer = s.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                if (rest.hasChild(AllVariables.Username)) {
+                    self.databaseRef.child("TutorList").child(rest.key).child(AllVariables.Username).child("Bio").setValue(AllVariables.bio)
+                }
+            }
+            self.databaseRef.child("Users").child("Tutor").child(AllVariables.uid).child("bio").setValue(self.bioText.text)
+            
+            self.navigationController?.popViewController(animated: true)
+        })
         
     }
     
