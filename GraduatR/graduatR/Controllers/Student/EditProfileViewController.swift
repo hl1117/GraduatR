@@ -30,6 +30,25 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var clickAddParent: UIButton!
     
+    func clear() {
+        AllVariables.Username = ""
+        AllVariables.Fname = ""
+        AllVariables.Lname = ""
+        AllVariables.GPA = ""
+        AllVariables.standing = ""
+        AllVariables.courses.removeAll()
+        AllVariables.profpic = ""
+        AllVariables.bio = ""
+        AllVariables.uid = ""
+        AllVariables.books.removeAll()
+        AllVariables.courseselected = ""
+        AllVariables.profselected = ""
+        AllVariables.courseratings.removeAll()
+        AllVariables.coursegrade.removeAll()
+        AllVariables.examrating.removeAll()
+        AllVariables.profratings.removeAll()
+        AllVariables.gpaAnon = ""
+    }
     
     @IBAction func bioButtonPressed(_ sender: Any) {
         if (gpaAnon.isOn)
@@ -225,7 +244,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                             
                             let parentUID = rest["ParentUID"] as! String
                             //print("has a parent.....")
-                            self.databaseRef.child("Users").child("Parent").child(parentUID).removeValue()
+                            self.databaseRef.child("Users").child("Parent").child(parentUID).child("Studentid").removeValue()
                             //print("parent deleeeeeteeed")
                             
                         }
@@ -301,6 +320,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         })
                     }
                 })
+                self.clear()
             }
         })
     }
