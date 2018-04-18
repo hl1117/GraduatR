@@ -193,7 +193,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     while let rest = enumer.nextObject() as? DataSnapshot {
                         if (rest.hasChild(AllVariables.uid)) {
                             if (rest.key == "Student") {
-                                self.databaseRef.child("StudentUsers").child(AllVariables.Username).removeValue()
+                                self.databaseRef.child("Users").child("StudentUsers").child(AllVariables.Username).removeValue()
                             }
                             self.databaseRef.child("Users").child(rest.key).child(AllVariables.uid).removeValue()
                         }
@@ -240,7 +240,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     let enumer = aaa.children
                     while let rest = enumer.nextObject() as? DataSnapshot {
                         if (rest.hasChild(AllVariables.Username)) {
-                            self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+                            self.databaseRef.child("ExamReviews").child(rest.key).child(AllVariables.Username).removeValue()
                         }
                     }
                 })
@@ -257,12 +257,14 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     }
                 })
                 //Remove from GroupChats
-                self.databaseRef.child("GroupChats").child("chatUsers").observeSingleEvent(of: DataEventType.value, with: { (bb) in
+                self.databaseRef.child("GroupChats").observeSingleEvent(of: DataEventType.value, with: { (bb) in
                     let enumer = bb.children
                     while let rest = enumer.nextObject() as? DataSnapshot {
-                        if (rest.hasChild(AllVariables.Username)) {
-                            self.databaseRef.child("GroupChats").child("chatUsers").child(rest.key).child(AllVariables.Username).removeValue()
-                        }
+                        self.databaseRef.child("GroupChats").child(rest.key).child("chatUsers").observeSingleEvent(of: DataEventType.value, with: {(bbc) in
+                            if (bbc.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("GroupChats").child(rest.key).child("chatUsers").child(AllVariables.Username).removeValue()
+                            }
+                        })
                     }
                 })
             }
