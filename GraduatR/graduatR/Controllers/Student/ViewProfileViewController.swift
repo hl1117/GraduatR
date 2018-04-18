@@ -12,6 +12,8 @@ import GoogleSignIn
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class ViewProfileViewController: UIViewController
 {
@@ -35,6 +37,13 @@ class ViewProfileViewController: UIViewController
         nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
         self.navigationItem.title = AllVariables.Username
         //updateBioText.text = AllVariables.bio
+        if (AllVariables.gpaAnon == "yes")
+        {
+            gpaLabel.text = " "
+        }
+        else if (AllVariables.gpaAnon == "no"){
+            gpaLabel.text = AllVariables.GPA
+        }
         
         myCourses.text = "No courses added!"
     }
@@ -50,6 +59,14 @@ class ViewProfileViewController: UIViewController
         myCourses.text = ""
         updateBioText.text = AllVariables.bio
         var databaseProfilePic = AllVariables.profpic
+        if (AllVariables.gpaAnon == "yes")
+        {
+            gpaLabel.text = " "
+        }
+        else if (AllVariables.gpaAnon == "no"){
+            gpaLabel.text = AllVariables.GPA
+        }
+        
         let data = NSData(contentsOf: NSURL(string: databaseProfilePic)! as URL)
         if (AllVariables.profpic != "") {
             setProfilePicture(imageView: self.pictureonprofilepage,imageToSet:UIImage(data: data! as Data)!)
@@ -72,6 +89,24 @@ class ViewProfileViewController: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        
+        if (Auth.auth().currentUser != nil)
+        {
+            do {
+                try? Auth.auth().signOut()
+                
+                if (Auth.auth().currentUser == nil) {
+                    print("USER LOG OUT")
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                    self.present(loginVC, animated: true, completion: nil)
+                }
+            }
+        }
+    
+    }
+   
     
 }
 

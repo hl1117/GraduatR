@@ -13,35 +13,54 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var ProfilePictureImage: UIImageView!
     var loggedInUser: AnyObject?
     var databaseRef = Database.database().reference()
     var storageRef = Storage.storage().reference()
     var imagePicker = UIImagePickerController()
     
+    
     @IBOutlet weak var bioText: UITextView!
-    @IBOutlet weak var gpaTextField: UITextField!
+    //@IBOutlet weak var gpaTextField: UITextField!
     @IBOutlet weak var gpaAnon: UISwitch!
     
+    @IBOutlet weak var gpaTextField: UITextView!
     @IBOutlet weak var wantparent: UILabel!
     
     @IBOutlet weak var clickAddParent: UIButton!
+    
+    
     @IBAction func bioButtonPressed(_ sender: Any) {
         AllVariables.bio = bioText.text!
+        AllVariables.GPA = gpaTextField.text!
+        
+        if (gpaAnon.isOn)
+        {
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "yes"])
+            AllVariables.gpaAnon = "yes"
+        }
+        else if !(gpaAnon.isOn) {
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "no"])
+            AllVariables.gpaAnon = "no"
+        }
+        AllVariables.GPA = gpaTextField.text!
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
-
+        navigationController?.popViewController(animated: true)
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loggedInUser = Auth.auth().currentUser
-          //  wantparent.text = "Want to connect to your Parent?"
-            clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
+        bioText.text = AllVariables.bio
+        gpaTextField.text = AllVariables.GPA
+        //  wantparent.text = "Want to connect to your Parent?"
+        clickAddParent.setTitle("Add Parent", for: UIControlState.normal)
         self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: .value) {
             (snapshot: DataSnapshot) in
-        
+            
             let value = snapshot.value as? [String : AnyObject] ?? [:]
             
             if (value["profile_pic"] != nil) {
@@ -51,11 +70,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 
                 self.setProfilePicture(imageView: self.ProfilePictureImage,imageToSet:UIImage(data: data! as Data)!)
             }
-        
+            
         }
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,6 +85,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         let myActionSheet = UIAlertController(title: "Profile Picture", message: "Select", preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let viewPicture = UIAlertAction(title: "View Picture", style: UIAlertActionStyle.default) { (action) in
+            
             let imageView = sender as! UIImageView
             let newImageView = UIImageView(image: imageView.image)
             
@@ -100,15 +120,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         myActionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         self.present(myActionSheet, animated: true, completion: nil)
     }
-        
-
-//        func dismissFullScreenImage(sender: AnyObject) {
-//            (sender ).removeFromSuperView()
-//   }
-//        imagePicker.allowsEditing = false
-//        imagePicker.sourceType = .photoLibrary
-//        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-//        imagePicker(picker, animated: true, completion: nil)
+    
+    
+    //        func dismissFullScreenImage(sender: AnyObject) {
+    //            (sender ).removeFromSuperView()
+    //   }
+    //        imagePicker.allowsEditing = false
+    //        imagePicker.sourceType = .photoLibrary
+    //        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+    //        imagePicker(picker, animated: true, completion: nil)
     
     
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
@@ -143,20 +163,111 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.dismiss(animated: true, completion: nil)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        var VC = segue.destination as! ViewProfileViewController
-//        VC.image = ProfilePictureImage
-//        //VC.pictureonprofilepage = ProfilePictureImage
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    //    {
+    //        var VC = segue.destination as! ViewProfileViewController
+    //        VC.image = ProfilePictureImage
+    //        //VC.pictureonprofilepage = ProfilePictureImage
+    //    }
     
     override func viewDidAppear(_ animated: Bool) {
         //AllVariables.bio = bioText.text
         bioText.text = AllVariables.bio
+        gpaTextField.text = AllVariables.GPA
     }
-
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        let user = Auth.auth().currentUser
+        user?.delete(completion: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else {
+                let alertView = UIAlertView(title: "Delete Account", message: "You have successfully deleted your account.", delegate: self, cancelButtonTitle: "Goodbye")
+                alertView.show()
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                self.present(loginVC, animated: true, completion: nil)
+                self.databaseRef.child("Users").child("Usernames").child(AllVariables.Username).removeValue()
+                self.databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: { (s) in
+                    let enumer = s.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.uid)) {
+                            if (rest.key == "Student") {
+                                self.databaseRef.child("StudentUsers").child(AllVariables.Username).removeValue()
+                            }
+                            self.databaseRef.child("Users").child(rest.key).child(AllVariables.uid).removeValue()
+                        }
+                    }
+                })
+                //Remove from ProfessorReviews
+                self.databaseRef.child("ProfessorReviews").observeSingleEvent(of: DataEventType.value, with: { (ss) in
+                    let enumer = ss.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("ProfessorReviews").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from AllCourseGrades
+                self.databaseRef.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (sss) in
+                    let enumer = sss.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("AllCourseGrades").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from CourseReviews
+                self.databaseRef.child("CourseReviews").observeSingleEvent(of: DataEventType.value, with: { (a) in
+                    let enumer = a.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("CourseReviews").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from courses
+                self.databaseRef.child("Courses").observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                    let enumer = aa.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from exam reviews
+                self.databaseRef.child("ExamReviews").observeSingleEvent(of: DataEventType.value, with: { (aaa) in
+                    let enumer = aaa.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from chats
+                self.databaseRef.child("Chats").observeSingleEvent(of: DataEventType.value, with: { (b) in
+                    if (b.hasChild(AllVariables.Username)) {
+                        self.databaseRef.child("Chats").child(AllVariables.Username).removeValue()
+                    }
+                    let enumer = b.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Chats").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from GroupChats
+                self.databaseRef.child("GroupChats").child("chatUsers").observeSingleEvent(of: DataEventType.value, with: { (bb) in
+                    let enumer = bb.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("GroupChats").child("chatUsers").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+            }
+        })
+    }
 }
-
-
 
 

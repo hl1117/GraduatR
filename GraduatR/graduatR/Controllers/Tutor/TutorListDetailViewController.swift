@@ -60,6 +60,17 @@ class TutorListDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+            
+            let vc = segue.destination as! TutorChatViewController
+        
+            let name = n
+            vc.name = name
+            let user = u
+            vc.username = user
+        
+    }
     
     
 

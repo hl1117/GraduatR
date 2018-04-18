@@ -32,8 +32,10 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
                 let vals = rest.key as? String!
                 self.subjects.append(vals!)
             }
-            self.refresh.endRefreshing()
             
+            self.collectionView.reloadData()
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
         })
         print(self.subjects)
        
@@ -51,9 +53,6 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
         
         collectionView.refreshControl = refresh
         
-        collectionView.reloadData()
-        collectionView.delegate = self
-        collectionView.dataSource = self
         
     }
     
@@ -86,6 +85,7 @@ class SubjectTutorListViewController: UIViewController, UICollectionViewDataSour
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchData()
+        self.refresh.endRefreshing()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -27,47 +27,30 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
     var refresh: UIRefreshControl!
     
     func fetchData () {
-        
-        let url:String = "https://api.purdue.io/odata/Subjects"
-        let urlRequest = URL(string: url)
-        
-        if let URL = urlRequest {
-            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
-                if (error != nil) {
-                    print ("============")
-                    print (error?.localizedDescription)
-                } else {
-                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
-    
-                        print ("DAAATAAAA....")
-                        do {
-                            if let data = data,
-                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                                let value = json["value"] as? [[String: Any]] {
-                                for val in value {
-                                    var currSubId = val["SubjectId"] as! String
-                                    self.subID.append(currSubId)
-                                        
-                                        if let name = val["Abbreviation"] as? String {
-                                            
-                                            self.subjects.append(name)
-                                            self.hashmap[name] = currSubId
-                                            
-                                          
-                                        }
-                                        self.collectionView.reloadData()
-                                    
-                                }
-                            }
-                        } catch {
-                            print ("Error is : \(error)")
-                        }
-                    }
-                }
+        do {
+        let file = Bundle.main.url(forResource: "Subjects", withExtension: "json")
+        print("DATAAAAAAA")
+        let data = try Data(contentsOf: file!)
+            let json = try JSONSerialization.jsonObject(with: data) as? [String : Any]
+            let value = json!["value"] as? [[String: Any]]
+            for val in value! {
                 
-            }; task.resume()
-            
+                var currSubId = val["SubjectId"] as! String
+                self.subID.append(currSubId)
+                    if let name = val["Abbreviation"] as? String {
+                        self.subjects.append(name)
+                        self.hashmap[name] = currSubId
+                    }
+            }
+            self.collectionView.reloadData()
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
         }
+        catch {
+            print("Error is: \(error)")
+        }
+        
+        
     }
 
     override func viewDidLoad() {
@@ -81,11 +64,6 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
         refresh.addTarget(self, action: #selector(SubjectViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         collectionView.refreshControl = refresh
-        
-        collectionView.reloadData()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-    
     }
 
     override func didReceiveMemoryWarning() {
@@ -199,3 +177,41 @@ class SubjectViewController: UIViewController, UICollectionViewDataSource, UICol
     }
 
 }
+
+//        let url:String = "https://api.purdue.io/odata/Subjects"
+//        let urlRequest = URL(string: url)
+
+//        if let URL = urlRequest {
+//            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
+//                if (error != nil) {
+//                    print ("============")
+//                    print (error?.localizedDescription)
+//                } else {
+//                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
+//
+//                        print ("DAAATAAAA....")
+//                        do {
+//                            if let data = data,
+//                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+//                                let value = json["value"] as? [[String: Any]] {
+//                                for val in value {
+//                                    var currSubId = val["SubjectId"] as! String
+//                                    self.subID.append(currSubId)
+//                                        if let name = val["Abbreviation"] as? String {
+//                                            self.subjects.append(name)
+//                                            self.hashmap[name] = currSubId
+//                                        }
+//                                }
+//                            }
+//                            self.collectionView.reloadData()
+//                            self.collectionView.delegate = self
+//                            self.collectionView.dataSource = self
+//                        } catch {
+//                            print ("Error is : \(error)")
+//                        }
+//                    }
+//                }
+//            }; task.resume()
+//        }
+
+

@@ -25,73 +25,46 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         getdata()
-        average.text = "Average rating: \(avgrating)"
-        
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        //fetch from database
-        print("hgjkhgjkhgjkhghhj")
+        getfunc()
+    }
+    func getfunc() {
         ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             
             print("before")
-            for child in snapshotA.children {
-                print("child")
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                let value = snap.value
-                print("VALUE IS: \(value)")
-                self.reviews.append(value! as! String)
-                print("REVIEWS: \(self.reviews)")
-                print("key = \(key)    value = \(value!)")
+            let enumer = snapshotA.children
+            while let rest = enumer.nextObject() as? DataSnapshot {
+                
+                let snap = rest.value as! NSDictionary
+                if (snap["Anonymity"] as! String! == "yes") {
+                    let review = snap["reviews"] as! String
+                    if (!(self.reviews.contains("Anonymous: \(review)"))) {
+                        self.reviews.append("Anonymous: \(review)")
+                    }
+                    
+                }
+                else {
+                    let review = snap["reviews"] as! String
+                    if (!(self.reviews.contains("\(rest.key as! NSString): \(review)"))) {
+                        self.reviews.append("\(rest.key as! NSString): \(review)")
+                    }
+                }
             }
             print("After")
+            
+            print("After")
+            
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
         })
-        
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        //  self.refresh.endRefreshing()
-        
     }
     
     
     
     override func viewDidAppear(_ animated: Bool) {
         getdata()
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        //fetch from database
-        print("hgjkhgjkhgjkhghhj")
-        ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
-            
-            print("before")
-            for child in snapshotA.children {
-                print("child")
-                let snap = child as! DataSnapshot
-                let key = snap.key
-                let value = snap.value
-                print("VALUE IS: \(value)")
-                if (!(self.reviews.contains(value! as! String))) {
-                    self.reviews.append(value! as! String)
-                }
-                print("REVIEWS: \(self.reviews)")
-                //print("key = \(key)    value = \(value!)")
-            }
-            print("After")
-            
-        })
-        
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        getfunc()
     }
-    
-    
     
     func getdata() {
         ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in

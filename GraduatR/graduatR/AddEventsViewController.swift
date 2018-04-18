@@ -45,7 +45,8 @@ class AddEventsViewController: UIViewController {
         self.databaseRef.child("Events").child(eventNameTextField.text!).child("Description").setValue(descriptionTextView.text)
         getDatesInfo()
         
-        self.performSegue(withIdentifier: "eventSegue", sender: nil)
+        //self.performSegue(withIdentifier: "eventSegue", sender: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     func getDatesInfo()

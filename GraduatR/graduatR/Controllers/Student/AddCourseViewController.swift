@@ -71,6 +71,8 @@ class AddCourseViewController: UIViewController {
             let newCourse = n.replacingOccurrences(of: "\t", with: "")
             ref.child("Courses").child(newCourse).child(user).setValue(["UID": AllVariables.uid, "Fname": name, "Lname": lastName, "ProfPic": AllVariables.profpic])
             
+           
+            
             //ref.child("Courses").setValue("okay")
             
             let alert = UIAlertController(title: "YAY!", message: "Course added to your profile!", preferredStyle: .alert)
@@ -78,9 +80,32 @@ class AddCourseViewController: UIViewController {
                 print ("ok tappped")
             }
             alert.addAction(OKAction)
-            self.present(alert, animated: true) {
-                print("added course")
+//          self.present(alert, animated: true) {
+//                print("added course")
+//            }
+            
+            //WANNA GET ADDDED TO GROUP CHAT
+            let addChatAlert = UIAlertController(title: "WAIT!", message: "Would you like to be added to the group chat of \(newCourse)", preferredStyle: .alert)
+            let YESAction = UIAlertAction(title: "YES", style: .default) { (action) in
+               
+                self.ref.child("Chats").child(AllVariables.Username).child(newCourse).child("GC").setValue("value")
+                
+                self.ref.child("GroupChats").child(newCourse).child("chatUsers").child(AllVariables.Username).child("name").setValue("\(self.name) \(self.lastName)")
+                
             }
+            
+            let NOAction = UIAlertAction(title: "NO", style: .default) { (action) in
+                print("pressed NO")
+                
+            }
+
+            addChatAlert.addAction(YESAction)
+            addChatAlert.addAction(NOAction)
+            self.present(addChatAlert, animated: true) {
+                print("added to group chat")
+            }
+            
+            
         }
                 else {
             
@@ -88,6 +113,28 @@ class AddCourseViewController: UIViewController {
                     AllVariables.courses.remove(at: i!)
             
                     var index = 0
+            
+            let newCourse = n.replacingOccurrences(of: "\t", with: "")
+            // Remove from GroupChats
+            ref.child("GroupChats").child(newCourse).child("chatUsers").child(AllVariables.Username).removeValue()
+            
+            // Remove from Chats
+            ref.child("Chats").child(AllVariables.Username).child(newCourse).removeValue()
+            
+            //Remove from same - courses
+            ref.child("Courses").observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                let enumer = aa.children
+                while let rest = enumer.nextObject() as? DataSnapshot {
+                    if (rest.hasChild(AllVariables.Username)) {
+                        self.ref.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+
+                        print("....removed from courses..")
+                    }
+                }
+            })
+            
+
+            
             ref.child("Users").child("Student").child(AllVariables.uid).child("Courses").setValue([])
             
             while (index < AllVariables.courses.endIndex) {
@@ -96,6 +143,9 @@ class AddCourseViewController: UIViewController {
                 index += 1
                 
             }
+            
+            
+            
             
                     print (n)
                     button.setTitle("Add course", for: UIControlState.normal)

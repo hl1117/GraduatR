@@ -27,39 +27,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getdata()
         refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(CalendarViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
-        
-        
-        
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        
-        databaseRef.child("Events").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
-            let enumer = snapshotA.children
-            while let rest = enumer.nextObject() as? DataSnapshot {
-                let vals = rest.value as? NSDictionary
-                
-                self.eventname.append((vals?["Event Name"] as? String)!)
-                self.eventdescription.append((vals?["Description"] as? String)!)
-                self.startdate.append((vals?["Start Date"] as? String)!)
-                self.enddate.append((vals?["End Date"] as? String)!)
-                
-                print(self.eventname)
-                
-            }
-        })
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        
-        
         
         // Do any additional setup after loading the view.
         
@@ -69,38 +41,31 @@ class CalendarViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        
+    func getdata() {
         databaseRef.child("Events").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
             let enumer = snapshotA.children
             while let rest = enumer.nextObject() as? DataSnapshot {
                 let vals = rest.value as? NSDictionary
-                
-                 if (!self.eventname.contains(vals?["Event Name"] as! String)){
-                self.eventname.append((vals?["Event Name"] as? String)!)
-                self.eventdescription.append((vals?["Description"] as? String)!)
-                self.startdate.append((vals?["Start Date"] as? String)!)
-                self.enddate.append((vals?["End Date"] as? String)!)
-                
-                print(self.eventname)
-                    print(self.eventdescription)
+                if (!(self.eventname.contains((vals?["Event Name"] as? String)!))) {
+                    self.eventname.append((vals?["Event Name"] as? String)!)
+                    self.eventdescription.append((vals?["Description"] as? String)!)
+                    self.startdate.append((vals?["Start Date"] as? String)!)
+                    self.enddate.append((vals?["End Date"] as? String)!)
+                    print(self.eventname)
                 }
             }
-            
-            })
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        })
+
+        
+        
+    }
     
-        
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
+    override func viewDidAppear(_ animated: Bool) {
+        getdata()
         self.refresh.endRefreshing()
-    
     }
     
     

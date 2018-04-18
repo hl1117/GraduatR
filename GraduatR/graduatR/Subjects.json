@@ -1,0 +1,323 @@
+{
+  "@odata.context":"http://api.purdue.io/odata/$metadata#Subjects","value":[
+    {
+      "SubjectId":"925ad09d-4ec3-4e43-9237-172666c7e8ea","SubjectClusterId":1,"Name":"Aero & Astro Engineering","Abbreviation":"AAE"
+    },{
+      "SubjectId":"0e69b990-da0b-462d-b38a-add82e5bf766","SubjectClusterId":2,"Name":"African American Studies","Abbreviation":"AAS"
+    },{
+      "SubjectId":"1410c89a-4f11-422d-985b-09ea398da50e","SubjectClusterId":3,"Name":"Agri & Biol Engineering","Abbreviation":"ABE"
+    },{
+      "SubjectId":"652b2c66-fc52-49d9-a1fd-c13064db4016","SubjectClusterId":4,"Name":"Art & Design","Abbreviation":"AD"
+    },{
+      "SubjectId":"8e25e471-f854-4050-a65d-1e9436ecff5b","SubjectClusterId":5,"Name":"Aerospace Studies","Abbreviation":"AFT"
+    },{
+      "SubjectId":"6a03c757-0a70-4880-b2e4-f61c7cca4d13","SubjectClusterId":6,"Name":"Agricultural Economics","Abbreviation":"AGEC"
+    },{
+      "SubjectId":"81d440cb-6069-4938-bec9-7429474d4ddd","SubjectClusterId":7,"Name":"Agriculture","Abbreviation":"AGR"
+    },{
+      "SubjectId":"0f9b5398-e650-4dfc-8bb0-8ae8102cc18e","SubjectClusterId":8,"Name":"Agronomy","Abbreviation":"AGRY"
+    },{
+      "SubjectId":"9a8b88f6-ab15-45d1-9b8c-dee07b986e83","SubjectClusterId":9,"Name":"American Studies","Abbreviation":"AMST"
+    },{
+      "SubjectId":"b921f855-2e3b-4ca0-bc07-797033817a5c","SubjectClusterId":10,"Name":"Animal Sciences","Abbreviation":"ANSC"
+    },{
+      "SubjectId":"9f884f87-0270-4957-b4b9-7e60d7db14c4","SubjectClusterId":11,"Name":"Anthropology","Abbreviation":"ANTH"
+    },{
+      "SubjectId":"bf28a7dc-d01f-447d-8d1a-31da77e5f033","SubjectClusterId":12,"Name":"Arabic","Abbreviation":"ARAB"
+    },{
+      "SubjectId":"55646e40-80a0-4eab-b697-e3888c139b97","SubjectClusterId":13,"Name":"Asian American Studies","Abbreviation":"ASAM"
+    },{
+      "SubjectId":"12885b08-d9c7-4e01-8ca4-2306809c30a3","SubjectClusterId":14,"Name":"American Sign Language","Abbreviation":"ASL"
+    },{
+      "SubjectId":"b692acaf-b2bf-4e0c-9005-9b356f8f458a","SubjectClusterId":15,"Name":"Agricultural Systems Mgmt","Abbreviation":"ASM"
+    },{
+      "SubjectId":"a55ab428-5585-4985-8338-17c06263caa4","SubjectClusterId":16,"Name":"Astronomy","Abbreviation":"ASTR"
+    },{
+      "SubjectId":"6c982d18-b9af-4266-a48b-c4bf04bab0cd","SubjectClusterId":17,"Name":"Aviation Technology","Abbreviation":"AT"
+    },{
+      "SubjectId":"ccecea94-9c11-487b-849e-bb102312538a","SubjectClusterId":18,"Name":"Bands","Abbreviation":"BAND"
+    },{
+      "SubjectId":"febaa1a3-7504-439f-9b76-16f32db3ff50","SubjectClusterId":19,"Name":"Biochemistry","Abbreviation":"BCHM"
+    },{
+      "SubjectId":"6885baa4-9878-4e73-937a-6d57ff36fdfb","SubjectClusterId":20,"Name":"Bldg Construct Mgmt Tech","Abbreviation":"BCM"
+    },{
+      "SubjectId":"4aa1da26-780f-4a2b-a69d-0e692b089302","SubjectClusterId":21,"Name":"Biological Sciences","Abbreviation":"BIOL"
+    },{
+      "SubjectId":"fae10368-bde0-49c1-8b8b-93cbd94a34d0","SubjectClusterId":22,"Name":"Biomedical Engineering","Abbreviation":"BME"
+    },{
+      "SubjectId":"0af82e67-2874-4e9c-864d-007c5ed7ce9e","SubjectClusterId":23,"Name":"Basic Medical Sciences","Abbreviation":"BMS"
+    },{
+      "SubjectId":"9cc14327-5a7d-4df8-a0d2-5a86ea7dac9f","SubjectClusterId":24,"Name":"Botany & Plant Pathology","Abbreviation":"BTNY"
+    },{
+      "SubjectId":"fb7a25f5-84a1-4640-b08a-2b17e98963dd","SubjectClusterId":25,"Name":"Business","Abbreviation":"BUS"
+    },{
+      "SubjectId":"d930e277-960d-4ceb-8e25-88dbb372a58f","SubjectClusterId":26,"Name":"Candidate","Abbreviation":"CAND"
+    },{
+      "SubjectId":"24d55b7b-15e1-48c9-9527-6b006a3688c3","SubjectClusterId":27,"Name":"Child Dev &Family Studies","Abbreviation":"CDFS"
+    },{
+      "SubjectId":"b1bf2055-7055-4a15-93cb-e689bef9ed81","SubjectClusterId":28,"Name":"Critical Disability Std","Abbreviation":"CDIS"
+    },{
+      "SubjectId":"6e5a8dd3-8191-421e-a9ff-0f7117e7d1c6","SubjectClusterId":29,"Name":"Civil Engineering","Abbreviation":"CE"
+    },{
+      "SubjectId":"9556ba2e-5bad-4301-b35e-d90038e75163","SubjectClusterId":30,"Name":"Construction Engr & Mgmt","Abbreviation":"CEM"
+    },{
+      "SubjectId":"0fe27512-184a-449f-9135-d26a1bab3e8e","SubjectClusterId":31,"Name":"Consumer & Family Sciences","Abbreviation":"CFS"
+    },{
+      "SubjectId":"a589fb78-de05-438e-a6ed-7445ef100ee5","SubjectClusterId":32,"Name":"Computer Graphics Tech","Abbreviation":"CGT"
+    },{
+      "SubjectId":"17dcc95f-00a5-4c77-86c2-b37fbf10fa89","SubjectClusterId":33,"Name":"Chemical Engineering","Abbreviation":"CHE"
+    },{
+      "SubjectId":"9f206696-e027-4c66-9b4e-544d56b8188b","SubjectClusterId":34,"Name":"Chemistry","Abbreviation":"CHM"
+    },{
+      "SubjectId":"abb0cb41-ab10-4005-af17-089abf848e4c","SubjectClusterId":35,"Name":"Chinese","Abbreviation":"CHNS"
+    },{
+      "SubjectId":"958b4b60-f950-4c13-9872-9387d85112c9","SubjectClusterId":36,"Name":"Classics","Abbreviation":"CLCS"
+    },{
+      "SubjectId":"d2ab34d4-88e3-4809-9330-1c683fff9fbd","SubjectClusterId":37,"Name":"Clinical Pharmacy","Abbreviation":"CLPH"
+    },{
+      "SubjectId":"d8fda59b-3361-45a0-8050-01777cef2349","SubjectClusterId":38,"Name":"Comparative Literature","Abbreviation":"CMPL"
+    },{
+      "SubjectId":"395d9c4b-f363-4873-b2e2-c2edef3e5d50","SubjectClusterId":39,"Name":"Computer & Info Tech","Abbreviation":"CNIT"
+    },{
+      "SubjectId":"7897369d-8f5b-4d28-bb45-879989c36159","SubjectClusterId":40,"Name":"Communication","Abbreviation":"COM"
+    },{
+      "SubjectId":"9fd5ca4a-6fa5-49ad-8f12-ee4dc0be7eb6","SubjectClusterId":41,"Name":"Comparative Pathobiology","Abbreviation":"CPB"
+    },{
+      "SubjectId":"940bae64-4147-446e-91f1-d9626640201f","SubjectClusterId":42,"Name":"Computer Sciences","Abbreviation":"CS"
+    },{
+      "SubjectId":"1689f8ed-73a4-4df8-9235-e5dd1d602322","SubjectClusterId":43,"Name":"Consumer Sci & Retailing","Abbreviation":"CSR"
+    },{
+      "SubjectId":"799339d2-fa64-49bd-86ab-dc2b254986bf","SubjectClusterId":44,"Name":"Dance","Abbreviation":"DANC"
+    },{
+      "SubjectId":"2c686dfb-6f07-44ac-9d41-7de635488a51","SubjectClusterId":45,"Name":"Earth Atmos Planetary Sci","Abbreviation":"EAPS"
+    },{
+      "SubjectId":"f8847eb9-e914-4518-9008-abdd28fb8c5e","SubjectClusterId":46,"Name":"Earth & Atmospheric Sci","Abbreviation":"EAS"
+    },{
+      "SubjectId":"7e399931-a29e-46d2-b337-4b34ce61e9f8","SubjectClusterId":47,"Name":"Electrical & Computer Engr","Abbreviation":"ECE"
+    },{
+      "SubjectId":"0f479a41-5c18-442d-acbc-0be3f8d2a9e8","SubjectClusterId":48,"Name":"Electrical&Comp Engr Tech","Abbreviation":"ECET"
+    },{
+      "SubjectId":"e7ca7349-612a-4488-9282-7f1b053a0894","SubjectClusterId":49,"Name":"Economics","Abbreviation":"ECON"
+    },{
+      "SubjectId":"aa4c6093-e4da-42fc-baf4-ece7eb6994b2","SubjectClusterId":50,"Name":"Educ-Curric & Instruction","Abbreviation":"EDCI"
+    },{
+      "SubjectId":"eed0e01e-ccfb-44ba-96df-c53212116b6e","SubjectClusterId":51,"Name":"Educ-Ed'l and Psy Studies","Abbreviation":"EDPS"
+    },{
+      "SubjectId":"1216d1b7-3bb3-40f4-8f64-1cb39430d0db","SubjectClusterId":52,"Name":"Ed Leadrship&Cultrl Fnd","Abbreviation":"EDST"
+    },{
+      "SubjectId":"61b8fed6-8c0c-4596-a4c2-1c7e95a3632c","SubjectClusterId":53,"Name":"Environ & Ecological Engr","Abbreviation":"EEE"
+    },{
+      "SubjectId":"2a077e84-d718-4d48-a847-f9fd80b5cd28","SubjectClusterId":54,"Name":"Engineering Education","Abbreviation":"ENE"
+    },{
+      "SubjectId":"768af143-4b40-4745-8fea-7435d3ea3e3e","SubjectClusterId":55,"Name":"English - IU","Abbreviation":"ENG"
+    },{
+      "SubjectId":"a2f499a5-ebed-454d-99e9-5d1215861aa8","SubjectClusterId":56,"Name":"English","Abbreviation":"ENGL"
+    },{
+      "SubjectId":"316f29de-7df8-4371-bd84-9da2d7d6171e","SubjectClusterId":57,"Name":"Engineering","Abbreviation":"ENGR"
+    },{
+      "SubjectId":"7635e3f8-5580-42ff-b49a-6984d865e198","SubjectClusterId":58,"Name":"Engineering Technology","Abbreviation":"ENGT"
+    },{
+      "SubjectId":"d92ae958-d059-48fc-a063-4ff1f5796c8e","SubjectClusterId":59,"Name":"Entomology","Abbreviation":"ENTM"
+    },{
+      "SubjectId":"424a3779-c3bc-400b-b885-5bdb83b46b20","SubjectClusterId":60,"Name":"Entrepreneurship","Abbreviation":"ENTR"
+    },{
+      "SubjectId":"4f3a4bf6-2a34-4e50-ab1a-c63c0076630a","SubjectClusterId":61,"Name":"Engr Proj Cmity Service","Abbreviation":"EPCS"
+    },{
+      "SubjectId":"9f20d6c2-8453-4a7a-a706-4910aebcba58","SubjectClusterId":62,"Name":"Exploratory Studies","Abbreviation":"EXPL"
+    },{
+      "SubjectId":"47792a0b-0ed5-4e4e-a764-98b80d5dfe03","SubjectClusterId":63,"Name":"Foreign Lang & Literatures","Abbreviation":"FLL"
+    },{
+      "SubjectId":"17ff6a21-fe33-438e-a521-644a82572040","SubjectClusterId":64,"Name":"Foods And Nutrition","Abbreviation":"FN"
+    },{
+      "SubjectId":"1e6782e4-4691-4778-8b40-b2addecc60f2","SubjectClusterId":65,"Name":"Forestry&Natural Resources","Abbreviation":"FNR"
+    },{
+      "SubjectId":"8cf699c0-860e-47e6-a160-aa7f849a076d","SubjectClusterId":66,"Name":"French","Abbreviation":"FR"
+    },{
+      "SubjectId":"557b66e7-429a-4a3b-92aa-7df21670c316","SubjectClusterId":67,"Name":"Food Science","Abbreviation":"FS"
+    },{
+      "SubjectId":"2544ba15-ffee-4f68-8f8e-1ab6c005e542","SubjectClusterId":68,"Name":"Film And Video Studies","Abbreviation":"FVS"
+    },{
+      "SubjectId":"cee66e3d-ebd6-42aa-9cd7-0d1e378c071c","SubjectClusterId":69,"Name":"Global Engineering Program","Abbreviation":"GEP"
+    },{
+      "SubjectId":"78fd594e-1cd3-491d-871e-a37e135ab070","SubjectClusterId":70,"Name":"German","Abbreviation":"GER"
+    },{
+      "SubjectId":"8b520f34-9bbc-495e-b787-0c1b6be1b0c9","SubjectClusterId":71,"Name":"Graduate Studies","Abbreviation":"GRAD"
+    },{
+      "SubjectId":"6e47c2de-bb48-4036-9305-8011558ff7be","SubjectClusterId":72,"Name":"Greek","Abbreviation":"GREK"
+    },{
+      "SubjectId":"231d4ab1-b8cf-440d-b9b0-00832fbd9a4d","SubjectClusterId":73,"Name":"General Studies","Abbreviation":"GS"
+    },{
+      "SubjectId":"fc082a92-b420-445e-9640-932cd36a942b","SubjectClusterId":74,"Name":"Human Dev &Family Studies","Abbreviation":"HDFS"
+    },{
+      "SubjectId":"c7aabd65-4d82-4a45-8fd5-4715839bb03c","SubjectClusterId":75,"Name":"Hebrew","Abbreviation":"HEBR"
+    },{
+      "SubjectId":"f0c3ca92-e1ed-486c-b8bb-0b04f474ad97","SubjectClusterId":76,"Name":"College Health & Human Sci","Abbreviation":"HHS"
+    },{
+      "SubjectId":"50c5c72e-3efd-40c4-9f49-8b0fe64725e6","SubjectClusterId":77,"Name":"History","Abbreviation":"HIST"
+    },{
+      "SubjectId":"422adc58-5e04-401d-b817-c844c82ab41c","SubjectClusterId":78,"Name":"Health And Kinesiology","Abbreviation":"HK"
+    },{
+      "SubjectId":"3a3b3de8-8788-458f-8fed-a123eb68064b","SubjectClusterId":79,"Name":"Honors","Abbreviation":"HONR"
+    },{
+      "SubjectId":"7ea6bfbe-0f04-46bd-a53b-88117c9c2af8","SubjectClusterId":80,"Name":"Horticulture","Abbreviation":"HORT"
+    },{
+      "SubjectId":"5e451ced-4360-498f-9f5f-f59c104a00b7","SubjectClusterId":81,"Name":"Health Sciences","Abbreviation":"HSCI"
+    },{
+      "SubjectId":"6d8188f3-af7f-455c-9008-efdb536d3f27","SubjectClusterId":82,"Name":"Hospitality & Tourism Mgmt","Abbreviation":"HTM"
+    },{
+      "SubjectId":"0fc84f28-f6f4-4aef-aefd-10a5338716cf","SubjectClusterId":83,"Name":"Interdisciplinary Engr","Abbreviation":"IDE"
+    },{
+      "SubjectId":"2e4bda64-dd9d-4ed0-9fd5-0159343d330a","SubjectClusterId":84,"Name":"Interdisciplinary Studies","Abbreviation":"IDIS"
+    },{
+      "SubjectId":"965ede01-5acb-4031-8839-07dce2ffbf30","SubjectClusterId":85,"Name":"Industrial Engineering","Abbreviation":"IE"
+    },{
+      "SubjectId":"15a63d0f-6d0a-4aaf-a765-a546b10729e0","SubjectClusterId":86,"Name":"Industrial Engr Technology","Abbreviation":"IET"
+    },{
+      "SubjectId":"cc63785a-6054-484e-9e25-0fab842f40c3","SubjectClusterId":87,"Name":"Industrial & Phys Pharm","Abbreviation":"IPPH"
+    },{
+      "SubjectId":"75250650-fb94-4d05-8b1c-5bdb71c860e1","SubjectClusterId":88,"Name":"Industrial Technology","Abbreviation":"IT"
+    },{
+      "SubjectId":"8337c6ec-8d22-4363-817a-c917413ea0f3","SubjectClusterId":89,"Name":"Italian","Abbreviation":"ITAL"
+    },{
+      "SubjectId":"8a53c77a-fbff-4b48-86a6-c18fb29eae30","SubjectClusterId":90,"Name":"Japanese","Abbreviation":"JPNS"
+    },{
+      "SubjectId":"d0eacfa4-0101-4603-bd04-1988bec55079","SubjectClusterId":91,"Name":"Jewish Studies","Abbreviation":"JWST"
+    },{
+      "SubjectId":"c48d21c2-87a4-4ce6-bb7a-23ac40e25f8e","SubjectClusterId":92,"Name":"Landscape Architecture","Abbreviation":"LA"
+    },{
+      "SubjectId":"55efd0cb-a610-482a-a76a-1a6204274547","SubjectClusterId":93,"Name":"Latina Am&Latino Studies","Abbreviation":"LALS"
+    },{
+      "SubjectId":"9592bbca-d1cb-406b-9e45-43e65088a802","SubjectClusterId":94,"Name":"Latin","Abbreviation":"LATN"
+    },{
+      "SubjectId":"16fc3e56-f69a-4cfd-92bc-17f105cb5ed3","SubjectClusterId":95,"Name":"Languages and Cultures","Abbreviation":"LC"
+    },{
+      "SubjectId":"9343b542-f5bf-4262-a9ad-e4f37b0c8fd6","SubjectClusterId":96,"Name":"Lafayette Center Med Educ","Abbreviation":"LCME"
+    },{
+      "SubjectId":"d7a4e3c6-4574-4d3d-9172-dd71d560d0bb","SubjectClusterId":97,"Name":"Linguistics","Abbreviation":"LING"
+    },{
+      "SubjectId":"04530894-a2a2-412d-b40b-a8e6f0ac6d56","SubjectClusterId":98,"Name":"Land Surveying","Abbreviation":"LS"
+    },{
+      "SubjectId":"d4f82d70-51d0-4932-8cee-5f3b8aa7660f","SubjectClusterId":99,"Name":"Mathematics","Abbreviation":"MA"
+    },{
+      "SubjectId":"3dfdefa9-50c6-44dd-8846-fe82a3d70cf6","SubjectClusterId":100,"Name":"Medieval &Renaissance Std","Abbreviation":"MARS"
+    },{
+      "SubjectId":"014719a2-bf47-4721-9db2-d4f17f14b67c","SubjectClusterId":101,"Name":"Mathematics","Abbreviation":"MATH"
+    },{
+      "SubjectId":"2c341ffb-6dcc-4c03-b766-8c862a69e570","SubjectClusterId":102,"Name":"Med Chem &Molecular Pharm","Abbreviation":"MCMP"
+    },{
+      "SubjectId":"1920c068-5461-4156-a838-f681b4d12986","SubjectClusterId":103,"Name":"Mechanical Engineering","Abbreviation":"ME"
+    },{
+      "SubjectId":"900f54c4-f872-4219-a180-8f40eeb12d31","SubjectClusterId":104,"Name":"Mechanical Engr Tech","Abbreviation":"MET"
+    },{
+      "SubjectId":"bbda8f75-8db6-48a5-8e41-0628d0b29eff","SubjectClusterId":105,"Name":"Manufacturing Engr Tech","Abbreviation":"MFET"
+    },{
+      "SubjectId":"479380fb-8d98-4237-b9e2-6bb209ec91a6","SubjectClusterId":106,"Name":"Management","Abbreviation":"MGMT"
+    },{
+      "SubjectId":"7a445a87-7ef4-49a4-9f80-7fa251502c6a","SubjectClusterId":107,"Name":"Materials Engineering","Abbreviation":"MSE"
+    },{
+      "SubjectId":"1d03e425-cb4e-47fe-b5a2-46a1a37c655d","SubjectClusterId":108,"Name":"Military Science & Ldrshp","Abbreviation":"MSL"
+    },{
+      "SubjectId":"89a32057-776c-4880-aaa7-82147ecc2439","SubjectClusterId":109,"Name":"Music History & Theory","Abbreviation":"MUS"
+    },{
+      "SubjectId":"a59ef030-9cbb-49be-9e5d-23b6a9e699e1","SubjectClusterId":110,"Name":"Natural Res & Environ Sci","Abbreviation":"NRES"
+    },{
+      "SubjectId":"8f2005f9-6aeb-4382-8847-bdc311b0eeb0","SubjectClusterId":111,"Name":"Naval Science","Abbreviation":"NS"
+    },{
+      "SubjectId":"814589d8-78e4-4f2a-9026-fb543d06121a","SubjectClusterId":112,"Name":"Nuclear Engineering","Abbreviation":"NUCL"
+    },{
+      "SubjectId":"afed06ce-77ae-47ef-b822-e6e24754fc80","SubjectClusterId":113,"Name":"Nuclear Pharmacy","Abbreviation":"NUPH"
+    },{
+      "SubjectId":"8cc7fbea-c6eb-464b-9994-5b50eab99399","SubjectClusterId":114,"Name":"Nursing","Abbreviation":"NUR"
+    },{
+      "SubjectId":"1de20759-2f0c-4ff4-9d48-b500d7a34b9f","SubjectClusterId":115,"Name":"Nutrition Science","Abbreviation":"NUTR"
+    },{
+      "SubjectId":"64b0d664-59d9-4718-98c3-0e855d5fb06f","SubjectClusterId":116,"Name":"Orgnztnl Bhvr &Hum Resrce","Abbreviation":"OBHR"
+    },{
+      "SubjectId":"fa1f0f1f-25cb-4d90-acff-81151d6ece26","SubjectClusterId":117,"Name":"Organiz Ldrshp&Supervision","Abbreviation":"OLS"
+    },{
+      "SubjectId":"291b0c59-ffd4-49e6-8d1a-d646b5f12686","SubjectClusterId":118,"Name":"Physical Education Skills","Abbreviation":"PES"
+    },{
+      "SubjectId":"22ee76b6-9023-4c94-a06e-bb6bee2572fa","SubjectClusterId":119,"Name":"Pharmacy Administration","Abbreviation":"PHAD"
+    },{
+      "SubjectId":"a70c3b73-5d0c-4c3d-ac99-00a9ed2a21aa","SubjectClusterId":120,"Name":"Philosophy","Abbreviation":"PHIL"
+    },{
+      "SubjectId":"2ac9014b-09db-4db8-bbf6-d4aca53c8ca5","SubjectClusterId":121,"Name":"Pharmacy Practice","Abbreviation":"PHPR"
+    },{
+      "SubjectId":"ae0ed16c-f30d-4d22-8e4d-9d01a2289445","SubjectClusterId":122,"Name":"Pharmacy","Abbreviation":"PHRM"
+    },{
+      "SubjectId":"de2d8eab-bdb5-4086-a012-1b77fb9fb866","SubjectClusterId":123,"Name":"Physics","Abbreviation":"PHYS"
+    },{
+      "SubjectId":"8e729f85-cc75-4064-93c9-f7ba4492e470","SubjectClusterId":124,"Name":"Political Science","Abbreviation":"POL"
+    },{
+      "SubjectId":"c00b2425-5262-4cd6-bbcd-a163cd85d92e","SubjectClusterId":125,"Name":"Professional Practice-Engr","Abbreviation":"PPE"
+    },{
+      "SubjectId":"464e1ac4-e5de-4083-8a8b-3c1302f193c6","SubjectClusterId":126,"Name":"Professional Practice-Tech","Abbreviation":"PPT"
+    },{
+      "SubjectId":"535ba6d4-cd66-4bb7-b337-863ac71a3cb6","SubjectClusterId":127,"Name":"Psychology","Abbreviation":"PSY"
+    },{
+      "SubjectId":"682ce67c-b6f4-4e77-b33f-65db46493830","SubjectClusterId":128,"Name":"Polytechnic","Abbreviation":"PTEC"
+    },{
+      "SubjectId":"d5d1b8a4-8ffb-465c-931b-7fdbc8b27afd","SubjectClusterId":129,"Name":"Portuguese","Abbreviation":"PTGS"
+    },{
+      "SubjectId":"8226a712-94ac-401a-aac7-d82d8e179c79","SubjectClusterId":130,"Name":"Reg File Maintenance","Abbreviation":"REG"
+    },{
+      "SubjectId":"69bd9596-9cd2-4f88-b4ce-0f2c35562587","SubjectClusterId":131,"Name":"Religious Studies","Abbreviation":"REL"
+    },{
+      "SubjectId":"3b4d2ffa-dba9-43fd-9c06-8f7fb607dc23","SubjectClusterId":132,"Name":"Russian","Abbreviation":"RUSS"
+    },{
+      "SubjectId":"3013c3fa-fafa-4132-8408-561cf99f600d","SubjectClusterId":133,"Name":"Study Abroad","Abbreviation":"SA"
+    },{
+      "SubjectId":"df504901-cdfc-473a-b591-8ce46e30b46a","SubjectClusterId":134,"Name":"General Science","Abbreviation":"SCI"
+    },{
+      "SubjectId":"589c0156-d34c-41dd-8646-be7002075325","SubjectClusterId":135,"Name":"Studies Coll Liberal Arts","Abbreviation":"SCLA"
+    },{
+      "SubjectId":"2c1cb0e9-8356-4d95-9195-e832ef4314e3","SubjectClusterId":136,"Name":"Sustainable Food&Farm Sys","Abbreviation":"SFS"
+    },{
+      "SubjectId":"8e63db7f-abec-43c7-88ee-5fd97c5fa523","SubjectClusterId":137,"Name":"Speech, Lang&Hear Science","Abbreviation":"SLHS"
+    },{
+      "SubjectId":"cfa81a26-6f31-4a67-851e-c39413364938","SubjectClusterId":138,"Name":"Sociology","Abbreviation":"SOC"
+    },{
+      "SubjectId":"30b3f38f-26c9-4081-94d9-a311139a0d43","SubjectClusterId":139,"Name":"Spanish","Abbreviation":"SPAN"
+    },{
+      "SubjectId":"9d98fe2d-1c31-4a4e-91c6-ee3f306a7fcf","SubjectClusterId":140,"Name":"Statistics","Abbreviation":"STAT"
+    },{
+      "SubjectId":"f9e79f6d-c930-4b27-940b-57d6bbcafe98","SubjectClusterId":141,"Name":"Technology","Abbreviation":"TECH"
+    },{
+      "SubjectId":"7e59cb9e-5f70-495c-b960-01c41e995c96","SubjectClusterId":142,"Name":"Theatre","Abbreviation":"THTR"
+    },{
+      "SubjectId":"b5e82d99-ca76-4f2c-9e7d-ccd4b8596213","SubjectClusterId":143,"Name":"Technology Ldrshp Innovatn","Abbreviation":"TLI"
+    },{
+      "SubjectId":"76a02331-19f0-4798-a6f9-ee034eceefc5","SubjectClusterId":144,"Name":"Veterinary Clinical Sci","Abbreviation":"VCS"
+    },{
+      "SubjectId":"fdbf6cb2-8048-469e-a850-d6f128ef5701","SubjectClusterId":145,"Name":"Veterinary Medicine","Abbreviation":"VM"
+    },{
+      "SubjectId":"50a220ac-c752-49c8-8109-b46b24a94dd5","SubjectClusterId":146,"Name":"Women Gend&Sexuality Std","Abbreviation":"WGSS"
+    },{
+      "SubjectId":"8d61027f-6e4e-47eb-8ab7-8c0392b3c74f","SubjectClusterId":147,"Name":"Women's Studies","Abbreviation":"WOST"
+    },{
+      "SubjectId":"24ece9fb-b57b-43be-972c-39e7164f0b55","SubjectClusterId":148,"Name":"Youth Develop & Ag Educ","Abbreviation":"YDAE"
+    },{
+      "SubjectId":"fbf82a64-c97c-4f5e-b2bb-53667d546f49","SubjectClusterId":149,"Name":"Global Studies Lib Arts","Abbreviation":"GSLA"
+    },{
+      "SubjectId":"a877bda6-e2d0-4814-bee8-1585993d8065","SubjectClusterId":150,"Name":"Construction Management","Abbreviation":"CM"
+    },{
+      "SubjectId":"ec650d33-2dee-42cc-b318-455d0e0a21d1","SubjectClusterId":151,"Name":"Purdue Sys Collaboratory","Abbreviation":"SYS"
+    },{
+      "SubjectId":"689c96e6-dc7a-465e-ba3a-ed86501fadd4","SubjectClusterId":152,"Name":"Library & Inform Science","Abbreviation":"LIBR"
+    },{
+      "SubjectId":"d84e2408-8a4e-41bc-85b9-0be7262798cc","SubjectClusterId":153,"Name":"Chemistry","Abbreviation":"CHEM"
+    },{
+      "SubjectId":"a2912028-d268-4873-a809-f6ebe32247de","SubjectClusterId":154,"Name":"Education - IU","Abbreviation":"EDUC"
+    },{
+      "SubjectId":"13685e23-2386-4794-ab25-0ed199866d22","SubjectClusterId":155,"Name":"Geology","Abbreviation":"GEOL"
+    },{
+      "SubjectId":"b27e9684-3fc6-4053-b4e3-63bece3097a5","SubjectClusterId":156,"Name":"Health Physical Ed &Recr","Abbreviation":"HPER"
+    },{
+      "SubjectId":"f57a9d49-0ede-484b-8988-7103d1cf80ee","SubjectClusterId":157,"Name":"Recreation Leadership","Abbreviation":"RECR"
+    },{
+      "SubjectId":"d232ca18-eb71-4beb-bcf7-6a2239dc8e69","SubjectClusterId":158,"Name":"Computer Integr Mfg Tech","Abbreviation":"CIMT"
+    },{
+      "SubjectId":"927e05db-6ee9-4f73-ad90-98d60d2e84f1","SubjectClusterId":159,"Name":"Information & Library Sci","Abbreviation":"ILS"
+    }
+  ]
+}

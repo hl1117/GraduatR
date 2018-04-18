@@ -32,58 +32,35 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func fetchData () {
-        
-        let url:String = "https://api.purdue.io/odata/Courses"
-        let urlRequest = URL(string: url)
-        
-        if let URL = urlRequest {
-            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
-                if (error != nil) {
-                    print ("============")
-                    print (error?.localizedDescription)
-                } else {
-                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
-                        //print ("what is DATA????????? ....")
-                        //print (stringData)
-                        do {
-                            if let data = data,
-                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-                                let value = json["value"] as? [[String: Any]] {
-                                for val in value {
-                                    var currSubId = val["SubjectId"] as! String
-                                    
-                                    if ( currSubId == self.SubjectId) {
-                                        
-                                        if let name = val["Title"] as? String {
-                                            if let num = val["Number"] as? String {
-                                                if let credits = val["CreditHours"] as? Int {
-                                                    if let des = val["Description"] as? String {
-                                                
-                                                        self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
-                                                        self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
-                                                        //  print (self.names)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        self.tableView.reloadData()
+        do {
+            let file = Bundle.main.url(forResource: "Courses", withExtension: "json")
+            print("DATAAAAAAA")
+            let data = try Data(contentsOf: file!)
+            let json = try JSONSerialization.jsonObject(with: data) as? [String : Any]
+            let value = json!["value"] as? [[String: Any]]
+            for val in value! {
+                var currSubId = val["SubjectId"] as! String
+                    if ( currSubId == self.SubjectId) {
+                        if let name = val["Title"] as? String {
+                            if let num = val["Number"] as? String {
+                                if let credits = val["CreditHours"] as? Int {
+                                    if let des = val["Description"] as? String {
+                                        self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
+                                        self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
                                     }
                                 }
                             }
-                            
-                            
-                            self.refresh.endRefreshing()
-                        } catch {
-                            print ("Error is : \(error)")
                         }
                     }
-                    
-                }
-                
-            }; task.resume()
-            
+            }
+            self.tableView.reloadData()
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
         }
-    }
+        catch {
+            print("Error is: \(error)")
+        }
+        }
     
     
     override func viewDidLoad() {
@@ -95,12 +72,6 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
         refresh.addTarget(self, action: #selector(CourseTableViewController.didPullToRefresh(_:)), for: .valueChanged)
         
         tableView.insertSubview(refresh, at: 0)
-        
-        tableView.reloadData()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        
         
     }
     
@@ -152,6 +123,7 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         fetchData()
+        self.refresh.endRefreshing()
     }
     
     // MARK: - Table view data source
@@ -205,8 +177,58 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let credos = creds[indexPath.row]
         vc.c = credos
     }
-    
-    
-
     }
 }
+
+
+//        let url:String = "https://api.purdue.io/odata/Courses"
+//        let urlRequest = URL(string: url)
+//
+//        if let URL = urlRequest {
+//            let task = URLSession.shared.dataTask(with: URL) { (data, response, error) in
+//                if (error != nil) {
+//                    print ("============")
+//                    print (error?.localizedDescription)
+//                } else {
+//                    if let stringData = String(data: data!, encoding: String.Encoding.utf8) {
+//                        //print ("what is DATA????????? ....")
+//                        //print (stringData)
+//                        do {
+//                            if let data = data,
+//                                let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
+//                                let value = json["value"] as? [[String: Any]] {
+//                                for val in value {
+//                                    var currSubId = val["SubjectId"] as! String
+//
+//                                    if ( currSubId == self.SubjectId) {
+//
+//                                        if let name = val["Title"] as? String {
+//                                            if let num = val["Number"] as? String {
+//                                                if let credits = val["CreditHours"] as? Int {
+//                                                    if let des = val["Description"] as? String {
+//
+//                                                        self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
+//                                                        self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
+//                                                        //  print (self.names)
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//                                        self.tableView.reloadData()
+//                                    }
+//                                }
+//                            }
+//
+//
+//                            self.refresh.endRefreshing()
+//                        } catch {
+//                            print ("Error is : \(error)")
+//                        }
+//                    }
+//
+//                }
+//
+//            }; task.resume()
+//
+//        }
+    
