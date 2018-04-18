@@ -49,10 +49,13 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                 else {
                     for nam in self.selectednames {
                         Database.database().reference().child("GroupChats").child(self.groupname.text!).child("chatUsers").child(nam).setValue(self.firstnames[self.names.index(of: nam)!])
-                        
                         Database.database().reference().child("Chats").child(nam).child(self.groupname.text!).child("GC").setValue("value")
                         
                     }
+                    
+                   
+                    let myname = "\(AllVariables.Fname) \(AllVariables.Lname)"
+                    Database.database().reference().child("GroupChats").child(self.groupname.text!).child("chatUsers").child(AllVariables.Username).setValue(myname)
                 }
                 _ = self.navigationController?.popViewController(animated: true)
             })
