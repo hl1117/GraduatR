@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -487,16 +487,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm also a tutor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWW-z0-h7a">
-                                <rect key="frame" x="40" y="439" width="131" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Iz-JT-wn7">
-                                <rect key="frame" x="216" y="435" width="51" height="31"/>
-                                <color key="onTintColor" red="0.77001700129999995" green="0.66829935309999999" blue="0.099638181770000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oql-fH-AEQ">
                                 <rect key="frame" x="172" y="359" width="174" height="30"/>
                                 <nil key="textColor"/>
@@ -528,14 +518,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hide GPA?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htg-K0-br6">
-                                <rect key="frame" x="40" y="511" width="81" height="21"/>
+                                <rect key="frame" x="71" y="460" width="81" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZ8-9L-mZA">
-                                <rect key="frame" x="216" y="506" width="49" height="31"/>
+                                <rect key="frame" x="205" y="450" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.80300206220000003" green="0.72412015819999997" blue="0.23498338769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
@@ -544,11 +534,9 @@
                         <constraints>
                             <constraint firstItem="Fak-PE-kjL" firstAttribute="centerY" secondItem="oql-fH-AEQ" secondAttribute="centerY" id="0yP-IT-vZf"/>
                             <constraint firstItem="OAH-Ek-lpV" firstAttribute="top" secondItem="JZz-JZ-Ibc" secondAttribute="bottom" constant="36" id="1Dw-1h-QF1"/>
-                            <constraint firstItem="BWW-z0-h7a" firstAttribute="centerY" secondItem="4Iz-JT-wn7" secondAttribute="centerY" id="2HO-L4-gwr"/>
                             <constraint firstItem="nEc-4e-rxr" firstAttribute="trailing" secondItem="WHt-Jh-uRz" secondAttribute="trailing" constant="99" id="2kj-g5-pq2"/>
                             <constraint firstItem="WIi-8n-vo2" firstAttribute="top" secondItem="3vF-5b-tm4" secondAttribute="bottom" constant="51" id="3Lk-2X-k19"/>
                             <constraint firstItem="Wub-ds-ZPz" firstAttribute="leading" secondItem="nEc-4e-rxr" secondAttribute="leading" constant="40" id="3OK-8V-wCs"/>
-                            <constraint firstItem="BWW-z0-h7a" firstAttribute="leading" secondItem="Wub-ds-ZPz" secondAttribute="leading" id="5JO-v2-lj5"/>
                             <constraint firstItem="Fak-PE-kjL" firstAttribute="top" secondItem="Wub-ds-ZPz" secondAttribute="bottom" constant="72" id="5N5-uO-tka"/>
                             <constraint firstItem="r3d-20-6sU" firstAttribute="trailing" secondItem="CMA-tq-2Va" secondAttribute="trailing" id="6BF-EG-ppe"/>
                             <constraint firstItem="oql-fH-AEQ" firstAttribute="leading" secondItem="Fak-PE-kjL" secondAttribute="trailing" constant="20" id="6iN-Gw-YHi"/>
@@ -559,7 +547,6 @@
                             <constraint firstItem="3vF-5b-tm4" firstAttribute="centerY" secondItem="WHt-Jh-uRz" secondAttribute="centerY" id="CCX-iV-mYC"/>
                             <constraint firstItem="Zqj-jW-Mwb" firstAttribute="leading" secondItem="3vF-5b-tm4" secondAttribute="leading" id="D2W-0r-mdx"/>
                             <constraint firstItem="Zqj-jW-Mwb" firstAttribute="top" secondItem="r3d-20-6sU" secondAttribute="bottom" constant="44" id="DTj-eg-gOF"/>
-                            <constraint firstItem="4Iz-JT-wn7" firstAttribute="leading" secondItem="BWW-z0-h7a" secondAttribute="trailing" constant="45" id="EQN-El-wZd"/>
                             <constraint firstItem="HHj-PO-RKg" firstAttribute="bottom" secondItem="CMA-tq-2Va" secondAttribute="bottom" id="FWB-mj-8yv"/>
                             <constraint firstItem="HHj-PO-RKg" firstAttribute="top" secondItem="JZz-JZ-Ibc" secondAttribute="top" id="FjK-pl-SDs"/>
                             <constraint firstItem="Fak-PE-kjL" firstAttribute="leading" secondItem="Wub-ds-ZPz" secondAttribute="leading" id="G6L-Lr-LF9"/>
@@ -573,7 +560,6 @@
                             <constraint firstItem="OAH-Ek-lpV" firstAttribute="bottom" secondItem="HHj-PO-RKg" secondAttribute="bottom" id="UGI-uf-CJp"/>
                             <constraint firstItem="WIi-8n-vo2" firstAttribute="leading" secondItem="Wub-ds-ZPz" secondAttribute="trailing" constant="7" id="Usd-X4-0LL"/>
                             <constraint firstItem="GWa-G5-63q" firstAttribute="leading" secondItem="WSq-9R-KJy" secondAttribute="trailing" constant="65" id="Vw0-QM-5ow"/>
-                            <constraint firstItem="Fak-PE-kjL" firstAttribute="leading" secondItem="BWW-z0-h7a" secondAttribute="leading" id="Wgy-Jj-ULG"/>
                             <constraint firstItem="OAH-Ek-lpV" firstAttribute="centerX" secondItem="ISA-8R-Ion" secondAttribute="centerX" id="XA6-Ek-Nan"/>
                             <constraint firstItem="nEc-4e-rxr" firstAttribute="trailing" secondItem="GWa-G5-63q" secondAttribute="trailing" constant="29" id="aZN-0I-jQP"/>
                             <constraint firstItem="Fak-PE-kjL" firstAttribute="top" secondItem="WIi-8n-vo2" secondAttribute="bottom" constant="22" id="ac6-oq-vgV"/>
@@ -582,7 +568,6 @@
                             <constraint firstItem="OAH-Ek-lpV" firstAttribute="centerX" secondItem="JZz-JZ-Ibc" secondAttribute="centerX" id="d0n-fE-i8f"/>
                             <constraint firstItem="r3d-20-6sU" firstAttribute="trailing" secondItem="OAH-Ek-lpV" secondAttribute="trailing" id="fTl-YQ-0C5"/>
                             <constraint firstItem="EYT-Az-21K" firstAttribute="leading" secondItem="r3d-20-6sU" secondAttribute="leading" id="haS-pY-ofW"/>
-                            <constraint firstItem="BWW-z0-h7a" firstAttribute="top" secondItem="Fak-PE-kjL" secondAttribute="bottom" constant="53" id="jkd-1E-Fhp"/>
                             <constraint firstItem="CMA-tq-2Va" firstAttribute="leading" secondItem="JZz-JZ-Ibc" secondAttribute="trailing" constant="80" id="ml2-6P-7Zn"/>
                             <constraint firstItem="r3d-20-6sU" firstAttribute="centerX" secondItem="ISA-8R-Ion" secondAttribute="centerX" id="mme-to-tph"/>
                             <constraint firstItem="nEc-4e-rxr" firstAttribute="bottom" secondItem="OAH-Ek-lpV" secondAttribute="bottom" constant="32" id="mpB-25-KtM"/>
@@ -606,7 +591,6 @@
                         <outlet property="GPA" destination="oql-fH-AEQ" id="eEd-LA-9Wn"/>
                         <outlet property="classController" destination="WIi-8n-vo2" id="qkR-gY-leF"/>
                         <outlet property="gpaAnonInfo" destination="FZ8-9L-mZA" id="UVv-z4-rLN"/>
-                        <outlet property="tutorStatus" destination="4Iz-JT-wn7" id="hKW-iu-XEz"/>
                         <outlet property="welcomeText" destination="WSq-9R-KJy" id="tD2-NF-odg"/>
                     </connections>
                 </viewController>
