@@ -16,15 +16,20 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
+    @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var average: UILabel!
     
     var reviews = [String]()
     
+     var gradesAvg = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getdata()
+        getData2()
         getfunc()
     }
     func getfunc() {
@@ -63,6 +68,7 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidAppear(_ animated: Bool) {
         getdata()
+        getData2()
         getfunc()
     }
     
@@ -159,5 +165,81 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
         
         return cell
     }
+    
+    func getData2() {
+        ref.observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
+            print("WHAT3")
+            if (!(snapshotA.hasChild("AllCourseGrades"))) {
+                self.ref.child("AllCourseGrades").child(AllVariables.courseselected).setValue(["A+": 0, "A": 0, "A-": 0, "B+": 0, "B": 0, "B-": 0, "C+": 0, "C": 0, "C-": 0, "D+": 0, "D": 0, "D-": 0, "F": 0])
+                
+                AllVariables.coursegrade = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
+                
+            }
+            else {
+                self.ref.child("AllCourseGrades").observeSingleEvent(of: DataEventType.value, with: { (snapshotB) in
+                    print("WHAT4")
+                    if (!(snapshotB.hasChild(AllVariables.courseselected))) {
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).setValue(["A+": 0, "A": 0, "A-": 0, "B+": 0, "B": 0, "B-": 0, "C+": 0, "C": 0, "C-": 0, "D+": 0, "D": 0, "D-": 0, "F": 0])
+                        
+                        
+                        AllVariables.coursegrade = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
+                        
+                        
+                    }
+                    else {
+                        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+                            let valu = snapshot.value as? NSDictionary
+                            print("IMHERE")
+                            let n1 = valu?["A+"] as? Double
+                            let n2 = valu?["A"] as? Double
+                            let n3 = valu?["A-"] as? Double
+                            let n4 = valu?["B+"] as? Double
+                            let n5 = valu?["B"] as? Double
+                            let n6 = valu?["B-"] as? Double
+                            let n7 = valu?["C+"] as? Double
+                            let n8 = valu?["C"] as? Double
+                            let n9 = valu?["C-"] as? Double
+                            let n10 = valu?["D+"] as? Double
+                            let n11 = valu?["D"] as? Double
+                            let n12 = valu?["D-"] as? Double
+                            let n13 = valu?["F"] as? Double
+                            
+                            
+                            //let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
+                            
+                            //self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
+                            
+                            // self.average.text = "Average rating: \(self.avgrating)"
+                            AllVariables.coursegrade = [n1!, n2!, n3!, n4!, n5!, n6!, n7!, n8!, n9!, n10!, n11!, n12!, n13!]
+                            print(AllVariables.coursegrade)
+                            
+                            self.setChart2(dataPoints: self.gradesAvg, values: AllVariables.coursegrade)
+                        })
+                    }
+                })
+                
+            }
+            
+        })
+    }
+    
+    func setChart2(dataPoints: [String], values: [Double]) {
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
+            dataEntries.append(dataEntry)
+        }
+        
+        let barDataSet = BarChartDataSet(values: dataEntries, label: "units")
+        let barData = BarChartData(dataSet: barDataSet)
+        barChartView.data = barData
+        
+    }
+    
+    
+    
 
 }

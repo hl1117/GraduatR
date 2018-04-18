@@ -128,60 +128,6 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         self.tableView.dataSource = self
     }
     
-//    let bChartView = BarChartView()
-//    var dataEntry: [BarChartDataEntry] = []
-//    var gradedivisions = [String]()
-//    var unitspergrade = [Double]()
-//
-//    func populateChartData() {
-//        gradedivisions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
-//        unitspergrade = [5.0, 6.0, 7.0, 7.0, 8.0, 10.0, 11.0, 4.0, 2.0, 0.0, 6.0, 13.0, 12.0]
-//        self.getChartData(with: gradedivisions, values: unitspergrade)
-//    }
-//
-//    var delegate: GetChartData! {
-//        didSet {
-//            populateData()
-//            barChartSetup()
-//        }
-//    }
-//
-//    func populateData() {
-//        gradedivisions = delegate.gradedivisions
-//        unitspergrade = delegate.unitspergrade
-//    }
-//
-//    func barChartSetup() {
-//        self.backgroundColor = UIColor.white
-//        self.addSubview(bChartView)
-//        bChartView.translateAutoresizingMaskIntoConstraints = false;
-//        bChartView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-//        bChartView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        bChartView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-//        bChartView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-//
-//        bChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInBounce)
-//        setBarChart(dataPoints: gradedivisions, values: unitspergrade)
-//    }
-//
-//    func setBarChart(dataPoints: [String], values: [Double]) {
-//        bChartView.noDataTextColor = UIColor.white
-//        bChartView.noDataText = "No data for the chart"
-//        bChartView.backgroundColor = UIColor.white
-//
-//        for i in 0..<dataPoints.count {
-//            let dataPoint = BarChartDataEntry(x: Double(i), y: Double(values[i])!)
-//            dataEntry.append(dataPoint)
-//        }
-//
-//        let chartDataSet = BarChartDataSet(values: dataEntry, label: "# of grades")
-//        let chartData = BarChartData()
-//        chartData.addDataSet(chartDataSet)
-//        chartData.setDrawValues(false)
-//        chartDataSet.colors = [UIColor.themePink]
-//
-//    }
-    
     
     
     func getData2() {
@@ -255,18 +201,6 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         let barData = BarChartData(dataSet: barDataSet)
         barChartView.data = barData
 
-//        var colors: [UIColor] = []
-//
-//        for _ in 0..<dataPoints.count {
-//            let red = Double(arc4random_uniform(256))
-//            let green = Double(arc4random_uniform(256))
-//            let blue = Double(arc4random_uniform(256))
-//
-//            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-//            colors.append(color)
-//        }
-//
-//        BarChartDataSet.colors = colors
     }
    
     
