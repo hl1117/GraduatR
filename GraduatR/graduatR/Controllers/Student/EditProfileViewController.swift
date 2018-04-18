@@ -32,22 +32,24 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     
     @IBAction func bioButtonPressed(_ sender: Any) {
-        AllVariables.bio = bioText.text!
-        AllVariables.GPA = gpaTextField.text!
-        
         if (gpaAnon.isOn)
         {
-            databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "yes"])
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA").setValue(gpaTextField.text!)
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA Anonymity").setValue("yes")
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text!)
             AllVariables.gpaAnon = "yes"
+            AllVariables.GPA = gpaTextField.text!
+            AllVariables.bio = bioText.text!
         }
         else if !(gpaAnon.isOn) {
-            databaseRef.child("Users").child("Student").child(AllVariables.uid).setValue(["Username": AllVariables.Username, "Fname": AllVariables.Fname, "Lname": AllVariables.Lname, "GPA" : AllVariables.GPA, "Class": AllVariables.standing, "GPA Anonymity": "no"])
-            AllVariables.gpaAnon = "no"
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA").setValue(gpaTextField.text!)
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA Anonymity").setValue("no")
+            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text!)
+            AllVariables.gpaAnon = "yes"
+            AllVariables.GPA = gpaTextField.text!
+            AllVariables.bio = bioText.text!
         }
-        AllVariables.GPA = gpaTextField.text!
-        self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text)
         navigationController?.popViewController(animated: true)
-        
     }
     
     
@@ -151,8 +153,25 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 if (error == nil) {
                     let downloadURL = metadata?.downloadURL()
                     self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("profile_pic").setValue(downloadURL!.absoluteString)
-                    AllVariables.profpic = downloadURL!.absoluteString
-                    print("successful upload")
+                        AllVariables.profpic = downloadURL!.absoluteString
+                        Database.database().reference().child("Courses").observeSingleEvent(of: DataEventType.value, with: { (s) in
+                            let enumer = s.children
+                            while let rest = enumer.nextObject() as? DataSnapshot {
+                                if (rest.hasChild(AllVariables.Username)) {
+                                    self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).child("ProfPic").setValue(AllVariables.profpic)
+                                }
+                            }
+                            
+                        })
+                    
+                    let alert = UIAlertController(title: "SUCCESS", message: "Profile Picture updated!", preferredStyle: .alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                        print ("ok tappped")
+                    }
+                    alert.addAction(OKAction)
+                    self.present(alert, animated: true) {
+                        print("Sucesss")
+                    }
                 }
                 else {
                     print(error?.localizedDescription)
@@ -171,9 +190,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     //    }
     
     override func viewDidAppear(_ animated: Bool) {
-        //AllVariables.bio = bioText.text
-        bioText.text = AllVariables.bio
-        gpaTextField.text = AllVariables.GPA
+        
     }
     
     @IBAction func deleteButton(_ sender: Any) {
