@@ -154,6 +154,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     let downloadURL = metadata?.downloadURL()
                     self.databaseRef.child("Users").child("Student").child(AllVariables.uid).child("profile_pic").setValue(downloadURL!.absoluteString)
                         AllVariables.profpic = downloadURL!.absoluteString
+                        Database.database().reference().child("Courses").observeSingleEvent(of: DataEventType.value, with: { (s) in
+                            let enumer = s.children
+                            while let rest = enumer.nextObject() as? DataSnapshot {
+                                if (rest.hasChild(AllVariables.Username)) {
+                                    self.databaseRef.child("Courses").child(rest.key).child(AllVariables.Username).child("ProfPic").setValue(AllVariables.profpic)
+                                }
+                            }
+                            
+                        })
                     
                     let alert = UIAlertController(title: "SUCCESS", message: "Profile Picture updated!", preferredStyle: .alert)
                     let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
