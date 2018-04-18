@@ -150,6 +150,57 @@ class TutorEditProfileViewController: UIViewController , UIImagePickerController
         //AllVariables.bio = bioText.text
         bioText.text = AllVariables.bio
     }
+    
+    
+    @IBAction func deleteUser(_ sender: Any) {
+        
+        let user = Auth.auth().currentUser
+        user?.delete(completion: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            else {
+                let alertView = UIAlertView(title: "Delete Account", message: "You have successfully deleted your account.", delegate: self, cancelButtonTitle: "Goodbye")
+                alertView.show()
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                self.present(loginVC, animated: true, completion: nil)
+                self.databaseRef.child("Users").child("Usernames").child(AllVariables.Username).removeValue()
+                self.databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: { (s) in
+                    let enumer = s.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.uid)) {
+                           
+                            self.databaseRef.child("Users").child(rest.key).child(AllVariables.uid).removeValue()
+                        }
+                    }
+                })
+       
+                //Remove from courses
+                self.databaseRef.child("TutorList").observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                    let enumer = aa.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("TutorList").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+                //Remove from chats
+                self.databaseRef.child("Chats").observeSingleEvent(of: DataEventType.value, with: { (b) in
+                    if (b.hasChild(AllVariables.Username)) {
+                        self.databaseRef.child("Chats").child(AllVariables.Username).removeValue()
+                    }
+                    let enumer = b.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(AllVariables.Username)) {
+                            self.databaseRef.child("Chats").child(rest.key).child(AllVariables.Username).removeValue()
+                        }
+                    }
+                })
+            }
+        })
+        
+    }
+    
 
 
 }
