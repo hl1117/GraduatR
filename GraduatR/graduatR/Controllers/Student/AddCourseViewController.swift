@@ -113,6 +113,28 @@ class AddCourseViewController: UIViewController {
                     AllVariables.courses.remove(at: i!)
             
                     var index = 0
+            
+            let newCourse = n.replacingOccurrences(of: "\t", with: "")
+            // Remove from GroupChats
+            ref.child("GroupChats").child(newCourse).child("chatUsers").child(AllVariables.Username).removeValue()
+            
+            // Remove from Chats
+            ref.child("Chats").child(AllVariables.Username).child(newCourse).removeValue()
+            
+            //Remove from same - courses
+            ref.child("Courses").observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                let enumer = aa.children
+                while let rest = enumer.nextObject() as? DataSnapshot {
+                    if (rest.hasChild(AllVariables.Username)) {
+                        self.ref.child("Courses").child(rest.key).child(AllVariables.Username).removeValue()
+
+                        print("....removed from courses..")
+                    }
+                }
+            })
+            
+
+            
             ref.child("Users").child("Student").child(AllVariables.uid).child("Courses").setValue([])
             
             while (index < AllVariables.courses.endIndex) {
@@ -121,6 +143,9 @@ class AddCourseViewController: UIViewController {
                 index += 1
                 
             }
+            
+            
+            
             
                     print (n)
                     button.setTitle("Add course", for: UIControlState.normal)
