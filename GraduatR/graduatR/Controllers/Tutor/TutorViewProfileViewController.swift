@@ -77,6 +77,41 @@ class TutorViewProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func clear() {
+        AllVariables.Username = ""
+        AllVariables.Fname = ""
+        AllVariables.Lname = ""
+        AllVariables.GPA = ""
+        AllVariables.standing = ""
+        AllVariables.courses.removeAll()
+        AllVariables.profpic = ""
+        AllVariables.bio = ""
+        AllVariables.uid = ""
+        AllVariables.books.removeAll()
+        AllVariables.courseselected = ""
+        AllVariables.profselected = ""
+        AllVariables.courseratings.removeAll()
+        AllVariables.coursegrade.removeAll()
+        AllVariables.examrating.removeAll()
+        AllVariables.profratings.removeAll()
+        AllVariables.gpaAnon = ""
+    }
+
     @IBAction func logoutButton(_ sender: Any) {
+        
+        if (Auth.auth().currentUser != nil)
+        {
+            do {
+                try? Auth.auth().signOut()
+                
+                if (Auth.auth().currentUser == nil) {
+                    print("USER LOG OUT")
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                    self.present(loginVC, animated: true, completion: nil)
+                    clear()
+                }
+            }
+        }
     }
 }
