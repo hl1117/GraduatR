@@ -171,4 +171,9 @@ class TutorChatViewController: JSQMessagesViewController {
     {
         return messages[indexPath.item].senderId == senderId ? 0 : 15
     }
+    
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
 }

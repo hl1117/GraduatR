@@ -62,5 +62,9 @@ class AddEventsViewController: UIViewController {
         self.databaseRef.child("Events").child(eventNameTextField.text!).child("End Date").setValue(endDate)
         
     }
+    @IBAction func onTap(_ sender: Any) {
+        
+        view.endEditing(true)
+    }
     
 }

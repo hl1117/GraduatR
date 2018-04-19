@@ -46,4 +46,9 @@ class ResetPasswordViewController: UIViewController {
         })
     }
     
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    
 }

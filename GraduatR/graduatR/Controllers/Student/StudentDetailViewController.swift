@@ -89,6 +89,12 @@ class StudentDetailViewController: UIViewController, UIPickerViewDelegate, UIPic
             AllVariables.standing = myclass
         }
     }
+    
+    @IBAction func onTap(_ sender: Any) {
+        
+        view.endEditing(true)
+    }
+    
 }
     extension String  {
         var isNumeric: Bool {
