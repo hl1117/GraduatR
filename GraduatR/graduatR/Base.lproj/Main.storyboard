@@ -1715,13 +1715,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="nar-5h-Wef" kind="relationship" relationship="viewControllers" id="ZmO-gm-x5M"/>
-                        <segue destination="obe-WB-567" kind="relationship" relationship="viewControllers" id="YYU-Rr-a6g"/>
                         <segue destination="S7b-fP-Bv5" kind="relationship" relationship="viewControllers" id="rAs-Gy-IWP"/>
+                        <segue destination="7Cf-Gm-ccP" kind="relationship" relationship="viewControllers" id="Bcz-Em-VaB"/>
                         <segue destination="gd8-yF-Yug" kind="relationship" relationship="viewControllers" id="7lh-QS-OVN"/>
                         <segue destination="foq-k3-8uQ" kind="relationship" relationship="viewControllers" id="n42-bM-NS7"/>
                         <segue destination="m3X-kI-Ki9" kind="relationship" relationship="viewControllers" id="3Jb-oy-r27"/>
-                        <segue destination="7Cf-Gm-ccP" kind="relationship" relationship="viewControllers" id="Bcz-Em-VaB"/>
+                        <segue destination="nar-5h-Wef" kind="relationship" relationship="viewControllers" id="ZmO-gm-x5M"/>
+                        <segue destination="obe-WB-567" kind="relationship" relationship="viewControllers" id="YYU-Rr-a6g"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXe-Ke-pwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2504,7 +2504,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6em-lZ-2im">
-                                <rect key="frame" x="32" y="387" width="310" height="39"/>
+                                <rect key="frame" x="32" y="387" width="310" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -2700,11 +2700,11 @@
             </objects>
             <point key="canvasLocation" x="11348" y="-264.01799100449779"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Market Place-->
         <scene sceneID="3SL-Xa-FSj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nar-5h-Wef" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icons8-shopping-cart-50" id="vjo-sj-QOn"/>
+                    <tabBarItem key="tabBarItem" title="Market Place" image="icons8-shopping-cart-50" id="vjo-sj-QOn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gq2-87-Hqe">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -2976,9 +2976,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zBs-PH-SAT"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sGT-6E-ZAU">
-                        <barButtonItem key="rightBarButtonItem" title="+" id="aUz-g9-n2a"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="sGT-6E-ZAU"/>
                     <connections>
                         <outlet property="tableView" destination="r8O-aq-Qhb" id="oHr-4M-7RW"/>
                     </connections>
@@ -3179,11 +3177,11 @@
             </objects>
             <point key="canvasLocation" x="9789.6000000000004" y="1717.6911544227887"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--On Campus Events-->
         <scene sceneID="mcM-MF-evz">
             <objects>
                 <navigationController storyboardIdentifier="Events" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="obe-WB-567" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icons8-calendar-50" id="Up4-Pm-lOR"/>
+                    <tabBarItem key="tabBarItem" title="On Campus Events" image="icons8-calendar-50" id="Up4-Pm-lOR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qsn-Jv-USC">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -3221,11 +3219,11 @@
             </objects>
             <point key="canvasLocation" x="6097" y="-917"/>
         </scene>
-        <!--Professors-->
+        <!--Navigation Controller-->
         <scene sceneID="zYj-F4-hxx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foq-k3-8uQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Professors" image="icons8-training-50" id="QUR-SS-w87"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-training-50" id="QUR-SS-w87"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WE1-Yj-pDO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -3912,11 +3910,11 @@
             </objects>
             <point key="canvasLocation" x="-1060" y="4470"/>
         </scene>
-        <!--Chats-->
+        <!--Navigation Controller-->
         <scene sceneID="Rpx-wS-tCe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Cf-Gm-ccP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" image="icons8-communication-50" id="zhA-fA-p1B"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-communication-50" id="zhA-fA-p1B"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="c4M-4m-iUO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
