@@ -2140,17 +2140,15 @@
                         <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="Szl-CD-0pb"/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="Txz-gr-2YS" appends="YES" id="xL4-Go-LbS"/>
-                            <outletCollection property="gestureRecognizers" destination="Txz-gr-2YS" appends="YES" id="k6x-11-obi"/>
-                            <outletCollection property="gestureRecognizers" destination="Txz-gr-2YS" appends="YES" id="Gaw-II-7v9"/>
+                            <outletCollection property="gestureRecognizers" destination="IyO-hk-07V" appends="YES" id="d6T-S9-rza"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Xfs-3W-fSM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dr5-6G-Vbe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Txz-gr-2YS">
+                <tapGestureRecognizer id="IyO-hk-07V">
                     <connections>
-                        <action selector="onTap:" destination="a5W-Jb-QoM" id="AlL-F0-BEf"/>
+                        <action selector="onTap:" destination="a5W-Jb-QoM" id="D2M-Oy-WXF"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
