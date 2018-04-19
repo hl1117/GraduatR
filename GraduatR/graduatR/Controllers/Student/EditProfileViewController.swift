@@ -51,6 +51,20 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func bioButtonPressed(_ sender: Any) {
+       
+        let gpaNumber = NSString(string: gpaTextField.text!).doubleValue
+        if (!(gpaNumber <= 4.0 && gpaNumber >= 0.0))
+        {
+            let alert = UIAlertController(title: "GPA Error", message: "Not a valid GPA", preferredStyle: .alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                print ("ok tappped")
+            }
+            alert.addAction(OKAction)
+            self.present(alert, animated: true) {
+                print("ERROR")
+            }
+        }
+        else {
         if (gpaAnon.isOn)
         {
             databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA").setValue(gpaTextField.text!)
@@ -61,14 +75,27 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             AllVariables.bio = bioText.text!
         }
         else if !(gpaAnon.isOn) {
-            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA").setValue(gpaTextField.text!)
-            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA Anonymity").setValue("no")
-            databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text!)
-            AllVariables.gpaAnon = "no"
-            AllVariables.GPA = gpaTextField.text!
-            AllVariables.bio = bioText.text!
+            if (gpaTextField.text == "")
+            {
+                let alert = UIAlertController(title: "GPA ERROR", message: "Cannot have empty GPA field and wish to make GPA public", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                    print ("ok tappped")
+                }
+                alert.addAction(OKAction)
+                self.present(alert, animated: true) {
+                    print("Sucesss")
+                }
+            } else {
+                databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA").setValue(gpaTextField.text!)
+                databaseRef.child("Users").child("Student").child(AllVariables.uid).child("GPA Anonymity").setValue("no")
+                databaseRef.child("Users").child("Student").child(AllVariables.uid).child("bio").setValue(bioText.text!)
+                AllVariables.gpaAnon = "no"
+                AllVariables.GPA = gpaTextField.text!
+                AllVariables.bio = bioText.text!
+            }
         }
         navigationController?.popViewController(animated: true)
+    }
     }
     
     
@@ -142,14 +169,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.present(myActionSheet, animated: true, completion: nil)
     }
     
-    
-    //        func dismissFullScreenImage(sender: AnyObject) {
-    //            (sender ).removeFromSuperView()
-    //   }
-    //        imagePicker.allowsEditing = false
-    //        imagePicker.sourceType = .photoLibrary
-    //        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-    //        imagePicker(picker, animated: true, completion: nil)
+
     
     
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
