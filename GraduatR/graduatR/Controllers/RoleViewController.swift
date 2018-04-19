@@ -126,6 +126,10 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
         }
     }
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
 }
 
 extension String {

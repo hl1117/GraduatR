@@ -78,5 +78,10 @@ class ParentDetailViewController: UIViewController {
         
     }
     
+    
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
 
 }
