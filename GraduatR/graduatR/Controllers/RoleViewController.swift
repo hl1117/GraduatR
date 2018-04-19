@@ -89,8 +89,9 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                                 AllVariables.Fname = self.fname.text!
                                 AllVariables.Username = self.username.text!
                                 AllVariables.Lname = self.lname.text!
-                                self.ref.child("Users").child("StudentUsers").child(AllVariables.Username).setValue("\(self.FN) \(self.LN)")
+                               
                                 if (self.pickerData[self.value] == "Student") {
+                                     self.ref.child("Users").child("StudentUsers").child(AllVariables.Username).setValue("\(self.FN) \(self.LN)")
                                     self.performSegue(withIdentifier: "studentDetail", sender: self)
                                 }
                                 else if (self.pickerData[self.value] == "Tutor") {

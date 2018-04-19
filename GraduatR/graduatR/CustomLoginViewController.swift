@@ -18,11 +18,30 @@ class CustomLoginViewController: UIViewController
     
     var userUid: String!
     
+    func clear() {
+        AllVariables.Username = ""
+        AllVariables.Fname = ""
+        AllVariables.Lname = ""
+        AllVariables.GPA = ""
+        AllVariables.standing = ""
+        AllVariables.courses.removeAll()
+        AllVariables.profpic = ""
+        AllVariables.bio = ""
+        AllVariables.uid = ""
+        AllVariables.books.removeAll()
+        AllVariables.courseselected = ""
+        AllVariables.profselected = ""
+        AllVariables.courseratings.removeAll()
+        AllVariables.coursegrade.removeAll()
+        AllVariables.examrating.removeAll()
+        AllVariables.profratings.removeAll()
+        AllVariables.gpaAnon = ""
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        clear()
         // Do any additional setup after loading the view.
     }
     

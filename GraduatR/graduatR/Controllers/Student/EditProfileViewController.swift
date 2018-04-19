@@ -223,6 +223,22 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 alertView.show()
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
                 self.present(loginVC, animated: true, completion: nil)
+                
+                //Remove parent if any?????
+                self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (aa) in
+                    
+                    if (aa.hasChild("ParentUID")) {
+                        let rest = aa.value as! NSDictionary
+                        
+                        let parentUID = rest["ParentUID"] as! String
+                        //print("has a parent.....")
+                        self.databaseRef.child("Users").child("Parent").child(parentUID).child("Studentid").removeValue()
+                        //print("parent deleeeeeteeed")
+                        
+                    }
+                    
+                })
+                
                 self.databaseRef.child("Users").child("Usernames").child(AllVariables.Username).removeValue()
                 self.databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: { (s) in
                     let enumer = s.children
@@ -234,21 +250,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                             self.databaseRef.child("Users").child(rest.key).child(AllVariables.uid).removeValue()
                         }
                     }
-                })
-                
-                //Remove parent if any?????
-                self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (aa) in
-                   
-                        if (aa.hasChild("ParentUID")) {
-                            let rest = aa.value as! NSDictionary
-                            
-                            let parentUID = rest["ParentUID"] as! String
-                            //print("has a parent.....")
-                            self.databaseRef.child("Users").child("Parent").child(parentUID).child("Studentid").removeValue()
-                            //print("parent deleeeeeteeed")
-                            
-                        }
-        
                 })
                 
                 
@@ -320,7 +321,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         })
                     }
                 })
-                self.clear()
             }
         })
     }
