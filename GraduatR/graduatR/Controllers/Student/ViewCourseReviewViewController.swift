@@ -61,14 +61,22 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                     if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.usernames.append("@anonymous")
                         self.reviews.append("\(review)")
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
                     }
-                    
                 }
                 else {
                     let review = snap["reviews"] as! String
                     if (!(self.reviews.contains("\(rest.key as NSString): \(review)"))) {
                         self.usernames.append("@\(rest.key as NSString)")
                         self.reviews.append("\(review)")
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                        
                     }
                 }
             }
@@ -115,6 +123,11 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                     if (!(self.reviews.contains("Anonymous: \(review)"))) {
                         self.usernames.append("@anonymous")
                         self.reviews.append("\(review)")
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                        
                     }
                 }
                 else {
@@ -122,6 +135,11 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
                     if (!(self.reviews.contains("\(rest.key as NSString): \(review)"))) {
                         self.usernames.append("@\(rest.key as NSString)")
                         self.reviews.append("\(review)")
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                        
                     }
                 }
             }
@@ -134,7 +152,6 @@ class ViewCourseReviewViewController: UIViewController, UITableViewDataSource, U
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-    
     
     
     func getData2() {

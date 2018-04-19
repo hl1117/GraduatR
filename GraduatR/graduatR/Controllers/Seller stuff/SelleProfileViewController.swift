@@ -37,11 +37,12 @@ class SelleProfileViewController: UIViewController {
             let value = snap.value as? NSDictionary
             self.name.text = "\(value?["Fname"] as? String ?? "") \(value?["Lname"] as? String ?? "")"
             self.bio.text = value?["bio"] as? String ?? ""
-            self.gpa.text = value?["GPA"] as? String ?? ""
+            if (value?["GPA Anonymity"] as? String == "no") {
+                self.gpa.text = value?["GPA"] as? String ?? ""
+            }
             let prof = value?["profile_pic"] as? String ?? ""
             if (prof != "") {
                 let data = NSData(contentsOf: NSURL(string: prof)! as URL)
-                
                 self.setProfilePicture(imageView: self.sellprofpic, imageToSet: UIImage(data: data! as Data)!)
             }
             self.ref.child("Users").child("Student").child(self.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
@@ -54,7 +55,5 @@ class SelleProfileViewController: UIViewController {
                 self.classesTaken.text = course
             })
         })
-            
     }
-
 }
