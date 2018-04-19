@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class ClickBookCellViewController: UIViewController {
     
     var bookname = String()
@@ -27,6 +27,7 @@ class ClickBookCellViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        get()
         self.bPrice.text = bookprice
         self.bAuthor.text = bookauthor
         self.bCourse.text = bookclass
@@ -35,11 +36,19 @@ class ClickBookCellViewController: UIViewController {
         
         //according to UID we have to go into the database and get the
         //name of the seller... (we only have the username not name)
-        self.sellerName.text = seller
         
         
     }
-    
+    func get() {
+        Database.database().reference().child("Users").child("Usernames").observeSingleEvent(of: DataEventType.value, with: { (s) in
+            let rest = s.value as! NSDictionary
+            if (s.hasChild(self.seller)) {
+                let name = rest[self.seller] as! String ?? ""
+                self.sellerName.text = name
+            }
+            
+        })
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "sellerChat") {
