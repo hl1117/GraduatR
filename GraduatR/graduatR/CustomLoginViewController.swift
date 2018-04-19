@@ -9,8 +9,12 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
+import FBSDKLoginKit
+import FBSDKShareKit
+import FBSDKCoreKit
 
-class CustomLoginViewController: UIViewController
+class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate
 {
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -35,6 +39,9 @@ class CustomLoginViewController: UIViewController
         clear()
         NotificationCenter.default.addObserver(self, selector: #selector(CustomLoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CustomLoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        configureGoogleSignInButton()
+        configureFacebookSignInButton()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -236,6 +243,48 @@ class CustomLoginViewController: UIViewController
     
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
+    }
+    
+    
+    
+    fileprivate func configureGoogleSignInButton()
+    {
+        let googleSignInButton = GIDSignInButton()
+        googleSignInButton.frame = CGRect(x: 75, y: 475, width: view.frame.width - 150, height: 150)
+        view.addSubview(googleSignInButton)
+        GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
+    fileprivate func configureFacebookSignInButton()
+    {
+        let facebookSignInButton = FBSDKLoginButton()
+        facebookSignInButton.frame = CGRect(x: 75, y: 550, width: view.frame.width - 150, height: 50)
+        view.addSubview(facebookSignInButton)
+        facebookSignInButton.delegate = self
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error == nil {
+            print("User just logged in via Facebook")
+            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                if (error != nil) {
+                    print("Facebook authentication failed")
+                } else {
+                    print("Facebook authentication succeed")
+                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = protectedPage
+                }
+            })
+        } else {
+            print("An error occured the user couldn't log in")
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User just logged out from his Facebook account")
     }
     
     
