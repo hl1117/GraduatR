@@ -64,7 +64,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBAction func clickNextButton(_ sender: Any) {
         //Update realtime database based on role
         if (username.text?.isEmpty == false && fname.text?.isEmpty == false && lname.text?.isEmpty == false) {
-            if (username.text?.isAlphanumeric != false) {
+            if (username.text?.isAlphanumeric != false && fname.text?.isAlphanumeric != false && lname.text?.isAlphanumeric != false) {
                 let databaseRef = Database.database().reference();
                 let userID = Auth.auth().currentUser!.uid
                 AllVariables.uid = userID
@@ -105,7 +105,7 @@ class RoleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                         })
             }
             else {
-                let alert = UIAlertController(title: "Error", message: "Username must be alphanumeric!", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Fields must be alphanumeric!", preferredStyle: .alert)
                 let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                     print ("ok tappped")
                 }
