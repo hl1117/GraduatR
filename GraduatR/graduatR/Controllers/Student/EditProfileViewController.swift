@@ -243,7 +243,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 alertView.show()
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
                 self.present(loginVC, animated: true, completion: nil)
-                
+                print("UID \(AllVariables.uid)")
                 //Remove parent if any?????
                 self.databaseRef.child("Users").child("Student").child(AllVariables.uid).observeSingleEvent(of: DataEventType.value, with: { (aa) in
                     
@@ -251,15 +251,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         let rest = aa.value as! NSDictionary
                         
                         let parentUID = rest["ParentUID"] as! String
-                        //print("has a parent.....")
+                        print("has a parent.....")
                         self.databaseRef.child("Users").child("Parent").child(parentUID).child("Studentid").removeValue()
-                        //print("parent deleeeeeteeed")
-                        
+                        print("parent deleeeeeteeed")
                     }
-                    
                 })
                 
                 self.databaseRef.child("Users").child("Usernames").child(AllVariables.Username).removeValue()
+                print("parent deleeeeeteeed")
+                
                 self.databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: { (s) in
                     let enumer = s.children
                     while let rest = enumer.nextObject() as? DataSnapshot {
@@ -272,6 +272,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     }
                 })
                 
+                print("parent deleeeeeteeed")
                 
                 //Remove from ProfessorReviews
                 self.databaseRef.child("ProfessorReviews").observeSingleEvent(of: DataEventType.value, with: { (ss) in
@@ -291,6 +292,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }
                 })
+                print("parent deleeeeeteeed")
+                
                 //Remove from CourseReviews
                 self.databaseRef.child("CourseReviews").observeSingleEvent(of: DataEventType.value, with: { (a) in
                     let enumer = a.children
@@ -300,6 +303,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }
                 })
+                print("parent deleeeeeteeed")
+                
                 //Remove from courses
                 self.databaseRef.child("Courses").observeSingleEvent(of: DataEventType.value, with: { (aa) in
                     let enumer = aa.children
@@ -309,6 +314,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }
                 })
+                print("parent deleeeeeteeed")
+                
                 //Remove from exam reviews
                 self.databaseRef.child("ExamReviews").observeSingleEvent(of: DataEventType.value, with: { (aaa) in
                     let enumer = aaa.children
@@ -318,6 +325,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }
                 })
+                print("parent deleeeeeteeed")
+                
                 //Remove from chats
                 self.databaseRef.child("Chats").observeSingleEvent(of: DataEventType.value, with: { (b) in
                     if (b.hasChild(AllVariables.Username)) {
@@ -330,6 +339,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }
                 })
+                print("parent deleeeeeteeed")
+                
                 //Remove from GroupChats
                 self.databaseRef.child("GroupChats").observeSingleEvent(of: DataEventType.value, with: { (bb) in
                     let enumer = bb.children
