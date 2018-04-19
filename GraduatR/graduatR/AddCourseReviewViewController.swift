@@ -47,12 +47,16 @@ class AddCourseReviewViewController: UIViewController {
             print("JHEREE")
             if ((courseReview.text! != "")) {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "yes", "reviews": courseReview.text!])
+                
+                
             }
             print("REVIEW : \(courseReview.text)")
         }
       else if (!anonStatus.isOn) {
             if ((courseReview.text! != "")) {
                 self.ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").child(AllVariables.Username).setValue(["Anonymity": "no", "reviews": courseReview.text!])
+                
+                
             }
             
         }
@@ -155,6 +159,7 @@ class AddCourseReviewViewController: UIViewController {
         {
             reviewFive()
         }
+        navigationController?.popViewController(animated: true)
     }
     
     func selectAplus()

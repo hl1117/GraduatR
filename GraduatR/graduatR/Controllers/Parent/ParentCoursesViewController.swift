@@ -22,7 +22,7 @@ class ParentCoursesViewController: UIViewController, UITableViewDataSource, UITa
     // var numbers = [String]()
     
     var filteredArrayName = [String]()
-    var filteredArrayName2 = [String]()
+    var hashmap = [String : String]()
     var showSearchResults = false
     
     var refresh: UIRefreshControl!
@@ -46,7 +46,7 @@ class ParentCoursesViewController: UIViewController, UITableViewDataSource, UITa
                             if let credits = val["CreditHours"] as? Int {
                                 if let des = val["Description"] as? String {
                                     self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
-                                    self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
+                                    self.hashmap["\(self.SubjectAbbr) \(num) \t \(name)"] = (" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
                                 }
                             }
                         }
@@ -90,10 +90,6 @@ class ParentCoursesViewController: UIViewController, UITableViewDataSource, UITa
         filteredArrayName = names.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
-        filteredArrayName2 = creds.filter({( name: String) -> Bool in
-            return name.lowercased().range(of:searchText.lowercased()) != nil
-        })
-        
         
         if searchBar.text == "" {
             showSearchResults = false
@@ -164,16 +160,13 @@ class ParentCoursesViewController: UIViewController, UITableViewDataSource, UITa
 
             let name = filteredArrayName[indexPath.row]
             vc.n = name
-            let credos = filteredArrayName2[indexPath.row]
-            vc.c = credos
+            vc.c = self.hashmap[name]!
 
         }
         else {
             let name = names[indexPath.row]
             vc.n = name
-
-            let credos = creds[indexPath.row]
-            vc.c = credos
+            vc.c = self.hashmap[name]!
         }
 
 

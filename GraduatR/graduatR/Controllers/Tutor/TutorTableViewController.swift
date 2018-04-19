@@ -22,11 +22,10 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
     // var numbers = [String]()
     
     var filteredArrayName = [String]()
-    var filteredArrayName2 = [String]()
     var showSearchResults = false
     
     var refresh: UIRefreshControl!
-    
+    var hashmap = [String : String]()
     var SubjectId = ""
     var SubjectAbbr = ""
     
@@ -46,7 +45,7 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
                             if let credits = val["CreditHours"] as? Int {
                                 if let des = val["Description"] as? String {
                                     self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
-                                    self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
+                                    self.hashmap["\(self.SubjectAbbr) \(num) \t \(name)"] = (" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
                                 }
                             }
                         }
@@ -88,9 +87,6 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mySearch = searchBar.text!
         filteredArrayName = names.filter({( name: String) -> Bool in
-            return name.lowercased().range(of:searchText.lowercased()) != nil
-        })
-        filteredArrayName2 = creds.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
         
@@ -166,8 +162,7 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
 
             let name = filteredArrayName[indexPath.row]
             vc.n = name
-            let credos = filteredArrayName2[indexPath.row]
-            vc.c = credos
+            vc.c = self.hashmap[name]!
             
             let subabbr = self.SubjectAbbr
             vc.sa = subabbr
@@ -176,8 +171,7 @@ class TutorTableViewController: UIViewController , UITableViewDataSource, UITabl
             let name = names[indexPath.row]
             vc.n = name
 
-            let credos = creds[indexPath.row]
-            vc.c = credos
+            vc.c = self.hashmap[name]!
             
             let subabbr = self.SubjectAbbr
             vc.sa = subabbr

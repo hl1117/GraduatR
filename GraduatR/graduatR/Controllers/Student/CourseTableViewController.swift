@@ -22,9 +22,8 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
     // var numbers = [String]()
     
     var filteredArrayName = [String]()
-    var filteredArrayName2 = [String]()
     var showSearchResults = false
-    
+    var hashmap = [String : String]()
     var refresh: UIRefreshControl!
     
     var SubjectId = ""
@@ -46,7 +45,7 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
                                 if let credits = val["CreditHours"] as? Int {
                                     if let des = val["Description"] as? String {
                                         self.names.append("\(self.SubjectAbbr) \(num) \t \(name)")
-                                        self.creds.append(" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
+                                        self.hashmap["\(self.SubjectAbbr) \(num) \t \(name)"] = (" - Course Title: \(name) \n - Course Number: \(num) \n - Credit Hours: \(credits) \n \(des)")
                                     }
                                 }
                             }
@@ -91,10 +90,6 @@ class CourseTableViewController: UIViewController, UITableViewDataSource, UITabl
         filteredArrayName = names.filter({( name: String) -> Bool in
             return name.lowercased().range(of:searchText.lowercased()) != nil
         })
-        filteredArrayName2 = creds.filter({( name: String) -> Bool in
-            return name.lowercased().range(of:searchText.lowercased()) != nil
-        })
-        
         
         if searchBar.text == "" {
             showSearchResults = false
@@ -166,16 +161,14 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let name = filteredArrayName[indexPath.row]
         vc.n = name
-        let credos = filteredArrayName2[indexPath.row]
-        vc.c = credos
+        vc.c = hashmap[name]!
         
     }
     else {
         let name = names[indexPath.row]
         vc.n = name
         
-        let credos = creds[indexPath.row]
-        vc.c = credos
+        vc.c = hashmap[name]!
     }
     }
 }
