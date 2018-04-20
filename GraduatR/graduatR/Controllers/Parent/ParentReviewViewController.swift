@@ -16,6 +16,10 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var pieChartView: PieChartView!
     let stars = ["One", "Two", "Three", "Four", "Five"]
     
+    @IBOutlet weak var examDiff: UILabel!
+    @IBOutlet weak var avgGrade: UILabel!
+    
+    
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var tableView: UITableView!
     
