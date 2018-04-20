@@ -25,6 +25,8 @@ class ViewProfileViewController: UIViewController
     var storageRef = Storage.storage().reference()
     var image: UIImageView!
     
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var gpaLabel: UILabel!
     @IBOutlet weak var pictureonprofilepage: UIImageView!
     @IBOutlet weak var updateBioText: UILabel!
