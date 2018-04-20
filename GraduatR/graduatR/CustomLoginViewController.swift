@@ -262,20 +262,57 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
         view.addSubview(facebookSignInButton)
         facebookSignInButton.delegate = self
     }
-    
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error == nil {
+            
             print("User just logged in via Facebook")
             let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if (error != nil) {
                     print("Facebook authentication failed")
                 } else {
+                    let databaseRef = Database.database().reference();
+                    
                     print("Facebook authentication succeed")
-                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                    let appDelegate = UIApplication.shared.delegate
-                    appDelegate?.window??.rootViewController = protectedPage
+                    databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: {(sap) in
+                        let enumer = sap.children
+                        while let rest = enumer.nextObject() as? DataSnapshot {
+                            if (rest.hasChild(Auth.auth().currentUser!.uid)) {
+                                    print("HEREEEEEE")
+                                    print(rest.key)
+                                    print(Auth.auth().currentUser!.uid)
+                                databaseRef.child("Users").child(rest.key).child(Auth.auth().currentUser!.uid).observeSingleEvent(of: DataEventType.value, with: { (snap) in
+                                    
+                                    
+                                    AllVariables.uid = Auth.auth().currentUser!.uid
+                                    print("HEREEE?")
+                                    let value = snap.value as? NSDictionary
+                                    AllVariables.Username = value?["Username"] as? String ?? ""
+                                    AllVariables.Fname = (value?["Fname"] as? String)!
+                                    AllVariables.Lname = (value?["Lname"] as? String)!
+                                    AllVariables.bio = value?["bio"] as? String ?? ""
+                                    AllVariables.GPA = value?["GPA"] as? String ?? ""
+                                    AllVariables.profpic = value?["profile_pic"] as? String ?? ""
+                                    AllVariables.standing = value?["Class"] as? String ?? ""
+                                    
+                                    databaseRef.child("Users").child(rest.key).child(AllVariables.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
+                                        let counter = 0;
+                                        let enumer = snapshotCourse.children
+                                        while let rest = enumer.nextObject() as? DataSnapshot {
+                                            AllVariables.courses.append(rest.value as! String)
+                                        }
+                                    })
+                                    
+                                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                                    let appDelegate = UIApplication.shared.delegate
+                                    appDelegate?.window??.rootViewController = protectedPage
+                                    
+                                })
+                            }
+                        }
+                        self.performSegue(withIdentifier: "register", sender: self)
+                    })
                 }
             })
         } else {
@@ -283,6 +320,28 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
         }
     }
     
+    
+//
+//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+//        if error == nil {
+//            print("User just logged in via Facebook")
+//            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+//            Auth.auth().signIn(with: credential, completion: { (user, error) in
+//                if (error != nil) {
+//                    print("Facebook authentication failed")
+//                } else {
+//                    print("Facebook authentication succeed")
+//                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+//                    let appDelegate = UIApplication.shared.delegate
+//                    appDelegate?.window??.rootViewController = protectedPage
+//                }
+//            })
+//        } else {
+//            print("An error occured the user couldn't log in")
+//        }
+//    }
+//
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User just logged out from his Facebook account")
     }
