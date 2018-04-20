@@ -36,6 +36,8 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
         getdata()
         getData2()
         getfunc()
+        getExamDifficulty()
+        getCourseAvg()
     }
     func getfunc() {
         ref.child("CourseReviews").child(AllVariables.courseselected).child("Comments").observeSingleEvent(of: DataEventType.value, with: { (snapshotA) in
@@ -77,6 +79,8 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
         getdata()
         getData2()
         getfunc()
+        getExamDifficulty()
+        getCourseAvg()
     }
     
     func getdata() {
@@ -250,6 +254,151 @@ class ParentReviewViewController: UIViewController, UITableViewDataSource, UITab
         
     }
     
+    
+    func getCourseAvg()
+    {
+        
+        self.ref.child("AllCourseGrades").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let valu = snapshot.value as? NSDictionary
+            print("IMHERE")
+            let n1 = valu?["A+"] as? Double
+            let n2 = valu?["A"] as? Double
+            let n3 = valu?["A-"] as? Double
+            let n4 = valu?["B+"] as? Double
+            let n5 = valu?["B"] as? Double
+            let n6 = valu?["B-"] as? Double
+            let n7 = valu?["C+"] as? Double
+            let n8 = valu?["C"] as? Double
+            let n9 = valu?["C-"] as? Double
+            let n10 = valu?["D+"] as? Double
+            let n11 = valu?["D"] as? Double
+            let n12 = valu?["D-"] as? Double
+            let n13 = valu?["F"] as? Double
+            
+            
+            if (n1 == nil || n2 == nil || n3 == nil || n4 == nil || n5 == nil || n6 == nil || n7 == nil || n8 == nil || n9 == nil || n10 == nil || n11 == nil || n12 == nil || n13 == nil) {
+                
+            }
+            else {
+                
+                let partone = (n1! * 4.0) + (n2! * 4.0)
+                let parttwo = (n3! * 3.7) + (n4! * 3.3) + (n5! * 3.0)
+                let partthree = (n6! * 2.7) + (n7! * 2.3) + (n8! * 2.0)
+                let partfour = (n9! * 1.7) + (n10! * 1.3) + (n11! * 1.0)
+                let partfive = (n12! * 0.7) + (n13! * 0.0)
+                
+                let gradesSum = partone + parttwo + partthree + partfour + partfive
+                
+                let firsthalf = n1! + n2! + n3! + n4!
+                let secondhalf = n5! + n6! + n7! + n8!
+                let thirdhalf = n9! + n10! + n11! + n12! + n13!
+                
+                let avgGrades = (gradesSum)/(firsthalf + secondhalf + thirdhalf)
+                
+                if (avgGrades >= 0.0 && avgGrades < 0.7)
+                {
+                    self.avgGrade.text = "F"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("F")
+                    
+                } else if (avgGrades >= 0.7 && avgGrades < 1.0)
+                {
+                    self.avgGrade.text = "D-"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D-")
+                    
+                } else if (avgGrades >= 1.0 && avgGrades < 1.3)
+                {
+                    self.avgGrade.text = "D"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D")
+                    
+                } else if (avgGrades >= 1.3 && avgGrades < 1.7)
+                {
+                    self.avgGrade.text = "D+"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("D+")
+                    
+                } else if (avgGrades >= 1.7 && avgGrades < 2.0)
+                {
+                    self.avgGrade.text = "C-"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C-")
+                    
+                } else if (avgGrades >= 2.0 && avgGrades < 2.3)
+                {
+                    self.avgGrade.text = "C"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C")
+                    
+                } else if (avgGrades >= 2.3 && avgGrades < 2.7)
+                {
+                    self.avgGrade.text = "C+"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("C+")
+                    
+                } else if (avgGrades >= 2.7 && avgGrades < 3.0)
+                {
+                    self.avgGrade.text = "B-"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B-")
+                    
+                } else if (avgGrades >= 3.0 && avgGrades < 3.3)
+                {
+                    self.avgGrade.text = "B"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B")
+                    
+                } else if (avgGrades >= 3.3 && avgGrades < 3.7)
+                {
+                    self.avgGrade.text = "B+"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("B+")
+                    
+                } else if (avgGrades >= 3.7 && avgGrades < 4.0)
+                {
+                    self.avgGrade.text = "A-"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A-")
+                    
+                } else if (avgGrades == 4.0)
+                {
+                    self.avgGrade.text = "A+/A"
+                    self.ref.child("CourseGrade").child(AllVariables.courseselected).setValue("A+/A")
+                    
+                }
+                
+                //self.avgGradeRecLabel.text = "\(avgGrades)"
+                if (avgGrades.isNaN == false) {
+                    print("THIS IS WHERE I CRASH")
+                    self.ref.child("CourseAvgGrade").child(AllVariables.courseselected).setValue(avgGrades)
+                }
+            }
+        })
+        
+    }
+    
+    
+    func getExamDifficulty()
+    {
+        self.ref.child("ExamReviews").child(AllVariables.courseselected).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let valu = snapshot.value as? NSDictionary
+            print("IMHERE")
+            let n1 = valu?["Diff1"] as? Double
+            let n2 = valu?["Diff2"] as? Double
+            let n3 = valu?["Diff3"] as? Double
+            let n4 = valu?["Diff4"] as? Double
+            let n5 = valu?["Diff5"] as? Double
+            if (n1 == nil || n2 == nil || n3 == nil || n4 == nil || n5 == nil)
+            {
+                
+            } else {
+                
+                let sum = (n1! * 1.0) + (n2! * 2.0) + (n3! * 3.0) + (n4! * 4.0) + (n5! * 5.0)
+                print("SUM \(sum)")
+                self.avgrating = (sum)/(n1!+n2!+n3!+n4!+n5!)
+                print("AVG RATING = \(self.avgrating)")
+                
+                
+                AllVariables.examrating = [n1!, n2!, n3!, n4!, n5!]
+                print("THIS: \(AllVariables.examrating)")
+                self.examDiff.text = "\(self.avgrating)"
+                if (self.avgrating.isNaN == false) {
+                    print("THIS IS WHERE I AM")
+                    self.ref.child("ExamAverageRating").child(AllVariables.courseselected).setValue(self.avgrating)
+                }
+            }
+        })
+    }
     
     
 
