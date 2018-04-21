@@ -40,9 +40,23 @@ class ViewProfileViewController: UIViewController, UITableViewDataSource, UITabl
         //pictureonprofilepage = image
         nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
         self.navigationItem.title = AllVariables.Username
+        //
+//        refresh = UIRefreshControl()
+//        refresh.addTarget(self, action: #selector(ViewProfileViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
+//        tableView.insertSubview(refresh, at: 0)
+//
+//        self.tableView.reloadData()
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
+        
+        
+//        myCourses.text = "No courses added!"
+    }
+    func getdata() {
         print (AllVariables.Fname)
         print("............")
-        //updateBioText.text = AllVariables.bio
+        self.updateBioText.text = AllVariables.bio
         if (AllVariables.gpaAnon == "yes")
         {
             gpaLabel.text = " "
@@ -50,18 +64,26 @@ class ViewProfileViewController: UIViewController, UITableViewDataSource, UITabl
         else if (AllVariables.gpaAnon == "no"){
             gpaLabel.text = AllVariables.GPA
         }
-        
-        refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(ViewProfileViewController.didPullToRefresh(_:)), for: .valueChanged)
-        
-        tableView.insertSubview(refresh, at: 0)
-        
-        self.tableView.reloadData()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        
-//        myCourses.text = "No courses added!"
+        let size = AllVariables.courses.endIndex
+        print("SIZE IS: \(size)")
+        //        list.removeAll()
+        if (size != 0) {
+            var  i = 0;
+            
+            while (i < size){
+                    self.courses.append(AllVariables.courses[i])
+                    i += 1
+                //                self.refresh.endRefreshing()
+                
+            
+                self.tableView.reloadData()
+                self.tableView.delegate = self
+                self.tableView.dataSource = self
+            }
+        }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.courses.removeAll()
     }
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
     {
@@ -72,46 +94,19 @@ class ViewProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
-        viewDidAppear(true)
+//        viewDidAppear(true)
         self.refresh.endRefreshing()
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
+        getdata()
         myCourses.text = ""
         updateBioText.text = AllVariables.bio
         var databaseProfilePic = AllVariables.profpic
-        if (AllVariables.gpaAnon == "yes")
-        {
-            gpaLabel.text = " "
-        }
-        else if (AllVariables.gpaAnon == "no"){
-            gpaLabel.text = AllVariables.GPA
-        }
-        
         let data = NSData(contentsOf: NSURL(string: databaseProfilePic)! as URL)
         if (AllVariables.profpic != "") {
             setProfilePicture(imageView: self.pictureonprofilepage,imageToSet:UIImage(data: data! as Data)!)
-        }
-        let size = AllVariables.courses.endIndex
-//        list.removeAll()
-        if (size != 0) {
-            var  i = 0;
-        
-            while (i < size){
-                if (!courses.contains(AllVariables.courses[i])){
-                    self.courses.append(AllVariables.courses[i])
-                    i += 1
-                }
-                self.refresh.endRefreshing()
-                
-                self.tableView.reloadData()
-                self.tableView.delegate = self
-                self.tableView.dataSource = self
-            }
-            //myCourses.text = list
-            
-            print(courses)
         }
     }
     

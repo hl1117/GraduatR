@@ -315,12 +315,13 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
                                         while let rest = enumer.nextObject() as? DataSnapshot {
                                             AllVariables.courses.append(rest.value as! String)
                                         }
+                                        
+                                        let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                        let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                                        let appDelegate = UIApplication.shared.delegate
+                                        appDelegate?.window??.rootViewController = protectedPage
+                                        
                                     })
-                                    
-                                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                                    let appDelegate = UIApplication.shared.delegate
-                                    appDelegate?.window??.rootViewController = protectedPage
                                     
                                 })
                             }

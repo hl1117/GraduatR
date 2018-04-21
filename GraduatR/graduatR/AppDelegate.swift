@@ -81,22 +81,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate
                                     while let rest = enumer.nextObject() as? DataSnapshot {
                                         AllVariables.courses.append(rest.value as! String)
                                     }
+                                    
+                                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                                    let appDelegate = UIApplication.shared.delegate
+                                    appDelegate?.window??.rootViewController = protectedPage
+                                    
                                 })
-                                
-                                let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                                let appDelegate = UIApplication.shared.delegate
-                                appDelegate?.window??.rootViewController = protectedPage
                                 
                             })
                         }
                     }
                     let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
-                    let viewController: RoleViewController = storyboard.instantiateViewController(withIdentifier: "RoleViewController") as! RoleViewController;
-                    
-                    // Then push that view controller onto the navigation stack
-                    let rootViewController = self.window!.rootViewController as! UINavigationController;
-                    rootViewController.pushViewController(viewController, animated: true);
+                    let protectedPage = storyboard.instantiateViewController(withIdentifier: "RoleViewController") as! UIViewController
+                    let appDelegate = UIApplication.shared.delegate
+                    appDelegate?.window??.rootViewController = protectedPage
                 })
             }
             

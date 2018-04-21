@@ -69,10 +69,9 @@ class TutorViewProfileViewController: UIViewController, UITableViewDataSource, U
             var  i = 0;
             
             while (i < size){
-                if (!courses.contains(AllVariables.courses[i])){
                     self.courses.append(AllVariables.courses[i])
                     i += 1
-                }
+                
                 
                 self.tableView.reloadData()
                 self.tableView.delegate = self
@@ -89,6 +88,9 @@ class TutorViewProfileViewController: UIViewController, UITableViewDataSource, U
         
         
         
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.courses.removeAll()
     }
     
     override func didReceiveMemoryWarning()
