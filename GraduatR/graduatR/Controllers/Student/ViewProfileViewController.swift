@@ -102,6 +102,8 @@ class ViewProfileViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidAppear(_ animated: Bool) {
         getdata()
         myCourses.text = ""
+        
+        nameLabel.text = AllVariables.Fname + " " + AllVariables.Lname
         updateBioText.text = AllVariables.bio
         var databaseProfilePic = AllVariables.profpic
         let data = NSData(contentsOf: NSURL(string: databaseProfilePic)! as URL)
