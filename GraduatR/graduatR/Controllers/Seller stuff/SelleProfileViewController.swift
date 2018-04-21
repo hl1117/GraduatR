@@ -9,19 +9,27 @@
 import UIKit
 import Firebase
 
-class SelleProfileViewController: UIViewController {
+class SelleProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var gpa: UILabel!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var classesTaken: UILabel!
     var uid = String()
     var ref = Database.database().reference()
-    
+    var courses = [String]()
     @IBOutlet weak var sellprofpic: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getdata()
+        
+        self.tableView.reloadData()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     func setProfilePicture(imageView:UIImageView, imageToSet:UIImage)
     {
@@ -47,13 +55,37 @@ class SelleProfileViewController: UIViewController {
             }
             self.ref.child("Users").child("Student").child(self.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
                 let counter = 0;
-                var course = String()
                 let enumer = snapshotCourse.children
                 while let rest = enumer.nextObject() as? DataSnapshot {
-                    course = "\(course) \(rest.value as! String)"
+                    let val = rest.value as! String
+                    if (!self.courses.contains(val)) {
+//                    course = "\(course) \(rest.value as! String)"
+                        self.courses.append(val)
+                        
+                        self.tableView.reloadData()
+                        self.tableView.delegate = self
+                        self.tableView.dataSource = self
+                        
+                    }
                 }
-                self.classesTaken.text = course
+                 print(self.courses)
+//                self.classesTaken.text = course
             })
         })
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return courses.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SellerProfCell", for: indexPath) as! SellerProfCell
+        
+        let nam = courses[indexPath.row]
+        print("....lets seee....")
+        cell.courseTaking!.text = nam
+        
+        return cell
+    }
+    
 }
