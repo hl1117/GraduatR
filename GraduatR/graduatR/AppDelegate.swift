@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate
                             })
                         }
                     }
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil);
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil);
                     let viewController: RoleViewController = storyboard.instantiateViewController(withIdentifier: "RoleViewController") as! RoleViewController;
                     
                     // Then push that view controller onto the navigation stack
