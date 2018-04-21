@@ -259,7 +259,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             else {
                 let alertView = UIAlertView(title: "Delete Account", message: "You have successfully deleted your account.", delegate: self, cancelButtonTitle: "Goodbye")
                 alertView.show()
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as UIViewController
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CustomLoginViewController") as UIViewController
                 self.present(loginVC, animated: true, completion: nil)
                 print("UID \(AllVariables.uid)")
                 //Remove parent if any?????
