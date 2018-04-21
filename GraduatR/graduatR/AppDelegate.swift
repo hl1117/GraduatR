@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate
             print("An error occurred during google authentication")
             return
         }
-        
+     
         guard let authentication = user.authentication else {return}
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
@@ -51,12 +51,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate
             }
             else
             {
+                let databaseRef = Database.database().reference();
                 print("Google authentication success")
                 
-                let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-                let appDelegate = UIApplication.shared.delegate
-                appDelegate?.window??.rootViewController = protectedPage
+                databaseRef.child("Users").observeSingleEvent(of: DataEventType.value, with: {(sap) in
+                    let enumer = sap.children
+                    while let rest = enumer.nextObject() as? DataSnapshot {
+                        if (rest.hasChild(Auth.auth().currentUser!.uid)) {
+                            print("HEREEEEEE")
+                            print(rest.key)
+                            print(Auth.auth().currentUser!.uid)
+                            databaseRef.child("Users").child(rest.key).child(Auth.auth().currentUser!.uid).observeSingleEvent(of: DataEventType.value, with: { (snap) in
+                                
+                                
+                                AllVariables.uid = Auth.auth().currentUser!.uid
+                                print("HEREEE?")
+                                let value = snap.value as? NSDictionary
+                                AllVariables.Username = value?["Username"] as? String ?? ""
+                                AllVariables.Fname = (value?["Fname"] as? String)!
+                                AllVariables.Lname = (value?["Lname"] as? String)!
+                                AllVariables.bio = value?["bio"] as? String ?? ""
+                                AllVariables.GPA = value?["GPA"] as? String ?? ""
+                                AllVariables.profpic = value?["profile_pic"] as? String ?? ""
+                                AllVariables.standing = value?["Class"] as? String ?? ""
+                                
+                                databaseRef.child("Users").child(rest.key).child(AllVariables.uid).child("Courses").observeSingleEvent(of: DataEventType.value, with: { (snapshotCourse) in
+                                    let counter = 0;
+                                    let enumer = snapshotCourse.children
+                                    while let rest = enumer.nextObject() as? DataSnapshot {
+                                        AllVariables.courses.append(rest.value as! String)
+                                    }
+                                })
+                                
+                                let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+                                let appDelegate = UIApplication.shared.delegate
+                                appDelegate?.window??.rootViewController = protectedPage
+                                
+                            })
+                        }
+                    }
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil);
+                    let viewController: RoleViewController = storyboard.instantiateViewController(withIdentifier: "RoleViewController") as! RoleViewController;
+                    
+                    // Then push that view controller onto the navigation stack
+                    let rootViewController = self.window!.rootViewController as! UINavigationController;
+                    rootViewController.pushViewController(viewController, animated: true);
+                })
             }
             
         }

@@ -107,6 +107,7 @@ class TutorViewProfileViewController: UIViewController {
                 
                 if (Auth.auth().currentUser == nil) {
                     print("USER LOG OUT")
+                    GIDSignIn.sharedInstance().signOut()
                     let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CustomLoginViewController") as UIViewController
                     self.present(loginVC, animated: true, completion: nil)
                     clear()

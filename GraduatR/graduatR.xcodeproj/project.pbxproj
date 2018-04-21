@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645C202BE85000A9C921 /* LoginViewController.swift */; };
 		202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */; };
 		203FDE5120339E5A00888A23 /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */; };
 		203FDE5220339E5A00888A23 /* RoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203FDE5020339E5A00888A23 /* RoleViewController.swift */; };
@@ -102,7 +101,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		202A645C202BE85000A9C921 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		202A645E202BF56B00A9C921 /* ProtectedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedPageViewController.swift; sourceTree = "<group>"; };
 		203FDE4F20339E5A00888A23 /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
 		203FDE5020339E5A00888A23 /* RoleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleViewController.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 				2043667A20634B1800369812 /* AddCourseReviewViewController.swift */,
 				6614FA77203BD3F1006172EC /* ResetPasswordViewController.swift */,
 				203FDE532033A2F300888A23 /* CustomLoginViewController.swift */,
-				202A645C202BE85000A9C921 /* LoginViewController.swift */,
 				2074E28B202BDED10020C63A /* Assets.xcassets */,
 				2074E28D202BDED10020C63A /* LaunchScreen.storyboard */,
 				2074E290202BDED10020C63A /* Info.plist */,
@@ -659,7 +656,6 @@
 				5A17D2D820841ACB009BE94F /* PopOverDetailsViewController.swift in Sources */,
 				D4D094F42066F94F0087F99F /* StudentParentAddViewController.swift in Sources */,
 				6680817820645800006DA586 /* AddProfessorReviewViewController.swift in Sources */,
-				202A645D202BE85000A9C921 /* LoginViewController.swift in Sources */,
 				D47C3E6B203F7393000EC7CC /* AddCourseViewController.swift in Sources */,
 				2074E284202BDED10020C63A /* ViewController.swift in Sources */,
 				202A645F202BF56B00A9C921 /* ProtectedPageViewController.swift in Sources */,

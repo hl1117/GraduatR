@@ -14,7 +14,7 @@ import FBSDKLoginKit
 import FBSDKShareKit
 import FBSDKCoreKit
 
-class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate
+class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate, UIGestureRecognizerDelegate
 {
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -39,11 +39,13 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
         clear()
         NotificationCenter.default.addObserver(self, selector: #selector(CustomLoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CustomLoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
+
         configureGoogleSignInButton()
         configureFacebookSignInButton()
+        dismissOnTap()
+        
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
@@ -51,7 +53,7 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
             }
         }
     }
-    
+
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
@@ -59,7 +61,7 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
             }
         }
     }
-    
+
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -240,12 +242,24 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
         })
     }
 
-    
-    @IBAction func onTap(_ sender: Any) {
-        view.endEditing(true)
+    func dismissOnTap() {
+        self.view.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CustomLoginViewController.onTap(_:)))
+        tap.delegate = self
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
-    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if touch.view is GIDSignInButton {
+            return false
+        }
+        return true
+    }
+   
+     @IBAction func onTap(_ sender: Any) {
+        self.view.endEditing(true)
+    }
     
     fileprivate func configureGoogleSignInButton()
     {
@@ -319,29 +333,7 @@ class CustomLoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLog
             print("An error occured the user couldn't log in")
         }
     }
-    
-    
-//
-//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-//        if error == nil {
-//            print("User just logged in via Facebook")
-//            let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-//            Auth.auth().signIn(with: credential, completion: { (user, error) in
-//                if (error != nil) {
-//                    print("Facebook authentication failed")
-//                } else {
-//                    print("Facebook authentication succeed")
-//                    let mainStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let protectedPage = mainStoryBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
-//                    let appDelegate = UIApplication.shared.delegate
-//                    appDelegate?.window??.rootViewController = protectedPage
-//                }
-//            })
-//        } else {
-//            print("An error occured the user couldn't log in")
-//        }
-//    }
-//
+  
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User just logged out from his Facebook account")
     }

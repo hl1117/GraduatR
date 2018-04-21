@@ -30,7 +30,7 @@ class ProtectedPageViewController: UIViewController
         do {
             try Auth.auth().signOut()
             
-            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            let signInPage = self.storyboard?.instantiateViewController(withIdentifier: "CustomLoginViewController") as! CustomLoginViewController
             let appDelegate = UIApplication.shared.delegate
             appDelegate?.window??.rootViewController = signInPage
             
