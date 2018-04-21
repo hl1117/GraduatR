@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fAF-nZ-NWv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fAF-nZ-NWv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -119,12 +119,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="I am a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeW-Pz-ZbE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeW-Pz-ZbE">
                                 <rect key="frame" x="57" y="384" width="54" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="2i9-kh-tQm"/>
-                                    <constraint firstAttribute="width" constant="54" id="raI-Ut-yZO"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -157,11 +154,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartInsertDeleteType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06v-Xe-KcP">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="06v-Xe-KcP">
                                 <rect key="frame" x="111" y="578" width="153" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="153" id="TVD-94-lQT"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Proceed &gt;"/>
                                 <connections>
                                     <action selector="clickNextButton:" destination="Lqo-4W-iHN" eventType="touchUpInside" id="8zD-vw-b4L"/>
@@ -209,12 +204,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="I am a: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-ds-ZPz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I am a: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-ds-ZPz">
                                 <rect key="frame" x="40" y="268" width="61" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="61" id="Osi-VE-m5u"/>
-                                    <constraint firstAttribute="height" constant="23" id="bWI-q4-Ift"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -265,11 +257,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hi," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqj-jW-Mwb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqj-jW-Mwb">
                                 <rect key="frame" x="69" y="90" width="27" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="Xhe-vW-B8m"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -337,12 +327,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="TELL US MORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-jH-Zrk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TELL US MORE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-jH-Zrk">
                                 <rect key="frame" x="70" y="119" width="236" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="aeu-1D-uQZ"/>
-                                    <constraint firstAttribute="width" constant="237" id="dba-59-CZY"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -354,11 +341,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hi," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RU-YB-Y5j">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hi," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RU-YB-Y5j">
                                 <rect key="frame" x="57" y="91" width="27" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="Qf3-KW-plr"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -416,7 +401,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="kfp-tg-Sg7" id="0Az-oX-Ptj"/>
                                     <segue destination="rag-Th-GIm" kind="push" id="AZV-St-YZs"/>
@@ -820,7 +805,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="fK5-x6-Dnf" secondAttribute="trailing" constant="-20" id="u7R-w3-ads"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="fK5-x6-Dnf" id="GdU-KP-30d"/>
                                     <segue destination="haR-9I-cfJ" kind="push" id="kpE-sm-zOO"/>
@@ -893,7 +878,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="name" destination="csa-YJ-qkE" id="ERM-dh-UcV"/>
                                     <outlet property="propic" destination="Kri-Gh-Dqc" id="2nl-fQ-h3D"/>
@@ -1064,9 +1049,9 @@
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </tableViewCellContentView>
-                                                        <color key="backgroundColor" red="0.80300206220000003" green="0.72412015819999997" blue="0.23498338769999999" alpha="0.45912191899999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
                                                             <outlet property="reviewText" destination="ZAK-XG-Egr" id="jfU-1w-nfy"/>
                                                             <outlet property="userLabel" destination="Vwi-Dp-fJq" id="J3C-m3-vV4"/>
@@ -1939,7 +1924,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="author" destination="Qwy-Up-B07" id="2ir-fH-WlF"/>
                                     <outlet property="course" destination="5Gj-ZU-Kyd" id="7xp-TE-qyb"/>
@@ -2430,7 +2415,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="endDate" destination="kgf-m2-qvk" id="tXy-JT-Sy3"/>
                                             <outlet property="eventDescription" destination="NAJ-Qz-UuP" id="hce-HY-oHb"/>
@@ -2663,7 +2648,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="reviewText" destination="efo-QW-h5o" id="YE6-OC-PhQ"/>
                                         </connections>
@@ -3377,7 +3362,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="6oQ-kv-20a" secondAttribute="bottom" constant="8" id="kLn-50-43X"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="nameLabel" destination="6oQ-kv-20a" id="0nl-EK-gVC"/>
                                     <segue destination="2yQ-6h-Bdf" kind="push" id="zEx-fL-Loc"/>
@@ -3428,7 +3413,8 @@
                                 <rect key="frame" x="0.0" y="594" width="375" height="73"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Reviews">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="REVIEWS">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -3521,7 +3507,7 @@
                                                                 </view>
                                                             </subviews>
                                                         </tableViewCellContentView>
-                                                        <color key="backgroundColor" red="0.94243847150000004" green="0.81598767270000006" blue="0.12569655860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" red="0.828227881" green="0.828227881" blue="0.828227881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
                                                             <outlet property="reviewText" destination="iKl-J3-bN0" id="sAl-Z8-ORs"/>
                                                         </connections>
@@ -3545,7 +3531,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exam difficulty:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnO-4H-X6N">
                                                 <rect key="frame" x="19" y="843" width="121" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -3754,7 +3740,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Kiv-0W-rLg"/>
         <segue reference="4Bi-6S-EKF"/>
-        <segue reference="65G-g7-bVm"/>
+        <segue reference="rah-oT-LWk"/>
         <segue reference="ncN-tc-rAc"/>
     </inferredMetricsTieBreakers>
 </document>
