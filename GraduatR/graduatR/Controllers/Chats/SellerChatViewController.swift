@@ -43,7 +43,7 @@ class SellerChatViewController: JSQMessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // observeMessages()
-        
+        super.viewDidAppear(true)
         finishReceivingMessage()
     }
     

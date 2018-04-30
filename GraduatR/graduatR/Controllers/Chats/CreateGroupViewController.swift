@@ -75,6 +75,10 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
     override func viewDidLoad() {
         selectednames.removeAll()
         createSearchBar()

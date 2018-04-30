@@ -13,7 +13,6 @@ class GroupChatUsersCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none

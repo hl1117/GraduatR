@@ -41,6 +41,11 @@ class PopOverDetailsViewController: UIViewController, UITableViewDelegate, UITab
         // navigationController?.popToViewController(AllChatsTableViewController, animated: true)
         //self.present(AllChatsTableViewController(), animated: true, completion: nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.Popupview.layer.cornerRadius = 10

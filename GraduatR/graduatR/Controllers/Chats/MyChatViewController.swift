@@ -55,8 +55,14 @@ class MyChatViewController: JSQMessagesViewController {
         
     }
     
+    override func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        //keyboardController.beginListeningForKeyboard()
+        return true
+    }
+
+    
     override func viewDidAppear(_ animated: Bool) {
-        
+        super.viewDidAppear(true)
         // observeMessages()
         finishReceivingMessage()
     
